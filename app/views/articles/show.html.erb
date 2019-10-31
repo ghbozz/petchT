@@ -1,9 +1,20 @@
-<div class="container">
-  <h1><%= @article.title %></h1>
-  <h4><%= @article.subtitle %></h4>
-  <span><%= @article.author_name %></span>
+<div class="container mt-5 mb-5">
+  <div class="article-header">
+    <div class="article-headings">
+      <h1><%= @article.title %></h1>
+      <h4><%= @article.subtitle %></h4>
+    </div>
+    <div class="author-infos">
+      <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle" width="75px">
+      <div>
+        <span><%= @article.author_name %></span><br>
+        <span><%= @article.user.profession %></span><br>
+        <span><%= time_ago_in_words(@article.created_at) %> ago</span>
+      </div>
+    </div>
+  </div>
   <hr>
   <div class="article-body">
-    <%= @article.body %>
+    <%= raw @article.body %>
   </div>
 </div>

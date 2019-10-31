@@ -16,6 +16,7 @@ gem 'devise'
 # gem 'devise-i18n'
 # gem 'devise-bootstrap-views', '~> 1.0'
 gem 'simple_form'
+gem 'quilljs-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
