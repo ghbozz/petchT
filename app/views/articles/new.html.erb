@@ -21,7 +21,7 @@
       <%= f.input :title, label: false, placeholder: 'Titre' %>
       <%= f.input :subtitle, label: false, placeholder: 'Sous-Titre' %>
       <%= f.hidden_field :body %>
-      <%= f.input :thumbnail %>
+      <%= f.input :thumbnail, direct_upload: true %>
       <div id="editor"></div>
       <%= f.submit id: 'real-submit', class: 'd-none' %>
     <% end %>
