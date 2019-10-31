@@ -10,7 +10,9 @@
   <div class="right-nav">
     <% if user_signed_in? %>
       <i class="fas fa-search"></i>
-      <i class="fas fa-user"></i>
+      <%= link_to edit_user_registration_path do %>
+        <i class="fas fa-user"></i>
+      <% end %>
       <%= link_to destroy_user_session_path, method: :delete do  %>
         <i class="fas fa-sign-out-alt"></i>
       <% end %>
