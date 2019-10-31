@@ -1,9 +1,40 @@
-<div class="container">
-  <h1><%= @article.title %></h1>
-  <h4><%= @article.subtitle %></h4>
-  <span><%= @article.author_name %></span>
-  <hr>
-  <div class="article-body">
-    <%= @article.body %>
+<div class="container mt-5 mb-5">
+
+  <div class="article-header">
+    <div>
+      <div class="article-headings">
+        <h1><%= @article.title %></h1>
+        <h4><%= @article.subtitle %></h4>
+      </div>
+
+      <div class="author-infos">
+        <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle" width="75px">
+        <div>
+          <span><%= @article.author_name %></span><br>
+          <span><%= @article.user.profession %></span><br>
+          <span><%= time_ago_in_words(@article.created_at) %> ago</span>
+        </div>
+      </div>
+    </div>
+
+    <% if current_user.is_admin? || current_user.is_author?(@article) %>
+      <div class="article-status-info">
+        <% if @article.status == 'draft' %>
+          <span class="article-status draft"><%= @article.status %></span>
+        <% end %>
+
+        <% if @article.status == 'published' %>
+          <span class="article-status published"><%= @article.status %></span>
+        <% end %>
+      </div>
+    <% end %>
+
   </div>
+
+  <hr>
+
+  <div class="article-body">
+    <%= raw @article.body %>
+  </div>
+
 </div>

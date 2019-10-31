@@ -6,8 +6,18 @@ class User < ApplicationRecord
 
   has_many :articles
 
+  has_one_attached :avatar
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :profession, presence: true
   validates :signature, presence: true
+
+  def is_admin?
+    self.permission == 'admin'
+  end
+
+  def is_author?(article)
+    article.user == self
+  end
 end
