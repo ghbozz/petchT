@@ -1,0 +1,24 @@
+<nav class="navbar navbar-light bg-light mb-5">
+  <div class="left-nav">
+    <a class="navbar-brand">Petch</a>
+  </div>
+
+  <div class="center-nav">
+    <%= link_to 'Articles', articles_path %>
+  </div>
+
+  <div class="right-nav">
+    <% if user_signed_in? %>
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+      <%= link_to destroy_user_session_path, method: :delete do  %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    <% else %>
+      <i class="fas fa-search"></i>
+      <%= link_to new_user_session_path do  %>
+        <i class="fas fa-sign-in-alt"></i>
+      <% end %>
+    <% end %>
+  </div>
+</nav>

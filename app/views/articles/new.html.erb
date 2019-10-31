@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="form-content" style="padding: 0 200px">
+    <h2>New Article</h2>
+    <hr>
+    <%= simple_form_for(@article) do |f| %>
+      <% if @article.errors.any? %>
+        <div class="errors-container">
+          <ul>
+            <% @article.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col"><%= f.input :animal, collection: Article::ANIMALS %></div>
+        <div class="col"><%= f.input :theme, collection: Article::THEMES %></div>
+      </div>
+      <%= f.input :title, label: false, placeholder: 'Titre' %>
+      <%= f.input :subtitle, label: false, placeholder: 'Sous-Titre' %>
+      <%= f.input :body %>
+      <%= f.input :thumbnail %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

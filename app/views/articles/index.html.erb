@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Articles</h2>
+
+  <hr>
+
+  <div class="row">
+    <% @articles.each do |article| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= link_to article_path(article) do %>
+          <div class="article-card">
+            <%= image_tag url_for(article.thumbnail) %>
+            <div class="card-desc">
+              <h4><%= article.title %></h4>
+              <p><%= article.subtitle %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
