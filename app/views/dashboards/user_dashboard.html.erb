@@ -30,12 +30,13 @@
             </div>
 
             <div class="article-status-info">
+              <span class="status">Status</span>
               <% if article.status == 'draft' %>
-                <span class="article-status draft"><%= article.status %></span>
+                <div class="article-status draft"><%= article.status %></div>
               <% end %>
 
               <% if article.status == 'published' %>
-                <span class="article-status published"><%= article.status %></span>
+                <div class="article-status published"><%= article.status %></div>
               <% end %>
             </div>
 

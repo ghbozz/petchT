@@ -32,4 +32,13 @@
     flex-grow: 0;
     line-height: 2em;
   }
+  .article-status-info {
+    position: relative;
+    .status {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: -50px;
+      left: 50%;
+    }
+  }
 }
