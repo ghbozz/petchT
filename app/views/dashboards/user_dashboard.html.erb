@@ -5,35 +5,52 @@
 </div>
 
 <div class="container pt-5">
-  <div class="dashboard-articles">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mon Profile</a>
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Mes Articles</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mes Fiches</a>
+    </div>
+  </nav>
 
-    <% @articles.each do |article| %>
-      <div class="dashboard-article-card">
-        <%= image_tag url_for(article.thumbnail) %>
+  <div class="tab-content" id="nav-tabContent">
 
-        <div class="artcile-infos">
-          <span>id: <%= article.id %></span>
-          <span>title: <%= article.title %></span>
-          <span>Subtitle: <%= article.subtitle %></span>
-          <span>Theme: <%= article.theme %></span>
-          <span>Author: <%= article.author_name %></span>
-        </div>
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="dashboard-articles">
+        <% @articles.each do |article| %>
+          <div class="dashboard-article-card">
+            <%= image_tag url_for(article.thumbnail) %>
 
-        <div class="article-status-info">
-          <% if article.status == 'draft' %>
-            <span class="article-status draft"><%= article.status %></span>
-          <% end %>
+            <div class="artcile-infos">
+              <span>id: <%= article.id %></span>
+              <span>title: <%= article.title %></span>
+              <span>Subtitle: <%= article.subtitle %></span>
+              <span>Theme: <%= article.theme %></span>
+              <span>Author: <%= article.author_name %></span>
+            </div>
 
-          <% if article.status == 'published' %>
-            <span class="article-status published"><%= article.status %></span>
-          <% end %>
-        </div>
+            <div class="article-status-info">
+              <% if article.status == 'draft' %>
+                <span class="article-status draft"><%= article.status %></span>
+              <% end %>
 
-        <div class="article-controls">
-          <%= link_to 'Edit', edit_article_path(article) %>
-        </div>
+              <% if article.status == 'published' %>
+                <span class="article-status published"><%= article.status %></span>
+              <% end %>
+            </div>
+
+            <div class="article-controls">
+              <%= link_to 'Edit', edit_article_path(article) %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 
   </div>
+
 </div>
