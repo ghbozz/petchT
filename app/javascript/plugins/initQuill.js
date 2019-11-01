@@ -21,12 +21,10 @@ window.addEventListener('DOMContentLoaded', (e) => {
         ['link', 'image', 'video']                          // link and image, video
   ]
 
-  function imageHandler() {
-      var range = this.quill.getSelection();
-      var value = prompt('What is the image URL');
-      if(value){
-          this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
-      }
+  const loadForm = () => {
+    const body = document.querySelector('#article_body')
+    const editor = document.querySelector('.ql-editor')
+    editor.innerHTML = body.value
   }
 
   const submitForm = () => {
@@ -43,11 +41,10 @@ window.addEventListener('DOMContentLoaded', (e) => {
     modules: {
       toolbar: tooltipOptions
     },
-    placeholder: 'Rédiger un article',
-    handlers: {
-      image: imageHandler
-    }
+    placeholder: 'Rédiger un article'
   });
+
+  loadForm();
 })
 
 

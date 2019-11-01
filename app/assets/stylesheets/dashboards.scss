@@ -1,0 +1,35 @@
+// Place all the styles related to the Dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// EDITEUR
+
+.dashboard-header {
+  height: 350px;
+  width: 100vw;
+  background-color: grey;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-article-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(30, 30, 30, 0.2);
+  padding: 20px 0px;
+  img {
+    width: 300px;
+  }
+  .artcile-infos {
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: 0;
+    line-height: 2em;
+  }
+}

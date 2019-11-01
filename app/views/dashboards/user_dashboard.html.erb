@@ -1,0 +1,39 @@
+<div class="dashboard-header">
+  <div class="dashboard-header-content">
+    <h1>Mon Profil Editeur</h1>
+  </div>
+</div>
+
+<div class="container pt-5">
+  <div class="dashboard-articles">
+
+    <% @articles.each do |article| %>
+      <div class="dashboard-article-card">
+        <%= image_tag url_for(article.thumbnail) %>
+
+        <div class="artcile-infos">
+          <span>id: <%= article.id %></span>
+          <span>title: <%= article.title %></span>
+          <span>Subtitle: <%= article.subtitle %></span>
+          <span>Theme: <%= article.theme %></span>
+          <span>Author: <%= article.author_name %></span>
+        </div>
+
+        <div class="article-status-info">
+          <% if article.status == 'draft' %>
+            <span class="article-status draft"><%= article.status %></span>
+          <% end %>
+
+          <% if article.status == 'published' %>
+            <span class="article-status published"><%= article.status %></span>
+          <% end %>
+        </div>
+
+        <div class="article-controls">
+          <%= link_to 'Edit', edit_article_path(article) %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
