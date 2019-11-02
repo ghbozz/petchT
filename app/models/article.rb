@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   validates :body, presence: true
   validates :animal, presence: true
   validates :theme, presence: true
+  validates :thumbnail, presence: true
 
   THEMES = %w(Santé Alimentation Education Soins Beauté Hygiène)
   ANIMALS = %w(Chiens Chats Rongeurs Reptiles Oiseaux)
