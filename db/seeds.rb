@@ -7,16 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Article.destroy_all
 
+def get_images
+  Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
+end
+
 20.times do
   article = Article.new(
     title: Faker::Creature::Animal.name,
     subtitle: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraphs(number: 10).join("\n"),
+    body: Faker::Lorem.paragraphs(number: 50).join("\n\n"),
     animal:  Article::ANIMALS.sample,
     theme: Article::THEMES.sample,
     status: Article::STATUS.sample,
     user: User.first
   )
-  article.thumbnail.attach(io: File.open(File.join(File.dirname(__FILE__), '../app/assets/images/cat_2.jpg')), filename: 'file.jpg')
+  article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   article.save!
 end
+
