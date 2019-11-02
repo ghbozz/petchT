@@ -38,10 +38,16 @@
               <% if article.status == 'published' %>
                 <div class="article-status published"><%= article.status %></div>
               <% end %>
+
+              <% if article.status == 'submitted' %>
+                <span class="article-status submitted"><%= article.status %></span>
+              <% end %>
             </div>
 
             <div class="article-controls">
-              <%= link_to 'Edit', edit_article_path(article) %>
+              <%= link_to 'Submit', submit_article_path(article), method: :post if article.status == 'draft' %>
+              <%= link_to 'Editer', edit_article_path(article) %>
+              <%= link_to 'Voir', article_path(article) %>
             </div>
           </div>
         <% end %>
