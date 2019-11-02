@@ -2,9 +2,6 @@
   <div class="dashboard-header-content">
     <h1>Mon Profil Editeur</h1>
   </div>
-</div>
-
-<div class="container pt-5">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mon Profile</a>
@@ -12,6 +9,9 @@
       <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mes Fiches</a>
     </div>
   </nav>
+</div>
+
+<div class="container pt-5">
 
   <div class="tab-content" id="nav-tabContent">
 
@@ -57,7 +57,7 @@
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <div class="user-card">
         <div class="row">
-          <div class="col-4 d-flex justify-content-center align-items-center">
+          <div class="col d-flex justify-content-center align-items-center">
             <div>
               <img src="<%= url_for(current_user.avatar) %>" alt="" class="rounded-circle" width="200px">
             </div>
