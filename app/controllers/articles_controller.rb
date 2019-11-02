@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit]
+  before_action :set_article, only: [:show, :edit, :update, :submit]
 
   def index
-    @articles = Article.all
+    @articles = Article.where(status: 'published')
   end
 
   def show
@@ -23,6 +23,15 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article.update(article_params)
+    @article.update(status: 'draft')
+    @article.save!
+    redirect_to article_path(@article)
+  end
+
+  def submit
+    @article.update(status: 'submitted')
+    redirect_to profile_path
   end
 
   private

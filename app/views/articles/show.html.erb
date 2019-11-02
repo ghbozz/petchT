@@ -26,6 +26,10 @@
         <% if @article.status == 'published' %>
           <span class="article-status published"><%= @article.status %></span>
         <% end %>
+
+        <% if @article.status == 'submitted' %>
+          <span class="article-status submitted"><%= @article.status %></span>
+        <% end %>
       </div>
     <% end %>
 

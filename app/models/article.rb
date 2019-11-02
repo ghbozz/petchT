@@ -11,7 +11,7 @@ class Article < ApplicationRecord
 
   THEMES = %w(Santé Alimentation Education Soins Beauté Hygiène)
   ANIMALS = %w(Chiens Chats Rongeurs Reptiles Oiseaux)
-  STATUS = %w(draft published hide)
+  STATUS = %w(draft published hide submitted)
 
   validates :theme, inclusion: { in: THEMES }
   validates :animal, inclusion: { in: ANIMALS }

@@ -61,8 +61,12 @@
 }
 
 .article-status {
+  width: 120px;
   padding: 15px 30px;
   border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .draft {
@@ -72,5 +76,10 @@
 
 .published {
   background-color: rgb(76, 185, 99);
+  color: white;
+}
+
+.submitted {
+  background-color: rgb(218, 173, 106);
   color: white;
 }
