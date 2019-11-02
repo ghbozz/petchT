@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Article.destroy_all
+
+20.times do
+  article = Article.new(
+    title: Faker::Creature::Animal.name,
+    subtitle: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraphs(number: 10).join("\n"),
+    animal:  Article::ANIMALS.sample,
+    theme: Article::THEMES.sample,
+    status: Article::STATUS.sample,
+    user: User.first
+  )
+  article.thumbnail.attach(io: File.open('/Users/romainsanson/Desktop/petch_pictures/dog_1.jpg'), filename: 'file.jpg')
+  article.save!
+end
