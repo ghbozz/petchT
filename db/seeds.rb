@@ -17,6 +17,6 @@ Article.destroy_all
     status: Article::STATUS.sample,
     user: User.first
   )
-  article.thumbnail.attach(io: File.open('/Users/romainsanson/Desktop/petch_pictures/dog_1.jpg'), filename: 'file.jpg')
+  article.thumbnail.attach(io: File.open(File.join(File.dirname(__FILE__), '../app/assets/images/cat_2.jpg')), filename: 'file.jpg')
   article.save!
 end
