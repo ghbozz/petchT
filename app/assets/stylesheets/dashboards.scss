@@ -42,9 +42,16 @@
   justify-content: space-between;
   border-bottom: 1px solid rgb(222, 226, 230);
   padding: 20px 0px;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    position: relative;
+  }
   img {
     width: 300px;
     border-radius: 4px;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
   }
   .artcile-infos {
     width: 40%;
@@ -53,14 +60,27 @@
     flex-direction: column;
     flex-grow: 0;
     line-height: 2em;
+    @media screen and (max-width: 767px) {
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
   .article-status-info {
     position: relative;
+    @media screen and (max-width: 767px) {
+      position: absolute;
+      transform: translateY(50%);
+      top: 5px;
+      left: 10px;
+    }
     .status {
       position: absolute;
       transform: translate(-50%, -50%);
       top: -50px;
       left: 50%;
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
     }
   }
   .article-controls {
@@ -68,6 +88,11 @@
     flex-direction: column;
     align-items: center;
     width: 100px;
+    @media screen and (max-width: 767px) {
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 100%;
+    }
     a {
       margin-bottom: 7px;
     }
