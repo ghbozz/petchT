@@ -31,6 +31,7 @@ class ArticlesController < ApplicationController
 
   def submit
     @article.update(status: 'submitted')
+    redirect_to profile_path
   end
 
   private

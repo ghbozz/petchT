@@ -8,14 +8,14 @@
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mon Profile</a>
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Mes Articles</a>
+      <a class="nav-item nav-link active" id="nav-articles-tab" data-toggle="tab" href="#nav-articles" role="tab" aria-controls="nav-articles" aria-selected="true">Mes Articles</a>
       <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mes Fiches</a>
     </div>
   </nav>
 
   <div class="tab-content" id="nav-tabContent">
 
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div class="tab-pane fade show active" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
       <div class="dashboard-articles">
         <% @articles.each do |article| %>
           <div class="dashboard-article-card">
@@ -54,7 +54,48 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <div class="user-card">
+        <div class="row">
+          <div class="col-4 d-flex justify-content-center align-items-center">
+            <div>
+              <img src="<%= url_for(current_user.avatar) %>" alt="" class="rounded-circle" width="200px">
+            </div>
+          </div>
+          <div class="col">
+            <div class="user-data-column">
+              <div class="data-block">
+                <span class="data-title">Prénom</span>
+                <span class="user-data"><%= current_user.first_name %></span>
+              </div>
+              <div class="data-block">
+                <span class="data-title">Signature</span>
+                <span class="user-data"><%= current_user.signature %></span>
+              </div>
+              <div class="data-block">
+                <span class="data-title">Profession</span>
+                <span class="user-data"><%= current_user.profession %></span>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="user-data-column">
+              <div class="data-block">
+                <span class="data-title">Nom de famille</span>
+                <span class="user-data"><%= current_user.last_name %></span>
+              </div>
+              <div class="data-block">
+                <span class="data-title">email</span>
+                <span class="user-data"><%= current_user.email %></span>
+              </div>
+              <div class="data-block">
+                <%= link_to 'Modifier Mon Profile', edit_user_registration_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 
