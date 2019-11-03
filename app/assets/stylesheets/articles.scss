@@ -82,6 +82,12 @@
               left: 50%;
             }
           }
+          &:hover {
+            border: 1px solid rgb(241, 166, 106);
+            -webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+            -moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          }
         }
         .label-active {
           background-color: rgb(241, 166, 106);
