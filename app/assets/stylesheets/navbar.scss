@@ -27,4 +27,21 @@
       margin-left: 10px;
     }
   }
+  .nav-link {
+    color: rgb(30, 30, 30);
+    font-size: 1.1rem;
+    margin-right: 10px;
+    transition: all .2s ease-out;
+    &:hover {
+      color: rgb(241, 166, 106);
+    }
+  }
+  .shop {
+    border: 2px solid rgb(241, 166, 106);
+    color: rgb(241, 166, 106);
+    &:hover {
+      background-color: rgb(241, 166, 106);
+      color: white;
+    }
+  }
 }
