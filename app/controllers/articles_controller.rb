@@ -3,6 +3,10 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.where(status: 'published')
+
+    if params[:query].present?
+      @articles = @articles.search_articles(params[:query])
+    end
   end
 
   def show

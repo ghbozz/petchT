@@ -2,12 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// INDEX
+
+.articles-wrapper {
+  position: relative;
+  padding: 50px 0px;
+}
+
+.articles-container {
+  .articles-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .search {
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.filter {
+  z-index: 1;
+  width: 300px;
+  height: calc(100% - 80px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 80px;
+  transform: translateX(-90%);
+  background-color: white;
+  border-right: 1px solid rgba(100, 100, 100, 0.3);
+  transition: all .3s ease-out;
+  i {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 2em;
+    color: rgba(100, 100, 100, 0.3);
+    cursor: pointer;
+  }
+}
+
+.filter-active {
+  transform: translateX(0%);
+  i {
+    color: rgba(50, 50, 50, 0.8);
+  }
+}
+
+
 // NEW
 
 #editor {
   height: calc(100% - 44px);
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
+  font-size: 1rem;
 }
 
 .ql-toolbar {
