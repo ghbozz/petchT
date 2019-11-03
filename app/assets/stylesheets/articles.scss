@@ -8,6 +8,11 @@
 .articles-wrapper {
   position: relative;
   padding: 50px 0px;
+  transition: all .3s ease-out;
+}
+
+.shrink {
+  padding-left: 300px !important;
 }
 
 .articles-container {
@@ -37,7 +42,7 @@
   align-items: center;
   flex-direction: column;
   margin-top: 80px;
-  padding-top: 80px;
+  padding-top: 40px;
   transform: translateX(-90%);
   background-color: white;
   border-right: 1px solid rgba(100, 100, 100, 0.3);
@@ -50,16 +55,100 @@
     color: rgba(100, 100, 100, 0.3);
     cursor: pointer;
   }
-  .animal_filter {
-
+  .filter-form {
+    width: 100%;
+    padding: 40px;
+    h5 {
+      margin-bottom: 20px;
+    }
+    .animals-filter {
+      margin-bottom: 40px;
+      .form-check {
+        padding-left: 0px;
+        label {
+          padding: 30px;
+          border-radius: 50%;
+          border: 1px solid rgba(100, 100, 100, 0.1);
+          position: relative;
+          transition: all .2s ease-out;
+          i {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            &::before {
+              position: absolute;
+              transform: translate(-50%, -50%);
+              top: 50%;
+              left: 50%;
+            }
+          }
+        }
+        .label-active {
+          background-color: rgb(241, 166, 106);
+          -webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          -moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          i {
+            color: white;
+          }
+        }
+      }
+    }
+    .themes-filter {
+      .form-check {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        padding-left: 0px;
+        .boolean {
+          position: relative;
+        }
+        label {
+          width: 100%;
+        }
+        label::before {
+          content: '';
+          display: block;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          right: -14px;
+          width: 20px;
+          height: 20px;
+          border: 1px solid rgba(100, 100, 100, 0.1);
+          border-radius: 100px;
+          transition: background-color .2s;
+          cursor: pointer;
+        }
+        .label-active::before {
+          background-color: rgb(241, 166, 106);
+          -webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          -moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          i {
+            color: white;
+          }
+        }
+      }
+    }
   }
 }
 
 .filter-active {
   transform: translateX(0%);
   i {
-    color: rgba(50, 50, 50, 0.8);
+    color: rgb(241, 166, 106);
   }
+}
+
+.filter-btn {
+  margin-top: 20px;
+  width: 100%;
+  background-color: rgb(241, 166, 106);
+  color: white;
+  border-radius: 25px;
+  padding: 10px 0px;
 }
 
 

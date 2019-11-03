@@ -18,6 +18,14 @@ class Article < ApplicationRecord
   validates :animal, inclusion: { in: ANIMALS }
   validates :status, inclusion: { in: STATUS }
 
+  ANIMALS_ICONS = {
+    'Chiens': '<i class="fas fa-dog"></i>',
+    'Chats': '<i class="fas fa-cat"></i>',
+    'Rongeurs': '<i class="fas fa-horse"></i>',
+    'Reptiles': '<i class="fas fa-frog"></i>',
+    'Oiseaux': '<i class="fas fa-crow"></i>'
+  }
+
   include PgSearch::Model
   pg_search_scope :search_articles,
     against: [ :title, :subtitle, :body ],

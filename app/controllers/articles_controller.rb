@@ -3,15 +3,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.where(status: 'published')
-
-    if params[:query].present?
-      @articles = @articles.search_articles(params[:query])
-    end
-
-    if params[:animal_filter]
-      filter = params[:animal_filter].select { |k, v| v == '1' }.keys
-      @articles = @articles.where(animal: filter)
-    end
+    @articles = search_n_filter(@articles, params)
   end
 
   def show
@@ -54,6 +46,21 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, images: [])
+  end
+
+  def search_n_filter(articles, params)
+    if params[:query].present?
+      articles = articles.search_articles(params[:query])
+    end
+
+    if params[:filter_data]
+      animals = params[:filter_data].select { |k, v| v == '1' }.keys.select { |item| Article::ANIMALS.include?(item) }
+      themes = params[:filter_data].select { |k, v| v == '1' }.keys.select { |item| Article::THEMES.include?(item) }
+      articles = articles.where(animal: animals) if animals.any?
+      articles = articles.where(theme: themes) if themes.any?
+    end
+
+    articles
   end
 
 end
