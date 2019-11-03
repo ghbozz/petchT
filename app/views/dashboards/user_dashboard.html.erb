@@ -18,6 +18,13 @@
 
       <div class="tab-pane fade show active" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
         <div class="dashboard-articles">
+          <%= form_tag profile_path, method: :get, id: 'search-form' do %>
+            <%= text_field_tag :query,
+              params[:query],
+              placeholder: "Recherche"
+            %>
+            <%= submit_tag "Search", class: 'd-none' %>
+          <% end %>
           <% @articles.each do |article| %>
             <div class="dashboard-article-card">
               <%= image_tag url_for(article.thumbnail) %>

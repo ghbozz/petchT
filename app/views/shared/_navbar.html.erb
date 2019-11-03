@@ -13,13 +13,12 @@
     <a class="nav-link shop" href="#">Boutique</a>
   </li>
   <div class="nav-right">
-    <%= form_tag articles_path, method: :get, class: 'form-inline' do %>
+    <%= form_tag articles_path, method: :get, id: 'search-form' do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control mr-sm-2",
         placeholder: "Recherche"
       %>
-      <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+      <%= submit_tag "Search", class: 'd-none' %>
     <% end %>
     <%= link_to profile_path do %>
       <i class="far fa-user"></i>
