@@ -45,7 +45,6 @@
   padding-top: 40px;
   transform: translateX(-90%);
   background-color: white;
-  border-right: 1px solid rgba(100, 100, 100, 0.3);
   transition: all .3s ease-out;
   i {
     position: absolute;
@@ -137,6 +136,10 @@
 
 .filter-active {
   transform: translateX(0%);
+  border-right: 1px solid rgba(200, 200, 200, 0.1);
+  -webkit-box-shadow: 1px 0px 20px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 1px 0px 20px 0px rgba(0,0,0,0.15);
+  box-shadow: 1px 0px 20px 0px rgba(0,0,0,0.15);
   i {
     color: rgb(241, 166, 106);
   }
@@ -149,6 +152,14 @@
   color: white;
   border-radius: 25px;
   padding: 10px 0px;
+  cursor: pointer;
+  transition: all .3s ease-out;
+  &:hover {
+    transform: translateY(-2px);
+    -webkit-box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
+    -moz-box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
+    box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
+  }
 }
 
 
