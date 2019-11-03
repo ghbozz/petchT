@@ -7,6 +7,11 @@ class ArticlesController < ApplicationController
     if params[:query].present?
       @articles = @articles.search_articles(params[:query])
     end
+
+    if params[:animal_filter]
+      filter = params[:animal_filter].select { |k, v| v == '1' }.keys
+      @articles = @articles.where(animal: filter)
+    end
   end
 
   def show
@@ -50,4 +55,5 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, images: [])
   end
+
 end

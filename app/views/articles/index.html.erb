@@ -1,6 +1,14 @@
 <div class="articles-wrapper">
   <div class="filter">
     <i class="fas fa-grip-lines-vertical" id="filter-toggle"></i>
+    <div class="animal-filter">
+      <%= simple_form_for :animal_filter, url: articles_path, method: :get do |f| %>
+        <% Article::ANIMALS.each do |animal| %>
+          <%= f.input animal.to_sym, as: :boolean %>
+        <% end %>
+        <%= f.submit 'Animal filter' %>
+      <% end %>
+    </div>
   </div>
 
   <div class="container translate-nav">
