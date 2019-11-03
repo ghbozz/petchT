@@ -14,6 +14,7 @@ gem 'font-awesome-sass', '~> 5.11.2'
 gem 'cloudinary'
 
 gem 'devise'
+gem 'pg_search', '~> 2.3.0'
 # gem 'devise-i18n'
 # gem 'devise-bootstrap-views', '~> 1.0'
 gem 'simple_form'

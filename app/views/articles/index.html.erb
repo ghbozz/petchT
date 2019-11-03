@@ -1,22 +1,31 @@
-<div class="container">
-  <h2>Articles</h2>
+<div class="articles-wrapper">
+  <div class="filter">
+    <i class="fas fa-grip-lines-vertical" id="filter-toggle"></i>
+  </div>
 
-  <hr>
+  <div class="container translate-nav">
+    <div class="articles-container">
+      <div class="articles-header">
+        <h2>Articles à la une !</h2>
+      </div>
 
-  <div class="row mb-5">
-    <% @articles.each do |article| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 d-flex justify-content-center mb-5">
-        <%= link_to article_path(article) do %>
-          <div class="article-card">
-            <%= image_tag url_for(article.thumbnail) %>
-            <div class="card-desc">
-              <h4><%= article.title %></h4>
-              <p><%= article.subtitle %></p>
-            </div>
+      <hr>
+
+      <div class="row mb-5">
+        <% @articles.each do |article| %>
+          <div class="col-xs-12 col-sm-6 col-md-4 d-flex justify-content-center mb-5">
+            <%= link_to article_path(article) do %>
+              <div class="article-card">
+                <%= image_tag url_for(article.thumbnail) %>
+                <div class="card-desc">
+                  <h4><%= article.title %></h4>
+                  <p><%= article.subtitle %></p>
+                </div>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-
 </div>

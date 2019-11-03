@@ -18,6 +18,13 @@ class Article < ApplicationRecord
   validates :animal, inclusion: { in: ANIMALS }
   validates :status, inclusion: { in: STATUS }
 
+  include PgSearch::Model
+  pg_search_scope :search_articles,
+    against: [ :title, :subtitle, :body ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   def author_name
     return "#{self.user.first_name} #{self.user.last_name}"
   end
