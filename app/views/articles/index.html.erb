@@ -1,55 +1,79 @@
 <div class="articles-wrapper">
-  <div class="filter">
-    <i class="fas fa-grip-lines-vertical" id="filter-toggle"></i>
-    <div class="filter-form">
-      <%= simple_form_for :filter_data, url: articles_path, method: :get do |f| %>
-      <div class="animals-filter">
-        <h5>Animaux</h5>
-        <hr>
-        <div class="row">
-          <% Article::ANIMALS.each do |animal| %>
-            <div class="col-4">
-              <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none' },
-              label: Article::ANIMALS_ICONS[animal.to_sym].html_safe %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="themes-filter">
-        <h5>Themes</h5>
-        <hr>
-        <% Article::THEMES.each do |theme| %>
-          <%= f.input theme.to_sym, as: :boolean, input_html: { class: 'd-none' } %>
-        <% end %>
-      </div>
-        <%= f.submit 'Filtrer', class: 'filter-btn' %>
-      <% end %>
-    </div>
-  </div>
+  <%= render "filter" %>
 
-  <div class="container translate-nav">
-    <div class="articles-container">
-      <div class="articles-header">
-        <h2>Articles à la une !</h2>
-      </div>
-
-      <hr>
-
-      <div class="row mb-5">
-        <% @articles.each do |article| %>
-          <div class="col-xs-12 col-sm-6 col-md-4 d-flex justify-content-center mb-5">
-            <%= link_to article_path(article) do %>
-              <div class="article-card">
-                <%= image_tag url_for(article.thumbnail) %>
-                <div class="card-desc">
-                  <h4><%= article.title %></h4>
-                  <p><%= article.subtitle %></p>
+  <div class="container translate-nav page-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-9 content-left">
+        <div class="articles-nav row">
+          <ul class="articles-nav-list">
+            <li class="articles-nav-item">
+              <div class="article-nav-item-content-wrapper">
+                <div class="article-nav-item-content-container">
+                  Fiches
                 </div>
               </div>
+            </li>
+            <li class="articles-nav-item">
+              <div class="article-nav-item-content-wrapper">
+                <div class="article-nav-item-content-container">
+                  Conseils
+                </div>
+              </div>
+            </li>
+            <li class="articles-nav-item">
+              <div class="article-nav-item-content-wrapper">
+                <div class="article-nav-item-content-container">
+                  Marques
+                </div>
+              </div>
+            </li>
+            <li class="articles-nav-item">
+              <div class="article-nav-item-content-wrapper">
+                <div class="article-nav-item-content-container">
+                  Boutique
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="articles-container row">
+          
+          <div class="articles-header">
+            <h2>Articles à la une !</h2>
+          </div>
+
+          <div class="row mb-5">
+            <% @articles.each_with_index do |article, index| %>
+              <% if index == 0 %>
+                <div class="col-12 card-container">
+                  <%= link_to article_path(article) do %>
+                    <div class="article-card article-card-main d-flex justify-content-left">
+                      <%= image_tag url_for(article.thumbnail) %>
+                      <div class="card-desc">
+                        <h4><%= article.title %></h4>
+                        <p><%= article.subtitle %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center card-container">
+                  <%= link_to article_path(article) do %>
+                    <div class="article-card">
+                      <%= image_tag url_for(article.thumbnail) %>
+                      <div class="card-desc">
+                        <h4><%= article.title %></h4>
+                        <p><%= article.subtitle %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
+    
 </div>
