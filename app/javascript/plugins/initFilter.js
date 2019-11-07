@@ -1,5 +1,4 @@
 const initFilter = () => {
-  console.log('initFilter')
   const filter = document.querySelector('.filter');
   const btn = document.querySelector('#filter-toggle')
   btn.addEventListener('click', (e) => {
