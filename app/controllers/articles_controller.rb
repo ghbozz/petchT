@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    set_tags(params[:article][:tag_ids], @article)
     if @article.save
       redirect_to article_path(@article)
     else
@@ -45,7 +46,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, images: [])
+    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tag_ids, images: [])
   end
 
   def search_n_filter(articles, params)
@@ -61,6 +62,12 @@ class ArticlesController < ApplicationController
     end
 
     articles
+  end
+
+  def set_tags(ids, article)
+    ids.reject(&:empty?).each do |id|
+      ArticleTag.create(article: article, tag: Tag.find(id))
+    end
   end
 
 end
