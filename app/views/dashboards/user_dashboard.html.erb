@@ -17,7 +17,7 @@
     <div class="tab-content" id="nav-tabContent">
 
       <div class="tab-pane fade show active" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
-        <%= simple_form_for :filter_data, url: profile_path, method: :get do |f| %>
+        <%= simple_form_for :filter_data, url: profile_path, method: :get, remote: true do |f| %>
           <div class="row">
             <div class="col-4">
               <%= f.input :query, label: false, placeholder: 'rechercher' %>
@@ -36,7 +36,9 @@
             </div>
           </div>
         <% end %>
-        <%= render 'articles_tab', articles: @articles %>
+        <div id="articles-tab-wrapper">
+          <%= render 'articles_tab', articles: @articles %>
+        </div>
       </div>
 
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
