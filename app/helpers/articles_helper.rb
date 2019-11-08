@@ -1,5 +1,5 @@
 module ArticlesHelper
-  def search_n_filter(articles, params)
+  def index_search(articles, params)
     if params[:query].present?
       articles = articles.search_articles(params[:query])
     end

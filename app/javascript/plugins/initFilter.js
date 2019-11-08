@@ -10,7 +10,10 @@ const initFilter = () => {
 const initAnimals = () => {
   const btns = document.querySelectorAll('.animals-filter label')
   btns.forEach((btn) => {
-    btn.addEventListener('click', toggleBtn)
+    btn.addEventListener('click', (e) => {
+      toggleBtn(e)
+      cleanSearch();
+    })
   })
 }
 
@@ -30,10 +33,35 @@ const wrapperShrink = () => {
   wrapper.classList.toggle('shrink')
 }
 
+const resetFilter = () => {
+  const checked = document.querySelectorAll('input:checked');
+  checked.forEach((check) => {
+    check.checked = false
+  })
+  cleanFilter();
+}
+
+const cleanFilter = () => {
+  document.querySelectorAll('.label-active').forEach((item) => {
+    item.classList.remove('label-active')
+  })
+}
+
+const cleanSearch = () => {
+  document.querySelector('#search-form').reset();
+}
+
+const initSearch = () => {
+  document.querySelector('#search-form').addEventListener('change', (e) => {
+    resetFilter();
+  })
+}
+
 window.addEventListener('DOMContentLoaded', (e) => {
   if (document.querySelector('.filter')) {
     initFilter();
     initAnimals();
     initThemes();
+    initSearch();
   }
 })

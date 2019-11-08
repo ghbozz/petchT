@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.where(status: 'published')
     @pagy, @articles = pagy(
-      helpers.search_n_filter(@articles, params),
+      helpers.index_search(@articles, params),
       items: 10,
       link_extra: 'data-remote="true"'
     )
