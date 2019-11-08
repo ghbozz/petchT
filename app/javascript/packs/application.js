@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("plugins/initQuill")
 require("plugins/initFilter")
+require("plugins/initPaginate")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

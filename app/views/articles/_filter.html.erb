@@ -1,14 +1,14 @@
 <div class="filter">
   <i class="fas fa-grip-lines-vertical" id="filter-toggle"></i>
   <div class="filter-form">
-    <%= simple_form_for :filter_data, url: articles_path, method: :get do |f| %>
+    <%= simple_form_for :filter_data, url: articles_path, method: :get, remote: true do |f| %>
     <div class="animals-filter">
       <h5>Animaux</h5>
       <hr>
       <div class="row">
         <% Article::ANIMALS.each do |animal| %>
           <div class="col-4">
-            <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none' },
+            <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' },
             label: Article::ANIMALS_ICONS[animal.to_sym].html_safe %>
           </div>
         <% end %>
@@ -18,7 +18,7 @@
       <h5>Themes</h5>
       <hr>
       <% Article::THEMES.each do |theme| %>
-        <%= f.input theme.to_sym, as: :boolean, input_html: { class: 'd-none' } %>
+        <%= f.input theme.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
       <% end %>
     </div>
       <%= f.submit 'Filtrer', class: 'filter-btn' %>

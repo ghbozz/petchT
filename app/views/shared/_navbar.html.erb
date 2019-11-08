@@ -13,7 +13,7 @@
     <a class="nav-link shop" href="#">Boutique</a>
   </li>
   <div class="nav-right">
-    <%= form_tag articles_path, method: :get, id: 'search-form' do %>
+    <%= form_tag articles_path, method: :get, id: 'search-form', remote: true do %>
       <%= text_field_tag :query,
         params[:query],
         placeholder: "Recherche"
