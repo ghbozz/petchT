@@ -13,6 +13,7 @@ class DashboardsController < ApplicationController
         format.js
       end
     end
+    authorize :dashboard, :profile?
   end
 
   private

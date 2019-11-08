@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :submit]
 
   def index
-    @articles = Article.where(status: 'published')
+    @articles = policy_scope(Article).where(status: 'published')
     @pagy, @articles = pagy(
       helpers.index_search(@articles, params),
       items: 10,
@@ -18,17 +18,19 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    authorize @article
   end
 
   def new
     @article = Article.new
+    authorize @article
   end
 
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-    helpers.set_tags(params[:article][:tag_ids], @article)
-
+    authorize @article
+    # helpers.set_tags(params[:article][:tag_ids], @article)
     if @article.save
       redirect_to article_path(@article)
     else
@@ -37,9 +39,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    authorize @article
   end
 
   def update
+    authorize @article
     @article.update(article_params)
     @article.update(status: 'draft')
     @article.save!
@@ -47,6 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def submit
+    authorize @article
     @article.update(status: 'submitted')
     redirect_to profile_path
   end
