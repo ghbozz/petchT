@@ -17,6 +17,10 @@ class User < ApplicationRecord
     self.permission == 'admin'
   end
 
+  def is_writter?
+    self.permission == 'writter'
+  end
+
   def is_author?(article)
     article.user == self
   end
