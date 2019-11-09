@@ -2,7 +2,7 @@
   <% fiches.each_with_index do |fiche, index| %>
     <% if index == 0 %>
       <div class="col-12 card-container">
-        <%= link_to fiche_path(fiche) do %>
+        <%= link_to fich_path(fiche) do %>
           <div class="article-card article-card-main d-flex justify-content-left">
             <%= image_tag url_for(fiche.thumbnail) %>
             <div class="card-desc">
@@ -13,7 +13,7 @@
       </div>
     <% else %>
       <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center card-container">
-        <%= link_to fiche_path(fiche) do %>
+        <%= link_to fich_path(fiche) do %>
           <div class="article-card">
             <%= image_tag url_for(fiche.thumbnail) %>
             <div class="card-desc">

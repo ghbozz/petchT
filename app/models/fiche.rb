@@ -1,6 +1,8 @@
 class Fiche < ApplicationRecord
   belongs_to :user
 
+  has_one_attached :thumbnail
+
   STATUS = %w(draft published submitted)
   ANIMALS = %w(Chiens Chats Rongeurs Reptiles Oiseaux)
 
@@ -10,6 +12,7 @@ class Fiche < ApplicationRecord
   validates :status, inclusion: { in: STATUS }
   validates :race, presence: true
   validates :origin, presence: true
+  validates :thumbnail, presence: true
 
   ANIMALS_ICONS = {
     'Chiens': '<i class="fas fa-dog"></i>',
@@ -19,4 +22,7 @@ class Fiche < ApplicationRecord
     'Oiseaux': '<i class="fas fa-crow"></i>'
   }
 
+  def author_name
+    return "#{self.user.first_name} #{self.user.last_name}"
+  end
 end

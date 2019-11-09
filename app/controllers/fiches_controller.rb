@@ -15,4 +15,9 @@ class FichesController < ApplicationController
       end
     end
   end
+
+  def show
+    authorize @fiche
+  end
+
 end

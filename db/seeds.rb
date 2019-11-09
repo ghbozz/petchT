@@ -18,12 +18,10 @@ def get_images
   Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
 end
 
-let counter = 0
+counter = 0
 
 20.times do
   counter += 1
-  p "---------------------------"
-  p "----- #{counter} time -----"
   article = Article.new(
     title: Faker::Creature::Animal.name,
     subtitle: Faker::Lorem.sentence,
@@ -45,11 +43,12 @@ let counter = 0
     race: Faker::Creature::Animal.name,
     origin: Faker::Address.country
   )
-
+  fiche.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   fiche.save!
   
-  p "----- #{counter} done -----"
-  p "---------------------------"
+  p "----- #{counter}(s) done -----"
+  p "--------------------"
+
 end
 
 Article.all.each do |article|
