@@ -12,6 +12,7 @@ Tag::NAMES.each do |name|
   Tag.create(name: name)
 end
 
+
 def get_images
   Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
 end

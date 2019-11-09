@@ -1,0 +1,2 @@
+class FichesController < ApplicationController
+end

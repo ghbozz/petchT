@@ -1,0 +1,30 @@
+<div class="tab-pane fade container translate-nav" role="tabpanel" aria-labelledby="nav-article-button" id="article-form">
+  <div class="form-content">
+    <%= simple_form_for(@article) do |f| %>
+    <h2>Article</h2>
+      <div class="row">
+        <div class="col-12">
+          <%= f.input :animal, collection: Article::ANIMALS %>        
+        </div>
+        <div class="col-12">
+          <%= f.input :title, label: false, placeholder: 'Titre' %>
+        </div>
+        <div class="col-12">
+          <%= f.input :subtitle, label: false, placeholder: 'Sous-Titre' %>
+        </div>
+        
+          <%= f.input :theme, collection: Article::THEMES %>
+          <%= f.hidden_field :body %>
+          <%= f.input :thumbnail, direct_upload: true %>
+          <%= f.submit id: 'real-submit', class: 'd-none' %>
+          <button id="fake-submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class="col-9">
+          <div id="editor"></div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

@@ -7,6 +7,10 @@ class DashboardsController < ApplicationController
       items: 10,
       link_extra: 'data-remote="true"'
     )
+
+    @article = Article.new
+    @fiche = Fiche.new
+    
     if params[:filter_data]
       respond_to do |format|
         format.html { redirect_to profile_path }
