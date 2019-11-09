@@ -15,75 +15,7 @@
   <div class="container pt-5">
     <div class="tab-content" id="nav-tabContent">
 
-      <div class="tab-pane fade show active" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
-        <%= simple_form_for :filter_data, url: profile_path, method: :get, remote: true do |f| %>
-          <div class="row">
-            <div class="col-4">
-              <%= f.input :query, label: false, placeholder: 'rechercher' %>
-            </div>
-            <div class="col">
-              <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'theme' %>
-            </div>
-            <div class="col">
-              <%= f.input :animal, collection: Article::ANIMALS, label: false, prompt: 'animal' %>
-            </div>
-            <div class="col">
-              <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'status' %>
-            </div>
-            <div class="col">
-              <%= f.submit %>
-            </div>
-          </div>
-        <% end %>
-        <div id="articles-tab-wrapper">
-          <%= render 'articles_tab', articles: @articles %>
-        </div>
-      </div>
 
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <div class="user-card">
-          <div class="row">
-            <div class="col d-flex justify-content-center align-items-center">
-              <div>
-                <img src="<%= url_for(current_user.avatar) %>" alt="" class="rounded-circle" width="200px">
-              </div>
-            </div>
-            <div class="col">
-              <div class="user-data-column">
-                <div class="data-block">
-                  <span class="data-title">Prénom</span>
-                  <span class="user-data"><%= current_user.first_name %></span>
-                </div>
-                <div class="data-block">
-                  <span class="data-title">Signature</span>
-                  <span class="user-data"><%= current_user.signature %></span>
-                </div>
-                <div class="data-block">
-                  <span class="data-title">Profession</span>
-                  <span class="user-data"><%= current_user.profession %></span>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="user-data-column">
-                <div class="data-block">
-                  <span class="data-title">Nom de famille</span>
-                  <span class="user-data"><%= current_user.last_name %></span>
-                </div>
-                <div class="data-block">
-                  <span class="data-title">email</span>
-                  <span class="user-data"><%= current_user.email %></span>
-                </div>
-                <div class="data-block">
-                  <%= link_to 'Modifier Mon Profile', edit_user_registration_path %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 
       <%= render "nav_articles_tab" %>
       <%= render "nav_profile_tab" %>

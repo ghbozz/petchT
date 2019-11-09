@@ -1,45 +1,24 @@
 <div class="tab-pane fade show active" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
-  <div class="dashboard-articles">
-    <%= form_tag profile_path, method: :get, id: 'search-form' do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Recherche"
-      %>
-      <%= submit_tag "Search", class: 'd-none' %>
-    <% end %>
-    <% @articles.each do |article| %>
-      <div class="dashboard-article-card">
-        <%= image_tag url_for(article.thumbnail) %>
-
-        <div class="artcile-infos">
-          <span>id: <%= article.id %></span>
-          <span>title: <%= article.title %></span>
-          <span>Subtitle: <%= article.subtitle %></span>
-          <span>Theme: <%= article.theme %></span>
-          <span>Author: <%= article.author_name %></span>
-        </div>
-
-        <div class="article-status-info">
-          <span class="status">Status</span>
-          <% if article.status == 'draft' %>
-            <div class="article-status draft"><%= article.status %></div>
-          <% end %>
-
-          <% if article.status == 'published' %>
-            <div class="article-status published"><%= article.status %></div>
-          <% end %>
-
-          <% if article.status == 'submitted' %>
-            <span class="article-status submitted"><%= article.status %></span>
-          <% end %>
-        </div>
-
-        <div class="article-controls">
-          <%= link_to 'Submit', submit_article_path(article), method: :post if article.status == 'draft' %>
-          <%= link_to 'Editer', edit_article_path(article) %>
-          <%= link_to 'Voir', article_path(article) %>
-        </div>
+  <%= simple_form_for :filter_data, url: profile_path, method: :get, remote: true do |f| %>
+    <div class="row">
+      <div class="col-4">
+        <%= f.input :query, label: false, placeholder: 'rechercher' %>
       </div>
-    <% end %>
+      <div class="col">
+        <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'theme' %>
+      </div>
+      <div class="col">
+        <%= f.input :animal, collection: Article::ANIMALS, label: false, prompt: 'animal' %>
+      </div>
+      <div class="col">
+        <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'status' %>
+      </div>
+      <div class="col">
+        <%= f.submit %>
+      </div>
+    </div>
+  <% end %>
+  <div id="articles-tab-wrapper">
+    <%= render 'articles_tab', articles: @articles %>
   </div>
 </div>
