@@ -1,0 +1,20 @@
+<div class="filter">
+  <i class="fas fa-grip-lines-vertical" id="filter-toggle"></i>
+  <div class="filter-form">
+    <%= simple_form_for :filter_data, url: fiches_path, method: :get, remote: true do |f| %>
+    <div class="animals-filter">
+      <h5>Animaux</h5>
+      <hr>
+      <div class="row">
+        <% Fiche::ANIMALS.each do |animal| %>
+          <div class="col-4">
+            <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' },
+            label: Fiche::ANIMALS_ICONS[animal.to_sym].html_safe %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+      <%= f.submit 'Filtrer', class: 'filter-btn' %>
+    <% end %>
+  </div>
+</div>

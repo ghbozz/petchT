@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Article.destroy_all
 Tag.destroy_all
+Fiche.destroy_all
 
 Tag::NAMES.each do |name|
   Tag.create(name: name)
@@ -17,7 +18,12 @@ def get_images
   Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
 end
 
+let counter = 0
+
 20.times do
+  counter += 1
+  p "---------------------------"
+  p "----- #{counter} time -----"
   article = Article.new(
     title: Faker::Creature::Animal.name,
     subtitle: Faker::Lorem.sentence,
@@ -29,6 +35,21 @@ end
   )
   article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   article.save!
+
+  fiche = Fiche.new(
+    title: Faker::Creature::Animal.name,
+    description: Faker::Lorem.paragraphs(number: 50).join(''),
+    animal:  Fiche::ANIMALS.sample,
+    status: Fiche::STATUS.sample,
+    user: User.first,
+    race: Faker::Creature::Animal.name,
+    origin: Faker::Address.country
+  )
+
+  fiche.save!
+  
+  p "----- #{counter} done -----"
+  p "---------------------------"
 end
 
 Article.all.each do |article|
