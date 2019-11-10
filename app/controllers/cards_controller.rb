@@ -7,16 +7,40 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.new
-    skip_authorization
+    authorize @card
   end
 
   def create
-    raise
+    @card = Card.new(card_params)
+    params[:card][:specificities].each do |key, value|
+      @card.specificities[key] = value
+    end
+    if @card.save
+      redirect_to card_path(@card)
+    else
+      render :new
+    end
+    authorize @card
   end
 
   private
 
   def set_card
     @card = Card.find(params[:id])
+  end
+
+  def card_params
+    params.require(:card).permit(
+      :title,
+      :body,
+      :fci,
+      :origin,
+      :fur,
+      :life_expectancy,
+      :min_height,
+      :max_height,
+      :min_weight,
+      :max_weight,
+      )
   end
 end
