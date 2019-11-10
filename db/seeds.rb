@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Article.destroy_all
 Tag.destroy_all
-Fiche.destroy_all
+Card.destroy_all
 
 Tag::NAMES.each do |name|
   Tag.create(name: name)
@@ -34,18 +34,18 @@ counter = 0
   article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   article.save!
 
-  fiche = Fiche.new(
-    title: Faker::Creature::Animal.name,
-    description: Faker::Lorem.paragraphs(number: 50).join(''),
-    animal:  Fiche::ANIMALS.sample,
-    status: Fiche::STATUS.sample,
-    user: User.first,
-    race: Faker::Creature::Animal.name,
-    origin: Faker::Address.country
-  )
-  fiche.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
-  fiche.save!
-  
+  # fiche = Fiche.new(
+  #   title: Faker::Creature::Animal.name,
+  #   description: Faker::Lorem.paragraphs(number: 50).join(''),
+  #   animal:  Fiche::ANIMALS.sample,
+  #   status: Fiche::STATUS.sample,
+  #   user: User.first,
+  #   race: Faker::Creature::Animal.name,
+  #   origin: Faker::Address.country
+  # )
+  # fiche.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+  # fiche.save!
+
   p "----- #{counter}(s) done -----"
   p "--------------------"
 
