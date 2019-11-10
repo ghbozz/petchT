@@ -1,0 +1,47 @@
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<div class="container">
+  <h1>Cards#new</h1>
+  <p>Find me in app/views/cards/new.html.erb</p>
+
+  <%= simple_form_for(@card) do |f| %>
+    <div class="row">
+      <div class="col">
+        <%= f.input :fci %>
+        <%= f.input :origin %>
+        <%= f.input :life_expectancy %>
+        <%= f.input :fur %>
+        <div class="row">
+          <div class="col">
+            <%= f.input :min_height %>
+          </div>
+          <div class="col">
+            <%= f.input :max_height %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= f.input :min_weight %>
+          </div>
+          <div class="col">
+            <%= f.input :max_weight %>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <%= f.simple_fields_for :specs do |p| %>
+          <%= p.input :calm, collection: 1..5, input_html: { class: 'spec_field' } %>
+          <%= p.input :health, collection: 1..5, input_html: { class: 'spec_field' } %>
+          <%= p.input :exercice, collection: 1..5, input_html: { class: 'spec_field' } %>
+          <%= p.input :kids, collection: 1..5, input_html: { class: 'spec_field' } %>
+          <%= p.input :apartment, collection: 1..5, input_html: { class: 'spec_field' } %>
+        <% end %>
+      </div>
+    </div>
+    <%= f.input :title %>
+    <%= f.hidden_field :body, class: 'body' %>
+    <div id="editor" style="min-height: 400px"></div>
+
+    <%= f.submit id: 'real-submit', class: 'd-none' %>
+    <button id="fake-submit" class="btn btn-primary">Submit</button>
+  <% end %>
+</div>

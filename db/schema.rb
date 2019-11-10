@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_195910) do
+ActiveRecord::Schema.define(version: 2019_11_09_235010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,20 +58,20 @@ ActiveRecord::Schema.define(version: 2019_11_09_195910) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "fiches", force: :cascade do |t|
-    t.string "animal"
-    t.string "race"
+  create_table "cards", force: :cascade do |t|
+    t.string "fci"
     t.string "origin"
-    t.string "title"
-    t.string "description"
-    t.string "spec_1"
-    t.string "spec_2"
-    t.string "spec_3"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.index ["user_id"], name: "index_fiches_on_user_id"
+    t.json "specificities", default: {}
+    t.string "title"
+    t.text "body"
+    t.integer "life_expectancy"
+    t.string "fur"
+    t.integer "min_height"
+    t.integer "max_height"
+    t.integer "min_weight"
+    t.integer "max_weight"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -101,5 +101,4 @@ ActiveRecord::Schema.define(version: 2019_11_09_195910) do
   add_foreign_key "article_tags", "articles"
   add_foreign_key "article_tags", "tags"
   add_foreign_key "articles", "users"
-  add_foreign_key "fiches", "users"
 end

@@ -9,8 +9,8 @@ class DashboardsController < ApplicationController
     )
 
     @article = Article.new
-    @fiche = Fiche.new
-    
+    @card = Card.new
+
     if params[:filter_data]
       respond_to do |format|
         format.html { redirect_to profile_path }
