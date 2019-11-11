@@ -1,3 +1,18 @@
 // Place all the styles related to the cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.card-caracs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .select {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  abbr {
+    display: none;
+  }
+}

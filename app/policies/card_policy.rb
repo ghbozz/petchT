@@ -18,7 +18,7 @@ class CardPolicy < ApplicationPolicy
   end
 
   def edit?
-    record.user == user
+    new?
   end
 
   def update?
