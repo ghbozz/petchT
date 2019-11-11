@@ -25,6 +25,11 @@
       <span class="align-self-center pt-3">100 carac. max</span>
     </div>
     <div class="col-12 d-flex">
+      <div id="tags-bearer" class="d-none">
+        <% @current_tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </div>
       <%#= select_tag "tags", options_from_collection_for_select(@tags, "id", "name"), multiple: true %>
       <%#= f.association :tags, collection: @tags, class: "js-article-tags-selector", input_html: { multiple: true } %>
       <%= f.hidden_field :tags, collection: Tag::NAMES, class: "real-tags" %>
@@ -54,14 +59,13 @@
 <% end %>
 <script>
   let selectedTags = [];
+  const tagSelector = document.getElementById("article_tags");
 
   const tagsDisplayer = tags => {
     const realTagsContainer = document.querySelector(".real-tags");
     const tagsDisplayer = document.getElementById("tags-displayer");
 
     realTagsContainer.value = tags
-
-    console.log(typeof tags)
 
     tagsDisplayer.innerHTML = displayTags(tags);
   };
@@ -96,12 +100,17 @@
   };
 
   const selectTags = (event) => {
-    const tagSelector = document.getElementById("article_tags");
-    
     if (!selectedTags.includes(event.target.value)) {
       selectedTags.push(event.target.value);
     }
     tagsDisplayer(selectedTags);
     closeTags();
   };
+
+  // Display on edit
+  const tagsAlreadyIn = document.getElementById("tags-bearer").innerHTML.replace("\n", "").split(" ").filter(i => i.length > 0).map(i => i.replace("\n", ""));
+
+  selectedTags = tagsAlreadyIn;
+  tagsDisplayer(tagsAlreadyIn);
+  
 </script>
