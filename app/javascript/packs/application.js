@@ -1,4 +1,5 @@
 import { initStarRating } from '../plugins/init_star_rating';
+import { cardForm } from '../plugins/card_form_init';
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
@@ -12,8 +13,13 @@ require("plugins/initQuill")
 require("plugins/initFilter")
 
 
+
 window.addEventListener('DOMContentLoaded', (e) => {
   initStarRating();
+})
+
+window.addEventListener('DOMContentLoaded', (e) => {
+  cardForm();
 })
 
 

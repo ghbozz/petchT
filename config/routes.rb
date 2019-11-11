@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cards, only: [:index, :show, :new, :create]
+  resources :cards, only: [:index, :show, :new, :create, :edit, :update]
 
   namespace :admin do
     get '/profile', to: 'dashboards#admin_dashboard'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_235010) do
+ActiveRecord::Schema.define(version: 2019_11_11_110407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_235010) do
     t.integer "max_height"
     t.integer "min_weight"
     t.integer "max_weight"
+    t.string "animal"
   end
 
   create_table "tags", force: :cascade do |t|
