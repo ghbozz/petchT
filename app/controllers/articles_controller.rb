@@ -24,13 +24,23 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     authorize @article
+
+    @tags = Tag.all
   end
 
   def create
     @article = Article.new(article_params)
     @article.user = current_user
     authorize @article
-    # helpers.set_tags(params[:article][:tag_ids], @article)
+
+    tag_ids = []
+
+    params_tags = article_params[:tags].split(',')
+    params_tags.each do |tag|
+      tag_ids << Tag.find_by(name: tag).id
+    end
+
+    helpers.set_tags(tag_ids, @article)
     if @article.save
       redirect_to article_path(@article)
     else
@@ -66,7 +76,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tag_ids, images: [])
+    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tags, :tag_ids, images: [])
   end
 
 end

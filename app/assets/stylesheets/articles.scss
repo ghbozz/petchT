@@ -39,10 +39,6 @@
   }
 }
 
-// .articles-container {
-//   margin: -.4rem;
-// }
-
 // INDEX
 .articles-wrapper {
   position: relative;
@@ -281,7 +277,7 @@
 }
 
 
-// NEW
+// NEW / EDIT
 
 #editor {
   height: calc(100% - 44px);
@@ -295,9 +291,20 @@
   border-top-right-radius: 7px;
 }
 
-#fake-submit {
-  margin-top: 15px;
-  width: 100%;
+.btn+.btn {
+  margin: 0 rem(10px);
+}
+
+.tag-content {
+  background-color: rgb(212, 133, 133);
+  border-radius: rem(4px);
+  color: rgba(255, 255, 255, 1);
+  margin: 0 rem(10px);
+  padding: rem(2px) rem(6px);
+}
+
+.tag-remove {
+  color: rgba(0, 0, 0, .3);
 }
 
 // SHOW

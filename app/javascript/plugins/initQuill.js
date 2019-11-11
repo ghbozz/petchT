@@ -1,52 +1,56 @@
-window.addEventListener('DOMContentLoaded', (e) => {
-  if (document.querySelector('#editor')) {
+window.addEventListener("DOMContentLoaded", e => {
+  if (document.querySelector("#editor")) {
     const tooltipOptions = [
-          ['bold', 'italic', 'underline', 'strike'],           // toggled buttons
-          ['blockquote', 'code-block'],
-          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike"], // toggled buttons
+      ["blockquote", "code-block"],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
 
-          // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-          // [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-          // [{ 'direction': 'rtl' }],                         // text direction
+      // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+      [{ list: "ordered" }, { list: "bullet" }],
+      // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+      // [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+      // [{ 'direction': 'rtl' }],                         // text direction
 
-          [{ 'size': ['small', false, 'large', 'huge'] }],    // custom dropdown
+      [{ size: ["small", false, "large", "huge"] }], // custom dropdown
 
-          [{ 'color': [] }, { 'background': [] }],            // dropdown with defaults from theme
-          // [{ 'font': [] }],
-          // [{ 'align': [] }],
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+      // [{ 'font': [] }],
+      // [{ 'align': [] }],
 
-          // ['clean'],                                       // remove formatting button
+      // ['clean'],                                       // remove formatting button
 
-          ['link', 'image', 'video']                          // link and image, video
-    ]
+      ["link", "image", "video"] // link and image, video
+    ];
 
     const loadForm = () => {
-      const body = document.querySelector('.body')
-      const editor = document.querySelector('.ql-editor')
-      editor.innerHTML = body.value
-    }
-
+      const body = document.querySelector(".body");
+      const editor = document.querySelector(".ql-editor");
+      editor.innerHTML = body.value;
+    };
+    // APPELE EN PREMIER
     const submitForm = () => {
-      const editor = document.querySelector('.ql-editor')
-      const body = document.querySelector('.body')
-      body.value = editor.innerHTML
-      document.getElementById('real-submit').click()
-    }
+      const editor = document.querySelector(".ql-editor");
+      const body = document.querySelector(".body");
+      body.value = editor.innerHTML;
 
-    document.getElementById('fake-submit').addEventListener('click', submitForm)
+      // const realTagsContainer = document.getElementById("tags-displayer");
+      // console.log(realTagsContainer);
+      // const tags = document.querySelector(".tags");
+      // tags.value = tagsContainer.innerHTML;
+    };
 
-    var quill = new Quill('#editor', {
-      theme: 'snow',
+    document
+      .getElementById("fake-submit")
+      .addEventListener("click", submitForm);
+
+    var quill = new Quill("#editor", {
+      theme: "snow",
       modules: {
         toolbar: tooltipOptions
       },
-      placeholder: 'Rédiger un article'
+      placeholder: "Rédiger un article"
     });
 
     loadForm();
   }
-})
-
-
+});
