@@ -26,6 +26,10 @@
           <i class="far fa-user"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if current_user.is_writter? || current_user.is_admin? %>
+            <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
+            <%= link_to 'Add a card', new_card_path, class: 'dropdown-item' %>
+          <% end %>
           <%= link_to 'Profile', profile_path, class: 'dropdown-item' %>
           <div class="dropdown-divider"></div>
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>

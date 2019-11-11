@@ -14,11 +14,10 @@
  *= require_self
  */
 
- @import "font-awesome-sprockets";
- @import "font-awesome";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "./rem";
 
- .translate-nav {
+.translate-nav {
   transform: translateY(80px);
- }
-
-
+}
