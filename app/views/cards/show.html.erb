@@ -2,5 +2,13 @@
   <h1>Cards#show</h1>
   <p>Find me in app/views/cards/show.html.erb</p>
 
-  <%= @card %>
+  <h1><%= @card.title %></h1>
+
+  <div class="animal-card">
+    <% @card.specificities.each do |key, value| %>
+      <p><%= key %> / <%= value %></p>
+    <% end %>
+  </div>
+
+  <%= raw @card.body %>
 </div>

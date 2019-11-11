@@ -1,0 +1,59 @@
+<%= simple_form_for(card) do |f| %>
+  <h3 class="mb-5">Creation d'une fiche pour <%= @card.animal %></h3>
+
+  <div class="inputs">
+    <div class="row">
+      <div class="col">
+
+        <!-- COMMON INPUTS -->
+        <%= f.input :title, placeholder: 'titre', label: false %>
+        <%= f.input :origin, label: false, placeholder: 'origine' %>
+        <%= f.input :life_expectancy, label: false, placeholder: 'esperance du vie' %>
+        <div class="row">
+          <div class="col">
+            <%= f.input :min_height, label: false, placeholder: 'taille minimal (cm)' %>
+          </div>
+          <div class="col">
+            <%= f.input :max_height, label: false, placeholder: 'taille maximal (cm)' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= f.input :min_weight, label: false, placeholder: 'poid minimal (kg)' %>
+          </div>
+          <div class="col">
+            <%= f.input :max_weight, label: false, placeholder: 'poid maximal (kg)' %>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- SPECIFIC INPUTS -->
+        <%= simple_fields_for :specs, OpenStruct.new(card.specificities) do |x| %>
+          <% Card::SPECS[card.animal.to_sym].each do |key, value| %>
+            <%= x.input key, collection: value, prompt: "#{key.to_s.gsub('_', ' ')}", label: false %>
+          <% end %>
+        <% end %>
+
+      </div>
+
+      <!-- SPECIFIC RATINGS -->
+      <div class="col card-caracs">
+        <%= simple_fields_for :caracs, OpenStruct.new(card.specificities) do |x| %>
+          <% Card::RATINGS[card.animal.to_sym].each do |rating| %>
+            <%= x.input rating, collection: 1..5, input_html: { class: 'rating_field' }  %>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <%= f.hidden_field :body, class: 'body' %>
+  <div id="editor" style="min-height: 400px"></div>
+
+  <%= f.submit id: 'real-submit', class: 'd-none' %>
+  <button id="fake-submit" class="btn btn-primary">Submit</button>
+<% end %>

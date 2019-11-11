@@ -12,28 +12,18 @@ class CardsController < ApplicationController
   end
 
   def create
-    raise
-    @card = Card.new(card_params)
-    params[:card][:specificities].each do |key, value|
-      @card.specificities[key] = value
-    end
-    if @card.save
-      redirect_to card_path(@card)
-    else
-      render :new
-    end
+    @card = Card.create(card_params)
     authorize @card
+    redirect_to edit_card_path(@card)
   end
 
   def edit
-    skip_authorization
+    authorize @card
   end
 
   def update
     @card.update(card_params)
-    params[:card][:specificities].each do |key, value|
-      @card.specificities[key] = value
-    end
+    @card.set_specificities(params)
     if @card.save
       redirect_to card_path(@card)
     else
@@ -49,18 +39,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(
-      :animal,
-      :title,
-      :body,
-      :fci,
-      :origin,
-      :fur,
-      :life_expectancy,
-      :min_height,
-      :max_height,
-      :min_weight,
-      :max_weight,
-      )
+    params.require(:card).permit(:animal, :fci, :origin, :min_height, :max_height, :min_weight, :max_weight, :title, :body, :life_expectancy)
   end
 end

@@ -34,18 +34,6 @@ counter = 0
   article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   article.save!
 
-  # fiche = Fiche.new(
-  #   title: Faker::Creature::Animal.name,
-  #   description: Faker::Lorem.paragraphs(number: 50).join(''),
-  #   animal:  Fiche::ANIMALS.sample,
-  #   status: Fiche::STATUS.sample,
-  #   user: User.first,
-  #   race: Faker::Creature::Animal.name,
-  #   origin: Faker::Address.country
-  # )
-  # fiche.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
-  # fiche.save!
-
   p "----- #{counter}(s) done -----"
   p "--------------------"
 
