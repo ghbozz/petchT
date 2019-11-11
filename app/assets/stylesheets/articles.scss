@@ -46,6 +46,7 @@
   transition: all .3s ease-out;
 
   h2 {
+    line-height: 2rem;
     overflow: hidden;
     text-align: center;
     width: 100%;
@@ -80,6 +81,7 @@
 
   .content-right {
     padding: 0 rem(5px);
+    margin-top: calc(1rem + 3px);
 
     div {
       margin: 0 auto;
@@ -91,9 +93,16 @@
 
     .top-articles,
     .newsletter-block {
-      background-color: rgba(0, 0, 0, .3);
       min-height: 200px;
-      width: 90%;
+    }
+
+    .top-articles {
+      border-top: 2px solid rgb(0, 0, 0);
+    }
+
+    .newsletter-block {
+      border: 1px solid rgba(0, 0, 0, .2);
+      border-top: 2px solid rgb(212, 133, 133);
     }
   }
 }
@@ -375,6 +384,21 @@
 .submitted {
   background-color: rgb(218, 173, 106);
   color: white;
+}
+
+.tag-list-item {
+  background-color: rgb(212, 133, 133);
+  border-radius: rem(4px);
+  color: rgba(255, 255, 255, 1);
+  padding: rem(2px) rem(6px);
+
+  &:first-child {
+    margin-right: rem(10px);
+  }
+
+  &+& {
+    margin: 0 rem(10px);
+  }
 }
 
 // Right sidebar

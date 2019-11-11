@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :submit]
+  before_action :set_tags, only: [:show, :edit]
 
   def index
     @articles = policy_scope(Article).where(status: 'published')
@@ -19,6 +20,8 @@ class ArticlesController < ApplicationController
 
   def show
     authorize @article
+
+    @tags = @current_tags
   end
 
   def new
@@ -50,6 +53,8 @@ class ArticlesController < ApplicationController
 
   def edit
     authorize @article
+
+    @tags = Tag.all
   end
 
   def update
@@ -73,6 +78,22 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def set_tags 
+    article_tags = ArticleTag.where(article_id: @article.id)
+
+    final_tags = []
+    article_tags.each do |item|
+      final_tags << item.tag_id
+    end
+
+    @current_tags = []
+    final_tags.map do |tag|
+      @current_tags << Tag.find(tag)
+    end
+
+    return @current_tags
   end
 
   def article_params
