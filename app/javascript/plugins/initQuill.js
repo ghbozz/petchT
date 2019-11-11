@@ -23,14 +23,14 @@ window.addEventListener('DOMContentLoaded', (e) => {
     ]
 
     const loadForm = () => {
-      const body = document.querySelector('#article_body')
+      const body = document.querySelector('.body')
       const editor = document.querySelector('.ql-editor')
       editor.innerHTML = body.value
     }
 
     const submitForm = () => {
       const editor = document.querySelector('.ql-editor')
-      const body = document.querySelector('#article_body')
+      const body = document.querySelector('.body')
       body.value = editor.innerHTML
       document.getElementById('real-submit').click()
     }

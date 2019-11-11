@@ -11,58 +11,11 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div class="tab-pane active" id="home" role="tabpanel">
-      <div class="form-content">
-        <%= simple_form_for(@fiche) do |f| %>
-        <h2>Fiche</h2>
-          <div class="row">
-            <div class="col-12">
-              <%= f.input :animal, collection: Article::ANIMALS %>
-            </div>
-            <div class="col-12">
-              <%= f.input :title, label: false, placeholder: 'Titre' %>
-            </div>
-            <div class="col-12">
-              <%= f.input :description, label: false, placeholder: 'Description' %>
-            </div>
-
-              <%= f.submit id: 'real-submit', class: 'd-none' %>
-              <button id="fake-submit" class="btn btn-primary">Submit</button>
-
-            <div class="col-9">
-              <div id="editor"></div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+      .... CARDS FORM ....
     </div>
     <div class="tab-pane" id="profile" role="tabpanel">
-      <div class="form-content">
-        <%= simple_form_for(@article) do |f| %>
-        <h2>Article</h2>
-          <div class="row">
-            <div class="col-12">
-              <%= f.input :animal, collection: Article::ANIMALS %>
-            </div>
-            <div class="col-12">
-              <%= f.input :title, label: false, placeholder: 'Titre' %>
-            </div>
-            <div class="col-12">
-              <%= f.input :subtitle, label: false, placeholder: 'Sous-Titre' %>
-            </div>
-
-            <%= f.input :theme, collection: Article::THEMES %>
-            <%= f.hidden_field :body %>
-            <%= f.input :thumbnail, direct_upload: true %>
-            <%= f.submit id: 'real-submit', class: 'd-none' %>
-            <button id="fake-submit" class="btn btn-primary">Submit</button>
-
-
-            <div class="col-9">
-              <div id="editor"></div>
-            </div>
-          </div>
-
-        <% end %>
+      <div class="form-content" id="article-form">
+        <%= render 'shared/article_form' %>
       </div>
     </div>
     <div class="tab-pane" id="messages" role="tabpanel">Marque</div>

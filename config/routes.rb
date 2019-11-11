@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :cards, only: [:index, :show, :new, :create, :edit, :update]
+
   namespace :admin do
     get '/profile', to: 'dashboards#admin_dashboard'
   end
 
-  resources :fiches, only: [:index, :show, :new, :create, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
 end
