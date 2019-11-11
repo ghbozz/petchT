@@ -1,19 +1,5 @@
 <%= simple_form_for(card) do |f| %>
   <%= f.input :animal, collection: Card::ANIMAL %>
-
-  <div class="inputs chien-inputs d-none">
-    <div class="row">
-      <div class="col">
-
-      </div>
-    </div>
-  </div>
-
-
-  <%#= f.input :title %>
-  <%#= f.hidden_field :body, class: 'body' %>
-  <!-- <div id="editor" style="min-height: 400px"></div> -->
-
   <%= f.submit id: 'real-submit', class: 'd-none' %>
   <button id="fake-submit" class="btn btn-primary">Submit</button>
 <% end %>
