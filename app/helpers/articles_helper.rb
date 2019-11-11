@@ -15,7 +15,7 @@ module ArticlesHelper
   end
 
   def set_tags(ids, article)
-    ids.reject(&:empty?).each do |id|
+    ids.each do |id|
       ArticleTag.create(article: article, tag: Tag.find(id))
     end
   end

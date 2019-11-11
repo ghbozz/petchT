@@ -75,6 +75,22 @@ ActiveRecord::Schema.define(version: 2019_11_11_110407) do
     t.string "animal"
   end
 
+  create_table "fiches", force: :cascade do |t|
+    t.string "animal"
+    t.string "race"
+    t.string "origin"
+    t.string "title"
+    t.string "description"
+    t.string "spec_1"
+    t.string "spec_2"
+    t.string "spec_3"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.index ["user_id"], name: "index_fiches_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -102,4 +118,5 @@ ActiveRecord::Schema.define(version: 2019_11_11_110407) do
   add_foreign_key "article_tags", "articles"
   add_foreign_key "article_tags", "tags"
   add_foreign_key "articles", "users"
+  add_foreign_key "fiches", "users"
 end

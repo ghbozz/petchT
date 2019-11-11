@@ -1,14 +1,101 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./rem";
 
+// INNER NAV
+.articles-nav {
+  padding: 0 .4rem;
+
+  .articles-nav-list {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    padding-bottom: 2rem;
+    width: 100%;
+
+    .articles-nav-item {
+      height: rem(160px);
+      width: rem(160px);
+      background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("thumbnails/hamster_1.jpg");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .article-nav-item-content-wrapper {
+        border: 2px solid rgba(255, 255, 255, .6);
+        padding: .3rem;
+
+        .article-nav-item-content-container {
+          background-color: rgba(255, 255, 255, .6);
+          padding: .4rem .6rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
 
 // INDEX
-
 .articles-wrapper {
   position: relative;
   padding: 50px 0px;
   transition: all .3s ease-out;
+
+  h2 {
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+  }
+
+  h2:before,
+  h2:after {
+    background-color: rgba(0, 0, 0, .3);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  h2:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+
+  h2:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
+
+
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .content-right {
+    padding: 0 rem(5px);
+
+    div {
+      margin: 0 auto;
+    }
+
+    div+div {
+      margin-top: rem(5px);
+    }
+
+    .top-articles,
+    .newsletter-block {
+      background-color: rgba(0, 0, 0, .3);
+      min-height: 200px;
+      width: 90%;
+    }
+  }
 }
 
 .shrink {
@@ -21,6 +108,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 .4rem;
+
     .search {
       form {
         display: flex;
@@ -46,6 +135,7 @@
   transform: translateX(-90%);
   background-color: white;
   transition: all .3s ease-out;
+
   i {
     position: absolute;
     top: 10px;
@@ -54,27 +144,34 @@
     color: rgba(100, 100, 100, 0.3);
     cursor: pointer;
   }
+
   .filter-form {
-    width: 100%;
     padding: 40px;
+    width: 100%;
+
     h5 {
       margin-bottom: 20px;
     }
+
     .animals-filter {
       margin-bottom: 40px;
+
       .form-check {
         padding-left: 0px;
+
         label {
           padding: 30px;
           border-radius: 50%;
           border: 1px solid rgba(100, 100, 100, 0.1);
           position: relative;
           transition: all .2s ease-out;
+
           i {
             position: absolute;
             transform: translate(-50%, -50%);
             top: 50%;
             left: 50%;
+
             &::before {
               position: absolute;
               transform: translate(-50%, -50%);
@@ -82,36 +179,43 @@
               left: 50%;
             }
           }
+
           &:hover {
             border: 1px solid rgb(241, 166, 106);
-            -webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
-            -moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
-            box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+            -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
           }
         }
+
         .label-active {
           background-color: rgb(241, 166, 106);
-          -webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
-          -moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
-          box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+          -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+
           i {
             color: white;
           }
         }
       }
     }
+
     .themes-filter {
       .form-check {
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
         padding-left: 0px;
+
         .boolean {
           position: relative;
         }
+
         label {
           width: 100%;
         }
+
         label::before {
           content: '';
           display: block;
@@ -126,11 +230,13 @@
           transition: background-color .2s;
           cursor: pointer;
         }
+
         .label-active::before {
           background-color: rgb(241, 166, 106);
-          -webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
-          -moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
-          box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.1);
+          -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+          -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+
           i {
             color: white;
           }
@@ -143,9 +249,10 @@
 .filter-active {
   transform: translateX(0%);
   border-right: 1px solid rgba(200, 200, 200, 0.1);
-  -webkit-box-shadow: 1px 0px 20px 0px rgba(0,0,0,0.15);
-  -moz-box-shadow: 1px 0px 20px 0px rgba(0,0,0,0.15);
-  box-shadow: 1px 0px 20px 0px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.15);
+
   i {
     color: rgb(241, 166, 106);
   }
@@ -160,6 +267,7 @@
   padding: 10px 0px;
   cursor: pointer;
   transition: all .3s ease-out;
+
   &:hover {
     transform: translateY(-2px);
     -webkit-box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
@@ -169,7 +277,7 @@
 }
 
 
-// NEW
+// NEW / EDIT
 
 #editor {
   height: calc(100% - 44px);
@@ -183,9 +291,20 @@
   border-top-right-radius: 7px;
 }
 
-#fake-submit {
-  margin-top: 15px;
-  width: 100%;
+.btn+.btn {
+  margin: 0 rem(10px);
+}
+
+.tag-content {
+  background-color: rgb(212, 133, 133);
+  border-radius: rem(4px);
+  color: rgba(255, 255, 255, 1);
+  margin: 0 rem(10px);
+  padding: rem(2px) rem(6px);
+}
+
+.tag-remove {
+  color: rgba(0, 0, 0, .3);
 }
 
 // SHOW
@@ -194,20 +313,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   .article-headings {
     margin-bottom: 40px;
+
     h4 {
       font-weight: 300;
       font-size: 1.2rem;
     }
   }
+
   .author-infos {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+
     img {
       margin-right: 15px;
     }
+
     span {
       font-weight: 300;
       font-size: 1rem;
@@ -218,6 +342,7 @@
 .article-body {
   margin-top: 50px;
   text-align: justify;
+
   img {
     width: 100%;
   }
@@ -251,3 +376,5 @@
   background-color: rgb(218, 173, 106);
   color: white;
 }
+
+// Right sidebar
