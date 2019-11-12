@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <%= simple_form_for(card) do |f| %>
   <h3 class="mb-5">Creation d'une fiche pour <%= @card.animal %></h3>
 
@@ -6,9 +7,14 @@
       <div class="col">
 
         <!-- COMMON INPUTS -->
+<<<<<<< HEAD
         <%= f.input :title, placeholder: 'titre', label: false, input_html: { class: 'check'} %>
         <%= f.input :origin, placeholder: 'origine', label: false, input_html: { class: 'check'} %>
         <%= f.input :life_expectancy, label: false, placeholder: 'esperance du vie', input_html: { class: 'check' } %>
+=======
+        <%= f.input :title, placeholder: 'titre', label: false %>
+        <%= f.input :life_expectancy, label: false, placeholder: 'esperance du vie' %>
+>>>>>>> countries setup
         <div class="row">
           <div class="col">
             <%= f.input :min_height, placeholder: 'taille minimal (cm)', label: false, input_html: { class: 'check'} %>
@@ -25,6 +31,7 @@
             <%= f.input :max_weight, placeholder: 'poid maximal (kg)', label: false, input_html: { class: 'check'} %>
           </div>
         </div>
+        <%= f.input :origin, collection: [CONTINENT, COUNTRIES].flatten, input_html: { class: 'select2' } %>
 
         <hr>
 
