@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", e => {
 });
 
 window.addEventListener("DOMContentLoaded", e => {
-  // initNewCardForm();
+  initNewCardForm();
 });
 
 // Uncomment to copy all static images under ../images to the output folder and reference
