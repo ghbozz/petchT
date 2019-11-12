@@ -50,7 +50,6 @@ counter = 0
     max_height: %w(50..100).sample,
     min_weight: %w(0..50).sample,
     max_weight: %w(50..100).sample,
-    animal:  Card::ANIMALS.sample,
     status: Card::STATUS.sample,
   )
   card.save!

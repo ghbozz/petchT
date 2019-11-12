@@ -21,7 +21,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.create(card_params)
+    @card = Card.create!(card_params)
     authorize @card
     redirect_to edit_card_path(@card)
   end

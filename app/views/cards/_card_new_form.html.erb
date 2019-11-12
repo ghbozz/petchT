@@ -1,6 +1,6 @@
 <%= simple_form_for(card) do |f| %>
   <div class="card-radio-buttons">
-    <%= f.input :animal, collection: Card::ANIMAL, as: :radio_buttons, input_html: { class: 'd-none' } %>
+    <%= f.input :animal, collection: Card::ANIMALS, as: :radio_buttons, input_html: { class: 'd-none' } %>
   </div>
   <%= f.submit id: 'real-submit', class: 'd-none' %>
   <button id="fake-submit" class="btn btn-primary">Submit</button>
