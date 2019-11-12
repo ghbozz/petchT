@@ -31,7 +31,12 @@
 .edit_card {
   .select2-selection {
     height: 38px !important;
+<<<<<<< HEAD
 >>>>>>> countries setup
+=======
+    display: flex;
+    align-items: center;
+>>>>>>> clean
   }
 }
 
@@ -50,6 +55,7 @@
   }
 }
 
+<<<<<<< HEAD
 .required-input {
   border: 1px solid rgba(248, 87, 89, 0.5) !important;
 }
@@ -80,4 +86,12 @@
       width: 70%;
     }
   }
+=======
+.br-widget a.br-active:after {
+  color: #FF9173 !important;
+}
+
+.br-widget a.br-selected:after {
+  color: #FF9173 !important;
+>>>>>>> clean
 }
