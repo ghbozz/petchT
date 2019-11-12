@@ -1,0 +1,26 @@
+<div class="articles-wrapper">
+  <%#= render "filter" %>
+
+  <div class="container translate-nav page-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-9 content-left">
+        <div class="articles-container row">
+          <div class="articles-header">
+            <h2>À la une !</h2>
+          </div>
+          <div id="articles-list">
+            <%= render 'cards_list', cards: @cards %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3 content-right">
+        <div class="top-articles">
+
+        </div>
+        <div class="newsletter-block">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,19 @@
 class Card < ApplicationRecord
 
+
+  STATUS = %w(draft published submitted)
+
+
+  # validates :origin, presence: true
+  # validates :life_expectancy, presence: true
+  # validates :min_height, presence: true
+  # validates :max_height, presence: true
+  # validates :min_weight, presence: true
+  # validates :max_weight, presence: true
+  # validates :title, presence: true
+  # validates :body, presence: true
+  validates :status, inclusion: { in: STATUS }
+
   def set_specificities(params)
     params[:specs].each do |key, value|
       self.specificities[key] = value
@@ -17,12 +31,7 @@ class Card < ApplicationRecord
     self.specificities.select { |key, value| value.class != Integer }
   end
 
-  ANIMAL = [
-    'chien',
-    'chat',
-    'rongeur'
-  ]
-
+  ANIMALS = %w(chien chat rongeur)
   SPECS = {
     chien: {
       fci: %w(groupe_1 groupe_2 groupe_3 groupe_4 groupe_5),

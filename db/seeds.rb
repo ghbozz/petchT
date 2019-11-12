@@ -34,8 +34,29 @@ counter = 0
   article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   article.save!
 
-  p "----- #{counter}(s) done -----"
-  p "--------------------"
+  card = Card.new(
+    animal: Card::ANIMALS.sample,
+    specificities: {
+      fci: ["groupe_1", "groupe_2", "groupe_3", "groupe_4", "groupe_5"].sample,
+      type_de_poil: ["ras", "courts", "longs", "bouclés"].sample,
+      mode_de_vie: ["patachon", "frimeur", "aventurier", "gigolo"].sample
+    },
+    origin: Faker::Address.country,
+    title: Faker::Creature::Animal.name,
+    body: Faker::Lorem.paragraphs(number: 50).join(''),
+    life_expectancy: %w(0..50).sample,
+    fur: ["blonde", "brune", "caramel", "rousse", "blanche", "noire"].sample,
+    min_height: %w(0..50).sample,
+    max_height: %w(50..100).sample,
+    min_weight: %w(0..50).sample,
+    max_weight: %w(50..100).sample,
+    animal:  Card::ANIMALS.sample,
+    status: Card::STATUS.sample,
+  )
+  card.save!
+
+  puts "----- #{counter} done -----"
+  puts "------------------"
 
 end
 
