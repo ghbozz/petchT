@@ -1,10 +1,8 @@
 import { initStarRating } from "../plugins/init_star_rating";
-<<<<<<< HEAD
 import { initFormValidation } from "../plugins/initFormValidation";
 import { initNewCardForm } from "../plugins/init_new_card_form";
-=======
 import { initSelect2 } from '../plugins/init_select2';
->>>>>>> countries setup
+
 
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -23,18 +21,15 @@ window.addEventListener("DOMContentLoaded", e => {
 });
 
 window.addEventListener("DOMContentLoaded", e => {
-<<<<<<< HEAD
   initFormValidation();
+  initSelect2();
 });
 
 window.addEventListener("DOMContentLoaded", e => {
-  initNewCardForm();
+  if (document.querySelector('#new_card')) initNewCardForm();
 });
-=======
-  initSelect2();
-})
 
->>>>>>> countries setup
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

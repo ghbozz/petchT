@@ -2,7 +2,6 @@
   <div class="card-wrapper">
     <h1><%= @card.title %></h1>
 
-<<<<<<< HEAD
     <hr>
 
     <div class="card-content">
@@ -11,6 +10,7 @@
       </div>
 
       <div class="card-specs-ratings">
+        <%= image_tag url_for(@card.thumbnail), width: '100%' %>
         <% @card.ratings.each do |key, value| %>
           <div class="rating">
             <span><%= key %></span>
@@ -36,10 +36,6 @@
       </div>
 
     </div>
-=======
-  <h1><%= @card.title %></h1>
-  <h3><%= @card.country_name %></h3>
->>>>>>> countries setup
 
   </div>
 

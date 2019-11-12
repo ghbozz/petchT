@@ -48,6 +48,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:animal, :fci, :origin, :min_height, :max_height, :min_weight, :max_weight, :title, :body, :life_expectancy)
+    params.require(:card).permit(:animal, :fci, :origin, :min_height, :max_height, :min_weight, :max_weight, :title, :body, :life_expectancy, :thumbnail)
   end
 end

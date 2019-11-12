@@ -1,22 +1,10 @@
 class Card < ApplicationRecord
-
-<<<<<<< HEAD
+  has_one_attached :thumbnail
 
   STATUS = %w(draft published submitted)
 
-
-  # validates :origin, presence: true
-  # validates :life_expectancy, presence: true
-  # validates :min_height, presence: true
-  # validates :max_height, presence: true
-  # validates :min_weight, presence: true
-  # validates :max_weight, presence: true
-  # validates :title, presence: true
-  # validates :body, presence: true
   validates :status, inclusion: { in: STATUS }
 
-=======
->>>>>>> countries setup
   def set_specificities(params)
     params[:specs].each do |key, value|
       self.specificities[key] = value
@@ -26,7 +14,6 @@ class Card < ApplicationRecord
     end
   end
 
-<<<<<<< HEAD
   def ratings
     self.specificities.select { |key, value| value.class == Integer  }
   end
@@ -34,22 +21,7 @@ class Card < ApplicationRecord
   def specs
     self.specificities.select { |key, value| value.class != Integer }
   end
-=======
-  def country_name
-    country = ISO3166::Country[origin]
-    country.translations[I18n.locale.to_s] || country.name
-  end
 
-  def all_countries
-    [CONTINENT, COUNTRIES].flatten
-  end
-
-  ANIMAL = [
-    'chien',
-    'chat',
-    'rongeur'
-  ]
->>>>>>> countries setup
 
   ANIMALS = %w(chien chat rongeur)
   SPECS = {
