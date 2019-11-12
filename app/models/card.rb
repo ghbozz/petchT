@@ -1,21 +1,20 @@
 class Card < ApplicationRecord
 
-  # validates :origin, presence: true
-  # validates :life_expectancy, presence: true
-  # validates :min_height, presence: true
-  # validates :max_height, presence: true
-  # validates :min_weight, presence: true
-  # validates :max_weight, presence: true
-  # validates :title, presence: true
-  # validates :body, presence: true
-
   def set_specificities(params)
     params[:specs].each do |key, value|
       self.specificities[key] = value
     end
-    params[:caracs].each do |key, value|
-      self.specificities[key] = value
+    params[:ratings].each do |key, value|
+      value == '' ? self.specificities[key] = 0 : self.specificities[key] = value.to_i
     end
+  end
+
+  def ratings
+    self.specificities.select { |key, value| value.class == Integer  }
+  end
+
+  def specs
+    self.specificities.select { |key, value| value.class != Integer }
   end
 
   ANIMAL = [
