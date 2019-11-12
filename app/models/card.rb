@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
 
+
   STATUS = %w(draft published submitted)
 
 
@@ -17,11 +18,18 @@ class Card < ApplicationRecord
     params[:specs].each do |key, value|
       self.specificities[key] = value
     end
-    params[:caracs].each do |key, value|
-      self.specificities[key] = value
+    params[:ratings].each do |key, value|
+      value == '' ? self.specificities[key] = 0 : self.specificities[key] = value.to_i
     end
   end
 
+  def ratings
+    self.specificities.select { |key, value| value.class == Integer  }
+  end
+
+  def specs
+    self.specificities.select { |key, value| value.class != Integer }
+  end
 
   ANIMALS = %w(chien chat rongeur)
   SPECS = {
