@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.card-caracs {
+// EDIT
+.card-ratings {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,5 +14,37 @@
   }
   abbr {
     display: none;
+  }
+}
+
+.required-input {
+  border: 1px solid rgba(248, 87, 89, 0.5) !important;
+}
+
+// SHOW
+
+.card-specs-ratings {
+  width: 350px;
+  .rating {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .spec {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.card-wrapper {
+  padding-top: 100px;
+  .card-content {
+    display: flex;
+    .card-body {
+      width: 70%;
+    }
   }
 }

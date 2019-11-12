@@ -1,14 +1,41 @@
 <div class="container translate-nav">
-  <h1>Cards#show</h1>
-  <p>Find me in app/views/cards/show.html.erb</p>
+  <div class="card-wrapper">
+    <h1><%= @card.title %></h1>
 
-  <h1><%= @card.title %></h1>
+    <hr>
 
-  <div class="animal-card">
-    <% @card.specificities.each do |key, value| %>
-      <p><%= key %> / <%= value %></p>
-    <% end %>
+    <div class="card-content">
+      <div class="card-body">
+        <%= raw @card.body %>
+      </div>
+
+      <div class="card-specs-ratings">
+        <% @card.ratings.each do |key, value| %>
+          <div class="rating">
+            <span><%= key %></span>
+            <div class="stars">
+              <% value.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - value).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <% @card.specs.each do |key, value| %>
+          <div class="specs">
+            <div class="spec">
+              <span><%= key.gsub('_', ' ') %></span>
+              <span><%= value.gsub('_', ' ') %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
   </div>
 
-  <%= raw @card.body %>
 </div>

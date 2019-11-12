@@ -1,0 +1,5 @@
+const initNewCardForm = () => {
+
+}
+
+export { initNewCardForm }
