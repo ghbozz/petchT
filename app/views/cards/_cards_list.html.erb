@@ -1,0 +1,28 @@
+<div class="row mb-5">
+  <% cards.each_with_index do |card, index| %>
+    <% if index == 0 %>
+      <div class="col-12 card-container">
+        <%= link_to card_path(card) do %>
+          <div class="article-card article-card-main d-flex justify-content-left">
+            <div class="card-desc">
+              <h4><%= card.title %></h4>
+              <p><%= card.body.slice(0, 50) %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center card-container">
+        <%= link_to card_path(card) do %>
+          <div class="article-card">
+            <div class="card-desc">
+              <h4><%= card.title %></h4>
+              <p><%= card.body.slice(0, 50) %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<%= raw pagy_nav(@pagy) %>

@@ -2,6 +2,15 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update]
   skip_before_action :verify_authenticity_token, only: [:create]
 
+  def index
+    @cards = policy_scope(Card).where(status: 'published')
+    @pagy, @cards = pagy(
+      helpers.index_search(@cards, params),
+      items: 10,
+      link_extra: 'data-remote="true"'
+    )
+  end
+
   def show
     authorize @card
   end
