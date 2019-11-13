@@ -1,38 +1,39 @@
 <div class="container translate-nav">
-  <div class="card-wrapper">
+  <div class="card-wrapper pt-5">
     <h1><%= @card.title %></h1>
-
-    <hr>
-
-    <div class="card-content">
-      <div class="card-body">
-        <%= raw @card.body %>
+    <div class="card-content row">
+      <div class="card-content-body col-md-8">
+        <div class="content-card-text pt-4">
+          <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail" %>
+          <%= raw @card.body %>
+        </div>
       </div>
 
-      <div class="card-specs-ratings">
-        <%= image_tag url_for(@card.thumbnail), width: '100%' %>
-        <% @card.ratings.each do |key, value| %>
-          <div class="rating">
-            <span><%= key %></span>
-            <div class="stars">
-              <% value.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - value).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
+      <div class="card-specs-ratings col-md-4">
+        <div class="card-specs-box py-4 px-2">
+          <% @card.ratings.each do |key, value| %>
+            <div class="rating">
+              <span><%= key.capitalize %></span>
+              <div class="stars">
+                <% value.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5 - value).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
 
-        <% @card.specs.each do |key, value| %>
-          <div class="specs">
-            <div class="spec">
-              <span><%= key.gsub('_', ' ') %></span>
-              <span><%= value.gsub('_', ' ') %></span>
+          <% @card.specs.each do |key, value| %>
+            <div class="specs">
+              <div class="spec">
+                <span><%= key.gsub('_', ' ').capitalize %></span>
+                <span class="stars"><%= value.gsub('_', ' ') %></span>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
     </div>

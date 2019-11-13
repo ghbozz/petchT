@@ -4,6 +4,7 @@
       <div class="col-12 card-container">
         <%= link_to card_path(card) do %>
           <div class="article-card article-card-main d-flex justify-content-left">
+            <%= image_tag url_for(card.thumbnail) %>
             <div class="card-desc">
               <h4><%= card.title %></h4>
               <p><%= card.body.slice(0, 50) %></p>
@@ -15,6 +16,7 @@
       <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center card-container">
         <%= link_to card_path(card) do %>
           <div class="article-card">
+            <%= image_tag url_for(card.thumbnail) %>
             <div class="card-desc">
               <h4><%= card.title %></h4>
               <p><%= card.body.slice(0, 50) %></p>

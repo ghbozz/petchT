@@ -20,6 +20,8 @@ end
 
 counter = 0
 
+puts "------------------"
+
 20.times do
   counter += 1
   article = Article.new(
@@ -52,10 +54,11 @@ counter = 0
     max_weight: %w(50..100).sample,
     status: Card::STATUS.sample,
   )
+  card.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   card.save!
 
   puts "----- #{counter} done -----"
-  puts "------------------"
+  counter > 9 ? puts "------------------" : puts "-------------------"
 
 end
 

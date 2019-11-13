@@ -1,6 +1,8 @@
 // Place all the styles related to the cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./variables";
+@import "./rem";
 
 
 // NEW
@@ -19,6 +21,7 @@
     font-size: 2em;
     font-weight: 600;
   }
+
   .label-active {
     background-color: rgb(241, 166, 106);
     -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
@@ -26,6 +29,7 @@
     box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
     color: white;
   }
+
   .form-check {
     padding-left: 0px;
   }
@@ -42,11 +46,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   .select {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
   }
+
   abbr {
     display: none;
   }
@@ -66,36 +72,89 @@
 
 // SHOW
 
-.card-specs-ratings {
-  width: 350px;
-  .rating {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .spec {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
 .card-wrapper {
-  padding-top: 100px;
-  .card-content {
-    display: flex;
-    .card-body {
-      width: 70%;
+
+  a,
+  a:hover {
+    color: $brand-orange;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+
+    &.card-inside-thumbnail {
+      float: left;
+      margin: 0 rem(10px) rem(5px) 0;
+      max-width: 40%;
+    }
+  }
+
+  .card-content-body:before {
+    background-color: $light-grey;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+  }
+
+  .card-specs-box {
+    border: 1px solid $light-grey;
+    color: $medium-grey;
+    font-size: rem(14px);
+    line-height: rem(42px);
+
+    .rating,
+    .spec {
+      display: flex;
+      justify-content: space-between;
+
+      .stars {
+        color: $brand-orange;
+        font-weight: 700;
+      }
     }
   }
 }
 
-.br-widget a.br-active:after {
-  color: #FF9173 !important;
-}
+// .card-specs-ratings {
+//   border: 1px solid rgba(0, 0, 0, 0.1);
 
-.br-widget a.br-selected:after {
-  color: #FF9173 !important;
-}
+//   .rating {
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//   }
+
+//   .spec {
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//   }
+// }
+
+// .card-wrapper {
+//   padding-top: rem(100px);
+
+//   .card-content {
+//     .card-body {
+//       border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+//       img {
+//         max-width: 100%;
+//       }
+//     }
+//   }
+// }
+
+// .br-widget a.br-active:after {
+//   color: #FF9173 !important;
+// }
+
+// .br-widget a.br-selected:after {
+//   color: #FF9173 !important;
+// }
