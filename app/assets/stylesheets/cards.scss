@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 // NEW
 #new_card {
   .radio_buttons {
@@ -28,6 +29,15 @@
     color: white;
   }
 }
+
+.edit_card {
+  .select2-selection {
+    height: 38px !important;
+    display: flex;
+    align-items: center;
+  }
+}
+
 
 // EDIT
 .card-ratings {
@@ -74,4 +84,12 @@
       width: 70%;
     }
   }
+}
+
+.br-widget a.br-active:after {
+  color: #FF9173 !important;
+}
+
+.br-widget a.br-selected:after {
+  color: #FF9173 !important;
 }

@@ -10,6 +10,7 @@
       </div>
 
       <div class="card-specs-ratings">
+        <%= image_tag url_for(@card.thumbnail), width: '100%' %>
         <% @card.ratings.each do |key, value| %>
           <div class="rating">
             <span><%= key %></span>
