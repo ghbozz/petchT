@@ -1,7 +1,22 @@
-<%= simple_form_for(card) do |f| %>
-  <div class="card-radio-buttons">
-    <%= f.input :animal, collection: Card::ANIMALS, as: :radio_buttons, input_html: { class: 'd-none' } %>
+<form class="simple_form new_card pt-5" id="new_card" novalidate="novalidate" action="/cards" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="amkcxyAgTNKwmlCyHLmKCwWVT5ELatUxj+Me0BeG45iGdiJdxY/ihswmKTLhFzI3OgmyV3+Qu/vjXH2U3YZDiA==">
+  <div class="radio-wrapper">
+    <fieldset class="form-group radio_buttons optional card_animal">
+      <input type="hidden" name="card[animal]" value="">
+
+      <div class="row">
+        <% Card::ANIMALS.each do |animal| %>
+          <div class="col" align="center">
+            <div class="form-check">
+              <input class="form-check-input optional d-none" type="radio" value="<%= animal %>" name="card[animal]" id="card_animal_<%= animal %>">
+              <label class="form-check-label collection_radio_buttons" for="card_animal_<%= animal %>"><%= animal %>
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </fieldset>
+    <button id="new-card-submit" class="btn btn-primary">Submit</button>
   </div>
-  <%= f.submit id: 'real-submit', class: 'd-none' %>
-  <button id="fake-submit" class="btn btn-primary">Submit</button>
-<% end %>
+</form>

@@ -5,11 +5,9 @@
 
 // NEW
 #new_card {
-  .radio_buttons {
-    display: flex;
-    justify-content: space-between;
-  }
   label {
+    margin: none !important;
+    display: inline-block;
     height: 150px;
     width: 200px;
     border: 1px solid rgb(241, 166, 106);
@@ -28,14 +26,14 @@
     box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
     color: white;
   }
+  .form-check {
+    padding-left: 0px;
+  }
 }
 
-.edit_card {
-  .select2-selection {
-    height: 38px !important;
-    display: flex;
-    align-items: center;
-  }
+#new-card-submit {
+  display: block;
+  margin: auto;
 }
 
 
@@ -56,6 +54,14 @@
 
 .required-input {
   border: 1px solid rgba(248, 87, 89, 0.5) !important;
+}
+
+.edit_card {
+  .select2-selection {
+    height: 38px !important;
+    display: flex;
+    align-items: center;
+  }
 }
 
 // SHOW
