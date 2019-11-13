@@ -16,8 +16,23 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "./variables";
 @import "./rem";
 
 .translate-nav {
   transform: translateY(80px);
+}
+
+.petch-breadcrumb {
+  font-size: rem(14px);
+
+  a {
+    color: $dark-grey;
+    cursor: default;
+    text-decoration: none;
+
+    &:hover {
+      color: $brand-orange;
+    }
+  }
 }
