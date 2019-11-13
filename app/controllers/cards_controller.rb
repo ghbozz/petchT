@@ -3,7 +3,13 @@ class CardsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
-    @cards = policy_scope(Card).where(status: 'published')
+    if params[:animal]
+      @cards = policy_scope(Card.where(status: 'published', animal: params[:animal]))
+    else
+      @cards = policy_scope(Card).where(status: 'published')
+    end
+
+   
     @pagy, @cards = pagy(
       helpers.index_search(@cards, params),
       items: 10,
@@ -13,6 +19,8 @@ class CardsController < ApplicationController
 
   def show
     authorize @card
+
+    @card_animal = @card.animal
   end
 
   def new
