@@ -1,3 +1,5 @@
+require 'json'
+
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update]
   skip_before_action :verify_authenticity_token, only: [:create]
@@ -26,9 +28,12 @@ class CardsController < ApplicationController
   def new
     @card = Card.new
     authorize @card
+    @specs = Card::SPECS.to_json
+    @ratings = Card::RATINGS.to_json
   end
 
   def create
+    raise
     @card = Card.create!(card_params)
     authorize @card
     redirect_to edit_card_path(@card)

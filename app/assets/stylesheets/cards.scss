@@ -7,31 +7,100 @@
 
 // NEW
 #new_card {
-  label {
+  .collection_radio_buttons {
     margin: none !important;
     display: inline-block;
-    height: 150px;
-    width: 200px;
-    border: 1px solid rgb(241, 166, 106);
-    border-radius: 7px;
+    border: 1px solid $brand-orange;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(241, 166, 106);
-    font-size: 2em;
+    color: $brand-orange;
+    font-size: rem(18px);
     font-weight: 600;
   }
 
   .label-active {
     background-color: rgb(241, 166, 106);
-    -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 12px 0px $light-grey;
+    -moz-box-shadow: 0px 1px 12px 0px $light-grey;
+    box-shadow: 0px 1px 12px 0px $light-grey;
     color: white;
   }
 
   .form-check {
     padding-left: 0px;
+  }
+
+  .specs-row,
+  .ratings-row {
+    font-size: rem(18px);
+  }
+
+  .rating {
+    display: inline-block;
+    position: relative;
+    height: rem(20px);
+    line-height: rem(20px);
+    vertical-align: middle;
+  }
+
+  .rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .rating label:last-child {
+    position: static;
+  }
+
+  .rating label:nth-child(1) {
+    z-index: 5;
+  }
+
+  .rating label:nth-child(2) {
+    z-index: 4;
+  }
+
+  .rating label:nth-child(3) {
+    z-index: 3;
+  }
+
+  .rating label:nth-child(4) {
+    z-index: 2;
+  }
+
+  .rating label:nth-child(5) {
+    z-index: 1;
+  }
+
+  .rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .rating label .icon {
+    float: left;
+    color: transparent;
+  }
+
+  .rating label:last-child .icon {
+    color: $medium-grey;
+  }
+
+  .rating:not(:hover) label input:checked~.icon,
+  .rating:hover label:hover input~.icon {
+    color: $brand-orange;
+  }
+
+  .rating label input:focus:not(:checked)~.icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px #09f;
   }
 }
 
