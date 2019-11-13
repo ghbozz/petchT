@@ -6,7 +6,7 @@ class DashboardPolicy < ApplicationPolicy
   end
 
   def profile?
-    user.is_writter?
+    user.is_writer?
   end
 
   def admin?

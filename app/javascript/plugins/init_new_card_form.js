@@ -1,5 +1,5 @@
 const initNewCardForm = () => {
-  const form = document.querySelector('#new_card')
+  const form = document.querySelector('#init_card')
   const labels = form.querySelectorAll('label')
 
   labels.forEach(bindBtn)
@@ -15,7 +15,7 @@ const toggleActive = (event) => {
 }
 
 const removeActive = () => {
-  const form = document.querySelector('#new_card')
+  const form = document.querySelector('#init_card')
   const labels = form.querySelectorAll('label')
 
   labels.forEach((label) => {

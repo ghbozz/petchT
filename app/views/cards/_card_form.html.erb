@@ -1,12 +1,13 @@
 
 <%= simple_form_for(card) do |f| %>
-  <h3 class="mb-5">Creation d'une fiche pour <%= @card.animal %></h3>
+  <h3 class="mb-5">Creation d'une fiche pour <%= card.animal %></h3>
 
   <div class="inputs">
     <div class="row">
       <div class="col">
 
         <!-- COMMON INPUTS -->
+        <%= f.hidden_field :animal, :input_html => { :value => card.animal } %>
         <%= f.input :thumbnail %>
         <%= f.input :title, placeholder: 'Nom', label: false, input_html: { class: 'check'} %>
         <%= f.input :life_expectancy, label: false, placeholder: 'Esperance du vie', input_html: { class: 'check' } %>
@@ -54,9 +55,10 @@
 
   <hr>
 
+
   <%= f.hidden_field :body, class: 'body' %>
   <div id="editor" style="min-height: 400px"></div>
 
   <%#= f.submit id: 'real-submit', class: 'd-none', disabled: true %>
-  <button id="fake-submit" class="btn btn-primary" disabled="true">Feel the Form</button>
+  <button id="fake-submit" class="btn btn-primary">Feel the Form</button>
 <% end %>

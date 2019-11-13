@@ -10,7 +10,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def new?
-    user.is_writter? || user.is_admin?
+    user.is_writer? || user.is_admin?
   end
 
   def create?

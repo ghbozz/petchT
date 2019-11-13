@@ -21,12 +21,12 @@ window.addEventListener("DOMContentLoaded", e => {
 });
 
 window.addEventListener("DOMContentLoaded", e => {
-  initFormValidation();
+  // initFormValidation();
   initSelect2();
 });
 
 window.addEventListener("DOMContentLoaded", e => {
-  if (document.querySelector('#new_card')) initNewCardForm();
+  if (document.querySelector('#init_card')) initNewCardForm();
 });
 
 

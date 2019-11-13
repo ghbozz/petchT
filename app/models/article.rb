@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   attr_accessor :tags
-  
+
   belongs_to :user
   has_many :article_tags, dependent: :destroy
   has_many :tags, through: :article_tags
@@ -15,7 +15,7 @@ class Article < ApplicationRecord
   validates :thumbnail, presence: true
 
   THEMES = %w(Santé Alimentation Education Soins Beauté Hygiène)
-  ANIMALS = %w(Chiens Chats Rongeurs Reptiles Oiseaux)
+  ANIMALS = %w(Chiens Chats Rongeurs)
   STATUS = %w(draft published submitted)
 
   validates :theme, inclusion: { in: THEMES }

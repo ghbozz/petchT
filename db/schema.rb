@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 2019_11_12_105105) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "specificities", default: {}
+    t.json "ratings", default: {}
     t.string "title"
     t.text "body"
     t.integer "life_expectancy"
-    t.string "fur"
     t.integer "min_height"
     t.integer "max_height"
     t.integer "min_weight"

@@ -1,9 +1,8 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update]
-  skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
-    @cards = policy_scope(Card).where(status: 'published')
+    @cards = policy_scope(Card).all
     @pagy, @cards = pagy(
       helpers.index_search(@cards, params),
       items: 10,
@@ -16,14 +15,19 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = Card.new
+    @card = Card.new(card_params)
     authorize @card
   end
 
   def create
-    @card = Card.create!(card_params)
+    @card = Card.new(card_params)
+    @card.set_specs_and_ratings(params)
     authorize @card
-    redirect_to edit_card_path(@card)
+    if @card.save
+      redirect_to card_path(@card)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -33,12 +37,17 @@ class CardsController < ApplicationController
   def update
     @card.update(card_params)
     @card.set_specificities(params)
+    authorize @card
     if @card.save
       redirect_to card_path(@card)
     else
       render :edit
     end
-    skip_authorization
+  end
+
+  def init
+    @card = Card.new
+    authorize @card
   end
 
   private
@@ -48,6 +57,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:animal, :fci, :origin, :min_height, :max_height, :min_weight, :max_weight, :title, :body, :life_expectancy, :thumbnail)
+    params.require(:card).permit(:animal, :origin, :min_height, :max_height, :min_weight, :max_weight, :title, :body, :life_expectancy, :thumbnail)
   end
 end
