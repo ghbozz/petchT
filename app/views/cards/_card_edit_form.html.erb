@@ -8,33 +8,33 @@
 
         <!-- COMMON INPUTS -->
         <%= f.input :thumbnail %>
-        <%= f.input :title, placeholder: 'titre', label: false, input_html: { class: 'check'} %>
-        <%= f.input :life_expectancy, label: false, placeholder: 'esperance du vie', input_html: { class: 'check' } %>
+        <%= f.input :title, placeholder: 'Nom', label: false, input_html: { class: 'check'} %>
+        <%= f.input :life_expectancy, label: false, placeholder: 'Esperance du vie', input_html: { class: 'check' } %>
 
         <div class="row">
           <div class="col">
-            <%= f.input :min_height, placeholder: 'taille minimal (cm)', label: false, input_html: { class: 'check'} %>
+            <%= f.input :min_height, placeholder: 'Taille minimal (cm)', label: false, input_html: { class: 'check'} %>
           </div>
           <div class="col">
-            <%= f.input :max_height, placeholder: 'taille maximal (cm)', label: false, input_html: { class: 'check'} %>
+            <%= f.input :max_height, placeholder: 'Taille maximal', label: false, input_html: { class: 'check'} %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <%= f.input :min_weight, placeholder: 'poid minimal (kg)', label: false, input_html: { class: 'check'} %>
+            <%= f.input :min_weight, placeholder: 'Poid minimal (kg)', label: false, input_html: { class: 'check'} %>
           </div>
           <div class="col">
-            <%= f.input :max_weight, placeholder: 'poid maximal (kg)', label: false, input_html: { class: 'check'} %>
+            <%= f.input :max_weight, placeholder: 'Poid maximal (kg)', label: false, input_html: { class: 'check'} %>
           </div>
         </div>
-        <%= f.input :origin, collection: [CONTINENTS, COUNTRIES].flatten, input_html: { class: 'select2 check' }, prompt: 'origine', label: false %>
+        <%= f.input :origin, collection: [CONTINENTS, COUNTRIES].flatten, input_html: { class: 'select2 check' }, prompt: 'Origine', label: false %>
 
         <hr>
 
         <!-- SPECIFIC INPUTS -->
         <%= simple_fields_for :specs, OpenStruct.new(card.specificities) do |x| %>
           <% Card::SPECS[card.animal.to_sym].each do |key, value| %>
-            <%= x.input key, collection: value, prompt: "#{key.to_s.gsub('_', ' ')}", label: false, input_html: { class: 'check'} %>
+            <%= x.input key, collection: value.map { |i| i.capitalize }, prompt: "#{key.to_s.gsub('_', ' ').capitalize}", label: false, input_html: { class: 'check'} %>
           <% end %>
         <% end %>
 
