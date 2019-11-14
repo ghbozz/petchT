@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  before_save :tags_validation
+
   acts_as_taggable
 
   belongs_to :user
@@ -39,6 +41,10 @@ class Article < ApplicationRecord
 
   def author_name
     return "#{self.user.first_name} #{self.user.last_name}"
+  end
+
+  def tags_validation
+    self.tag_list.reject!.with_index { |tag, index| index > 4 }
   end
 end
 
