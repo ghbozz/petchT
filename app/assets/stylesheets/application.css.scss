@@ -16,11 +16,16 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "./select2";
 @import "./variables";
 @import "./rem";
 
 .translate-nav {
   transform: translateY(80px);
+}
+
+.nopadding {
+  padding: 0px;
 }
 
 .petch-breadcrumb {

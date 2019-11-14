@@ -1,0 +1,32 @@
+@import "./variables";
+@import "./rem";
+
+// .select2 {
+//   width: 100% !important;
+//   display: flex !important;
+//   align-items: center !important;
+// }
+
+.select2-selection__choice {
+  background-color: $brand-orange !important;
+  color: white !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 0px !important;
+  span {
+    color: white !important;
+  }
+}
+
+.select2-selection {
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.select2-selection__rendered {
+  margin-top: 0px !important;
+  display: flex !important;
+  align-items: center !important;
+}

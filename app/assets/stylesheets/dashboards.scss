@@ -98,6 +98,15 @@
     a {
       margin-bottom: 7px;
     }
+    span {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      i {
+        margin-right: 10px;
+      }
+    }
   }
 }
 
@@ -107,10 +116,10 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  img {
-    // position: absolute;
-    // top: 20px;
-    // left: 0;
+  .profile-avatar {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
   }
   .row {
     margin-top: 25px;

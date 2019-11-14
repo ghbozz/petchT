@@ -1,4 +1,4 @@
-<div class="container translate-nav pt-5">
+<div class="container translate-nav pt-5 pb-5">
 
   <div class="article-header">
     <div>
@@ -8,11 +8,11 @@
       </div>
 
       <div class="author-infos">
-        <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle" width="75px">
+        <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle article-avatar" width="75px">
         <div>
-          <span><%= @article.author_name %></span><br>
-          <span><%= @article.user.profession %></span><br>
-          <span><%= time_ago_in_words(@article.created_at) %> ago</span>
+          <span class="author-name"><%= @article.author_name %></span><br>
+          <span class="author-job"><%= @article.user.profession %></span><br>
+          <span class="created_at"><%= time_ago_in_words(@article.created_at) %> ago</span>
         </div>
       </div>
     </div>
@@ -32,7 +32,6 @@
         <% end %>
       </div>
     <% end %>
-
   </div>
 
   <hr>
@@ -41,12 +40,35 @@
     <%= raw @article.body %>
   </div>
 
-  <div class="article-tags d-flex">
-    <% @tags.each do |tag| %>
+
+  <div class="article-tags d-flex pt-5">
+    <% @article.tag_list.each do |tag| %>
       <div class="tag-list-item">
-        <%= tag.name %>
+        <%= tag %>
       </div>
     <% end %>
+  </div>
+
+  <hr>
+
+  <h3>Articles similaires</h3>
+
+  <div class="recomandations pt-5">
+    <div class="row">
+      <% @recomandations.each do |reco| %>
+        <div class="col-4">
+          <%= link_to article_path(reco) do  %>
+            <div class="article-card">
+              <%= image_tag url_for(reco.thumbnail) %>
+              <div class="card-desc">
+                <h4><%= reco.title %></h4>
+                <p><%= reco.subtitle %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>

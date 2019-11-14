@@ -8,9 +8,6 @@ class DashboardsController < ApplicationController
       link_extra: 'data-remote="true"'
     )
 
-    @article = Article.new
-    @card = Card.new
-
     if params[:filter_data]
       respond_to do |format|
         format.html { redirect_to profile_path }

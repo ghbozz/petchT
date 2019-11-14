@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "./rem";
+@import "./variables";
 
 // INNER NAV
 .articles-nav {
@@ -327,8 +328,8 @@
     margin-bottom: 40px;
 
     h4 {
-      font-weight: 300;
-      font-size: 1.2rem;
+      font-weight: 400;
+      font-size: 1.1rem;
     }
   }
 
@@ -338,12 +339,21 @@
     justify-content: flex-start;
 
     img {
-      margin-right: 15px;
+      height: 100px;
+      width: 100px;
+      margin-right: 20px;
+      object-fit: cover;
     }
 
     span {
       font-weight: 300;
       font-size: 1rem;
+    }
+    .author-name {
+      font-weight: 400;
+    }
+    .created_at {
+      font-size: .8rem;
     }
   }
 }
@@ -387,7 +397,7 @@
 }
 
 .tag-list-item {
-  background-color: rgb(212, 133, 133);
+  background-color: $brand-orange;
   border-radius: rem(4px);
   color: rgba(255, 255, 255, 1);
   padding: rem(2px) rem(6px);

@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  attr_accessor :tags
+  acts_as_taggable
 
   belongs_to :user
   has_many :article_tags, dependent: :destroy

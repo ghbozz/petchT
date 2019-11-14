@@ -13,10 +13,4 @@ module ArticlesHelper
 
     return articles
   end
-
-  def set_tags(ids, article)
-    ids.each do |id|
-      ArticleTag.create(article: article, tag: Tag.find(id))
-    end
-  end
 end

@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :submit]
-  before_action :set_tags, only: [:show, :edit]
 
   def index
     @articles = policy_scope(Article).where(status: 'published')
@@ -20,31 +19,23 @@ class ArticlesController < ApplicationController
 
   def show
     authorize @article
-
-    @tags = @current_tags
+    @recomandations = Article.where(theme: @article.theme).sample(3)
   end
 
   def new
     @article = Article.new
     authorize @article
-
-    @tags = Tag.all
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user = current_user
+    params[:article][:tag_list] = set_tags(params[:tags])
+    @article = Article.new(article_params.merge(user: current_user))
+    @article.update(status: 'submitted') if params[:commit] == 'Poster'
+
     authorize @article
 
-    tag_ids = []
-
-    params_tags = article_params[:tags].split(',')
-    params_tags.each do |tag|
-      tag_ids << Tag.find_by(name: tag).id
-    end
-
-    helpers.set_tags(tag_ids, @article)
     if @article.save
+      params
       redirect_to article_path(@article)
     else
       render :new
@@ -53,14 +44,15 @@ class ArticlesController < ApplicationController
 
   def edit
     authorize @article
-
-    @tags = Tag.all
   end
 
   def update
+    params[:article][:tag_list] = set_tags(params[:tags])
+    @article.update(article_params.merge(status: 'draft'))
+    @article.update(status: 'submitted') if params[:commit] == 'Poster'
+
     authorize @article
-    @article.update(article_params)
-    @article.update(status: 'draft')
+
     if @article.save
       redirect_to article_path(@article)
     else
@@ -80,24 +72,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def set_tags 
-    article_tags = ArticleTag.where(article_id: @article.id)
-
-    final_tags = []
-    article_tags.each do |item|
-      final_tags << item.tag_id
-    end
-
-    @current_tags = []
-    final_tags.map do |tag|
-      @current_tags << Tag.find(tag)
-    end
-
-    return @current_tags
+  def article_params
+    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tag_list, images: [])
   end
 
-  def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tags, :tag_ids, images: [])
+  def set_tags(tags)
+    tags.reject(&:empty?).join(',')
   end
 
 end
