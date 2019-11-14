@@ -6,12 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Article.destroy_all
-Tag.destroy_all
 Card.destroy_all
-
-Tag::NAMES.each do |name|
-  Tag.create(name: name)
-end
 
 
 def get_images
@@ -60,11 +55,5 @@ puts "------------------"
   puts "----- #{counter} done -----"
   counter > 9 ? puts "------------------" : puts "-------------------"
 
-end
-
-Article.all.each do |article|
-  rand(2..5).times do
-    ArticleTag.create(article: article, tag: Tag.all.sample)
-  end
 end
 
