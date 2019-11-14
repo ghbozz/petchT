@@ -1,7 +1,7 @@
 const initNewCardForm = () => {
   const form = document.querySelector('#init_card')
   const labels = form.querySelectorAll('label')
-
+  console.log(labels)
   labels.forEach(bindBtn)
 }
 

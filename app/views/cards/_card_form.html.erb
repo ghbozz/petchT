@@ -1,4 +1,3 @@
-
 <%= simple_form_for(card) do |f| %>
   <h3 class="mb-5">Creation d'une fiche pour <%= card.animal %></h3>
 
@@ -43,7 +42,7 @@
 
       <!-- SPECIFIC RATINGS -->
       <div class="col card-ratings">
-        <%= simple_fields_for :ratings, OpenStruct.new(card.specificities) do |x| %>
+        <%= simple_fields_for :ratings, OpenStruct.new(card.ratings) do |x| %>
           <% Card::RATINGS[card.animal.to_sym].each do |rating| %>
             <%= x.input rating, collection: 1..5, input_html: { class: 'rating_field' }  %>
           <% end %>
@@ -58,7 +57,5 @@
 
   <%= f.hidden_field :body, class: 'body' %>
   <div id="editor" style="min-height: 400px"></div>
-
-  <%#= f.submit id: 'real-submit', class: 'd-none', disabled: true %>
   <button id="fake-submit" class="btn btn-primary">Feel the Form</button>
 <% end %>

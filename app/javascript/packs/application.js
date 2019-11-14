@@ -1,5 +1,4 @@
 import { initStarRating } from "../plugins/init_star_rating";
-import { initFormValidation } from "../plugins/initFormValidation";
 import { initNewCardForm } from "../plugins/init_new_card_form";
 import { initSelect2 } from '../plugins/init_select2';
 
@@ -21,7 +20,6 @@ window.addEventListener("DOMContentLoaded", e => {
 });
 
 window.addEventListener("DOMContentLoaded", e => {
-  // initFormValidation();
   initSelect2();
 });
 

@@ -10,7 +10,7 @@ class CardsController < ApplicationController
       @cards = policy_scope(Card).where(status: 'published')
     end
 
-   
+
     @pagy, @cards = pagy(
       helpers.index_search(@cards, params),
       items: 10,
@@ -27,14 +27,11 @@ class CardsController < ApplicationController
   def new
     @card = Card.new(card_params)
     authorize @card
-    @specs = Card::SPECS.to_json
-    @ratings = Card::RATINGS.to_json
   end
 
   def create
     @card = Card.new(card_params)
     @card.set_specs_and_ratings(params)
-    @card = Card.create!(card_params)
     authorize @card
     if @card.save
       redirect_to card_path(@card)
@@ -49,7 +46,7 @@ class CardsController < ApplicationController
 
   def update
     @card.update(card_params)
-    @card.set_specificities(params)
+    @card.set_specs_and_ratings(params)
     authorize @card
     if @card.save
       redirect_to card_path(@card)

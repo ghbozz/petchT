@@ -32,7 +32,7 @@
               </div>
             <% end %>
 
-            <% @card.specs.each do |key, value| %>
+            <% @card.specificities.each do |key, value| %>
               <div class="specs">
                 <div class="spec">
                   <span><%= key.gsub('_', ' ').capitalize %></span>
@@ -42,10 +42,7 @@
             <% end %>
           </div>
         </div>
-
       </div>
-
     </div>
-
   </div>
 </div>
