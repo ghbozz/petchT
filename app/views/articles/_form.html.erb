@@ -3,10 +3,10 @@
   <div class="row">
     <div class="col-12 d-flex justify-content-between">
       <span class="mr-2 flew-grow-0">
-        <%= f.input :animal, collection: Article::ANIMALS %>
+        <%= f.input :animal, collection: Article::ANIMALS, prompt: 'Animal', label: false %>
       </span>
       <span class="mr-2 flex-grow-0">
-        <%= f.input :theme, collection: Article::THEMES %>
+        <%= f.input :theme, collection: Article::THEMES, prompt: 'Theme', label: false %>
       </span>
       <span class="flex-grow-0">
         <%= f.input :thumbnail, direct_upload: true %>
@@ -14,39 +14,25 @@
     </div>
     <div class="col-12 d-flex align-items-end justify-content-between">
       <span class="flex-grow-1 mr-2">
-        <%= f.input :title, label: 'Titre', placeholder: 'Votre titre' %>
+        <%= f.input :title, placeholder: 'Votre titre', label: false, placeholder: 'Titre' %>
       </span>
       <span class="align-self-center pt-3">80 carac. max</span>
     </div>
     <div class="col-12 d-flex align-items-end justify-content-between">
       <span class="flex-grow-1 mr-2">
-        <%= f.input :subtitle, label: 'Sous-titre', placeholder: 'Votre sous-titre' %>
+        <%= f.input :subtitle, label: 'Sous-titre', placeholder: 'Votre sous-titre', label: false, placeholder: 'Sous-titre' %>
       </span>
       <span class="align-self-center pt-3">100 carac. max</span>
     </div>
-    <div class="col-12 d-flex">
-      <div id="tags-bearer" class="d-none">
-        <% @current_tags.each do |tag| %>
-          <%= tag.name %>
-        <% end %>
-      </div>
-      <%#= select_tag "tags", options_from_collection_for_select(@tags, "id", "name"), multiple: true %>
-      <%#= f.association :tags, collection: @tags, class: "js-article-tags-selector", input_html: { multiple: true } %>
-      <%= f.hidden_field :tags, collection: Tag::NAMES, class: "real-tags" %>
-      <div class="tags-input">
-        <label for="article_tags">Tags</label>
-        <select class="form-control select optional" id="article_tags" onchange="selectTags(event)">
-          <% @tags.each do |tag| %>
-            <option value="<%= tag.name %>"><%= tag.name %></option>
-          <% end %>
-        </select>
-      </div>
-      <div id="tags-displayer" class="selected-tags d-flex justify-content-start align-items-center w-100"></div>
+    <div class="col-12">
+      <%= f.input :tag_list, collection: ['a', 'b', 'c'], input_html: { class: "js-example-basic-multiple", name: "tags[]", multiple: "multiple" }, label: false, prompt: 'Tags' %>
     </div>
+
     <%= f.hidden_field :body, class: "body" %>
     <div class="col-12">
-      <div id="editor"></div>
+      <div id="editor" style="min-height: 400px"></div>
     </div>
+
     <div class="col-12">
       <%= f.submit id: 'real-submit', class: 'd-none' %>
       <div class="d-flex justify-content-center pt-3">
@@ -54,63 +40,8 @@
         <button id="fake-submit" class="btn btn-primary">Poster le contenu</button>
       </div>
     </div>
+
     <div class="col-10">En cliquant sur Sauvegarder et Prévisualiser, votre contenu sera sauvegardé et vous prévisualisable, et son statut sera alors « En cours de rédaction ». Vous pourrez terminer les modifications plus tard. En cliquant sur Poster le contenu, votre contenu sera soumis à l’admin en modération. Ce dernier validera votre article, auquel cas il reviendra vers vous afin de le modifier.</div>
+
   </div>
 <% end %>
-<script>
-  let selectedTags = [];
-  const tagSelector = document.getElementById("article_tags");
-
-  const tagsDisplayer = tags => {
-    const realTagsContainer = document.querySelector(".real-tags");
-    const tagsDisplayer = document.getElementById("tags-displayer");
-
-    realTagsContainer.value = tags
-
-    tagsDisplayer.innerHTML = displayTags(tags);
-  };
-  const displayTags = tags => {
-    let finalString = "";
-    tags.map(
-      tag =>
-        (finalString =
-          finalString +
-          `<div class="tag-element"><span class="tag-content mr-1">${tag}</span><span class="tag-remove"><i class="fas fa-times tag-${tag}"></i></span></div>`)
-    );
-
-    return finalString;
-  };
-  const closeTags = () => {
-    const tagClosers = document.querySelectorAll(".tag-remove");
-
-    tagClosers &&
-      tagClosers.forEach(tag =>
-        tag.addEventListener("click", e => {
-          const element = Object.values(e.target.classList)
-            .filter(i => i.includes("tag"))
-            .toString()
-            .replace("tag-", "");
-
-          selectedTags = selectedTags.filter(t => t !== element);
-
-          tagsDisplayer(selectedTags);
-          closeTags();
-        })
-      );
-  };
-
-  const selectTags = (event) => {
-    if (!selectedTags.includes(event.target.value)) {
-      selectedTags.push(event.target.value);
-    }
-    tagsDisplayer(selectedTags);
-    closeTags();
-  };
-
-  // Display on edit
-  const tagsAlreadyIn = document.getElementById("tags-bearer").innerHTML.replace("\n", "").split(" ").filter(i => i.length > 0).map(i => i.replace("\n", ""));
-
-  selectedTags = tagsAlreadyIn;
-  tagsDisplayer(tagsAlreadyIn);
-  
-</script>

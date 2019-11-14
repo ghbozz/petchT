@@ -1,6 +1,6 @@
 import { initStarRating } from "../plugins/init_star_rating";
 import { initNewCardForm } from "../plugins/init_new_card_form";
-import { initSelect2 } from '../plugins/init_select2';
+import { initSelect2, initSelector } from '../plugins/init_select2';
 
 
 // This file is automatically compiled by Webpack, along with any other files
@@ -20,7 +20,8 @@ window.addEventListener("DOMContentLoaded", e => {
 });
 
 window.addEventListener("DOMContentLoaded", e => {
-  initSelect2();
+  if (document.querySelector('.select2'))initSelect2();
+  if (document.querySelector('.js-example-basic-multiple'))initSelector();
 });
 
 window.addEventListener("DOMContentLoaded", e => {

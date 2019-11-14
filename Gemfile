@@ -22,8 +22,7 @@ gem 'simple_form'
 gem 'quilljs-rails'
 gem 'pagy'
 gem 'jquery-rails'
-gem 'countries'
-gem 'country_select', '~> 4.0'
+gem 'acts-as-taggable-on', '~> 6.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

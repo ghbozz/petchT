@@ -27,10 +27,11 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    params = set_tags(params)
     @article = Article.new(article_params)
     @article.user = current_user
     authorize @article
-
+    raise
     if @article.save
       redirect_to article_path(@article)
     else
@@ -66,7 +67,13 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, images: [])
+    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tag_list, images: [])
+  end
+
+  def set_tags(params)
+    tags = params[:tags].reject(&:empty?)
+    params[:article][:tag_list] = tags
+    return params
   end
 
 end
