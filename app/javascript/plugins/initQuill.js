@@ -39,9 +39,9 @@ window.addEventListener("DOMContentLoaded", e => {
       // tags.value = tagsContainer.innerHTML;
     };
 
-    document
-      .getElementById("fake-submit")
-      .addEventListener("click", submitForm);
+    document.querySelectorAll(".fake-submit").forEach((submit) => {
+      submit.addEventListener("click", submitForm);
+    })
 
     var quill = new Quill("#editor", {
       theme: "snow",

@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
 
   def show
     authorize @article
+    @recomandations = Article.where(theme: @article.theme).sample(3)
   end
 
   def new
@@ -27,12 +28,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    params = set_tags(params)
-    @article = Article.new(article_params)
-    @article.user = current_user
+    params[:article][:tag_list] = set_tags(params[:tags])
+    @article = Article.new(article_params.merge(user: current_user))
+    @article.update(status: 'submitted') if params[:commit] == 'Poster'
+
     authorize @article
-    raise
+
     if @article.save
+      params
       redirect_to article_path(@article)
     else
       render :new
@@ -44,9 +47,12 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    params[:article][:tag_list] = set_tags(params[:tags])
+    @article.update(article_params.merge(status: 'draft'))
+    @article.update(status: 'submitted') if params[:commit] == 'Poster'
+
     authorize @article
-    @article.update(article_params)
-    @article.update(status: 'draft')
+
     if @article.save
       redirect_to article_path(@article)
     else
@@ -55,6 +61,7 @@ class ArticlesController < ApplicationController
   end
 
   def submit
+    raise
     authorize @article
     @article.update(status: 'submitted')
     redirect_to profile_path
@@ -70,10 +77,8 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tag_list, images: [])
   end
 
-  def set_tags(params)
-    tags = params[:tags].reject(&:empty?)
-    params[:article][:tag_list] = tags
-    return params
+  def set_tags(tags)
+    tags.reject(&:empty?).join(',')
   end
 
 end
