@@ -9,12 +9,12 @@ class ArticlesController < ApplicationController
       link_extra: 'data-remote="true"'
     )
 
-    if params[:query] || params[:filter]
-      respond_to do |format|
-        format.html { redirect_to articles_path }
-        format.js
-      end
-    end
+    # if params[:query] || params[:filter]
+      # respond_to do |format|
+      #   format.html { redirect_to articles_path }
+      #   format.js
+      # end
+    # end
   end
 
   def show

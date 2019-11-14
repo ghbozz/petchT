@@ -13,12 +13,24 @@
     <a class="nav-link shop" href="#">Boutique</a>
   </li>
   <div class="nav-right">
-    <%= form_tag articles_path, method: :get, id: 'search-form' do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Recherche"
-      %>
-      <%= submit_tag "Search", class: 'd-none' %>
+    <% if params[:controller] == 'articles' && params[:action] == 'index' %>
+      <!-- AJAX SEARCH -->
+      <%= form_tag articles_path, method: :get, id: 'search-form', remote: true do %>
+        <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Recherche"
+        %>
+        <%= submit_tag "Search", class: 'd-none' %>
+      <% end %>
+    <% else %>
+      <!-- NON AJAX SEARCH -->
+      <%= form_tag articles_path, method: :get, id: 'search-form' do %>
+        <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Recherche"
+        %>
+        <%= submit_tag "Search", class: 'd-none' %>
+      <% end %>
     <% end %>
     <% if user_signed_in? %>
       <li class="nav-item dropdown">
