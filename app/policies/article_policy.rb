@@ -18,7 +18,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def edit?
-    record.user == user
+    record.user == user || user.is_admin?
   end
 
   def update?

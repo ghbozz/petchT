@@ -1,17 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+ActsAsTaggableOn::Tag.destroy_all
 Article.destroy_all
 Card.destroy_all
+User.destroy_all
 
 
 def get_images
   Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
 end
+
+writer = User.new(email: 'writer@petch.com', password: 'mdpmdp', permission: 'writer', first_name: 'John', last_name: 'Doe', signature: 'Hello i am writer', profession: 'Dev')
+writer.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+writer.save!
+
+admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admin', first_name: 'John', last_name: 'Doe', signature: 'Hello i am admin', profession: 'Dev')
+admin.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+admin.save!
 
 counter = 0
 
@@ -42,7 +45,6 @@ puts "------------------"
     title: Faker::Creature::Animal.name,
     body: Faker::Lorem.paragraphs(number: 50).join(''),
     life_expectancy: %w(0..50).sample,
-    fur: ["blonde", "brune", "caramel", "rousse", "blanche", "noire"].sample,
     min_height: %w(0..50).sample,
     max_height: %w(50..100).sample,
     min_weight: %w(0..50).sample,
@@ -53,7 +55,7 @@ puts "------------------"
   card.save!
 
   puts "----- #{counter} done -----"
-  counter > 9 ? puts "------------------" : puts "-------------------"
+  # counter > 9 ? puts "------------------" : puts "-------------------"
 
 end
 
