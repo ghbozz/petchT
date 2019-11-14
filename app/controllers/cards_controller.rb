@@ -1,8 +1,16 @@
+require 'json'
+
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update]
 
   def index
-    @cards = policy_scope(Card).all
+    if params[:animal]
+      @cards = policy_scope(Card.where(status: 'published', animal: params[:animal]))
+    else
+      @cards = policy_scope(Card).where(status: 'published')
+    end
+
+   
     @pagy, @cards = pagy(
       helpers.index_search(@cards, params),
       items: 10,
@@ -12,16 +20,21 @@ class CardsController < ApplicationController
 
   def show
     authorize @card
+
+    @card_animal = @card.animal
   end
 
   def new
     @card = Card.new(card_params)
     authorize @card
+    @specs = Card::SPECS.to_json
+    @ratings = Card::RATINGS.to_json
   end
 
   def create
     @card = Card.new(card_params)
     @card.set_specs_and_ratings(params)
+    @card = Card.create!(card_params)
     authorize @card
     if @card.save
       redirect_to card_path(@card)

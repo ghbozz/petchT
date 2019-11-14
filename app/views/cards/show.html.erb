@@ -1,42 +1,51 @@
-<div class="container translate-nav">
-  <div class="card-wrapper">
-    <h1><%= @card.title %></h1>
+<div class="translate-nav pb-5">
+  <div class="container pt-4">
+    <div class="petch-breadcrumb">
+      <%= link_to "Accueil", root_path %> > <%= link_to "Fiches animaux", cards_path %> > <%= link_to @card_animal.capitalize, cards_path(params: {animal: @card_animal}) %> > <%= @card.title %>
+    </div>
+  </div>
 
-    <hr>
-
-    <div class="card-content">
-      <div class="card-body">
-        <%= raw @card.body %>
-      </div>
-
-      <div class="card-specs-ratings">
-        <%= image_tag url_for(@card.thumbnail), width: '100%' %>
-        <% @card.ratings.each do |key, value| %>
-          <div class="rating">
-            <span><%= key %></span>
-            <div class="stars">
-              <% value.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - value).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
-            </div>
+  <div class="container">
+    <div class="card-wrapper pt-4">
+      <h1><%= @card.title %></h1>
+      <div class="card-content row">
+        <div class="card-content-body col-md-8">
+          <div class="content-card-text pt-4">
+            <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail" %>
+            <%= raw @card.body %>
           </div>
-        <% end %>
+        </div>
 
-        <% @card.specs.each do |key, value| %>
-          <div class="specs">
-            <div class="spec">
-              <span><%= key.gsub('_', ' ') %></span>
-              <span><%= value.gsub('_', ' ') %></span>
-            </div>
+        <div class="card-specs-ratings col-md-4">
+          <div class="card-specs-box py-3 px-2">
+            <% @card.ratings.each do |key, value| %>
+              <div class="rating">
+                <span><%= key.capitalize %></span>
+                <div class="stars">
+                  <% value.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - value).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <% @card.specs.each do |key, value| %>
+              <div class="specs">
+                <div class="spec">
+                  <span><%= key.gsub('_', ' ').capitalize %></span>
+                  <span class="stars"><%= value.gsub('_', ' ') %></span>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+
       </div>
 
     </div>
 
   </div>
-
 </div>
