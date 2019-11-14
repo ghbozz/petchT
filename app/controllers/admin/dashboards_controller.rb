@@ -1,7 +1,7 @@
 class Admin::DashboardsController < ApplicationController
 
   def admin_dashboard
-    @articles = Article.where(status: ['submitted', 'published'])
+    @articles = Article.all
     @pagy, @articles = pagy(
       helpers.admin_search(@articles, params),
       items: 10,
