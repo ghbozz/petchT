@@ -57,11 +57,26 @@ const initSearch = () => {
   })
 }
 
+const initTagFilter = () => {
+  document.querySelectorAll('.tag-filter .form-check-label').forEach((tag) => {
+    bindTag(tag)
+  })
+}
+
+const bindTag = (tag) => {
+  tag.addEventListener('click', toggleTag)
+}
+
+const toggleTag = (event) => {
+  event.currentTarget.classList.toggle('tag-active')
+}
+
 window.addEventListener('DOMContentLoaded', (e) => {
   if (document.querySelector('.filter')) {
     initFilter();
     initAnimals();
     initThemes();
     initSearch();
+    initTagFilter();
   }
 })
