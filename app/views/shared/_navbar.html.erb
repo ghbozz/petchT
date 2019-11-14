@@ -30,7 +30,8 @@
             <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
             <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
           <% end %>
-          <%= link_to 'Profile', profile_path, class: 'dropdown-item' %>
+          <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
+          <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
           <div class="dropdown-divider"></div>
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
         </div>

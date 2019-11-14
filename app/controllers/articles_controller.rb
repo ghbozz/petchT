@@ -61,7 +61,6 @@ class ArticlesController < ApplicationController
   end
 
   def submit
-    raise
     authorize @article
     @article.update(status: 'submitted')
     redirect_to profile_path
