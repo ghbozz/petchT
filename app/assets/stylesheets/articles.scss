@@ -132,14 +132,14 @@
 .filter {
   z-index: 1;
   width: 300px;
-  height: calc(100% - 80px);
+  height: calc(100% - 100px);
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 100px;
   padding-top: 40px;
   transform: translateX(-90%);
   background-color: white;

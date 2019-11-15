@@ -1,6 +1,7 @@
 import { initStarRating } from "../plugins/init_star_rating";
 import { initNewCardForm } from "../plugins/init_new_card_form";
 import { initSelect2, initSelector } from '../plugins/init_select2';
+import { initNavHover } from '../plugins';
 
 
 // This file is automatically compiled by Webpack, along with any other files
@@ -26,6 +27,10 @@ window.addEventListener("DOMContentLoaded", e => {
 
 window.addEventListener("DOMContentLoaded", e => {
   if (document.querySelector('#init_card')) initNewCardForm();
+});
+
+window.addEventListener('DOMContentLoaded', (e) => {
+  document.querySelector('.nav-wrapper') && initNavHover();
 });
 
 
