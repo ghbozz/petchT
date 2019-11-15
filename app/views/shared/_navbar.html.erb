@@ -1,53 +1,146 @@
-<ul class="nav main-nav justify-content-center">
-  <h1>Petch</h1>
-  <li class="nav-item">
-    <%= link_to "Fiches", cards_path, class: 'nav-link' %>
-  </li>
-  <li class="nav-item">
-    <%= link_to 'Conseils', articles_path, class: 'nav-link' %>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Marques</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link shop" href="#">Boutique</a>
-  </li>
-  <div class="nav-right">
-    <% if params[:controller] == 'articles' && params[:action] == 'index' %>
-      <!-- AJAX SEARCH -->
-      <%= form_tag articles_path, method: :get, id: 'search-form', remote: true do %>
-        <%= text_field_tag :query,
-          params[:query],
-          placeholder: "Recherche"
-        %>
-        <%= submit_tag "Search", class: 'd-none' %>
-      <% end %>
-    <% else %>
-      <!-- NON AJAX SEARCH -->
-      <%= form_tag articles_path, method: :get, id: 'search-form' do %>
-        <%= text_field_tag :query,
-          params[:query],
-          placeholder: "Recherche"
-        %>
-        <%= submit_tag "Search", class: 'd-none' %>
-      <% end %>
-    <% end %>
-    <% if user_signed_in? %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="far fa-user"></i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if current_user.is_writer? || current_user.is_admin? %>
-            <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
-            <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
+<header class="nav-wrapper">
+  <div class="nav-container">
+    <h1 class="nav-logo">
+      <%= link_to 'Petch', root_path %>
+    </h1>
+
+    <div class="nav-menu-desktop">
+      <div class="nav-item">
+        <%= link_to 'Fiches', cards_path, class: 'nav-link nav-link-desktop-menu', id: 'nav-link-cards' %>
+      </div>
+      <div class="nav-item">
+        <%= link_to 'Conseils', articles_path, class: 'nav-link nav-link-desktop-menu', id: 'nav-link-articles' %>
+      </div>
+      <div class="nav-item">
+        <%= link_to 'Marques', articles_path, class: 'nav-link nav-link-desktop-menu', id: 'nav-link-brands' %>
+      </div>
+      <div class="nav-item">
+        <a href="#" class="nav-link shop">Boutique</a>
+      </div>
+
+      <div id="nav-submenu-cards" class="nav-submenu hidden">
+        <div class="submenu-categories">
+          <% Card.order("RANDOM()").limit(3).each do |card| %>
+            <div class="submenu-item">
+              <%= link_to card.animal.capitalize, cards_path(params: {animal: card.animal})%>
+            </div>
           <% end %>
-          <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
-          <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
-          <div class="dropdown-divider"></div>
-          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
         </div>
-      </li>
-    <% end %>
+
+        <div class="submenu-recos">
+          <% Card.last(3).each do |card| %>
+          <%= link_to card_path(card) do %>
+            <div class="submenu-card">
+                <%= image_tag card.thumbnail, class: 'submenu-picture' %>
+                <%= card.title %>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div id="nav-submenu-articles" class="nav-submenu hidden">
+        <div class="submenu-categories">
+            <% Article.order("RANDOM()").limit(3).each do |article| %>
+              <div class="submenu-item">
+                <%= link_to article.animal.capitalize, articles_path(params: {animal: article.animal})%>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="submenu-recos">
+            <% Article.last(3).each do |article| %>
+            <%= link_to article_path(article) do %>
+              <div class="submenu-card">
+                  <%= image_tag article.thumbnail, class: 'submenu-picture' %>
+                  <%= article.title %>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
+
+      <div id="nav-submenu-brands" class="nav-submenu hidden">
+        Coucou from brands
+      </div>
+    </div>
+
+    <div class="right-box">
+      <div class="nav-search">
+        <% if params[:controller] == 'articles' && params[:action] == 'index' %>
+          <!-- AJAX SEARCH -->
+          <%= form_tag articles_path, method: :get, id: 'search-form', remote: true do %>
+            <%= text_field_tag :query,
+              params[:query],
+              placeholder: "Recherche"
+            %>
+            <%= submit_tag "Search", class: 'd-none' %>
+          <% end %>
+        <% else %>
+          <!-- NON AJAX SEARCH -->
+          <%= form_tag articles_path, method: :get, id: 'search-form' do %>
+            <%= text_field_tag :query,
+              params[:query],
+              placeholder: "Recherche"
+            %>
+            <%= submit_tag "Search", class: 'd-none' %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="nav-user-menu">
+        <div class="nav-basket-link">
+          <i class="fas fa-shopping-bag"></i>
+        </div>
+        <div class="nav-heart-link">
+          <i class="far fa-heart"></i>
+        </div>
+        <div class="nav-user-link">
+           <% if user_signed_in? %>
+            <div class="nav-item dropdown">
+              <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-user"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if current_user.is_writer? || current_user.is_admin? %>
+                  <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
+                  <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
+                <% end %>
+                <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
+                <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="nav-menu-mobile">
+        <div class="nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="mobileMenuToggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="mobileMenuToggle">
+            <%= link_to 'Fiches', cards_path, class: 'dropdown-item' %>
+            <%= link_to 'Conseils', articles_path, class: 'dropdown-item' %>
+            <%= link_to 'Marques', articles_path, class: 'dropdown-item' %>
+            <a href="#" class="dropdown-item shop">Boutique</a>
+            <hr>
+            <%= link_to 'Basket', root_path, class: 'dropdown-item' %>
+            <%= link_to 'Heart', root_path, class: 'dropdown-item' %>
+            <hr>
+            <% if current_user.is_writer? || current_user.is_admin? %>
+              <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
+              <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
+            <% end %>
+            <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
+            <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
+          </div>
+      </div>
+
+    </div>
   </div>
-</ul>
+</header>

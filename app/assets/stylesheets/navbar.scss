@@ -1,91 +1,196 @@
 @import "./variables";
 @import "./rem";
 
-.main-nav {
-  z-index: 2;
+.nav-wrapper {
+  background-color: $full-white;
+  left: 0;
+  padding: rem(20px);
+  padding-bottom: 0;
   position: fixed;
-  width: 100vw;
-  height: 80px;
-  align-items: center;
-  border-bottom: 1px solid rgb(200, 200, 200);
-  background-color: white;
-  h1 {
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    left: 30px;
+  right: 0;
+  top: 0;
+  z-index: 2;
+
+  .hidden {
+    display: none !important;
   }
-  .nav-right {
-    display: flex;
+
+  .nav-container {
     align-items: center;
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 30px;
-    form {
-      margin-right: 20px;
-    }
-    i {
-      font-size: 1.6rem;
-      // margin-left: 10px;
-      color: $brand-orange;
-    }
-  }
-  .nav-link {
-    color: rgb(30, 30, 30);
-    font-size: 1.1rem;
-    margin-right: 10px;
-    transition: all .2s ease-out;
-    &:hover {
-      color: $brand-orange;
-    }
-  }
-  .shop {
-    border: 2px solid $brand-orange;
-    color: $brand-orange;
-    &:hover {
-      background-color: $brand-orange;
-      color: white;
-    }
-  }
-  // SEARCH
-  input {
-    outline: none;
-  }
-  input[type=text] {
-    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 13px center;
-    border: solid 1px #ccc;
-    padding: 10px;
-    width: 47px;
+    border-bottom: 2px solid $light-grey;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: rem(20px);
 
-    -webkit-border-radius: 10em;
-    -moz-border-radius: 10em;
-    border-radius: 10em;
+    h1>a {
+      color: $dark-grey;
+      text-decoration: none;
+    }
 
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-  }
-  #search-form input[type=text] {
-    padding-left: 10px;
-    color: transparent;
-    cursor: pointer;
-  }
-  #search-form input[type=text]:hover {
-    background-color: #fff;
-  }
-  #search-form input[type=text]:focus {
-    border: solid 1px $brand-orange;
-    width: 200px;
-    padding-left: 40px;
-    color: #000;
-    background-color: #fff;
-    cursor: auto;
-  }
-  #search-form input:-moz-placeholder {
-    color: transparent;
-  }
-  #search-form input::-webkit-input-placeholder {
-    color: transparent;
+    .nav-menu-desktop {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      .nav-link {
+        color: $dark-grey;
+        font-size: rem(18px);
+        transition: all .2s ease-out;
+
+        &:hover {
+          color: $brand-orange;
+        }
+
+        &.shop {
+          border: 2px solid $brand-orange;
+          color: $brand-orange;
+
+          &:hover {
+            background-color: $brand-orange;
+            color: $full-white;
+          }
+        }
+      }
+
+      .nav-submenu {
+        align-items: center;
+        background-color: $full-white;
+        border: 1px solid $light-grey;
+        display: flex;
+        left: 50%;
+        padding: rem(20px) rem(30px);
+        position: fixed;
+        top: rem(88px);
+        transform: translateX(-50%);
+
+        a {
+            color: $dark-grey;
+            text-decoration: none;
+          }
+
+        .submenu-categories {
+          display: flex;
+          flex-direction: column;
+          font-size: rem(16px);
+          justify-content: space-between;
+          height: rem(100px);
+          padding: rem(6px) rem(40px) rem(6px) 0;
+
+          a:hover {
+              color: $brand-orange;
+            }
+          }
+
+        .submenu-recos {
+          display: flex;
+
+          .submenu-card {
+            display: flex;
+            flex-direction: column;
+            padding: rem(10px);
+
+            .submenu-picture {
+              height: rem(120px);
+              object-fit: cover;
+              width: rem(120px);
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: $md) {
+        display: none;
+      }
+    }
+    .right-box {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      .nav-search {
+        input {
+          outline: none;
+        }
+        input[type=text] {
+          background: url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 13px center;
+          border: none;
+          border-radius: 10em;
+          padding: rem(10px);
+          width: rem(47px);
+
+          -webkit-transition: all .5s;
+          -moz-transition: all .5s;
+          transition: all .5s;
+        }
+        #search-form input[type=text] {
+          padding-left: 10px;
+          color: transparent;
+          cursor: pointer;
+        }
+        #search-form input[type=text]:hover {
+          background-color: #fff;
+        }
+        #search-form input[type=text]:focus {
+          border: solid 1px $brand-orange;
+          width: rem(200px);
+          padding-left: 40px;
+          color: $full-black;
+          background-color: $full-white;
+          cursor: auto;
+        }
+        #search-form input:-moz-placeholder {
+          color: transparent;
+        }
+        #search-form input::-webkit-input-placeholder {
+          color: transparent;
+        }
+      }
+
+      .nav-user-menu {
+        align-items: center;
+        color: $dark-grey;
+        display: flex;
+        font-size: rem(20px);
+        justify-content: space-between;
+
+        &>div {
+          padding: rem(5px) rem(8px);
+
+          a {
+            color: $dark-grey;
+            text-decoration: none;
+          }
+        }
+
+        #navbarDropdown::after {
+          display: none;
+        }
+
+        @media screen and (max-width: $md) {
+          display: none;
+        }
+      }
+
+      .nav-menu-mobile {
+        font-size: rem(24px);
+
+        a {
+          color: $dark-grey;
+          text-decoration: none;
+        }
+
+        #mobileMenuToggle::after {
+          display: none;
+        }
+
+        .shop {
+          color: $brand-orange;
+        }
+
+        @media screen and (min-width: $md) {
+          display: none;
+        }
+      }
+    }
   }
 }
