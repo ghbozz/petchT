@@ -1,11 +1,10 @@
-require 'json'
-
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update]
 
   def index
     if params[:animal]
-      @cards = policy_scope(Card.where(status: 'published', animal: params[:animal]))
+      @cards = policy_scope(Card).where(status: 'published')
+      @cards.select { |card| card.specie.animal.name == params[:animal] }
     else
       @cards = policy_scope(Card).where(status: 'published')
     end
