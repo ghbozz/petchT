@@ -25,6 +25,10 @@ class ArticlePolicy < ApplicationPolicy
     edit?
   end
 
+  def destroy?
+    record.user == user || user.is_admin?
+  end
+
   def submit?
     edit?
   end

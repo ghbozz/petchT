@@ -46,7 +46,10 @@ window.addEventListener("DOMContentLoaded", e => {
     var quill = new Quill("#editor", {
       theme: "snow",
       modules: {
-        toolbar: tooltipOptions
+        toolbar: tooltipOptions,
+        imageResize: {
+          displaySize: true
+        }
       },
       placeholder: "Rédiger un article"
     });

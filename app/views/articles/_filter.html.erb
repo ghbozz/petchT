@@ -1,4 +1,4 @@
-<div class="filter">
+<div class="filter" style="overflow: scroll">
   <i class="fas fa-grip-lines-vertical" id="filter-toggle"></i>
   <div class="filter-form">
     <%= simple_form_for :filter_data, url: articles_path, method: :get, remote: true do |f| %>
@@ -20,6 +20,17 @@
       <% Article::THEMES.each do |theme| %>
         <%= f.input theme.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
       <% end %>
+    </div>
+    <div class="tags-filter">
+      <h5>Tags</h5>
+      <hr>
+      <div class="masonry-tags">
+        <% TAGS.each do |tag| %>
+          <span class="tag-filter">
+            <%= f.input tag.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+          </span>
+        <% end %>
+      </div>
     </div>
       <%= f.submit 'Filtrer', class: 'filter-btn' %>
     <% end %>

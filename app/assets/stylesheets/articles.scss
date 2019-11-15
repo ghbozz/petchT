@@ -156,15 +156,15 @@
   }
 
   .filter-form {
-    padding: 40px;
+    padding: 0px 30px 30px 30px;
     width: 100%;
 
     h5 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .animals-filter {
-      margin-bottom: 40px;
+      margin-bottom: 15px;
 
       .form-check {
         padding-left: 0px;
@@ -191,7 +191,7 @@
           }
 
           &:hover {
-            border: 1px solid rgb(241, 166, 106);
+            border: 1px solid $brand-orange;
             -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
             -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
             box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
@@ -199,7 +199,7 @@
         }
 
         .label-active {
-          background-color: rgb(241, 166, 106);
+          background-color: $brand-orange;
           -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
           -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
@@ -242,7 +242,7 @@
         }
 
         .label-active::before {
-          background-color: rgb(241, 166, 106);
+          background-color: $brand-orange;
           -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
           -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
@@ -251,6 +251,36 @@
             color: white;
           }
         }
+      }
+    }
+    .tags-filter {
+      .form-check-label {
+        background-color: $brand-orange;
+        border-radius: rem(4px);
+        color: rgba(255, 255, 255, 1);
+        padding: rem(2px) rem(6px);
+      }
+      .masonry-tags {
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+      }
+
+      .masonry-tags span {
+        flex-grow: 1;
+        width: auto;
+        padding: 0px;
+      }
+
+      .masonry-tags .form-check {
+        padding-left: 0px;
+      }
+
+      .masonry-tags .form-group {
+        margin-bottom: 0.5rem;
+      }
+      .tag-active {
+        background-color: darken($brand-orange, 10%)
       }
     }
   }
@@ -264,14 +294,14 @@
   box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.15);
 
   i {
-    color: rgb(241, 166, 106);
+    color: $brand-orange;
   }
 }
 
 .filter-btn {
   margin-top: 20px;
   width: 100%;
-  background-color: rgb(241, 166, 106);
+  background-color: $brand-orange;
   color: white;
   border-radius: 25px;
   padding: 10px 0px;

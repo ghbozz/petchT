@@ -1,20 +1,20 @@
 <div class="tab-pane fade show" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
   <%= simple_form_for :filter_data, url: profile_path, method: :get, remote: true do |f| %>
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 vertical-center">
         <%= f.input :query, label: false, placeholder: 'rechercher' %>
       </div>
-      <div class="col">
+      <div class="col vertical-center">
         <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'theme' %>
       </div>
-      <div class="col">
+      <div class="col vertical-center">
         <%= f.input :animal, collection: Article::ANIMALS, label: false, prompt: 'animal' %>
       </div>
-      <div class="col">
+      <div class="col vertical-center">
         <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'status' %>
       </div>
-      <div class="col">
-        <%= f.submit %>
+      <div class="col vertical-center">
+        <%= f.submit 'Filtrer', class: 'petch-btn' %>
       </div>
     </div>
   <% end %>

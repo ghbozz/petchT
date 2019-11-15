@@ -28,6 +28,11 @@
   padding: 0px;
 }
 
+.vertical-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .petch-breadcrumb {
   font-size: rem(14px);
 
@@ -39,5 +44,59 @@
     &:hover {
       color: $brand-orange;
     }
+  }
+}
+
+.petch-btn {
+  background-color: $brand-orange;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  transition: all .3s ease-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    -webkit-box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
+    -moz-box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
+    box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
+  }
+}
+
+.file {
+  display: flex;
+  justify-content: center;
+  input {
+    display: none;
+  }
+  label {
+    background-color: $brand-orange;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 40px;
+    cursor: pointer;
+    abbr {
+      display: none;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  span {
+    padding: 0px 5px;
+  }
+  a {
+    color: $dark-grey;
+    &:hover {
+      color: $medium-grey;
+    }
+  }
+  .active {
+    color: $dark-grey;
   }
 }

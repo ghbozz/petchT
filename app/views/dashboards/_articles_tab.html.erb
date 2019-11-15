@@ -41,8 +41,17 @@
           <i class="far fa-eye"></i>
           <%= link_to 'Voir', article_path(article) %>
         </span>
+        <% if article.status == 'draft' || article.status == 'submitted' %>
+          <span>
+            <i class="fas fa-trash-alt"></i>
+            <%= link_to 'Supprimer', article_path(article), method: :delete %>
+          </span>
+        <% end %>
       </div>
     </div>
   <% end %>
-  <%= raw pagy_nav(@pagy) %>
+  <hr>
+  <div class="pagination">
+    <%= raw pagy_nav(@pagy) %>
+  </div>
 </div>
