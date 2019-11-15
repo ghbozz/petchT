@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_132146) do
+ActiveRecord::Schema.define(version: 2019_11_15_141740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 2019_11_14_132146) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "animals", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "articles", force: :cascade do |t|
@@ -64,6 +70,16 @@ ActiveRecord::Schema.define(version: 2019_11_14_132146) do
     t.integer "max_weight"
     t.string "animal"
     t.string "status", default: "draft"
+    t.bigint "specie_id"
+    t.index ["specie_id"], name: "index_cards_on_specie_id"
+  end
+
+  create_table "species", force: :cascade do |t|
+    t.string "name"
+    t.bigint "animal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["animal_id"], name: "index_species_on_animal_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -112,5 +128,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_132146) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "species", "animals"
   add_foreign_key "taggings", "tags"
 end
