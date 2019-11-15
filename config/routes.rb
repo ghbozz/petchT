@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'card_init', to: 'cards#init'
 
-  resources :articles, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     member do
       post 'submit'
     end

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :submit]
+  before_action :set_article, only: [:show, :edit, :update, :submit, :destroy]
 
   def index
     @articles = policy_scope(Article).where(status: 'published')
@@ -58,6 +58,12 @@ class ArticlesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    authorize @article
+    @article.destroy
+    redirect_to profile_path
   end
 
   def submit
