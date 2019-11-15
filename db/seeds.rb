@@ -59,20 +59,22 @@ Animal.all.each do |animal|
   end
 end
 
+Card.create!(specie: Specie.first, title: 'Chien fou')
+
 # ===================================
 # ===================================
 
-# def get_images
-#   Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
-# end
+def get_images
+  Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
+end
 
-# writer = User.new(email: 'writer@petch.com', password: 'mdpmdp', permission: 'writer', first_name: 'John', last_name: 'Doe', signature: 'Hello i am writer', profession: 'Dev')
-# writer.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
-# writer.save!
+writer = User.new(email: 'writer@petch.com', password: 'mdpmdp', permission: 'writer', first_name: 'John', last_name: 'Doe', signature: 'Hello i am writer', profession: 'Dev')
+writer.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+writer.save!
 
-# admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admin', first_name: 'John', last_name: 'Doe', signature: 'Hello i am admin', profession: 'Dev')
-# admin.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
-# admin.save!
+admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admin', first_name: 'John', last_name: 'Doe', signature: 'Hello i am admin', profession: 'Dev')
+admin.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+admin.save!
 
 # counter = 0
 

@@ -1,0 +1,66 @@
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<!-- <script src="https://cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script> -->
+<%= simple_form_for(card, url: cards_path(animal: params[:animal]), method: :post) do |f| %>
+  <h3 class="mb-5">Creation d'une fiche pour <%#= card.animal %></h3>
+
+  <div class="inputs">
+    <div class="row">
+      <div class="col">
+        <!-- COMMON INPUTS -->
+        <%#= f.hidden_field :animal, :input_html => { :value => card.animal } %>
+        <%= f.input :thumbnail %>
+        <% if card.specie %>
+        <%= f.input :specie, placeholder: 'Espece', label: false, input_html: { class: 'check', value: card.specie.name } %>
+        <% else %>
+          <%= f.input :specie, placeholder: 'Espece', label: false, input_html: { class: 'check' } %>
+        <% end %>
+
+        <%= f.input :life_expectancy, label: false, placeholder: 'Esperance du vie', input_html: { class: 'check' } %>
+        <div class="row">
+          <div class="col">
+            <%= f.input :min_height, placeholder: 'Taille minimal (cm)', label: false, input_html: { class: 'check'} %>
+          </div>
+          <div class="col">
+            <%= f.input :max_height, placeholder: 'Taille maximal', label: false, input_html: { class: 'check'} %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= f.input :min_weight, placeholder: 'Poid minimal (kg)', label: false, input_html: { class: 'check'} %>
+          </div>
+          <div class="col">
+            <%= f.input :max_weight, placeholder: 'Poid maximal (kg)', label: false, input_html: { class: 'check'} %>
+          </div>
+        </div>
+        <%= f.input :origin, collection: [CONTINENTS, COUNTRIES].flatten, input_html: { class: 'select2 check' }, prompt: 'Origine', label: false %>
+
+        <hr>
+
+        <!-- SPECIFIC INPUTS -->
+        <%= simple_fields_for :specs, OpenStruct.new(card.specificities) do |x| %>
+          <% Card::SPECS[params[:animal].to_sym].each do |key, value| %>
+            <%= x.input key, collection: value.map { |i| i.capitalize }, prompt: "#{key.to_s.gsub('_', ' ').capitalize}", label: false, input_html: { class: 'check'} %>
+          <% end %>
+        <% end %>
+
+      </div>
+
+      <!-- SPECIFIC RATINGS -->
+      <div class="col card-ratings">
+        <%= simple_fields_for :ratings, OpenStruct.new(card.ratings) do |x| %>
+          <% Card::RATINGS[params[:animal].to_sym].each do |rating| %>
+            <%= x.input rating, collection: 1..5, input_html: { class: 'rating_field' }  %>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+
+  <%= f.hidden_field :body, class: 'body' %>
+  <div id="editor" style="min-height: 400px"></div>
+  <button id="fake-submit" class="btn btn-primary">Feel the Form</button>
+<% end %>

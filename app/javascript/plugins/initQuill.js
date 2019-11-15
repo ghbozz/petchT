@@ -29,6 +29,7 @@ window.addEventListener("DOMContentLoaded", e => {
     };
     // APPELE EN PREMIER
     const submitForm = () => {
+      console.log('hello')
       const editor = document.querySelector(".ql-editor");
       const body = document.querySelector(".body");
       body.value = editor.innerHTML;
@@ -46,10 +47,10 @@ window.addEventListener("DOMContentLoaded", e => {
     var quill = new Quill("#editor", {
       theme: "snow",
       modules: {
-        toolbar: tooltipOptions,
-        imageResize: {
-          displaySize: true
-        }
+        toolbar: tooltipOptions
+        // imageResize: {
+        //   displaySize: true
+        // }
       },
       placeholder: "Rédiger un article"
     });

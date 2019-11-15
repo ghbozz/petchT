@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2019_11_15_141740) do
     t.integer "max_height"
     t.integer "min_weight"
     t.integer "max_weight"
-    t.string "animal"
     t.string "status", default: "draft"
     t.bigint "specie_id"
     t.index ["specie_id"], name: "index_cards_on_specie_id"
