@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   def index
     if params[:animal]
       @cards = policy_scope(Card).where(status: 'published')
-      @cards = @cards.where(specie: Animal.find_by(name: params[:animal]).species)
+      @cards = @cards.where(animal: Animal.find_by(name: params[:animal]))
     else
       @cards = policy_scope(Card).where(status: 'published')
     end
@@ -20,7 +20,7 @@ class CardsController < ApplicationController
   def show
     authorize @card
 
-    @animal = @card.specie.animal.name
+    @animal = @card.animal.name
     # @recomandations = Card.where(specie: @card.specie).sample(3)
   end
 
@@ -33,8 +33,10 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.set_specs_and_ratings(params)
     @card.specie = set_specie(params)
+    @card.animal = Animal.find_by(name: params[:animal])
+
     authorize @card
-    if @card.save
+    if @card.save!
       redirect_to card_path(@card)
     else
       render :new, animal: params[:animal]

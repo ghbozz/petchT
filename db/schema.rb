@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_180854) do
+ActiveRecord::Schema.define(version: 2019_11_15_210030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_180854) do
     t.integer "max_weight"
     t.string "status", default: "draft"
     t.bigint "specie_id"
+    t.bigint "animal_id"
+    t.index ["animal_id"], name: "index_cards_on_animal_id"
     t.index ["specie_id"], name: "index_cards_on_specie_id"
   end
 

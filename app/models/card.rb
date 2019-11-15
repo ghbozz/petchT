@@ -2,7 +2,7 @@ class Card < ApplicationRecord
   has_one_attached :thumbnail
 
   belongs_to :specie
-  has_one :animal, through: :specie
+  belongs_to :animal
 
   STATUS = %w(draft published submitted)
 

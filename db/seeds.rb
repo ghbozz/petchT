@@ -109,6 +109,7 @@ puts "------------------"
     status: Card::STATUS.sample,
     specie: Specie.all.sample
   )
+  card.animal = card.specie.animal
   card.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   card.save!
 
