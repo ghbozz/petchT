@@ -29,7 +29,6 @@ window.addEventListener("DOMContentLoaded", e => {
     };
     // APPELE EN PREMIER
     const submitForm = () => {
-      console.log('hello')
       const editor = document.querySelector(".ql-editor");
       const body = document.querySelector(".body");
       body.value = editor.innerHTML;

@@ -5,7 +5,7 @@
       <input type="hidden" name="animal" value="">
 
       <div class="row">
-        <% Card::ANIMALS.each do |animal| %>
+        <% Animal.pluck(:name).each do |animal| %>
           <div class="col" align="center">
             <div class="form-check animals-form-labels-container">
               <input class="form-check-input optional d-none" type="radio" value="<%= animal %>" name="animal" id="card_animal_<%= animal %>">

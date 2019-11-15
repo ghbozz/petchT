@@ -59,7 +59,7 @@ Animal.all.each do |animal|
   end
 end
 
-Card.create!(specie: Specie.first, title: 'Chien fou')
+# Card.create!(specie: Specie.first, title: 'Chien fou', body: 'Hello Chien Fou')
 
 # ===================================
 # ===================================
@@ -76,46 +76,45 @@ admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admi
 admin.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
 admin.save!
 
-# counter = 0
+counter = 0
 
-# puts "------------------"
+puts "------------------"
 
-# 20.times do
-#   counter += 1
-#   article = Article.new(
-#     title: Faker::Creature::Animal.name,
-#     subtitle: Faker::Lorem.sentence,
-#     body: Faker::Lorem.paragraphs(number: 50).join(''),
-#     animal:  Article::ANIMALS.sample,
-#     theme: Article::THEMES.sample,
-#     status: Article::STATUS.sample,
-#     user: User.first
-#   )
-#   article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
-#   article.save!
+20.times do
+  counter += 1
+  article = Article.new(
+    title: Faker::Creature::Animal.name,
+    subtitle: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraphs(number: 50).join(''),
+    animal:  Article::ANIMALS.sample,
+    theme: Article::THEMES.sample,
+    status: Article::STATUS.sample,
+    user: User.first
+  )
+  article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+  article.save!
 
-#   card = Card.new(
-#     animal: Card::ANIMALS.sample,
-#     specificities: {
-#       fci: ["groupe_1", "groupe_2", "groupe_3", "groupe_4", "groupe_5"].sample,
-#       type_de_poil: ["ras", "courts", "longs", "bouclés"].sample,
-#       mode_de_vie: ["patachon", "frimeur", "aventurier", "gigolo"].sample
-#     },
-#     origin: Faker::Address.country,
-#     title: Faker::Creature::Animal.name,
-#     body: Faker::Lorem.paragraphs(number: 50).join(''),
-#     life_expectancy: %w(0..50).sample,
-#     min_height: %w(0..50).sample,
-#     max_height: %w(50..100).sample,
-#     min_weight: %w(0..50).sample,
-#     max_weight: %w(50..100).sample,
-#     status: Card::STATUS.sample,
-#   )
-#   card.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
-#   card.save!
+  card = Card.new(
+    specificities: {
+      fci: ["groupe_1", "groupe_2", "groupe_3", "groupe_4", "groupe_5"].sample,
+      type_de_poil: ["ras", "courts", "longs", "bouclés"].sample,
+      mode_de_vie: ["patachon", "frimeur", "aventurier", "gigolo"].sample
+    },
+    origin: Faker::Address.country,
+    body: Faker::Lorem.paragraphs(number: 50).join(''),
+    life_expectancy: %w(0..50).sample,
+    min_height: %w(0..50).sample,
+    max_height: %w(50..100).sample,
+    min_weight: %w(0..50).sample,
+    max_weight: %w(50..100).sample,
+    status: Card::STATUS.sample,
+    specie: Specie.all.sample
+  )
+  card.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+  card.save!
 
-#   puts "----- #{counter} done -----"
-#   # counter > 9 ? puts "------------------" : puts "-------------------"
+  puts "----- #{counter} done -----"
+  # counter > 9 ? puts "------------------" : puts "-------------------"
 
-# end
+end
 

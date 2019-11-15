@@ -35,8 +35,7 @@ class CardsController < ApplicationController
     @card.set_specs_and_ratings(params)
     @card.specie = set_specie(params)
     authorize @card
-    raise
-    if @card.save!
+    if @card.save
       redirect_to card_path(@card)
     else
       render :new, animal: params[:animal]

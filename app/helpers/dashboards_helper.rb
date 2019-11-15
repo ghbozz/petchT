@@ -13,7 +13,6 @@ module DashboardsHelper
 
   def admin_search(articles, params)
 
-
     if params[:filter_data]
       author = User.find_by_email(params[:filter_data][:user])
       articles = articles.search_articles(params[:filter_data][:query]) if !params[:filter_data][:query].blank?
