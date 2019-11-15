@@ -32,7 +32,7 @@
 
         <!-- SPECIFIC INPUTS -->
         <%= simple_fields_for :specs, OpenStruct.new(card.specificities) do |x| %>
-          <% Card::SPECS[params[:animal].to_sym].each do |key, value| %>
+          <% Animal::SPECS[params[:animal].to_sym].each do |key, value| %>
             <%= x.input key, collection: value.map { |i| i.capitalize }, prompt: "#{key.to_s.gsub('_', ' ').capitalize}", label: false, input_html: { class: 'check'} %>
           <% end %>
         <% end %>
@@ -42,7 +42,7 @@
       <!-- SPECIFIC RATINGS -->
       <div class="col card-ratings">
         <%= simple_fields_for :ratings, OpenStruct.new(card.ratings) do |x| %>
-          <% Card::RATINGS[params[:animal].to_sym].each do |rating| %>
+          <% Animal::RATINGS[params[:animal].to_sym].each do |rating| %>
             <%= x.input rating, collection: 1..5, input_html: { class: 'rating_field' }  %>
           <% end %>
         <% end %>
