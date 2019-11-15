@@ -1,3 +1,6 @@
+@import "./variables";
+@import "./rem";
+
 .main-nav {
   z-index: 2;
   position: fixed;
@@ -25,7 +28,7 @@
     i {
       font-size: 1.6rem;
       // margin-left: 10px;
-      color: rgb(241, 166, 106);
+      color: $brand-orange;
     }
   }
   .nav-link {
@@ -34,14 +37,14 @@
     margin-right: 10px;
     transition: all .2s ease-out;
     &:hover {
-      color: rgb(241, 166, 106);
+      color: $brand-orange;
     }
   }
   .shop {
-    border: 2px solid rgb(241, 166, 106);
-    color: rgb(241, 166, 106);
+    border: 2px solid $brand-orange;
+    color: $brand-orange;
     &:hover {
-      background-color: rgb(241, 166, 106);
+      background-color: $brand-orange;
       color: white;
     }
   }
@@ -72,7 +75,7 @@
     background-color: #fff;
   }
   #search-form input[type=text]:focus {
-    border: solid 1px rgb(241, 166, 106);
+    border: solid 1px $brand-orange;
     width: 200px;
     padding-left: 40px;
     color: #000;

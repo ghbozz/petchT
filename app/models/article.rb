@@ -1,11 +1,9 @@
 class Article < ApplicationRecord
   before_save :tags_validation
 
-  acts_as_taggable
+  acts_as_taggable_on :tags
 
   belongs_to :user
-  has_many :article_tags, dependent: :destroy
-  has_many :tags, through: :article_tags
 
   has_one_attached :thumbnail
 
