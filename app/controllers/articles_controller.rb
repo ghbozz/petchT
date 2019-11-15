@@ -2,26 +2,27 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :submit, :destroy]
 
   def index
-    @articles = policy_scope(Article).where(status: 'published')
+    if params[:animal]
+      @articles = policy_scope(Article)
+                    .where(status: 'published')
+                    .where(animal: Animal.find_by(name: params[:animal]))
+    else
+      @articles = policy_scope(Article).where(status: 'published')
+    end
+
+
     @pagy, @articles = pagy(
       helpers.index_search(@articles, params),
       items: 10,
       link_extra: 'data-remote="true"'
     )
-
-    # if params[:query] || params[:filter]
-      # respond_to do |format|
-      #   format.html { redirect_to articles_path }
-      #   format.js
-      # end
-    # end
   end
 
   def show
     authorize @article
 
     @article_animal = @article.animal
-    @recomandations = Article.where(theme: @article.theme).sample(3)
+    @recomandations = Article.where(theme: @article.theme, animal: @article.animal).sample(3)
   end
 
   def new
@@ -32,10 +33,10 @@ class ArticlesController < ApplicationController
   def create
     params[:article][:tag_list] = set_tags(params[:tags])
     @article = Article.new(article_params.merge(user: current_user))
+    @article.animal = Animal.find_by(name: params[:article][:animal])
     @article.update(status: 'submitted') if params[:commit] == 'Poster'
 
     authorize @article
-
     if @article.save
       params
       redirect_to article_path(@article)
@@ -81,7 +82,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :animal, :theme, :thumbnail, :tag_list, images: [])
+    params.require(:article).permit(:title, :subtitle, :body, :theme, :thumbnail, :tag_list, images: [])
   end
 
   def set_tags(tags)

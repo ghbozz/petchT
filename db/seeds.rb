@@ -77,7 +77,6 @@ admin.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
 admin.save!
 
 counter = 0
-
 puts "------------------"
 
 20.times do
@@ -86,10 +85,10 @@ puts "------------------"
     title: Faker::Creature::Animal.name,
     subtitle: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraphs(number: 50).join(''),
-    animal:  Article::ANIMALS.sample,
+    animal:  Animal.all.sample,
     theme: Article::THEMES.sample,
     status: Article::STATUS.sample,
-    user: User.first
+    user: User.all.sample
   )
   article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
   article.save!

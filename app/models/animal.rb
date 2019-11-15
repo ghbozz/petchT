@@ -1,5 +1,6 @@
 class Animal < ApplicationRecord
   has_many :species, :class_name => 'Specie'
+  has_many :articles
 
 
   # ANIMALS = %w(chien chat rongeur)
