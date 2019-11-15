@@ -1,7 +1,7 @@
 <div class="filter" style="overflow: scroll">
   <i class="fas fa-grip-lines-vertical" id="filter-toggle"></i>
   <div class="filter-form">
-    <%= simple_form_for :filter_data, url: articles_path, method: :get do |f| %>
+    <%= simple_form_for :filter_data, url: articles_path, method: :get, remote: true do |f| %>
     <div class="animals-filter">
       <h5>Animaux</h5>
       <hr>
