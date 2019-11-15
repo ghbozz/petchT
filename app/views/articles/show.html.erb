@@ -1,11 +1,9 @@
 <div class="translate-nav pb-5">
   <div class="container pt-4">
     <div class="petch-breadcrumb">
-<<<<<<< HEAD
-      <%= link_to "Accueil", root_path %> > <%= link_to "Conseils animaux", articles_path %> > <%= link_to @article_animal.capitalize, articles_path(params: {animal: @article_animal}) %> > <%= @article.title %>
-=======
+
       <%= link_to "Accueil", root_path %> > <%= link_to "Conseils animaux", articles_path %> > <%= link_to @article.animal.name.capitalize, articles_path(params: {animal: @article.animal.name}) %> > <%= @article.title %>
->>>>>>> fix articles coz of new tables done
+
     </div>
   </div>
 
