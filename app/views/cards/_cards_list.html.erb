@@ -3,9 +3,9 @@
     <% if index == 0 %>
       <div class="col-12 card-container">
         <%= link_to card_path(card) do %>
-          <div class="article-card article-card-main d-flex justify-content-left">
+          <div class="article-card article-card-main">
             <%= image_tag url_for(card.thumbnail) %>
-            <div class="card-desc">
+            <div class="article-desc">
               <h4><%= card.title %></h4>
               <p><%= raw card.body.slice(0, 50) %></p>
             </div>
@@ -13,7 +13,7 @@
         <% end %>
       </div>
     <% else %>
-      <div class="col-xs-12 col-sm-6 col-md-3 d-flex justify-content-center card-container">
+      <div class="col-12 col-sm-6 col-md-3 article-container">
         <%= link_to card_path(card) do %>
           <div class="article-card">
             <%= image_tag url_for(card.thumbnail) %>

@@ -28,8 +28,23 @@
     text-decoration: none;
     color: black;
   }
+}
 
-  &.article-card-main {
+.card-container {
+  padding: .4rem !important;
+}
+
+@media screen and (max-width: 767px) {
+  .article-card-main {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .article-card-main {
+    display: flex;
+    justify-content: start;
+
     img {
       height: 15rem;
       width: calc(50% - .4rem);
@@ -37,11 +52,7 @@
 
     h4,
     p {
-      margin-left: .8rem;
+      margin-left: .8rem !important;
     }
   }
-}
-
-.card-container {
-  padding: .4rem !important;
 }

@@ -1,74 +1,82 @@
-<div class="container translate-nav pt-5 pb-5">
-
-  <div class="article-header">
-    <div>
-      <div class="article-headings">
-        <h1><%= @article.title %></h1>
-        <h4><%= @article.subtitle %></h4>
-      </div>
-
-      <div class="author-infos">
-        <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle article-avatar" width="75px">
-        <div>
-          <span class="author-name"><%= @article.author_name %></span><br>
-          <span class="author-job"><%= @article.user.profession %></span><br>
-          <span class="created_at"><%= time_ago_in_words(@article.created_at) %> ago</span>
-        </div>
-      </div>
+<div class="translate-nav pb-5">
+  <div class="container pt-4">
+    <div class="petch-breadcrumb">
+      <%= link_to "Accueil", root_path %> > <%= link_to "Conseils animaux", articles_path %> > <%= link_to @article_animal.capitalize, cards_path(params: {animal: @article_animal}) %> > <%= @article.title %>
     </div>
+  </div>
 
-    <% if current_user.is_admin? || current_user.is_author?(@article) %>
-      <div class="article-status-info">
-        <% if @article.status == 'draft' %>
-          <span class="article-status draft"><%= @article.status %></span>
-        <% end %>
+  <div class="container">
+    <div class="card-wrapper pt-4">
+      <div class="article-header">
+        <div>
+          <div class="article-headings">
+            <h1><%= @article.title %></h1>
+            <h4><%= @article.subtitle %></h4>
+          </div>
 
-        <% if @article.status == 'published' %>
-          <span class="article-status published"><%= @article.status %></span>
-        <% end %>
+          <div class="author-infos">
+            <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle article-avatar" width="75px">
+            <div>
+              <span class="author-name"><%= @article.author_name %></span><br>
+              <span class="author-job"><%= @article.user.profession %></span><br>
+              <span class="created_at"><%= time_ago_in_words(@article.created_at) %> ago</span>
+            </div>
+          </div>
+        </div>
 
-        <% if @article.status == 'submitted' %>
-          <span class="article-status submitted"><%= @article.status %></span>
+        <% if current_user.is_admin? || current_user.is_author?(@article) %>
+          <div class="article-status-info">
+            <% if @article.status == 'draft' %>
+              <span class="article-status draft"><%= @article.status %></span>
+            <% end %>
+
+            <% if @article.status == 'published' %>
+              <span class="article-status published"><%= @article.status %></span>
+            <% end %>
+
+            <% if @article.status == 'submitted' %>
+              <span class="article-status submitted"><%= @article.status %></span>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
 
-  <hr>
+      <hr>
 
-  <div class="article-body">
-    <%= raw @article.body %>
-  </div>
-
-
-  <div class="article-tags d-flex pt-5">
-    <% @article.tag_list.each do |tag| %>
-      <div class="tag-list-item">
-        <%= tag %>
+      <div class="article-body">
+        <%= raw @article.body %>
       </div>
-    <% end %>
-  </div>
 
-  <hr>
 
-  <h3>Articles similaires</h3>
+      <div class="article-tags d-flex pt-5">
+        <% @article.tag_list.each do |tag| %>
+          <div class="tag-list-item">
+            <%= tag %>
+          </div>
+        <% end %>
+      </div>
 
-  <div class="recomandations pt-5">
-    <div class="row">
-      <% @recomandations.each do |reco| %>
-        <div class="col-4">
-          <%= link_to article_path(reco) do  %>
-            <div class="article-card">
-              <%= image_tag url_for(reco.thumbnail) %>
-              <div class="card-desc">
-                <h4><%= reco.title %></h4>
-                <p><%= reco.subtitle %></p>
-              </div>
+      <hr>
+
+      <h3>Articles similaires</h3>
+
+      <div class="recomandations pt-5">
+        <div class="row">
+          <% @recomandations.each do |reco| %>
+            <div class="col-12 col-md-4">
+              <%= link_to article_path(reco) do  %>
+                <div class="article-card">
+                  <%= image_tag url_for(reco.thumbnail) %>
+                  <div class="card-desc">
+                    <h4><%= reco.title %></h4>
+                    <p><%= reco.subtitle %></p>
+                  </div>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
-
 </div>
