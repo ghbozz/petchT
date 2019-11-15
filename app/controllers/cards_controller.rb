@@ -22,6 +22,7 @@ class CardsController < ApplicationController
     authorize @card
 
     @card_animal = @card.animal
+    @recomandations = Card.where(animal: @card.animal).sample(3)
   end
 
   def new

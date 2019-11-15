@@ -19,6 +19,8 @@ class ArticlesController < ApplicationController
 
   def show
     authorize @article
+
+    @article_animal = @article.animal
     @recomandations = Article.where(theme: @article.theme).sample(3)
   end
 

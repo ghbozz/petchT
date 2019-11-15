@@ -7,7 +7,13 @@
 
   <div class="container">
     <div class="card-wrapper pt-4">
-      <h1><%= @card.title %></h1>
+
+      <div class="article-header">
+        <div class="article-headings">
+          <h1><%= @card.title %></h1>
+        </div>
+      </div>
+
       <div class="card-content row">
         <div class="card-content-body col-md-8">
           <div class="content-card-text pt-4">
@@ -16,7 +22,7 @@
           </div>
         </div>
 
-        <div class="card-specs-ratings col-md-4">
+        <div class="card-specs-ratings col-md-4 mt-4 mt-md-0">
           <div class="card-specs-box py-4 px-2">
             <% @card.ratings.each do |key, value| %>
               <div class="rating">
@@ -32,6 +38,7 @@
               </div>
             <% end %>
 
+
             <% @card.specificities.each do |key, value| %>
               <div class="specs">
                 <div class="spec">
@@ -42,6 +49,35 @@
             <% end %>
           </div>
         </div>
+      </div>
+
+      <!-- <div class="article-tags d-flex pt-5">
+      <#% @card.tag_list.each do |tag| %>
+        <div class="tag-list-item">
+          <%#= tag %>
+        </div>
+      <#% end %>
+    </div> -->
+
+    <hr>
+
+    <h3>Articles similaires</h3>
+
+    <div class="recomandations pt-5">
+      <div class="row">
+        <% @recomandations.each do |reco| %>
+          <div class="col-12 col-md-4">
+            <%= link_to card_path(reco) do  %>
+              <div class="article-card">
+                <%= image_tag url_for(reco.thumbnail) %>
+                <div class="card-desc">
+                  <h4><%= reco.title %></h4>
+                  <p><%= raw reco.body.slice(0, 50) %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
