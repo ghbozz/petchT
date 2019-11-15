@@ -4,16 +4,16 @@ class CardsController < ApplicationController
   def index
     if params[:animal]
       @cards = policy_scope(Card).where(status: 'published')
-      @cards.select { |card| card.specie.animal.name == params[:animal] }
+      @cards = @cards.where(specie: Animal.find_by(name: params[:animal]).species)
     else
       @cards = policy_scope(Card).where(status: 'published')
     end
 
 
     @pagy, @cards = pagy(
-      helpers.index_search(@cards, params),
-      items: 10,
-      link_extra: 'data-remote="true"'
+      @cards,
+      items: 10
+      # link_extra: 'data-remote="true"'
     )
   end
 

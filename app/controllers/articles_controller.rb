@@ -13,8 +13,8 @@ class ArticlesController < ApplicationController
 
     @pagy, @articles = pagy(
       helpers.index_search(@articles, params),
-      items: 10,
-      link_extra: 'data-remote="true"'
+      items: 10
+      # link_extra: 'data-remote="true"'
     )
   end
 
