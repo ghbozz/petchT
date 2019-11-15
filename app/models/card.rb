@@ -1,6 +1,8 @@
 class Card < ApplicationRecord
   has_one_attached :thumbnail
 
+  belongs_to :specie
+
   STATUS = %w(draft published submitted)
 
   validates :status, inclusion: { in: STATUS }
