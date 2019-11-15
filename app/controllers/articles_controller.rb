@@ -2,7 +2,15 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :submit, :destroy]
 
   def index
-    @articles = policy_scope(Article).where(status: 'published')
+
+    if params[:animal]
+      @articles = policy_scope(Article)
+                  .where(status: 'published')
+                  .where(animal: params[:animal])
+    else
+      @articles = policy_scope(Article).where(status: 'published')
+    end
+
     @pagy, @articles = pagy(
       helpers.index_search(@articles, params),
       items: 10,

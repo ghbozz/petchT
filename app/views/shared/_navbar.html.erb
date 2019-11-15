@@ -116,6 +116,7 @@
         </div>
       </div>
 
+      <% if user_signed_in? %>
       <div class="nav-menu-mobile">
         <div class="nav-item dropdown">
           <a class="dropdown-toggle" href="#" id="mobileMenuToggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -140,6 +141,7 @@
             <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
           </div>
       </div>
+      <% end %>
 
     </div>
   </div>
