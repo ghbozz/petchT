@@ -26,6 +26,7 @@ const initThemes = () => {
 
 const toggleBtn = (event) => {
   event.currentTarget.classList.toggle('label-active')
+  autoSubmit();
 }
 
 const wrapperShrink = () => {
@@ -69,6 +70,13 @@ const bindTag = (tag) => {
 
 const toggleTag = (event) => {
   event.currentTarget.classList.toggle('tag-active')
+  autoSubmit();
+}
+
+const autoSubmit = () => {
+  setTimeout(() => {
+    document.querySelector('.filter-btn').click();
+  }, 25)
 }
 
 window.addEventListener('DOMContentLoaded', (e) => {
