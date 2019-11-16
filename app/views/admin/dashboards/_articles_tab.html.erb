@@ -28,7 +28,7 @@
 
       <div class="article-controls">
         <% if article.status != 'published' %>
-          <%= link_to 'Publier', admin_article_publish_path(article), method: :post %>
+          <%= link_to 'Publier', admin_article_publish_path(article), method: :post, remote: true %>
         <% else %>
           <%= link_to 'Masquer', admin_article_unpublish_path(article), method: :post %>
         <% end %>
