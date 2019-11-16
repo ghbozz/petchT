@@ -4,30 +4,31 @@ class Article < ApplicationRecord
   acts_as_taggable_on :tags
 
   belongs_to :user
+  belongs_to :animal
 
   has_one_attached :thumbnail
 
   validates :title, presence: true
   validates :subtitle, presence: true
   validates :body, presence: true
-  validates :animal, presence: true
+  # validates :animal, presence: true
   validates :theme, presence: true
   validates :thumbnail, presence: true
 
   THEMES = %w(Santé Alimentation Education Soins Beauté Hygiène)
-  ANIMALS = %w(Chiens Chats Rongeurs)
+  # ANIMALS = %w(Chiens Chats Rongeurs)
   STATUS = %w(draft published submitted)
 
   validates :theme, inclusion: { in: THEMES }
-  validates :animal, inclusion: { in: ANIMALS }
+  # validates :animal, inclusion: { in: ANIMALS }
   validates :status, inclusion: { in: STATUS }
 
   ANIMALS_ICONS = {
-    'Chiens': '<i class="fas fa-dog"></i>',
-    'Chats': '<i class="fas fa-cat"></i>',
-    'Rongeurs': '<i class="fas fa-horse"></i>',
-    'Reptiles': '<i class="fas fa-frog"></i>',
-    'Oiseaux': '<i class="fas fa-crow"></i>'
+    'chien': '<i class="fas fa-dog"></i>',
+    'chat': '<i class="fas fa-cat"></i>',
+    'rongeur': '<i class="fas fa-horse"></i>',
+    'reptile': '<i class="fas fa-frog"></i>',
+    'oiseau': '<i class="fas fa-crow"></i>'
   }
 
   include PgSearch::Model

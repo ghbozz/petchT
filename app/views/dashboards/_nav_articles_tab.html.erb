@@ -8,7 +8,7 @@
         <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'theme' %>
       </div>
       <div class="col vertical-center">
-        <%= f.input :animal, collection: Article::ANIMALS, label: false, prompt: 'animal' %>
+        <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
       </div>
       <div class="col vertical-center">
         <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'status' %>

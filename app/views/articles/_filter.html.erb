@@ -6,7 +6,7 @@
       <h5>Animaux</h5>
       <hr>
       <div class="row">
-        <% Article::ANIMALS.each do |animal| %>
+        <% Animal.pluck(:name).each do |animal| %>
           <div class="col-4">
             <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' },
             label: Article::ANIMALS_ICONS[animal.to_sym].html_safe %>

@@ -2,13 +2,13 @@
   <input type="hidden" name="authenticity_token" value="amkcxyAgTNKwmlCyHLmKCwWVT5ELatUxj+Me0BeG45iGdiJdxY/ihswmKTLhFzI3OgmyV3+Qu/vjXH2U3YZDiA==">
   <div class="radio-wrapper">
     <fieldset class="form-group radio_buttons optional card_animal">
-      <input type="hidden" name="card[animal]" value="">
+      <input type="hidden" name="animal" value="">
 
       <div class="row">
-        <% Card::ANIMALS.each do |animal| %>
+        <% Animal.pluck(:name).each do |animal| %>
           <div class="col" align="center">
             <div class="form-check animals-form-labels-container">
-              <input class="form-check-input optional d-none" type="radio" value="<%= animal %>" name="card[animal]" id="card_animal_<%= animal %>">
+              <input class="form-check-input optional d-none" type="radio" value="<%= animal %>" name="animal" id="card_animal_<%= animal %>">
               <label id="label-<%= animal %>" class="form-check-label collection_radio_buttons" for="card_animal_<%= animal %>"><%= animal %>
               </label>
             </div>

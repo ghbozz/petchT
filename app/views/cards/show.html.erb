@@ -1,7 +1,7 @@
 <div class="translate-nav pb-5">
   <div class="container pt-4">
     <div class="petch-breadcrumb">
-      <%= link_to "Accueil", root_path %> > <%= link_to "Fiches animaux", cards_path %> > <%= link_to @card_animal.capitalize, cards_path(params: {animal: @card_animal}) %> > <%= @card.title %>
+      <%= link_to "Accueil", root_path %> > <%= link_to "Fiches animaux", cards_path %> > <%= link_to @animal.capitalize, cards_path(params: {animal: @animal}) %> > <%= @card.specie.name %>
     </div>
   </div>
 
@@ -10,7 +10,7 @@
 
       <div class="article-header">
         <div class="article-headings">
-          <h1><%= @card.title %></h1>
+          <h1><%= @card.specie.name %></h1>
         </div>
       </div>
 
@@ -59,26 +59,26 @@
       <#% end %>
     </div> -->
 
-    <hr>
+<!--     <hr>
 
     <h3>Articles similaires</h3>
 
     <div class="recomandations pt-5">
       <div class="row">
-        <% @recomandations.each do |reco| %>
+        <%# @recomandations.each do |reco| %>
           <div class="col-12 col-md-4">
-            <%= link_to card_path(reco) do  %>
+            <%#= link_to card_path(reco) do  %>
               <div class="article-card">
-                <%= image_tag url_for(reco.thumbnail) %>
+                <%#= image_tag url_for(reco.thumbnail) %>
                 <div class="card-desc">
-                  <h4><%= reco.title %></h4>
-                  <p><%= raw reco.body.slice(0, 50) %></p>
+                  <h4><%#= reco.title %></h4>
+                  <p><%#= raw reco.body.slice(0, 50) %></p>
                 </div>
               </div>
-            <% end %>
+            <%# end %>
           </div>
-        <% end %>
+        <%# end %>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
