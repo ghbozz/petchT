@@ -36,7 +36,7 @@ class CardsController < ApplicationController
     @card.animal = Animal.find_by(name: params[:animal])
 
     authorize @card
-    if @card.save!
+    if @card.save
       redirect_to card_path(@card)
     else
       render :new, animal: params[:animal]
