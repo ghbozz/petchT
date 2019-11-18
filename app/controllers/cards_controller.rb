@@ -30,7 +30,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = Card.new(card_params.merge(user: current_user))
     @card.set_specs_and_ratings(params)
     @card.specie = set_specie(params)
     @card.animal = Animal.find_by(name: params[:animal])

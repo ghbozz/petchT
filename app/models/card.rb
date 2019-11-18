@@ -6,6 +6,7 @@ class Card < ApplicationRecord
 
   belongs_to :specie
   belongs_to :animal
+  belongs_to :user
 
   STATUS = %w(draft published submitted)
 
@@ -20,6 +21,9 @@ class Card < ApplicationRecord
   validates :min_weight, presence: true
   validates :max_weight, presence: true
 
+  def author_name
+    return "#{self.user.first_name} #{self.user.last_name}"
+  end
 
   def set_specs_and_ratings(params)
     params[:specs].each do |key, value|
