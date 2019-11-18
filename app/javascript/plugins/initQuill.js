@@ -32,16 +32,11 @@ window.addEventListener("DOMContentLoaded", e => {
       const editor = document.querySelector(".ql-editor");
       const body = document.querySelector(".body");
       body.value = editor.innerHTML;
-
-      // const realTagsContainer = document.getElementById("tags-displayer");
-      // console.log(realTagsContainer);
-      // const tags = document.querySelector(".tags");
-      // tags.value = tagsContainer.innerHTML;
     };
 
-    document.querySelectorAll(".fake-submit").forEach((submit) => {
+    document.querySelectorAll(".fake-submit").forEach(submit => {
       submit.addEventListener("click", submitForm);
-    })
+    });
 
     var quill = new Quill("#editor", {
       theme: "snow",

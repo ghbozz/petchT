@@ -145,6 +145,10 @@
   background-color: white;
   transition: all .3s ease-out;
 
+  #filter-toggle {
+    margin-top: rem(140px);
+  }
+
   i {
     position: absolute;
     top: 10px;
@@ -252,6 +256,7 @@
         }
       }
     }
+
     .tags-filter {
       .form-check-label {
         background-color: $brand-orange;
@@ -259,6 +264,7 @@
         color: rgba(255, 255, 255, 1);
         padding: rem(2px) rem(6px);
       }
+
       .masonry-tags {
         display: flex;
         flex-flow: wrap;
@@ -278,6 +284,7 @@
       .masonry-tags .form-group {
         margin-bottom: 0.5rem;
       }
+
       .tag-active {
         background-color: darken($brand-orange, 10%)
       }
@@ -297,23 +304,6 @@
   }
 }
 
-.filter-btn {
-  margin-top: 20px;
-  width: 100%;
-  background-color: $brand-orange;
-  color: white;
-  border-radius: 25px;
-  padding: 10px 0px;
-  cursor: pointer;
-  transition: all .3s ease-out;
-
-  &:hover {
-    transform: translateY(-2px);
-    -webkit-box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
-    -moz-box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
-    box-shadow: 1px 0px 20px 0px rgba(75, 75, 75, 0.1);
-  }
-}
 
 
 // NEW / EDIT
@@ -378,9 +368,11 @@
       font-weight: 300;
       font-size: 1rem;
     }
+
     .author-name {
       font-weight: 400;
     }
+
     .created_at {
       font-size: .8rem;
     }
