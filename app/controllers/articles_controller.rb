@@ -65,13 +65,21 @@ class ArticlesController < ApplicationController
   def destroy
     authorize @article
     @article.destroy
-    redirect_to profile_path
+
+    respond_to do |format|
+      format.html { redirect_to profile_path }
+      format.js
+    end
   end
 
   def submit
     authorize @article
     @article.update(status: 'submitted')
-    redirect_to profile_path
+
+    respond_to do |format|
+      format.html { redirect_to profile_path }
+      format.js
+    end
   end
 
   private
