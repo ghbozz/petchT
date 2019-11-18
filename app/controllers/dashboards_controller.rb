@@ -1,6 +1,4 @@
 class DashboardsController < ApplicationController
-  helper_method :resource_name, :resource, :devise_mapping, :resource_class
-
   def user_dashboard
     @articles = current_user.articles
     @pagy, @articles = pagy(
