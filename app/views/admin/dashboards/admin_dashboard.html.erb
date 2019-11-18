@@ -45,46 +45,7 @@
       </div>
 
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <div class="user-card">
-          <div class="row">
-            <div class="col d-flex justify-content-center align-items-center">
-              <div>
-                <%= image_tag url_for(current_user.avatar), class: 'profile-avatar rounded-circle' %>
-              </div>
-            </div>
-            <div class="col">
-              <div class="user-data-column">
-                <div class="data-block">
-                  <span class="data-title">Prénom</span>
-                  <span class="user-data"><%= current_user.first_name %></span>
-                </div>
-                <div class="data-block">
-                  <span class="data-title">Signature</span>
-                  <span class="user-data"><%= current_user.signature %></span>
-                </div>
-                <div class="data-block">
-                  <span class="data-title">Profession</span>
-                  <span class="user-data"><%= current_user.profession %></span>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="user-data-column">
-                <div class="data-block">
-                  <span class="data-title">Nom de famille</span>
-                  <span class="user-data"><%= current_user.last_name %></span>
-                </div>
-                <div class="data-block">
-                  <span class="data-title">email</span>
-                  <span class="user-data"><%= current_user.email %></span>
-                </div>
-                <div class="data-block">
-                  <%= link_to 'Modifier Mon Profile', edit_user_registration_path %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render 'shared/registration_edit_form' %>
       </div>
 
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>

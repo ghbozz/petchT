@@ -1,7 +1,7 @@
 class Admin::DashboardsController < ApplicationController
 
   def admin_dashboard
-    @articles = Article.all
+    @articles = Article.where(id: articles_select)
     @pagy, @articles = pagy(
       helpers.admin_search(@articles, params),
       items: 10,
@@ -14,6 +14,16 @@ class Admin::DashboardsController < ApplicationController
       end
     end
     authorize :dashboard, :admin?
+  end
+
+  private
+
+  def articles_select
+    articles = Article.all.select do |a|
+      a.user == current_user || a.status == 'submitted' || a.status == 'published'
+    end
+
+    return articles.map(&:id)
   end
 
 end
