@@ -2,11 +2,14 @@ class Admin::DashboardsController < ApplicationController
 
   def admin_dashboard
     @articles = Article.where(id: articles_select)
-    @pagy, @articles = pagy(
+    @pagy_articles, @articles = pagy(
       helpers.admin_search(@articles, params),
       items: 10,
       link_extra: 'data-remote="true"'
     )
+
+    @cards = Card.all
+
     if params[:filter_data]
       respond_to do |format|
         format.html { redirect_to admin_profile_path }

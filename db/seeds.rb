@@ -107,7 +107,8 @@ puts "------------------"
     min_weight: %w(0..50).sample,
     max_weight: %w(50..100).sample,
     status: Card::STATUS.sample,
-    specie: Specie.all.sample
+    specie: Specie.all.sample,
+    user: User.all.sample
   )
   card.animal = card.specie.animal
   card.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')

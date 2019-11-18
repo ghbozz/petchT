@@ -6,8 +6,8 @@
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mon Profile</a>
-        <a class="nav-item nav-link active" id="nav-articles-tab" data-toggle="tab" href="#nav-articles" role="tab" aria-controls="nav-articles" aria-selected="true">Mes Articles</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mes Fiches</a>
+        <a class="nav-item nav-link active" id="nav-articles-tab" data-toggle="tab" href="#nav-articles" role="tab" aria-controls="nav-articles" aria-selected="true">Conseils</a>
+        <a class="nav-item nav-link" id="nav-fiches-tab" data-toggle="tab" href="#nav-fiches" role="tab" aria-controls="nav-fiches" aria-selected="false">Fiches</a>
       </div>
     </nav>
   </div>
@@ -48,7 +48,9 @@
         <%= render 'shared/registration_edit_form' %>
       </div>
 
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      <div class="tab-pane fade" id="nav-fiches" role="tabpanel" aria-labelledby="nav-fiches-tab">
+        <%= render 'cards_tab', cards: @cards %>
+      </div>
 
     </div>
 
