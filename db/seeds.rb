@@ -2,7 +2,7 @@ puts "Destroy Tags"
 ActsAsTaggableOn::Tag.destroy_all
 puts "Destroy Articles"
 Article.destroy_all
-put "Destroy Cards"
+puts "Destroy Cards"
 Card.destroy_all
 puts "Destroy Users"
 User.destroy_all
