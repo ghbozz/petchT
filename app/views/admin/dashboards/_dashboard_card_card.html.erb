@@ -1,0 +1,48 @@
+<div class="dashboard-article-card">
+  <%= image_tag url_for(card.thumbnail) %>
+
+  <div class="artcile-infos">
+    <span>id: <%= card.id %></span>
+    <span>specie: <%= card.specie.name %></span>
+    <span>Author: <%= card.author_name %></span>
+  </div>
+
+  <div class="article-status-info">
+    <span class="status">Status</span>
+    <% if card.status == 'draft' %>
+      <div class="article-status draft"><%= card.status %></div>
+    <% end %>
+
+    <% if card.status == 'published' %>
+      <div class="article-status published"><%= card.status %></div>
+    <% end %>
+
+    <% if card.status == 'submitted' %>
+      <span class="article-status submitted"><%= card.status %></span>
+    <% end %>
+  </div>
+
+  <div class="article-controls">
+    <% if current_user.is_admin? %>
+      <% if card.status == 'draft' %>
+        <span>
+          <i class="fas fa-paper-plane"></i>
+          <%= link_to 'Publier', admin_card_publish_path(card), method: :post, remote: true %>
+        </span>
+      <% else %>
+        <span>
+          <i class="far fa-eye-slash"></i>
+          <%= link_to 'Masquer', admin_card_unpublish_path(card), method: :post, remote: true %>
+        </span>
+      <% end %>
+      <span>
+        <i class="fas fa-pen"></i>
+        <%= link_to 'Editer', edit_card_path(card) %>
+      </span>
+      <span>
+        <i class="far fa-eye"></i>
+        <%= link_to 'Voir', card_path(card) %>
+      </span>
+    <% end %>
+  </div>
+</div>

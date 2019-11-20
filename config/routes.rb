@@ -11,13 +11,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cards, only: [:index, :show, :new, :create, :edit, :update]
+  resources :cards, only: [:index, :show, :new, :create, :edit, :update] do
+    member do
+      post 'submit'
+    end
+  end
 
   namespace :admin do
     get '/profile', to: 'dashboards#admin_dashboard'
     resources :articles, only: [:destroy] do
       post '/publish', to: 'articles#publish'
       post '/unpublish', to: 'articles#unpublish'
+    end
+    resources :cards, only: [:destroy] do
+      post '/publish', to: 'cards#publish'
+      post '/unpublish', to: 'cards#unpublish'
     end
   end
 

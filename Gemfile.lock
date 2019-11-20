@@ -134,7 +134,7 @@ GEM
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    pagy (3.7.0)
+    pagy (2.1.5)
     pg (1.1.4)
     pg_search (2.3.0)
       activerecord (>= 4.2)

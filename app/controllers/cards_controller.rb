@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update]
+  before_action :set_card, only: [:show, :edit, :update, :submit]
 
   def index
     if params[:animal]
@@ -19,9 +19,7 @@ class CardsController < ApplicationController
 
   def show
     authorize @card
-
     @animal = @card.animal.name
-    # @recomandations = Card.where(specie: @card.specie).sample(3)
   end
 
   def new
@@ -30,7 +28,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = Card.new(card_params.merge(user: current_user))
     @card.set_specs_and_ratings(params)
     @card.specie = set_specie(params)
     @card.animal = Animal.find_by(name: params[:animal])
@@ -62,6 +60,16 @@ class CardsController < ApplicationController
   def init
     @card = Card.new
     authorize @card
+  end
+
+  def submit
+    authorize @card
+    @card.update(status: 'submitted')
+
+    # respond_to do |format|
+    #   format.html { redirect_to profile_path }
+    #   format.js
+    # end
   end
 
   private
