@@ -1,8 +1,14 @@
+puts "Destroy Tags"
 ActsAsTaggableOn::Tag.destroy_all
+puts "Destroy Articles"
 Article.destroy_all
+put "Destroy Cards"
 Card.destroy_all
+puts "Destroy Users"
 User.destroy_all
+puts "Destroy Species"
 Specie.destroy_all
+puts "Destroy Animals"
 Animal.destroy_all
 
 
@@ -47,75 +53,76 @@ SPECIES = {
   ]
 }
 
+PARAGRAPH = "
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis voluptate, magni eveniet,
+laborum omnis numquam rerum nisi consequuntur, sint officia iusto aperiam
+tempore natus odio impedit ducimus ullam sed architecto nesciunt deserunt! Deserunt
+temporibus commodi cum sequi suscipit ex, dolorum cumque blanditiis,
+doloremque iure quam placeat! Eaque ea alias ipsum blanditiis dicta repudiandae, dolores
+accusantium inventore aliquam officia odio voluptate animi soluta obcaecati quibusdam sit
+nihil enim veritatis officiis modi, possimus ut nulla. Cum voluptate vitae adipisci optio
+aperiam inventore ducimus dolor excepturi, pariatur tenetur laboriosam, hic nobis laudantium!
+Enim beatae obcaecati hic numquam quisquam. Necessitatibus sapiente harum doloremque, soluta.
+"
+
+puts "Creating Animals"
 ANIMALS.each do |animal|
   Animal.create(name: animal)
-  puts "create #{animal}"
+  puts "-> #{animal}"
 end
-
-Animal.all.each do |animal|
-  SPECIES[animal.name.to_sym].each do |specie|
-    Specie.create(name: specie, animal: animal)
-    puts "create #{specie} => #{animal.name}"
-  end
-end
-
-# Card.create!(specie: Specie.first, title: 'Chien fou', body: 'Hello Chien Fou')
 
 # ===================================
 # ===================================
 
-def get_images
-  Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/*")]
+def get_images(animal)
+  Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/#{animal}/*")]
 end
 
-writer = User.new(email: 'writer@petch.com', password: 'mdpmdp', permission: 'writer', first_name: 'John', last_name: 'Doe', signature: 'Hello i am writer', profession: 'Dev')
-writer.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+puts "Creating Users"
+writer = User.new(email: 'writer@petch.com', password: 'mdpmdp', permission: 'writer', first_name: 'User', last_name: 'Writer', signature: 'Hello i am writer', profession: 'Dev')
+writer.avatar.attach(io: File.open(get_images('avatars').sample), filename: 'file.jpg')
 writer.save!
 
-admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admin', first_name: 'John', last_name: 'Doe', signature: 'Hello i am admin', profession: 'Dev')
-admin.avatar.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admin', first_name: 'User', last_name: 'Admin', signature: 'Hello i am admin', profession: 'Dev')
+admin.avatar.attach(io: File.open(get_images('avatars').sample), filename: 'file.jpg')
 admin.save!
 
-counter = 0
-puts "------------------"
-
-20.times do
-  counter += 1
+puts "Creating 30 Articles & Cards..."
+30.times do |i|
+  puts "Creating Article - #{i+1}"
+  animal = Animal.all.sample
   article = Article.new(
-    title: Faker::Creature::Animal.name,
-    subtitle: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraphs(number: 50).join(''),
-    animal:  Animal.all.sample,
+    title: "Conseil (#{animal.name})",
+    subtitle: "This is the article subtitle about #{animal.name}",
+    body: Array.new(5, PARAGRAPH).join('<br><br>'),
+    animal: animal,
     theme: Article::THEMES.sample,
     status: Article::STATUS.sample,
+    tag_list: TAGS.sample(rand(2..5)),
     user: User.all.sample
   )
-  article.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+  article.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   article.save!
 
+  puts "Creating Card - #{i+1}"
   card = Card.new(
-    specificities: {
-      fci: ["groupe_1", "groupe_2", "groupe_3", "groupe_4", "groupe_5"].sample,
-      type_de_poil: ["ras", "courts", "longs", "bouclés"].sample,
-      mode_de_vie: ["patachon", "frimeur", "aventurier", "gigolo"].sample
-    },
-    origin: Faker::Address.country,
-    body: Faker::Lorem.paragraphs(number: 50).join(''),
-    life_expectancy: %w(0..50).sample,
-    min_height: %w(0..50).sample,
-    max_height: %w(50..100).sample,
-    min_weight: %w(0..50).sample,
-    max_weight: %w(50..100).sample,
+    animal: animal,
+    specie: Specie.create(name: SPECIES[animal.name.to_sym].sample, animal: animal),
+    user: User.all.sample,
+    body: Array.new(5, PARAGRAPH).join('<br><br>'),
+    life_expectancy: rand(20..30),
+    min_height: rand(20..30),
+    max_height: rand(30..40),
+    min_weight: rand(10..15),
+    max_weight: rand(15..20),
+    origin: COUNTRIES.sample,
     status: Card::STATUS.sample,
-    specie: Specie.all.sample,
-    user: User.all.sample
+    specificities: Animal::SPECS[animal.name.to_sym].map { |k, v| [k, v.sample] }.to_h,
+    ratings: Animal::RATINGS[animal.name.to_sym].map { |item| [item, rand(1..5)] }.to_h
   )
-  card.animal = card.specie.animal
-  card.thumbnail.attach(io: File.open(get_images.sample), filename: 'file.jpg')
+  card.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   card.save!
-
-  puts "----- #{counter} done -----"
-  # counter > 9 ? puts "------------------" : puts "-------------------"
-
 end
+
+puts "All Done !"
 

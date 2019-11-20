@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     authorize @article
 
     @article_animal = @article.animal
-    @recomandations = Article.where(theme: @article.theme, animal: @article.animal).sample(3)
+    @recomandations = Article.where(theme: @article.theme, animal: @article.animal, status: 'published').sample(3)
   end
 
   def new
