@@ -49,15 +49,18 @@
         <%= raw @article.body %>
       </div>
 
-
-      <div class="article-tags d-flex pt-5">
-        <% @article.tag_list.each do |tag| %>
-          <div class="tag-list-item">
-            <%= tag %>
-          </div>
-        <% end %>
+      <div class="tags-and-socials d-flex pt-5">
+        <div class="article-tags d-flex">
+          <% @article.tag_list.each do |tag| %>
+            <div class="tag-list-item">
+              <%= tag %>
+            </div>
+          <% end %>
+        </div>
+        <div class="socials-btns">
+          <%= social_share_button_tag('Share to Facebook', :url => article_path(@article), desc: @article.title) %>
+        </div>
       </div>
-      <%= social_share_button_tag('Share to Facebook', :url => article_path(@article), desc: @article.title) %>
       <hr>
 
       <h3>Articles similaires</h3>
