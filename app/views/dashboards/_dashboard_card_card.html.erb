@@ -35,6 +35,12 @@
     <% end %>
 
     <% if current_user.is_admin? %>
+      <% if card.status == 'draft' || card.status == 'submitted' %>
+        <span>
+          <i class="fas fa-paper-plane"></i>
+          <%= link_to 'Publier', admin_card_publish_path(card), method: :post %>
+        </span>
+      <% end %>
       <span>
         <i class="fas fa-pen"></i>
         <%= link_to 'Editer', edit_card_path(card) %>
