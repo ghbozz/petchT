@@ -1,3 +1,5 @@
+require 'faker'
+
 ActsAsTaggableOn::Tag.destroy_all
 Article.destroy_all
 Card.destroy_all
