@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
     resources :cards, only: [:destroy] do
       post '/publish', to: 'cards#publish'
+      post '/unpublish', to: 'cards#unpublish'
     end
   end
 

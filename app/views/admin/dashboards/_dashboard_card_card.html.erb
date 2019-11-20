@@ -23,22 +23,16 @@
   </div>
 
   <div class="article-controls">
-    <% if current_user.is_writer? %>
-      <span>
-        <i class="fas fa-pen"></i>
-        <%= link_to 'Editer', edit_card_path(card) %>
-      </span>
-      <span>
-        <i class="far fa-eye"></i>
-        <%= link_to 'Voir', card_path(card) %>
-      </span>
-    <% end %>
-
     <% if current_user.is_admin? %>
-      <% if card.status == 'draft' || card.status == 'submitted' %>
+      <% if card.status == 'draft' %>
         <span>
           <i class="fas fa-paper-plane"></i>
-          <%= link_to 'Publier', admin_card_publish_path(card), method: :post %>
+          <%= link_to 'Publier', admin_card_publish_path(card), method: :post, remote: true %>
+        </span>
+      <% else %>
+        <span>
+          <i class="far fa-eye-slash"></i>
+          <%= link_to 'Masquer', admin_card_unpublish_path(card), method: :post, remote: true %>
         </span>
       <% end %>
       <span>

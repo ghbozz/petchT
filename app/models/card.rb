@@ -8,7 +8,7 @@ class Card < ApplicationRecord
   belongs_to :animal
   belongs_to :user
 
-  STATUS = %w(draft published submitted)
+  STATUS = %w(draft published)
 
   validates :status, inclusion: { in: STATUS }
   validates :thumbnail, presence: true
