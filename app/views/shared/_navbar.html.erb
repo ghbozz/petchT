@@ -116,7 +116,6 @@
         </div>
       </div>
 
-      <% if user_signed_in? %>
       <div class="nav-menu-mobile">
         <div class="nav-item dropdown">
           <a class="dropdown-toggle" href="#" id="mobileMenuToggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -127,22 +126,22 @@
             <%= link_to 'Conseils', articles_path, class: 'dropdown-item' %>
             <%= link_to 'Marques', articles_path, class: 'dropdown-item' %>
             <a href="#" class="dropdown-item shop">Boutique</a>
-            <hr>
+            <div class="dropdown-divider"></div>
             <%= link_to 'Basket', root_path, class: 'dropdown-item' %>
             <%= link_to 'Heart', root_path, class: 'dropdown-item' %>
-            <hr>
-            <% if current_user.is_writer? || current_user.is_admin? %>
-              <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
-              <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
+            <% if user_signed_in? %>
+              <div class="dropdown-divider"></div>
+              <% if current_user.is_writer? || current_user.is_admin? %>
+                <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
+                <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
+              <% end %>
+              <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
+              <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
             <% end %>
-            <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
-            <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
           </div>
-      </div>
-      <% end %>
-
+        </div>
     </div>
   </div>
 </header>
