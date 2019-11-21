@@ -1,50 +1,52 @@
-
-<div class="container mt-5">
-  <div class="form-content" style="padding: 0 250px">
-    <h2>Sign up</h2>
-    <hr>
+<div class="devise-form-wrapper devise-large-wrapper">
+  <div class="devise-large">
+    <h2>Créer un compte</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-     <%= f.error_notification %>
+      <%= f.error_notification %>
 
-     <div class="form-inputs">
+      <div class="form-inputs">
+        <div class="form-line">
+          <%= f.input :first_name, label: false, placeholder: 'Prenom' %>
+          <%= f.input :last_name, label: false, placeholder: 'Nom' %>
+          <%= f.input :avatar %>
+        </div>
 
-      <%= f.input :avatar %>
+        <div class="form-line">
+          <%= f.input :profession, label: false, placeholder: 'Profession' %>
+          <%= f.input :signature, label: false, placeholder: 'Signature' %>
+        </div>
 
-      <div class="row">
-        <div class="col"><%= f.input :first_name, label: false, placeholder: 'Prenom' %></div>
-        <div class="col"><%= f.input :last_name, label: false, placeholder: 'Nom' %></div>
+        <div class="form-line">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" },
+                      label: false,
+                      placeholder: 'Email'%>
+        </div>
+        <div class="form-line">
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" },
+                      label: false,
+                      placeholder: 'Mot de passe' %>
+        </div>
+        <div class="form-line">
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" },
+                      label: false,
+                      placeholder: 'Confirmation' %>
+        </div>
       </div>
 
-      <div class="row">
-        <div class="col"><%= f.input :profession, label: false, placeholder: 'Profession' %></div>
-        <div class="col"><%= f.input :signature, label: false, placeholder: 'Signature' %></div>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
       </div>
-
-       <%= f.input :email,
-                   required: true,
-                   autofocus: true,
-                   input_html: { autocomplete: "email" },
-                   label: false,
-                   placeholder: 'Email'%>
-       <%= f.input :password,
-                   required: true,
-                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                   input_html: { autocomplete: "new-password" },
-                   label: false,
-                   placeholder: 'Mot de passe' %>
-       <%= f.input :password_confirmation,
-                   required: true,
-                   input_html: { autocomplete: "new-password" },
-                   label: false,
-                   placeholder: 'Confirmation' %>
-
+      <div class="devise-buttons">
+        <%= render "devise/shared/links" %>
       </div>
-
-     <div class="form-actions">
-       <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
-       <%= render "devise/shared/links" %>
-     </div>
     <% end %>
-
   </div>
 </div>
