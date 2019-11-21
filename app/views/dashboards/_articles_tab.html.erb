@@ -1,53 +1,7 @@
 <div class="dashboard-articles">
   <% articles.each do |article| %>
-    <div class="dashboard-article-card">
-      <%= image_tag url_for(article.thumbnail) %>
-
-      <div class="artcile-infos">
-        <span>id: <%= article.id %></span>
-        <span>title: <%= article.title %></span>
-        <span>Subtitle: <%= article.subtitle %></span>
-        <span>Theme: <%= article.theme %></span>
-        <span>Author: <%= article.author_name %></span>
-      </div>
-
-      <div class="article-status-info">
-        <span class="status">Status</span>
-        <% if article.status == 'draft' %>
-          <div class="article-status draft"><%= article.status %></div>
-        <% end %>
-
-        <% if article.status == 'published' %>
-          <div class="article-status published"><%= article.status %></div>
-        <% end %>
-
-        <% if article.status == 'submitted' %>
-          <span class="article-status submitted"><%= article.status %></span>
-        <% end %>
-      </div>
-
-      <div class="article-controls">
-        <% if article.status == 'draft' %>
-          <span>
-            <i class="fas fa-paper-plane"></i>
-            <%= link_to 'Submit', submit_article_path(article), method: :post %>
-          </span>
-        <% end %>
-        <span>
-          <i class="fas fa-pen"></i>
-          <%= link_to 'Editer', edit_article_path(article) %>
-        </span>
-        <span>
-          <i class="far fa-eye"></i>
-          <%= link_to 'Voir', article_path(article) %>
-        </span>
-        <% if article.status == 'draft' || article.status == 'submitted' %>
-          <span>
-            <i class="fas fa-trash-alt"></i>
-            <%= link_to 'Supprimer', article_path(article), method: :delete %>
-          </span>
-        <% end %>
-      </div>
+    <div id="article-<%= article.id %>">
+      <%= render 'dashboard_article_card', article: article %>
     </div>
   <% end %>
   <hr>

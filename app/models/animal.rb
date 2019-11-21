@@ -7,14 +7,28 @@ class Animal < ApplicationRecord
   # ANIMALS = %w(chien chat rongeur)
   SPECS = {
     chien: {
-      fci: %w(groupe_1 groupe_2 groupe_3 groupe_4 groupe_5),
-      type_de_poil: %w(nue court long)
+      fci: [
+        'groupe 1',
+        'groupe 2',
+        'groupe 3',
+        'groupe 4',
+        'groupe 5',
+        'groupe 6',
+        'groupe 7',
+        'groupe 8',
+        'groupe 9',
+        'groupe 10'
+      ],
+      taille: %w(toy petit moyen grand geant),
+      type_de_poil: %w(nue ras court mi-long long)
     },
     chat: {
-      type_de_poil: %w(nue court long)
+      type_de_poil: %w(nue ras court mi-long long)
     },
     rongeur: {
-      mode_de_vie: %w(diurne nocturne)
+      mode_de_vie: %w(diurne nocturne),
+      alimentation: %w(herbivore omnivore carnivore),
+      comportement: %w(sociable solitaire)
     }
   }
 
@@ -27,30 +41,23 @@ class Animal < ApplicationRecord
       'cout de l\'entretien',
       'santé',
       'indépendant',
-      'vit à plusieurs',
       'joueur',
-      'calme',
     ],
     chat: [
       'entretien du poil',
       'besoin d\'exercice',
       'vie en appartement',
       'adapté aux enfants',
-      'cout de l\'entretien',
+      'facile d\'entretien',
       'santé',
       'indépendant',
-      'vit à plusieurs',
       'joueur',
       'calme',
     ],
     rongeur: [
-      'entretien du poil',
-      'besoin d\'exercice',
-      'vie en appartement',
       'adapté aux enfants',
       'cout de l\'entretien',
       'santé',
-      'indépendant',
       'vit à plusieurs',
       'joueur',
       'calme',

@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     authorize @article
 
     @article_animal = @article.animal
-    @recomandations = Article.where(theme: @article.theme, animal: @article.animal).sample(3)
+    @recomandations = Article.where(theme: @article.theme, animal: @article.animal, status: 'published').sample(3)
   end
 
   def new
@@ -65,13 +65,21 @@ class ArticlesController < ApplicationController
   def destroy
     authorize @article
     @article.destroy
-    redirect_to profile_path
+
+    respond_to do |format|
+      format.html { redirect_to profile_path }
+      format.js
+    end
   end
 
   def submit
     authorize @article
     @article.update(status: 'submitted')
-    redirect_to profile_path
+
+    respond_to do |format|
+      format.html { redirect_to profile_path }
+      format.js
+    end
   end
 
   private

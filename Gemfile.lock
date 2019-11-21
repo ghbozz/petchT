@@ -68,6 +68,13 @@ GEM
     cloudinary (1.12.0)
       aws_cf_signer
       rest-client
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     devise (4.7.1)
@@ -83,6 +90,7 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     erubi (1.9.0)
+    execjs (2.7.0)
     faker (2.6.0)
       i18n (>= 1.6, < 1.8)
     ffi (1.11.1)
@@ -126,7 +134,7 @@ GEM
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    pagy (3.7.0)
+    pagy (2.1.5)
     pg (1.1.4)
     pg_search (2.3.0)
       activerecord (>= 4.2)
@@ -195,6 +203,8 @@ GEM
     simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    social-share-button (1.2.1)
+      coffee-rails
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -257,6 +267,7 @@ DEPENDENCIES
   rails (~> 6.0.0)
   sass-rails (~> 5)
   simple_form
+  social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

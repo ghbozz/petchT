@@ -23,6 +23,7 @@ gem 'quilljs-rails'
 gem 'pagy'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'social-share-button'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
