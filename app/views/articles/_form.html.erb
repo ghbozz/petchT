@@ -2,7 +2,7 @@
 <script src="https://cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script>
 <%= simple_form_for(@article) do |f| %>
 
-  <div class="form-wrapper pt-5 pb-5">
+  <div class="form-wrapper">
     <div class="row">
       <div class="col vertical-center">
         <%= f.input :animal, collection: Animal.pluck(:name), prompt: 'Animal', label: false, input_html: { class: 'select2' } %>

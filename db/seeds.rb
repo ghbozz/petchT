@@ -108,7 +108,6 @@ puts "Creating 30 Articles & Cards..."
   card = Card.new(
     animal: animal,
     specie: Specie.create(name: SPECIES[animal.name.to_sym].sample, animal: animal),
-    user: User.all.sample,
     body: Array.new(5, PARAGRAPH).join('<br><br>'),
     life_expectancy: rand(20..30),
     min_height: rand(20..30),
@@ -118,7 +117,8 @@ puts "Creating 30 Articles & Cards..."
     origin: COUNTRIES.sample,
     status: Card::STATUS.sample,
     specificities: Animal::SPECS[animal.name.to_sym].map { |k, v| [k, v.sample] }.to_h,
-    ratings: Animal::RATINGS[animal.name.to_sym].map { |item| [item, rand(1..5)] }.to_h
+    ratings: Animal::RATINGS[animal.name.to_sym].map { |item| [item, rand(1..5)] }.to_h,
+    user: User.all.sample
   )
   card.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   card.save!

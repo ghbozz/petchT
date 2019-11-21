@@ -21,6 +21,12 @@
 @import "./variables";
 @import "./rem";
 
+h2 {
+  color: $brand-orange;
+  font-weight: 300;
+  margin-bottom: rem(20px);
+}
+
 .translate-nav {
   transform: translateY(80px);
 }
