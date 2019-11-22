@@ -16,8 +16,8 @@
 
       <div class="card-content row">
         <div class="card-content-body col-md-8">
-          <div class="content-card-text pt-4">
-            <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail" %>
+          <div class="content-card-text pt-4 text-justify">
+            <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail mr-4 mb-2" %>
             <%= raw @card.body %>
           </div>
         </div>
@@ -51,34 +51,26 @@
         </div>
       </div>
 
-      <!-- <div class="article-tags d-flex pt-5">
-      <#% @card.tag_list.each do |tag| %>
-        <div class="tag-list-item">
-          <%#= tag %>
-        </div>
-      <#% end %>
-    </div> -->
+    <hr class="mt-5">
 
-<!--     <hr>
-
-    <h3>Articles similaires</h3>
+    <h3>Fiches similaires</h3>
 
     <div class="recomandations pt-5">
       <div class="row">
-        <%# @recomandations.each do |reco| %>
+        <% @recomandations.each do |reco| %>
           <div class="col-12 col-md-4">
-            <%#= link_to card_path(reco) do  %>
+            <%= link_to card_path(reco) do  %>
               <div class="article-card">
-                <%#= image_tag url_for(reco.thumbnail) %>
+                <%= image_tag url_for(reco.thumbnail) %>
                 <div class="card-desc">
-                  <h4><%#= reco.title %></h4>
-                  <p><%#= raw reco.body.slice(0, 50) %></p>
+                  <h4><%= reco.title %></h4>
+                  <p><%= raw reco.body.slice(0, 50) %></p>
                 </div>
               </div>
-            <%# end %>
+            <% end %>
           </div>
-        <%# end %>
+        <% end %>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>

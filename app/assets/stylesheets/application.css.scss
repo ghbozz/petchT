@@ -14,12 +14,17 @@
  *= require_self
  */
 
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "social-share-button";
 @import "./select2";
 @import "./variables";
 @import "./rem";
+
+body {
+  font-family: 'Lato', sans-serif;
+}
 
 h2 {
   color: $brand-orange;
@@ -41,6 +46,7 @@ h2 {
 }
 
 .petch-breadcrumb {
+  margin-top: 25px;
   font-size: rem(14px);
 
   a {
@@ -105,10 +111,20 @@ h2 {
     }
   }
   .active {
-    color: $dark-grey;
+    color: $brand-orange;
+    font-weight: 700;
   }
 }
 
 .bold {
   font-weight: 700;
+}
+
+.social-share-button {
+  .ssb-icon {
+    margin-left: 5px;
+    background-size: 28px 28px;
+    width: 28px !important;
+    height: 28px !important;
+  }
 }

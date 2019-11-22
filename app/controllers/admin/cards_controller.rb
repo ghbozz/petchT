@@ -1,5 +1,7 @@
 class Admin::CardsController < ApplicationController
   def publish
+    authorize :dashboard, :publish?
+
     @card = Card.find(params[:card_id])
     @card.update(status: 'published')
 
@@ -10,6 +12,8 @@ class Admin::CardsController < ApplicationController
   end
 
   def unpublish
+    authorize :dashboard, :publish?
+
     @card = Card.find(params[:card_id])
     @card.update(status: 'draft')
 
@@ -20,6 +24,8 @@ class Admin::CardsController < ApplicationController
   end
 
   def destroy
+    authorize :card, :destroy?
+
     @card = Card.find(params[:id])
     @card.destroy
 

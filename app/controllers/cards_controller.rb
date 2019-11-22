@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_card, only: [:show, :edit, :update, :submit]
 
   def index
@@ -12,14 +13,18 @@ class CardsController < ApplicationController
 
     @pagy, @cards = pagy(
       @cards,
-      items: 10
-      # link_extra: 'data-remote="true"'
+      items: 10,
+      link_extra: 'data-remote="true"'
     )
   end
 
   def show
     authorize @card
     @animal = @card.animal.name
+    @recomandations = Card.where.not(id: @card.id)
+                          .select { |c| c.animal == @card.animal }
+                          .sample(3)
+
   end
 
   def new
@@ -60,16 +65,6 @@ class CardsController < ApplicationController
   def init
     @card = Card.new
     authorize @card
-  end
-
-  def submit
-    authorize @card
-    @card.update(status: 'submitted')
-
-    # respond_to do |format|
-    #   format.html { redirect_to profile_path }
-    #   format.js
-    # end
   end
 
   private
