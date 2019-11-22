@@ -53,7 +53,8 @@
       }
     }
 
-    #user_last_name, #user_signature {
+    #user_last_name,
+    #user_signature {
       margin-left: rem(10px);
     }
 
@@ -122,11 +123,25 @@
 
   .devise-buttons {
     margin-top: rem(20px);
+
     a:hover {
       text-decoration: none;
     }
   }
+
+
 }
+
+.devise-profile-wrapper {
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  h2 {
+    width: 100%;
+  }
+}
+
 
 @media screen and (max-width: $sm) {
   .devise-small {
@@ -152,6 +167,7 @@
 
       .user_avatar {
         margin-top: rem(10px);
+
         label {
           border-radius: rem(30px);
           display: block;
@@ -162,7 +178,8 @@
         }
       }
 
-      .form-actions, .devise-buttons {
+      .form-actions,
+      .devise-buttons {
         justify-content: center;
       }
 
@@ -170,7 +187,8 @@
         display: flex;
       }
 
-      #user_last_name, #user_signature {
+      #user_last_name,
+      #user_signature {
         margin-left: 0;
       }
 
