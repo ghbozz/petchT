@@ -100,11 +100,14 @@
   }
 }
 
+.card_thumbnail {
+  justify-content: flex-end !important;
+}
+
 #new-card-submit {
   display: block;
   margin: auto;
 }
-
 
 // EDIT
 .card-ratings {
