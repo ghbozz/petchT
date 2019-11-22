@@ -1,6 +1,8 @@
 class Admin::DashboardsController < ApplicationController
 
   def admin_dashboard
+    authorize :dashboard, :admin?
+
     @articles = Article.where(id: articles_select)
     @pagy_articles, @articles = pagy(
       helpers.admin_search(@articles, params),
@@ -16,7 +18,6 @@ class Admin::DashboardsController < ApplicationController
         format.js
       end
     end
-    authorize :dashboard, :admin?
   end
 
   private

@@ -1,5 +1,7 @@
 class DashboardsController < ApplicationController
   def user_dashboard
+    authorize :dashboard, :profile?
+
     @articles = current_user.articles
     @pagy, @articles = pagy(
       helpers.dashboard_search(@articles, params),
@@ -13,7 +15,6 @@ class DashboardsController < ApplicationController
         format.js
       end
     end
-    authorize :dashboard, :profile?
   end
 
   private

@@ -10,7 +10,7 @@ class CardPolicy < ApplicationPolicy
   end
 
   def new?
-    user.is_writer? || user.is_admin?
+    user.is_admin?
   end
 
   def create?
@@ -22,14 +22,18 @@ class CardPolicy < ApplicationPolicy
   end
 
   def update?
-    edit?
+    new?
   end
 
   def submit?
-    edit?
+    new?
   end
 
   def init?
     new?
+  end
+
+  def destroy?
+    user.is_admin?
   end
 end

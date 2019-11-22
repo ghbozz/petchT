@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :submit, :destroy]
 
   def index
@@ -21,7 +22,7 @@ class ArticlesController < ApplicationController
     authorize @article
 
     @article_animal = @article.animal
-    @recomandations = Article.where(theme: @article.theme, animal: @article.animal, status: 'published').sample(3)
+    @recomandations = Article.where(animal: @article.animal, status: 'published').sample(3)
   end
 
   def new

@@ -12,4 +12,12 @@ class DashboardPolicy < ApplicationPolicy
   def admin?
     user.is_admin?
   end
+
+  def publish?
+    user.is_admin?
+  end
+
+  def unpublish?
+    user.is_admin?
+  end
 end
