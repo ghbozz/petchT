@@ -26,7 +26,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.is_admin?
+    (record.status != 'published' && record.user == user) || user.is_admin?
   end
 
   def submit?
