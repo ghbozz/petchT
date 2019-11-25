@@ -102,10 +102,6 @@
                 <i class="far fa-user"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% if current_user.is_writer? || current_user.is_admin? %>
-                  <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
-                  <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
-                <% end %>
                 <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
                 <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
                 <div class="dropdown-divider"></div>
@@ -131,10 +127,6 @@
             <%= link_to 'Heart', root_path, class: 'dropdown-item' %>
             <% if user_signed_in? %>
               <div class="dropdown-divider"></div>
-              <% if current_user.is_writer? || current_user.is_admin? %>
-                <%= link_to 'Add an article', new_article_path, class: 'dropdown-item' %>
-                <%= link_to 'Add a card', card_init_path, class: 'dropdown-item' %>
-              <% end %>
               <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
               <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
               <div class="dropdown-divider"></div>

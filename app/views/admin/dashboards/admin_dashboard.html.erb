@@ -8,6 +8,7 @@
         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mon Profile</a>
         <a class="nav-item nav-link active" id="nav-articles-tab" data-toggle="tab" href="#nav-articles" role="tab" aria-controls="nav-articles" aria-selected="true">Conseils</a>
         <a class="nav-item nav-link" id="nav-fiches-tab" data-toggle="tab" href="#nav-fiches" role="tab" aria-controls="nav-fiches" aria-selected="false">Fiches</a>
+        <a class="nav-item nav-link" id="nav-content-write" data-toggle="tab" href="#nav-write" role="tab" aria-controls="nav-fiches" aria-selected="false">Écrire du contenu</a>
       </div>
     </nav>
   </div>
@@ -52,7 +53,29 @@
         <%= render 'cards_tab', cards: @cards %>
       </div>
 
+      <div class="tab-pane fade" id="nav-write" role="tabpanel" aria-labelledby="nav-content-write">
+        <div class="container">
+          <div class="new-row">
+            <button class="write-nav"><%= link_to "Nouvel article", new_article_path %></button>
+            <button id="new-card-button" class="write-nav">Nouvelle fiche</button>
+          </div>
+
+          <div class="new-row animals-row hidden">
+            <button class="write-nav"><%= link_to "Chien", new_card_path(animal: 'chien') %></button>
+            <button class="write-nav"><%= link_to "Chat", new_card_path(animal: 'chat') %></button>
+            <button class="write-nav"><%= link_to "Rongeur", new_card_path(animal: 'rongeur') %></button>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
+
+  <script>
+    const animals = document.querySelector('.animals-row')
+    document.getElementById('new-card-button').addEventListener('click', ((event) => {
+      animals.classList.remove('hidden')
+    }))
+  </script>
 </div>
