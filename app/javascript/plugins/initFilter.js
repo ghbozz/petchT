@@ -82,7 +82,7 @@ const toggleTag = event => {
   } else {
     event.currentTarget.classList.toggle("tag-active");
   }
-
+  resetFilter();
   autoSubmit();
 };
 
