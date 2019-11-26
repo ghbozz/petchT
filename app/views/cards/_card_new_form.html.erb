@@ -1,5 +1,5 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<!-- <script src="https://cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script> -->
+
   <%= simple_form_for(card, url: cards_path(animal: params[:animal]), method: :post) do |f| %>
   <div class="form-wrapper">
     <div class="inputs">
@@ -60,6 +60,16 @@
 
     <%= f.hidden_field :body, class: 'body' %>
     <div id="editor" style="min-height: 400px"></div>
-    <button class="btn btn-primary fake-submit">Feel the Form</button>
+
+    <div class="col-12 pt-5">
+      <div class="d-flex justify-content-center pt-3">
+        <%= f.submit 'Sauvegarder', class: 'fake-submit petch-btn' %>
+      </div>
+    </div>
+
+    <div class="col-12 text-center pt-5">
+      En cliquant sur Sauvegarder et Prévisualiser, votre contenu sera sauvegardé et vous prévisualisable, et son statut sera alors « En cours de rédaction ». Vous pourrez terminer les modifications plus tard. En cliquant sur Poster le contenu, votre contenu sera soumis à l’admin en modération. Ce dernier validera votre article, auquel cas il reviendra vers vous afin de le modifier.
+    </div>
+
   </div>
   <% end %>
