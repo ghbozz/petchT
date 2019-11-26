@@ -88,7 +88,7 @@ admin.avatar.attach(io: File.open(get_images('avatars').sample), filename: 'file
 admin.save!
 
 puts "Creating 30 Articles & Cards..."
-60.times do |i|
+30.times do |i|
   puts "Creating Article - #{i+1}"
   animal = Animal.all.sample
   article = Article.new(
@@ -103,7 +103,9 @@ puts "Creating 30 Articles & Cards..."
   )
   article.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   article.save!
+end
 
+20.times do |i|
   puts "Creating Card - #{i+1}"
   card = Card.new(
     animal: animal,

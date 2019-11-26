@@ -26,9 +26,7 @@ class Article < ApplicationRecord
   ANIMALS_ICONS = {
     'chien': '<i class="fas fa-dog"></i>',
     'chat': '<i class="fas fa-cat"></i>',
-    'rongeur': '<i class="fas fa-horse"></i>',
-    'reptile': '<i class="fas fa-frog"></i>',
-    'oiseau': '<i class="fas fa-crow"></i>'
+    'rongeur': '<i class="fas fa-frog"></i>'
   }
 
   include PgSearch::Model

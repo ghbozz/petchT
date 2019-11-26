@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     end
 
     @pagy, @articles = pagy(
-      helpers.index_search(@articles, params),
+      helpers.index_search(@articles, params).order(created_at: :desc),
       items: 10,
       link_extra: 'data-remote="true"'
     )

@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
 
     @articles = current_user.articles
     @pagy, @articles = pagy(
-      helpers.dashboard_search(@articles, params),
+      helpers.dashboard_search(@articles, params).order(created_at: :desc),
       items: 10,
       link_extra: 'data-remote="true"'
     )
