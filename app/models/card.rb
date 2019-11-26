@@ -21,7 +21,8 @@ class Card < ApplicationRecord
   validates :max_weight, presence: true
 
   include PgSearch::Model
-  pg_search_scope :search_cards,
+  pg_search_scope :cards_search,
+    against: [ :body ],
     associated_against: {
       specie: [ :name ]
     },

@@ -8,7 +8,7 @@
         <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
       </div>
       <div class="col vertical-center">
-        <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'status' %>
+        <%= f.input :status, collection: Card::STATUS, label: false, prompt: 'status' %>
       </div>
       <div class="col vertical-center">
         <%= f.submit 'Filtrer', class: 'petch-btn' %>

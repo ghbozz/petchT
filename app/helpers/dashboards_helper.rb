@@ -27,7 +27,7 @@ module DashboardsHelper
 
   def cards_filter(cards, params)
     if params[:cards_filter]
-      cards = cards.search_cards(params[:cards_filter][:query]) if !params[:cards_filter][:query]
+      cards = cards.cards_search(params[:cards_filter][:query]) if !params[:cards_filter][:query].blank?
       cards = cards.where(animal: Animal.find_by(name: params[:cards_filter][:animal])) if !params[:cards_filter][:animal].blank?
       cards = cards.where(status: params[:cards_filter][:status]) if !params[:cards_filter][:status].blank?
     end
