@@ -105,7 +105,7 @@ puts "Creating 30 Articles & Cards..."
   article.save!
 end
 
-20.times do |i|
+15.times do |i|
   puts "Creating Card - #{i+1}"
   card = Card.new(
     animal: animal,
