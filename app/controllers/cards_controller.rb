@@ -20,6 +20,12 @@ class CardsController < ApplicationController
 
   def show
     authorize @card
+    @caracs = {
+      origin: @card.origin,
+      life_expectancy: "#{@card.life_expectancy} y",
+      height: "#{@card.min_height} - #{@card.max_height} cm",
+      weight: "#{@card.min_weight} - #{@card.max_weight} kgs",
+    }
     @animal = @card.animal.name
     @recomandations = Card.where.not(id: @card.id)
                           .select { |c| c.animal == @card.animal }

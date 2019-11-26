@@ -24,19 +24,28 @@
 
         <div class="card-specs-ratings col-md-4 mt-4 mt-md-0">
           <div class="card-specs-box py-4 px-2">
-            <% @card.ratings.each do |key, value| %>
-              <div class="rating">
-                <span><%= key.capitalize %></span>
-                <div class="stars">
-                  <% value.times do %>
-                    <i class="fas fa-star"></i>
-                  <% end %>
-                  <% (5 - value).times do %>
-                    <i class="far fa-star"></i>
-                  <% end %>
+            <% @caracs.each do |key, value| %>
+                <div class="specs">
+                <div class="spec">
+                  <span><%= key.to_s.gsub('_', ' ').capitalize %></span>
+                  <span class="stars"><%= value.to_s.gsub('_', ' ') %></span>
                 </div>
               </div>
-            <% end %>
+              <% end %>
+
+              <% @card.ratings.each do |key, value| %>
+                <div class="rating">
+                  <span><%= key.capitalize %></span>
+                  <div class="stars">
+                    <% value.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <% (5 - value).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
 
 
             <% @card.specificities.each do |key, value| %>
