@@ -12,7 +12,7 @@ class CardsController < ApplicationController
 
 
     @pagy, @cards = pagy(
-      @cards,
+      @cards.order(created_at: :desc),
       items: 10,
       link_extra: 'data-remote="true"'
     )

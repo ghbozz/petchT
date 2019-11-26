@@ -36,7 +36,7 @@
               <%= f.input :user, collection: User.pluck(:email), label: false, prompt: 'user' %>
             </div>
             <div class="col">
-              <%= f.submit %>
+              <%= f.submit 'Filtrer', class: 'petch-btn' %>
             </div>
           </div>
         <% end %>

@@ -72,8 +72,8 @@
               <div class="article-card">
                 <%= image_tag url_for(reco.thumbnail) %>
                 <div class="card-desc">
-                  <h4><%= reco.title %></h4>
-                  <p><%= raw reco.body.slice(0, 50) %></p>
+                  <h4><%= reco.specie.name %></h4>
+                  <!-- <p><%#= raw reco.body.slice(0, 50) %></p> -->
                 </div>
               </div>
             <% end %>

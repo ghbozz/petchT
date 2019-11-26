@@ -183,12 +183,13 @@
   .write-nav {
     background-color: $brand-orange;
     border: 1px solid $full-white;
-    border-radius: rem(16px);
+    border-radius: rem(22px);
     color: $full-white;
     cursor: pointer;
     font-weight: 500;
-    padding: rem(6px);
+    padding: rem(10px);
     width: rem(160px);
+    margin: 0px 15px;
 
     a {
       color: $full-white;
@@ -197,6 +198,15 @@
 
     &:focus {
       outline: none;
+    }
+
+    &:hover {
+      border: 1px solid $brand-orange;
+      background-color: $full-white;
+      color: $brand-orange;
+      a {
+        color: $brand-orange;
+      }
     }
   }
 

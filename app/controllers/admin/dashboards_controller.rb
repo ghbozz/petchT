@@ -5,12 +5,12 @@ class Admin::DashboardsController < ApplicationController
 
     @articles = Article.where(id: articles_select)
     @pagy_articles, @articles = pagy(
-      helpers.admin_search(@articles, params),
+      helpers.admin_search(@articles, params).order(created_at: :desc),
       items: 10,
       link_extra: 'data-remote="true"'
     )
 
-    @cards = Card.all
+    @cards = Card.all.order(created_at: :desc)
 
     if params[:filter_data]
       respond_to do |format|

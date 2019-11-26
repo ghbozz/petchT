@@ -103,7 +103,9 @@ puts "Creating 30 Articles & Cards..."
   )
   article.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   article.save!
+end
 
+15.times do |i|
   puts "Creating Card - #{i+1}"
   card = Card.new(
     animal: animal,
