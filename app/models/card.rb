@@ -12,7 +12,6 @@ class Card < ApplicationRecord
 
   validates :status, inclusion: { in: STATUS }
   validates :thumbnail, presence: true
-  # validates :title, presence: true
   validates :body, presence: true
   validates :origin, presence: true
   validates :life_expectancy, presence: true
@@ -20,6 +19,16 @@ class Card < ApplicationRecord
   validates :max_height, presence: true
   validates :min_weight, presence: true
   validates :max_weight, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :cards_search,
+    against: [ :body ],
+    associated_against: {
+      specie: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def author_name
     return "#{self.user.first_name} #{self.user.last_name}"

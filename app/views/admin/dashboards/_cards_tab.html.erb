@@ -1,7 +1,21 @@
 <div class="dashboard-cards">
-  <% cards.each do |card| %>
-    <div id="card-<%= card.id %>">
-      <%= render 'admin/dashboards/dashboard_card_card', card: card %>
+  <%= simple_form_for :cards_filter, url: admin_profile_path, method: :get, remote: true do |f| %>
+    <div class="row">
+      <div class="col-4 vertical-center">
+        <%= f.input :query, label: false, placeholder: 'rechercher' %>
+      </div>
+      <div class="col vertical-center">
+        <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
+      </div>
+      <div class="col vertical-center">
+        <%= f.input :status, collection: Card::STATUS, label: false, prompt: 'status' %>
+      </div>
+      <div class="col vertical-center">
+        <%= f.submit 'Filtrer', class: 'petch-btn' %>
+      </div>
     </div>
   <% end %>
+  <div id="cards-list">
+    <%= render 'cards_list', cards: cards %>
+  </div>
 </div>
