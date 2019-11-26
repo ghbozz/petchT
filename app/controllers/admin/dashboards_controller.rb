@@ -12,7 +12,11 @@ class Admin::DashboardsController < ApplicationController
 
     @cards = Card.all.order(created_at: :desc)
 
-    if params[:filter_data]
+    if params[:cards_filter]
+      @cards = helpers.cards_filter(@cards, params)
+    end
+
+    if params[:filter_data] || params[:cards_filter]
       respond_to do |format|
         format.html { redirect_to admin_profile_path }
         format.js
