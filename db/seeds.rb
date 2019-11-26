@@ -106,7 +106,8 @@ puts "Creating 30 Articles & Cards..."
 end
 
 15.times do |i|
-  puts "Creating Card - #{i+1}"
+  puts "Creating Article - #{i+1}"
+  animal = Animal.all.sample
   card = Card.new(
     animal: animal,
     specie: Specie.create(name: SPECIES[animal.name.to_sym].sample, animal: animal),
