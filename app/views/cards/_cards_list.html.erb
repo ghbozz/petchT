@@ -6,7 +6,7 @@
           <div class="article-card article-card-main">
             <%= image_tag url_for(card.thumbnail) %>
             <div class="card-desc">
-              <h4><%= card.title %></h4>
+              <h4><%= card.specie.name %></h4>
               <p><%= raw card.body.slice(0, 50) %></p>
             </div>
           </div>
@@ -18,7 +18,7 @@
           <div class="article-card">
             <%= image_tag url_for(card.thumbnail) %>
             <div class="card-desc">
-              <h4><%= card.title %></h4>
+              <h4><%= card.specie.name %></h4>
               <p><%= raw card.body.slice(0, 50) %></p>
             </div>
           </div>
