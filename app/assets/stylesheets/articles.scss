@@ -55,6 +55,15 @@
     .top-articles,
     .newsletter-block {
       min-height: 200px;
+      padding: 10px 10px;
+
+      .top-article {
+        margin-bottom: 5px;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
     }
 
     .top-articles {

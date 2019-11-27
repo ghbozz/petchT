@@ -87,8 +87,11 @@ class ArticlesController < ApplicationController
 
   def top
     authorize @article
+
+    @article.status = 'published' if @article.status != 'published'
     @article.top = !@article.top
     @article.save
+
 
     respond_to do |format|
       format.html { redirect_to admin_profile_path }
