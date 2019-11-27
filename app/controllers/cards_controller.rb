@@ -10,7 +10,6 @@ class CardsController < ApplicationController
       @cards = policy_scope(Card).where(status: 'published')
     end
 
-
     @pagy, @cards = pagy(
       @cards.order(created_at: :desc),
       items: 10,

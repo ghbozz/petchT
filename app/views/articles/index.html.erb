@@ -15,7 +15,11 @@
       </div>
       <div class="col-12 col-md-3 content-right">
         <div class="top-articles">
-
+          <ul>
+            <% @top_articles.each do |article| %>
+              <li><%= link_to article.title, article_path(article) %></li>
+            <% end %>
+          </ul>
         </div>
         <div class="newsletter-block">
 

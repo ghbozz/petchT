@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     member do
       post 'submit'
+      post 'top'
     end
   end
 

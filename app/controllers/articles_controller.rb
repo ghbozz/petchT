@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_article, only: [:show, :edit, :update, :submit, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :submit, :top, :destroy]
 
   def index
     if params[:animal]
@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
     else
       @articles = policy_scope(Article).where(status: 'published')
     end
+
+    @top_articles = Article.where(top: true)
 
     @pagy, @articles = pagy(
       helpers.index_search(@articles, params).order(created_at: :desc),
@@ -79,6 +81,17 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to profile_path }
+      format.js
+    end
+  end
+
+  def top
+    authorize @article
+    @article.top = !@article.top
+    @article.save
+
+    respond_to do |format|
+      format.html { redirect_to admin_profile_path }
       format.js
     end
   end
