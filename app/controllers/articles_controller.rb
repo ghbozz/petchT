@@ -92,7 +92,6 @@ class ArticlesController < ApplicationController
     @article.top = !@article.top
     @article.save
 
-
     respond_to do |format|
       format.html { redirect_to admin_profile_path }
       format.js
