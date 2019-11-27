@@ -1,6 +1,6 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-  <%= simple_form_for(card, url: cards_path(animal: params[:animal]), method: :post) do |f| %>
+<%= simple_form_for(card, url: cards_path(animal: params[:animal]), method: :post) do |f| %>
   <div class="form-wrapper">
     <div class="inputs">
       <div class="row">
@@ -18,7 +18,7 @@
               <%= f.input :min_height, placeholder: 'Taille minimal (cm)', label: false, input_html: { class: 'check'} %>
             </div>
             <div class="col">
-              <%= f.input :max_height, placeholder: 'Taille maximal', label: false, input_html: { class: 'check'} %>
+              <%= f.input :max_height, placeholder: 'Taille maximal (cm)', label: false, input_html: { class: 'check'} %>
             </div>
           </div>
           <div class="row">
@@ -72,4 +72,4 @@
     </div>
 
   </div>
-  <% end %>
+<% end %>
