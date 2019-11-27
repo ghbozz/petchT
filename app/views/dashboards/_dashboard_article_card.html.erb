@@ -49,6 +49,15 @@
     <% end %>
 
     <% if current_user.is_admin? %>
+      <span>
+        <%= link_to top_article_path(article), method: :post, remote: true do %>
+          <% if article.top %>
+            <i class="fas fa-star top-star-on"></i>
+          <% else %>
+            <i class="fas fa-star top-star-off"></i>
+          <% end %>
+        <% end %>
+      </span>
       <% if article.status == 'draft' || article.status == 'submitted' %>
         <span>
           <i class="fas fa-paper-plane"></i>

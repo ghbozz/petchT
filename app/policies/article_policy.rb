@@ -32,4 +32,8 @@ class ArticlePolicy < ApplicationPolicy
   def submit?
     record.user == user
   end
+
+  def top?
+    user.is_admin?
+  end
 end
