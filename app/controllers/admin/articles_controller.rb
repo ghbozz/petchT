@@ -12,6 +12,7 @@ class Admin::ArticlesController < ApplicationController
   def unpublish
     @article = Article.find(params[:article_id])
     @article.update(status: 'draft')
+    @article.update(top: false) if @article.top
 
     respond_to do |format|
       format.html { redirect_to admin_profile_path }

@@ -1,3 +1,12 @@
+<div class="dashboard-header translate-nav">
+  <div class="dashboard-header-content">
+    <% if current_user.is_admin? %>
+      <h1>Mon Profil Admin</h1>
+    <% else %>
+      <h1>Mon Profil Editeur</h1>
+    <% end %>
+  </div>
+</div>
 <div class="container translate-nav py-5">
   <div class="form-content">
     <h2>Éditer l'article "<%= @article.title %>"</h2>
