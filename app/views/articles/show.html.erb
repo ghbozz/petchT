@@ -21,7 +21,7 @@
             <div>
               <span class="author-name"><%= @article.author_name %></span><br>
               <span class="author-job"><%= @article.user.profession %></span><br>
-              <span class="created_at"><%= time_ago_in_words(@article.created_at) %> ago</span>
+              <span class="created_at"><%= @article.get_date %></span>
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'cloudinary'
+gem 'rails-i18n', '~> 6.0.0'
 
 gem 'devise'
 gem 'pundit'
