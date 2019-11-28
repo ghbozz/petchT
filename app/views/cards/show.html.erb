@@ -69,7 +69,7 @@
         <% @recomandations.each do |reco| %>
           <div class="col-12 col-md-4">
             <%= link_to card_path(reco) do  %>
-              <div class="article-card">
+              <div class="reco-card">
                 <%= image_tag url_for(reco.thumbnail) %>
                 <div class="card-desc">
                   <h4><%= reco.specie.name %></h4>
