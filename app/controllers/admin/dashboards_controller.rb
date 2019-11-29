@@ -5,22 +5,25 @@ class Admin::DashboardsController < ApplicationController
 
     @articles = Article.where(id: articles_select)
     @pagy_articles, @articles = pagy(
-      helpers.admin_search(@articles, params).order(created_at: :desc),
+      helpers.articles_filter(@articles, params).order(created_at: :desc),
       items: 10,
-      link_extra: 'data-remote="true"'
+      page_param: :page_articles,
+      params: { active_tab: 'articles' },
+      # link_extra: 'data-remote="true"'
     )
 
-    @cards = Card.all.order(created_at: :desc)
+    @cards = Card.all
+    @pagy_cards, @cards = pagy(
+      helpers.cards_filter(@cards, params).order(created_at: :desc),
+      items: 10,
+      page_param: :page_cards,
+      params: { active_tab: 'cards' },
+      # link_extra: 'data-remote="true"'
+    )
 
-    if params[:cards_filter]
-      @cards = helpers.cards_filter(@cards, params)
-    end
-
-    if params[:filter_data] || params[:cards_filter]
-      respond_to do |format|
-        format.html { redirect_to admin_profile_path }
-        format.js
-      end
+    if !params[:active_tab]
+      params[:active_tab] = 'articles' if params[:articles_data]
+      params[:active_tab] = 'cards' if params[:cards_filter]
     end
   end
 
