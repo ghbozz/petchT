@@ -1,6 +1,7 @@
 import { initStarRating } from "../plugins/init_star_rating";
 import { initNewCardForm } from "../plugins/init_new_card_form";
 import { initSelect2, initSelector } from "../plugins/init_select2";
+import { initSocialIcons } from "../plugins/initSocialIcons";
 import { initNavHover } from "../plugins";
 
 // This file is automatically compiled by Webpack, along with any other files
@@ -31,6 +32,10 @@ window.addEventListener("DOMContentLoaded", e => {
 window.addEventListener("DOMContentLoaded", e => {
   document.querySelector(".nav-wrapper") && initNavHover();
 });
+
+window.addEventListener("DOMContentLoaded", e=> {
+  if (document.querySelector('.socials-btns')) initSocialIcons();
+})
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
