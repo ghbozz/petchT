@@ -21,7 +21,7 @@
             <div>
               <span class="author-name"><%= @article.author_name %></span><br>
               <span class="author-job"><%= @article.user.profession %></span><br>
-              <span class="created_at"><%= time_ago_in_words(@article.created_at) %> ago</span>
+              <span class="created_at"><%= @article.get_date %></span>
             </div>
           </div>
         </div>
@@ -62,8 +62,13 @@
             </div>
           <% end %>
         </div>
+
         <div class="socials-btns">
-          <%= social_share_button_tag('Share to Facebook', :url => article_path(@article), desc: @article.title) %>
+          <i class="fab fa-facebook-square facebook"></i>
+          <i class="fab fa-pinterest-square pinterest"></i>
+          <i class="fab fa-twitter-square twitter"></i>
+          <i class="fas fa-envelope-square email"></i>
+          <%= social_share_button_tag('Share to Facebook', :url => @article.get_url, desc: @article.title) %>
         </div>
       </div>
       <hr>
@@ -75,7 +80,7 @@
           <% @recomandations.each do |reco| %>
             <div class="col-12 col-md-4">
               <%= link_to article_path(reco) do  %>
-                <div class="article-card">
+                <div class="reco-card">
                   <%= image_tag url_for(reco.thumbnail) %>
                   <div class="card-desc">
                     <h4><%= reco.title %></h4>

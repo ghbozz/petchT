@@ -43,5 +43,13 @@ class Article < ApplicationRecord
   def tags_validation
     self.tag_list.reject!.with_index { |tag, index| index > 4 }
   end
+
+  def get_date
+    I18n.l(self.created_at, format: "%B %Y", locale: :'fr').capitalize
+  end
+
+  def get_url
+    "http://localhost:3000/articles/#{self.id}"
+  end
 end
 
