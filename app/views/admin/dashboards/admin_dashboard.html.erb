@@ -18,7 +18,7 @@
     <div class="tab-content" id="nav-tabContent">
 
       <div class="tab-pane fade <%= 'show active' if params[:active_tab] == 'articles' || params[:active_tab] == nil %>" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
-        <%= simple_form_for :filter_data, url: admin_profile_path(:active_tab => 'articles'), method: :get do |f| %>
+        <%= simple_form_for :articles_filter, url: admin_profile_path, method: :get do |f| %>
           <div class="row dashboard-filter">
             <div class="col-4">
               <%= f.input :query, label: false, placeholder: 'rechercher' %>
@@ -50,7 +50,7 @@
 
 
       <div class="tab-pane fade <%= 'show active' if params[:active_tab] == 'cards' %>" id="nav-fiches" role="tabpanel" aria-labelledby="nav-fiches-tab">
-        <%= simple_form_for :cards_filter, url: admin_profile_path(:active_tab => 'cards'), method: :get do |f| %>
+        <%= simple_form_for :cards_filter, url: admin_profile_path, method: :get do |f| %>
           <div class="row dashboard-filter">
             <div class="col-4">
               <%= f.input :query, label: false, placeholder: 'rechercher' %>

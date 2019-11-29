@@ -11,16 +11,16 @@ module DashboardsHelper
     return articles
   end
 
-  def admin_search(articles, params)
+  def articles_filter(articles, params)
 
-    if params[:filter_data]
-      author = User.find_by_email(params[:filter_data][:user])
-      articles = articles.search_articles(params[:filter_data][:query]) if !params[:filter_data][:query].blank?
-      articles = articles.where(theme: params[:filter_data][:theme]) if !params[:filter_data][:theme].blank?
-      articles = articles.where(animal: Animal.find_by(name: params[:filter_data][:animal])) if !params[:filter_data][:animal].blank?
-      articles = articles.where(status: params[:filter_data][:status]) if !params[:filter_data][:status].blank?
-      articles = articles.where(user: author) if !params[:filter_data][:user].blank?
-      articles = articles.where(top: true) if params[:filter_data][:top] == 'Yes'
+    if params[:articles_filter]
+      author = User.find_by_email(params[:articles_filter][:user])
+      articles = articles.search_articles(params[:articles_filter][:query]) if !params[:articles_filter][:query].blank?
+      articles = articles.where(theme: params[:articles_filter][:theme]) if !params[:articles_filter][:theme].blank?
+      articles = articles.where(animal: Animal.find_by(name: params[:articles_filter][:animal])) if !params[:articles_filter][:animal].blank?
+      articles = articles.where(status: params[:articles_filter][:status]) if !params[:articles_filter][:status].blank?
+      articles = articles.where(user: author) if !params[:articles_filter][:user].blank?
+      articles = articles.where(top: true) if params[:articles_filter][:top] == 'Yes'
     end
 
     return articles

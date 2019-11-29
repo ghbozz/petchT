@@ -5,7 +5,7 @@ class Admin::DashboardsController < ApplicationController
 
     @articles = Article.where(id: articles_select)
     @pagy_articles, @articles = pagy(
-      helpers.admin_search(@articles, params).order(created_at: :desc),
+      helpers.articles_filter(@articles, params).order(created_at: :desc),
       items: 10,
       page_param: :page_articles,
       params: { active_tab: 'articles' },
@@ -21,8 +21,10 @@ class Admin::DashboardsController < ApplicationController
       # link_extra: 'data-remote="true"'
     )
 
-    params[:active_tab] = 'articles' if params[:filter_data]
-    params[:active_tab] = 'cards' if params[:cards_filter]
+    if !params[:active_tab]
+      params[:active_tab] = 'articles' if params[:articles_data]
+      params[:active_tab] = 'cards' if params[:cards_filter]
+    end
   end
 
   private
