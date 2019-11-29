@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    authorize @article
+    authorize :article, :create?
 
     params[:article][:tag_list] = set_tags(params[:tags])
     @article = Article.new(article_params.merge(user: current_user))

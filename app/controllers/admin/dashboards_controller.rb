@@ -21,12 +21,17 @@ class Admin::DashboardsController < ApplicationController
       # link_extra: 'data-remote="true"'
     )
 
+    params[:active_tab] = 'articles' if params[:filter_data]
+    params[:active_tab] = 'cards' if params[:cards_filter]
+    # raise
+
     # if params[:filter_data] || params[:cards_filter]
     #   respond_to do |format|
     #     format.html { redirect_to admin_profile_path }
     #     format.js
     #   end
     # end
+
   end
 
   private
