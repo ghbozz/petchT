@@ -27,6 +27,7 @@ module DashboardsHelper
   end
 
   def cards_filter(cards, params)
+
     if params[:cards_filter]
       cards = cards.cards_search(params[:cards_filter][:query]) if !params[:cards_filter][:query].blank?
       cards = cards.where(animal: Animal.find_by(name: params[:cards_filter][:animal])) if !params[:cards_filter][:animal].blank?
@@ -35,6 +36,8 @@ module DashboardsHelper
 
     return cards
   end
+
+  # DEVISE
 
   def resource_name
     :user

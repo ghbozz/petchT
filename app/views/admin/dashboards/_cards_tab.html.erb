@@ -1,21 +1,8 @@
 <div class="dashboard-cards">
-  <%= simple_form_for :cards_filter, url: admin_profile_path, method: :get, remote: true do |f| %>
-    <div class="row dashboard-filter">
-      <div class="col-4">
-        <%= f.input :query, label: false, placeholder: 'rechercher' %>
-      </div>
-      <div class="col">
-        <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
-      </div>
-      <div class="col">
-        <%= f.input :status, collection: Card::STATUS, label: false, prompt: 'status' %>
-      </div>
-      <div class="col-2">
-        <%= f.submit 'Filtrer', class: 'petch-btn' %>
-      </div>
+  <% cards.each do |card| %>
+    <div id="card-<%= card.id %>">
+      <%= render 'admin/dashboards/dashboard_card_card', card: card %>
     </div>
   <% end %>
-  <div id="cards-list">
-    <%= render 'cards_list', cards: cards %>
-  </div>
+  <%= raw pagy_nav(@pagy_cards) %>
 </div>
