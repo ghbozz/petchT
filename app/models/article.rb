@@ -47,5 +47,9 @@ class Article < ApplicationRecord
   def get_date
     I18n.l(self.created_at, format: "%B %Y", locale: :'fr').capitalize
   end
+
+  def get_url
+    "http://localhost:3000/articles/#{self.id}"
+  end
 end
 
