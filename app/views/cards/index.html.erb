@@ -1,25 +1,17 @@
-<div class="articles-wrapper">
-  <%#= render "filter" %>
-
-  <div class="container translate-nav page-container">
-    <div class="row">
-      <div class="col-12 col-md-9 content-left">
-        <div class="articles-container row">
-          <div class="articles-header">
-            <h2>À la une !</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="container filter-wrapper col-3">
+      <%#= render "filter" %>
+    </div>
+    <div class="translate-nav articles-wrapper col-12 col-md-9">
+      <div class="row">
+        <div class="col-12 content-left justify-content-center">
+          <div class="articles-container row">
+            <div id="articles-list">
+              <%= render 'cards_list', cards: @cards %>
+            </div>
           </div>
-          <div id="articles-list">
-            <%= render 'cards_list', cards: @cards %>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3 content-right">
-        <div class="top-articles">
-
-        </div>
-        <div class="newsletter-block">
-
-        </div>
+        </div>  
       </div>
     </div>
   </div>

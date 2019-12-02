@@ -1,0 +1,29 @@
+<div class="articles-wrapper">
+  <div class="container translate-nav page-container">
+    <div class="row">
+      <div class="col-12 col-md-9 content-left">
+        <div class="articles-container row">
+          <div class="articles-header">
+            <h2>À la une !</h2>
+          </div>
+          <div id="articles-list">
+            <%= render 'articles_list', articles: @articles %>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-3 content-right">
+        <div class="top-articles">
+          <h3>Les top articles</h3>
+          <ul>
+            <% @top_articles.each do |article| %>
+              <li class="top-article"><%= link_to article.title, article_path(article) %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="newsletter-block">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

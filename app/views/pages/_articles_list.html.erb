@@ -1,0 +1,32 @@
+<div class="row mb-5">
+  <% articles.each_with_index do |article, index| %>
+    <% if index == 0 %>
+      <div class="col-12 card-container">
+        <%= link_to article_path(article) do %>
+          <div class="article-card article-card-main">
+            <%= image_tag url_for(article.thumbnail) %>
+            <div class="card-desc">
+              <h4><%= article.title %></h4>
+              <p><%= article.subtitle %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-12 col-sm-6 col-md-3 card-container">
+        <%= link_to article_path(article) do %>
+          <div class="article-card">
+            <%= image_tag url_for(article.thumbnail) %>
+            <div class="card-desc">
+              <h4><%= article.title %></h4>
+              <p><%= article.subtitle %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="pagination">
+  <%= raw pagy_nav(@pagy) %>
+</div>
