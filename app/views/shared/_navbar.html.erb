@@ -1,67 +1,100 @@
 <header class="nav-wrapper">
   <div class="nav-container">
-    <h1 class="nav-logo">
-      <%= link_to 'Petch', root_path %>
-    </h1>
+    <span class="nav-logo">
+      <%= link_to root_path do %>
+        <%= image_tag('logo.png') %>
+      <% end %>
+    </span>
 
     <div class="nav-menu-desktop">
-      <div class="nav-item">
-        <%= link_to 'Fiches', cards_path, class: 'nav-link nav-link-desktop-menu', id: 'nav-link-cards' %>
-      </div>
-      <div class="nav-item">
-        <%= link_to 'Conseils', articles_path, class: 'nav-link nav-link-desktop-menu', id: 'nav-link-articles' %>
-      </div>
-      <div class="nav-item">
-        <%= link_to 'Marques', articles_path, class: 'nav-link nav-link-desktop-menu', id: 'nav-link-brands' %>
-      </div>
-      <div class="nav-item">
-        <a href="#" class="nav-link shop">Boutique</a>
-      </div>
-
-      <div id="nav-submenu-cards" class="nav-submenu hidden">
-        <div class="submenu-categories">
-          <% Card.order("RANDOM()").limit(3).each do |card| %>
-            <div class="submenu-item">
-              <%= link_to card.specie.animal.name.capitalize, cards_path(params: {animal: card.specie.animal.name})%>
+      <div class="dropdown">
+        <button class="dropbtn"><%= link_to 'Fiches', cards_path %></button>
+        <div class="dropdown-content">
+          <div class="content-content">
+            <div class="submenu-categories">
+              <%= link_to "Chiens", cards_path(params: {animal: 'chien'}), class: "submenu-activate-button dog-submenu-card" %>
+              <%= link_to "Chats", cards_path(params: {animal: 'chat'}), class: "submenu-activate-button cat-submenu-card" %>
+              <%= link_to "Rongeurs", cards_path(params: {animal: 'rongeur'}), class: "submenu-activate-button rodent-submenu-card" %>
             </div>
-          <% end %>
-        </div>
-
-        <div class="submenu-recos">
-          <% Card.last(3).each do |card| %>
-          <%= link_to card_path(card) do %>
-            <div class="submenu-card">
-                <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                <%= card.title %>
+            <div class="submenu-recos-container">
+              <div class="submenu-recos-cards submenu-reco-dog-card">
+                <% Card.where(animal: Animal.find_by(name: "chien")).last(3).each do |card| %>
+                  <%= link_to card_path(card) do %>
+                    <div class="submenu-card">
+                      <%= image_tag card.thumbnail, class: 'submenu-picture' %>
+                      <%= card.title %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="submenu-recos-cards submenu-reco-cat-card hidden">
+                <% Card.where(animal: Animal.find_by(name: "chat")).last(3).each do |card| %>
+                  <%= link_to card_path(card) do %>
+                    <div class="submenu-card">
+                      <%= image_tag card.thumbnail, class: 'submenu-picture' %>
+                      <%= card.title %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="submenu-recos-cards submenu-reco-rodent-card hidden">
+                <% Card.where(animal: Animal.find_by(name: "rongeur")).last(3).each do |card| %>
+                  <%= link_to card_path(card) do %>
+                    <div class="submenu-card">
+                      <%= image_tag card.thumbnail, class: 'submenu-picture' %>
+                      <%= card.title %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
 
-      <div id="nav-submenu-articles" class="nav-submenu hidden">
-        <div class="submenu-categories">
-            <% Article.order("RANDOM()").limit(3).each do |article| %>
-              <div class="submenu-item">
-                <%= link_to article.animal.name.capitalize, articles_path(params: {animal: article.animal.name})%>
+      <div class="dropdown">
+        <button class="dropbtn"><%= link_to 'Conseils', articles_path %></button>
+        <div class="dropdown-content">
+          <div class="content-content">
+            <div class="submenu-categories">
+              <%= link_to "Chiens", articles_path(params: {animal: 'chien'}), class: "submenu-activate-button dog-submenu-article" %>
+              <%= link_to "Chats", articles_path(params: {animal: 'chat'}), class: "submenu-activate-button cat-submenu-article" %>
+              <%= link_to "Rongeurs", articles_path(params: {animal: 'rongeur'}), class: "submenu-activate-button rodent-submenu-article" %>
+            </div>
+            <div class="submenu-recos-container">
+              <div class="submenu-recos-articles submenu-reco-dog-article">
+                <% Article.where(animal: Animal.find_by(name: "chien")).last(3).each do |article| %>
+                  <%= link_to article_path(article) do %>
+                    <div class="submenu-card">
+                      <%= image_tag article.thumbnail, class: 'submenu-picture' %>
+                      <%= article.title %>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
-            <% end %>
-          </div>
-
-          <div class="submenu-recos">
-            <% Article.last(3).each do |article| %>
-            <%= link_to article_path(article) do %>
-              <div class="submenu-card">
-                  <%= image_tag article.thumbnail, class: 'submenu-picture' %>
-                  <%= article.title %>
+              <div class="submenu-recos-articles submenu-reco-cat-article hidden">
+                <% Article.where(animal: Animal.find_by(name: "chat")).last(3).each do |article| %>
+                  <%= link_to article_path(article) do %>
+                    <div class="submenu-card">
+                      <%= image_tag article.thumbnail, class: 'submenu-picture' %>
+                      <%= article.title %>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
-              <% end %>
-            <% end %>
+              <div class="submenu-recos-articles submenu-reco-rodent-article hidden">
+                <% Article.where(animal: Animal.find_by(name: "rongeur")).last(3).each do |article| %>
+                  <%= link_to article_path(article) do %>
+                    <div class="submenu-card">
+                      <%= image_tag article.thumbnail, class: 'submenu-picture' %>
+                      <%= article.title %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
-      </div>
-
-      <div id="nav-submenu-brands" class="nav-submenu hidden">
-        Coucou from brands
+        </div>
       </div>
     </div>
 
@@ -146,3 +179,67 @@
     </div>
   </div>
 </header>
+
+<script>
+  const dogButtonCard = document.querySelector('.dog-submenu-card')
+  const catButtonCard = document.querySelector('.cat-submenu-card')
+  const rodentButtonCard = document.querySelector('.rodent-submenu-card')
+
+  const dogButtonArticle = document.querySelector('.dog-submenu-article')
+  const catButtonArticle = document.querySelector('.cat-submenu-article')
+  const rodentButtonArticle = document.querySelector('.rodent-submenu-article')
+
+  const allCards = document.querySelectorAll('.submenu-recos-cards')
+  const allArticles = document.querySelectorAll('.submenu-recos-articles')
+
+  const dogContentCard = document.querySelector('.submenu-reco-dog-card')
+  const catContentCard = document.querySelector('.submenu-reco-cat-card')
+  const rodentContentCard = document.querySelector('.submenu-reco-rodent-card')
+  const dogContentArticle = document.querySelector('.submenu-reco-dog-article')
+  const catContentArticle = document.querySelector('.submenu-reco-cat-article')
+  const rodentContentArticle = document.querySelector('.submenu-reco-rodent-article')
+
+  dogButtonCard.addEventListener('mouseenter', () => {
+    allCards.forEach((node) => {
+      node.classList.add('hidden')
+    })
+
+    dogContentCard.classList.remove('hidden')
+  })
+  catButtonCard.addEventListener('mouseenter', () => {
+    allCards.forEach((node) => {
+      node.classList.add('hidden')
+    })
+
+    catContentCard.classList.remove('hidden')
+  })
+  rodentButtonCard.addEventListener('mouseenter', () => {
+    allCards.forEach((node) => {
+      node.classList.add('hidden')
+    })
+
+    rodentContentCard.classList.remove('hidden')
+  })
+
+  dogButtonArticle.addEventListener('mouseenter', () => {
+    allArticles.forEach((node) => {
+      node.classList.add('hidden')
+    })
+
+    dogContentArticle.classList.remove('hidden')
+  })
+  catButtonArticle.addEventListener('mouseenter', () => {
+    allArticles.forEach((node) => {
+      node.classList.add('hidden')
+    })
+
+    catContentArticle.classList.remove('hidden')
+  })
+  rodentButtonArticle.addEventListener('mouseenter', () => {
+    allArticles.forEach((node) => {
+      node.classList.add('hidden')
+    })
+
+    rodentContentArticle.classList.remove('hidden')
+  })
+</script>

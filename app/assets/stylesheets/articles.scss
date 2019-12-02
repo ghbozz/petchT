@@ -60,6 +60,8 @@
       .top-article {
         border-bottom: 1px solid rgba(150, 150, 150, .2);
         padding-bottom: 7px;
+        margin-bottom: 5px;
+
         a {
           text-decoration: none;
           color: black;
@@ -100,11 +102,14 @@
   }
 }
 
-.filter {
-  z-index: 1;
-  width: 300px;
-  height: calc(100% - 100px);
-  position: fixed;
+@media screen and (max-width: 768px) {
+  .filter-wrapper {
+    display: none !important;
+  }
+}
+
+.filter-wrapper {
+  position: sticky;
   top: 0;
   left: 0;
   display: flex;
@@ -112,9 +117,11 @@
   flex-direction: column;
   margin-top: 100px;
   padding-top: 40px;
-  transform: translateX(-90%);
   background-color: white;
-  transition: all .3s ease-out;
+
+  .filter {
+    width: 100%;
+  }
 
   i {
     position: absolute;
@@ -384,7 +391,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
 }
 
 .draft {
@@ -427,7 +434,7 @@
 
 .article-tags {
   align-items: center;
-  justify: center;
+  justify-content: center;
 }
 
 // Right sidebar
