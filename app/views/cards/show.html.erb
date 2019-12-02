@@ -1,4 +1,4 @@
-<div class="translate-nav pb-5">
+<div class="pb-5">
   <div class="container pt-4">
     <div class="petch-breadcrumb">
       <%= link_to "Accueil", root_path %> > <%= link_to "Fiches animaux", cards_path %> > <%= link_to @animal.capitalize, cards_path(params: {animal: @animal}) %> > <%= @card.specie.name %>

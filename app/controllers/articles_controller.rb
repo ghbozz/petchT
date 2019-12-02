@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
     @top_articles = Article.where(top: true)
 
     @pagy, @articles = pagy(
-      helpers.index_search(@articles, params).order(created_at: :desc),
+      helpers.articles_search(@articles, params).order(created_at: :desc),
       items: 10,
       link_extra: 'data-remote="true"'
     )

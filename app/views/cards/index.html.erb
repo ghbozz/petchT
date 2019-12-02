@@ -1,18 +1,14 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="container filter-wrapper col-3">
-      <%#= render "filter" %>
+<div class="index-wrapper">
+
+    <div class="container filter-wrapper">
+      <%= render "filter" %>
     </div>
-    <div class="translate-nav articles-wrapper col-12 col-md-9">
-      <div class="row">
-        <div class="col-12 content-left justify-content-center">
-          <div class="articles-container row">
-            <div id="articles-list">
-              <%= render 'cards_list', cards: @cards %>
-            </div>
-          </div>
-        </div>  
+
+    <div class="articles-wrapper">
+      <div id="articles-list">
+        <%= render 'cards_list', cards: @cards %>
       </div>
     </div>
-  </div>
+
+
 </div>

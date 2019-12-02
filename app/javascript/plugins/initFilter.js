@@ -1,11 +1,11 @@
-const initFilter = () => {
-  const filter = document.querySelector(".filter");
-  const btn = document.querySelector("#filter-toggle");
-  btn.addEventListener("click", e => {
-    filter.classList.toggle("filter-active");
-    wrapperShrink();
-  });
-};
+// const initFilter = () => {
+//   const filter = document.querySelector(".filter");
+//   const btn = document.querySelector("#filter-toggle");
+//   btn.addEventListener("click", e => {
+//     filter.classList.toggle("filter-active");
+//     wrapperShrink();
+//   });
+// };
 
 const initAnimals = () => {
   const btns = document.querySelectorAll(".animals-filter label");
@@ -94,7 +94,7 @@ const autoSubmit = () => {
 
 window.addEventListener("DOMContentLoaded", e => {
   if (document.querySelector(".filter")) {
-    initFilter();
+    // initFilter();
     initAnimals();
     initThemes();
     initSearch();
