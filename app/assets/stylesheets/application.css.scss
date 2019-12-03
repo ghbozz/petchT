@@ -135,3 +135,28 @@ h2 {
     font-size: 1.7em;
   }
 }
+
+// REFACTO NEEDED
+
+body {
+  padding-top: 96px;
+}
+
+.index-wrapper {
+  display: flex;
+
+  .filter-wrapper {
+    width: 20%;
+    position: sticky;
+    top: 96px;
+    height: calc(100% - 96px);
+  }
+
+  .articles-wrapper {
+    width: 80%;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+}
