@@ -4,11 +4,10 @@
       <div class="animals-filter">
         <h5>Animaux</h5>
         <hr>
-        <div class="row">
+        <div class="animals-icons row d-flex justify-content-around">
           <% Animal.pluck(:name).each do |animal| %>
-            <div class="col-4">
-              <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' },
-              label: Article::ANIMALS_ICONS[animal.to_sym].html_safe %>
+            <div class="icon-<%= animal %>">
+              <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
             </div>
           <% end %>
         </div>

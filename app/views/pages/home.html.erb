@@ -13,8 +13,8 @@
       </div>
       <div class="col-12 col-md-3 content-right">
         <div class="top-articles">
-          <h3>Les top articles</h3>
-          <ul>
+          <h3 class="top-articles-title">Les top articles</h3>
+          <ul class="ul-top-articles">
             <% @top_articles.each do |article| %>
               <li class="top-article"><%= link_to article.title, article_path(article) %></li>
             <% end %>

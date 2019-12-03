@@ -1,14 +1,12 @@
-<div class="index-wrapper">
-
-    <div class="container filter-wrapper">
+<div class="container">
+  <div class="row">
+    <div class="col-4 filter-wrapper">
       <%= render "filter" %>
     </div>
-
-    <div class="articles-wrapper">
+    <div class="col-12 col-md-8 articles-wrapper">
       <div id="articles-list">
         <%= render 'articles_list', articles: @articles %>
       </div>
     </div>
-
-
+  </div>
 </div>

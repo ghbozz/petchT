@@ -33,7 +33,16 @@
               </div>
               <% end %>
 
-              <% @card.ratings.each do |key, value| %>
+            <% @card.specificities.each do |key, value| %>
+              <div class="specs">
+                <div class="spec">
+                  <span><%= key.gsub('_', ' ').capitalize %></span>
+                  <span class="stars"><%= value.gsub('_', ' ') %></span>
+                </div>
+              </div>
+            <% end %>
+
+            <% @card.ratings.each do |key, value| %>
                 <div class="rating">
                   <span><%= key.capitalize %></span>
                   <div class="stars">
@@ -46,16 +55,6 @@
                   </div>
                 </div>
               <% end %>
-
-
-            <% @card.specificities.each do |key, value| %>
-              <div class="specs">
-                <div class="spec">
-                  <span><%= key.gsub('_', ' ').capitalize %></span>
-                  <span class="stars"><%= value.gsub('_', ' ') %></span>
-                </div>
-              </div>
-            <% end %>
           </div>
         </div>
       </div>

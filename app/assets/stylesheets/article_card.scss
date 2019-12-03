@@ -9,8 +9,8 @@
   text-decoration: none;
 
   img {
-    width: 18rem;
-    height: 18rem;
+    width: 13rem;
+    height: 13rem;
     object-fit: cover;
   }
 
@@ -46,6 +46,14 @@
 
 .card-container {
   padding: .4rem !important;
+}
+
+.article-main-title {
+  font-size: 24px !important;
+}
+
+.article-main-subtitle {
+  font-size: 18px !important;
 }
 
 @media screen and (max-width: 767px) {
@@ -138,5 +146,19 @@
     p {
       margin-left: .8rem !important;
     }
+  }
+}
+
+.top-articles-title {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.ul-top-articles {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding: 1rem 0;
   }
 }

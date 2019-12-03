@@ -1,22 +1,23 @@
 <div class="filter">
   <div class="filter-form">
     <%= simple_form_for :filter_data, url: cards_path, method: :get, remote: true do |f| %>
-    <div class="animals-filter">
-      <h5>Animaux</h5>
-      <hr>
-      <div class="row">
-        <%= simple_fields_for :animals do |x| %>
-          <% Animal.pluck(:name).each do |animal| %>
-            <div class="col-4">
-              <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' },
-              label: Article::ANIMALS_ICONS[animal.to_sym].html_safe %>
-            </div>
+      <div class="animals-filter">
+        <h5>Animaux</h5>
+        <hr>
+        <div class="row">
+          <%= simple_fields_for :animals do |x| %>
+            <% Animal.pluck(:name).each do |animal| %>
+              <div class="col-4">
+              <div class="icon-<%= animal %>">
+                <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
-    <%= f.input :query %>
-    <%= f.submit 'filtrer', class: 'filter-btn' %>
+      <%= f.input :query %>
+      <%= f.submit 'filtrer', class: 'filter-btn' %>
     <% end %>
   </div>
 </div>

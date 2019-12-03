@@ -18,7 +18,7 @@
             </div>
             <div class="submenu-recos-container">
               <div class="submenu-recos-cards submenu-reco-dog-card">
-                <% Card.where(animal: Animal.find_by(name: "chien")).last(3).each do |card| %>
+                <% Card.where({status: "published", animal: Animal.find_by(name: "chien")}).last(3).each do |card| %>
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
@@ -28,7 +28,7 @@
                 <% end %>
               </div>
               <div class="submenu-recos-cards submenu-reco-cat-card hidden">
-                <% Card.where(animal: Animal.find_by(name: "chat")).last(3).each do |card| %>
+                <% Card.where({status: "published", animal: Animal.find_by(name: "chat")}).last(3).each do |card| %>
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
@@ -38,7 +38,7 @@
                 <% end %>
               </div>
               <div class="submenu-recos-cards submenu-reco-rodent-card hidden">
-                <% Card.where(animal: Animal.find_by(name: "rongeur")).last(3).each do |card| %>
+                <% Card.where({status: "published", animal: Animal.find_by(name: "rongeur")}).last(3).each do |card| %>
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
@@ -63,31 +63,40 @@
             </div>
             <div class="submenu-recos-container">
               <div class="submenu-recos-articles submenu-reco-dog-article">
-                <% Article.where(animal: Animal.find_by(name: "chien")).last(3).each do |article| %>
+                <% Article.where({status: "published", animal: Animal.find_by(name: "chien")}).last(3).each do |article| %>
                   <%= link_to article_path(article) do %>
                     <div class="submenu-card">
                       <%= image_tag article.thumbnail, class: 'submenu-picture' %>
-                      <%= article.title %>
+                      <%= article.title.slice(0, 30) %>
+                      <% if article.title.length > 30 %>
+                        ...
+                      <% end %>
                     </div>
                   <% end %>
                 <% end %>
               </div>
               <div class="submenu-recos-articles submenu-reco-cat-article hidden">
-                <% Article.where(animal: Animal.find_by(name: "chat")).last(3).each do |article| %>
+                <% Article.where({status: "published", animal: Animal.find_by(name: "chat")}).last(3).each do |article| %>
                   <%= link_to article_path(article) do %>
                     <div class="submenu-card">
                       <%= image_tag article.thumbnail, class: 'submenu-picture' %>
-                      <%= article.title %>
+                      <%= article.title.slice(0, 30) %>
+                      <% if article.title.length > 30 %>
+                        ...
+                      <% end %>
                     </div>
                   <% end %>
                 <% end %>
               </div>
               <div class="submenu-recos-articles submenu-reco-rodent-article hidden">
-                <% Article.where(animal: Animal.find_by(name: "rongeur")).last(3).each do |article| %>
+                <% Article.where({status: "published", animal: Animal.find_by(name: "rongeur")}).last(3).each do |article| %>
                   <%= link_to article_path(article) do %>
                     <div class="submenu-card">
                       <%= image_tag article.thumbnail, class: 'submenu-picture' %>
-                      <%= article.title %>
+                      <%= article.title.slice(0, 30) %>
+                      <% if article.title.length > 30 %>
+                        ...
+                      <% end %>
                     </div>
                   <% end %>
                 <% end %>
