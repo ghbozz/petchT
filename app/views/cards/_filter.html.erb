@@ -16,8 +16,10 @@
           <% end %>
         </div>
       </div>
-      <%= f.input :query %>
-      <%= f.submit 'filtrer', class: 'filter-btn' %>
+      <h5>Rechercher par race</h5>
+      <hr>
+      <%= f.input :query, label: false %>
+      <%= f.submit 'filtrer', class: 'filter-btn d-none' %>
     <% end %>
   </div>
 </div>
