@@ -10,6 +10,7 @@ module CardsHelper
         animals = Animal.where(name: params[:animals].select { |k, v| v == '1' }.keys)
         cards = cards.where(animal: animals) if !animals.empty?
       end
+
     end
 
     return cards
