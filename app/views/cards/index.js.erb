@@ -1,1 +1,3 @@
 document.querySelector('#articles-list').innerHTML = '<%= j render "cards_list", cards: @cards %>'
+window.history.replaceState(null, null, "?<%= params.to_unsafe_h.to_query %>")
+
