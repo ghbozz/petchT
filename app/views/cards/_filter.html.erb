@@ -9,7 +9,11 @@
             <% Animal.pluck(:name).each do |animal| %>
               <div class="col-4">
               <div class="icon-<%= animal %>">
-                <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                <% if animal == params[:animal] %>
+                  <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box', checked: true } %>
+                <% else %>
+                  <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                <% end %>
                 </div>
               </div>
             <% end %>

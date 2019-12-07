@@ -7,7 +7,11 @@
         <div class="animals-icons row d-flex justify-content-around">
           <% Animal.pluck(:name).each do |animal| %>
             <div class="icon-<%= animal %>">
-              <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+              <% if animal == params[:animal] %>
+                <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box', checked: true } %>
+              <% else %>
+                <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+              <% end %>
             </div>
           <% end %>
         </div>
