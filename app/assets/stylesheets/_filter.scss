@@ -74,12 +74,11 @@
             }
           }
 
-          // &:hover {
-          //   border: 1px solid $brand-orange;
-          //   -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-          //   -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-          //   box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-          // }
+          &:hover {
+            -webkit-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+            -moz-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+            box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+          }
         }
       }
     }
@@ -144,15 +143,41 @@
 }
 
 .animals-filter {
+  .icon-chien {
     input + label {
       cursor: pointer;
+      background-image: url(icons/dog-black.png);
     }
-
     input:checked + label {
-      background-color: $brand-orange;
-      -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-      -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-      box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
+      background-image: url(icons/dog-white.png) !important;
+    }
+  }
+
+  .icon-chat {
+    input + label {
+      cursor: pointer;
+      background-image: url(icons/cat-black.png);
+    }
+    input:checked + label {
+      background-image: url(icons/cat-white.png) !important;
+    }
+  }
+
+  .icon-rongeur {
+    input + label {
+      cursor: pointer;
+      background-image: url(icons/rodent-black.png);
+    }
+    input:checked + label {
+      background-image: url(icons/rodent-white.png) !important;
+    }
+  }
+
+  input:checked + label {
+    background-color: $brand-orange;
+    -webkit-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
   }
 }
 

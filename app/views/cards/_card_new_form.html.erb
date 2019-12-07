@@ -3,11 +3,12 @@
 <%= simple_form_for(card, url: cards_path(animal: params[:animal]), method: :post) do |f| %>
   <div class="form-wrapper">
     <div class="inputs">
+      <%= f.input :thumbnail %>
       <div class="row">
-        <div class="col">
+        <div class="col align-items-center">
           <!-- COMMON INPUTS -->
           <% if card.specie %>
-          <%= f.input :specie, placeholder: 'Espece', label: false, input_html: { class: 'check', value: card.specie.name } %>
+            <%= f.input :specie, placeholder: 'Espece', label: false, input_html: { class: 'check', value: card.specie.name } %>
           <% else %>
             <%= f.input :specie, placeholder: 'Espece', label: false, input_html: { class: 'check' } %>
           <% end %>
@@ -39,17 +40,17 @@
               <%= x.input key, collection: value.map { |i| i.capitalize }, prompt: "#{key.to_s.gsub('_', ' ').capitalize}", label: false, input_html: { class: 'check'} %>
             <% end %>
           <% end %>
-
         </div>
 
         <!-- SPECIFIC RATINGS -->
-        <div class="col card-ratings">
-         <%= f.input :thumbnail %>
-          <%= simple_fields_for :ratings, OpenStruct.new(card.ratings) do |x| %>
-            <% Animal::RATINGS[params[:animal].to_sym].each do |rating| %>
-              <%= x.input rating, collection: 1..5, input_html: { class: 'rating_field' }  %>
+        <div class="col card-ratings align-items-center">
+          <div style="width: 100%;">
+            <%= simple_fields_for :ratings, OpenStruct.new(card.ratings) do |x| %>
+              <% Animal::RATINGS[params[:animal].to_sym].each do |rating| %>
+                <%= x.input rating, collection: 1..5, input_html: { class: 'rating_field' }  %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
 
       </div>

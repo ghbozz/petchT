@@ -17,30 +17,16 @@ require("channels");
 require("plugins/initQuill");
 // require("plugins/initFilter");
 
-window.addEventListener("DOMContentLoaded", e => {
-  initStarRating();
-});
 
-window.addEventListener("DOMContentLoaded", e => {
-  if (document.querySelector(".select2")) initSelect2();
-  if (document.querySelector(".js-example-basic-multiple")) initSelector();
-});
-
-window.addEventListener("DOMContentLoaded", e => {
-  if (document.querySelector("#init_card")) initNewCardForm();
-});
-
-window.addEventListener("DOMContentLoaded", e => {
   document.querySelector(".nav-wrapper") && initNavHover();
-});
 
-window.addEventListener("DOMContentLoaded", e=> {
+  if (document.querySelector('.rating_field')) initStarRating();
+  if (document.querySelector('.select2')) initSelect2();
+  if (document.querySelector('.js-example-basic-multiple')) initSelector();
+  if (document.querySelector('#init_card')) initNewCardForm();
   if (document.querySelector('.socials-btns')) initSocialIcons();
-})
+  if (document.querySelector('.filter-form')) initFilter();
 
-window.addEventListener("DOMContentLoaded", e => {
-  initFilter();
-});
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

@@ -136,29 +136,17 @@
   color: rgba(0, 0, 0, .3);
 }
 
-.icon-chien label {
-  background-image: url(icons/dog-black.png);
-}
+// .icon-chien .label-active {
+//   background-image: url(icons/dog-white.png) !important;
+// }
 
-.icon-chat label {
-  background-image: url(icons/cat-black.png);
-}
+// .icon-chat .label-active {
+//   background-image: url(icons/cat-white.png) !important;
+// }
 
-.icon-rongeur label {
-  background-image: url(icons/rodent-black.png);
-}
-
-.icon-chien .label-active {
-  background-image: url(icons/dog-white.png) !important;
-}
-
-.icon-chat .label-active {
-  background-image: url(icons/cat-white.png) !important;
-}
-
-.icon-rongeur .label-active {
-  background-image: url(icons/rodent-white.png) !important;
-}
+// .icon-rongeur .label-active {
+//   background-image: url(icons/rodent-white.png) !important;
+// }
 
 // SHOW
 
@@ -267,11 +255,11 @@
   padding: rem(2px) rem(6px);
 
   &:first-child {
-    margin-right: rem(10px);
+    margin-right: rem(5px);
   }
 
   &+& {
-    margin: 0 rem(10px);
+    margin: 0 rem(5px);
   }
 }
 

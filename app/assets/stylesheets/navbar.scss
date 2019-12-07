@@ -44,6 +44,10 @@
         font-size: 16px;
         border: none;
 
+        &:focus {
+          outline: none;
+        }
+
         a {
           color: $dark-grey;
           text-decoration: none;
@@ -51,6 +55,33 @@
           &:hover {
             color: $brand-orange;
           }
+        }
+      }
+
+      .shop-btn {
+        padding: 10px 15px;
+        border: 2px solid $brand-orange;
+        color: $brand-orange;
+        text-decoration: none !important;
+        transition: all .3s ease-out;
+
+        a {
+          text-decoration: none !important;
+          color: $brand-orange;
+        }
+
+        &:hover {
+          background-color: $brand-orange;
+          color: white;
+
+          a {
+            text-decoration: none !important;
+            color: white !important;
+          }
+        }
+
+        &:focus {
+          outline: none;
         }
       }
 
