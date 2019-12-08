@@ -40,7 +40,11 @@
     <div class="col-12 pt-5">
       <div class="d-flex justify-content-center pt-3">
         <%= f.submit 'Sauvegarder', class: 'fake-submit petch-btn' %>
-        <%= f.submit 'Poster', class: 'fake-submit petch-btn ml-5' %>
+        <% if current_user.is_admin? %>
+          <%= link_to f.submit 'Publier', class: 'fake-submit petch-btn ml-5'  %>
+        <% else %>
+          <%= f.submit 'Poster', class: 'fake-submit petch-btn ml-5' %>
+        <% end %>
       </div>
     </div>
 

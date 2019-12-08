@@ -38,7 +38,9 @@ class ArticlesController < ApplicationController
     params[:article][:tag_list] = set_tags(params[:tags])
     @article = Article.new(article_params.merge(user: current_user))
     @article.animal = Animal.find_by(name: params[:article][:animal])
+
     @article.update(status: 'submitted') if params[:commit] == 'Poster'
+    @article.update(status: 'published') if params[:commit] == 'Publier' && current_user.is_admin?
 
     if @article.save
       params
@@ -57,8 +59,10 @@ class ArticlesController < ApplicationController
 
     params[:article][:tag_list] = set_tags(params[:tags])
     @article.update(article_params)
+
     @article.update(status: 'draft') if !current_user.is_admin?
     @article.update(status: 'submitted') if params[:commit] == 'Poster'
+    @article.update(status: 'published') if params[:commit] == 'Publier' && current_user.is_admin?
 
 
     if @article.save
