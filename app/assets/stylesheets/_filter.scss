@@ -146,30 +146,30 @@
   .icon-chien {
     input + label {
       cursor: pointer;
-      background-image: url(icons/dog-black.png);
+      background-image: image-url("icons/dog-black.png")
     }
     input:checked + label {
-      background-image: url(icons/dog-white.png) !important;
+      background-image: image-url("icons/dog-white.png") !important;
     }
   }
 
   .icon-chat {
     input + label {
       cursor: pointer;
-      background-image: url(icons/cat-black.png);
+      background-image: image-url("icons/cat-black.png");
     }
     input:checked + label {
-      background-image: url(icons/cat-white.png) !important;
+      background-image: image-url("icons/cat-white.png") !important;
     }
   }
 
   .icon-rongeur {
     input + label {
       cursor: pointer;
-      background-image: url(icons/rodent-black.png);
+      background-image: image-url("icons/rodent-black.png");
     }
     input:checked + label {
-      background-image: url(icons/rodent-white.png) !important;
+      background-image: image-url("icons/rodent-white.png") !important;
     }
   }
 
