@@ -26,12 +26,12 @@
   }
 
   h2:before {
-    right: 0.5em;
+    right: 2em;
     margin-left: -50%;
   }
 
   h2:after {
-    left: 0.5em;
+    left: 2em;
     margin-right: -50%;
   }
 
@@ -78,7 +78,7 @@
 
     .newsletter-block {
       border: 1px solid rgba(0, 0, 0, .2);
-      border-top: 2px solid rgb(212, 133, 133);
+      border-top: 2px solid $brand-orange;
     }
   }
 }
@@ -97,6 +97,7 @@
 
     h2 {
       color: $dark-grey;
+      font-weight: 500;
     }
 
     .search {
@@ -191,12 +192,13 @@
       font-size: 1rem;
     }
 
-    .author-name {
-      font-weight: 400;
-    }
+    .author-content {
 
-    .created_at {
-      font-size: .8rem;
+
+      .author-name {
+        font-weight: 700;
+      }
+
     }
   }
 }
@@ -254,16 +256,8 @@
 .tag-list-item {
   background-color: $brand-orange;
   border-radius: rem(4px);
-  color: rgba(255, 255, 255, 1);
+  color: $full-white;
   padding: rem(2px) rem(6px);
-
-  &:first-child {
-    margin-right: rem(5px);
-  }
-
-  &+& {
-    margin: 0 rem(5px);
-  }
 }
 
 .tags-and-socials {
@@ -277,13 +271,32 @@
     flex-direction: column;
 
     .article-tags {
-      justify-content: flex-start;
-      margin-bottom: 20px;
+      display: block;
+      margin-bottom: rem(20px);
+    }
+
+    .tag-list-item {
+      margin: rem(10px) auto;
+      text-align: center;
+      padding: rem(4px) rem(6px);
     }
   }
 }
 
-.article-tags {
-  align-items: center;
-  justify-content: center;
+@media screen and (min-width: 768px) {
+  .article-tags {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .tag-list-item {
+    &:first-child {
+      margin-right: rem(5px);
+    }
+
+    &+& {
+      margin: 0 rem(5px);
+    }
+  }
 }

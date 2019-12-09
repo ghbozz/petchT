@@ -167,7 +167,22 @@
     width: 100%;
   }
 
+  .card-specs-ratings {
+    position: fixed;
+    width: rem(320px);
+    right: 5%;
+
+    &.sticky {
+      top: rem(140px) !important;
+    }
+
+    &.not-sticky {
+      bottom: 500px !important;
+    }
+  }
+
   .card-specs-box {
+    background-color: $full-white;
     border: 1px solid $light-grey;
     color: $medium-grey;
     font-size: rem(14px);
@@ -229,4 +244,25 @@
 .content-card-text {
   font-size: 1.3rem;
   font-weight: 300;
+}
+
+@media screen and (max-width: 767px) {
+  .content-card-text {
+    text-align: justify;
+  }
+
+  .card-specs-ratings {
+    position: relative !important;
+    bottom: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content-card-text {
+    text-align: left;
+  }
 }

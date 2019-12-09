@@ -3,7 +3,6 @@ class Animal < ApplicationRecord
   has_many :articles
   has_many :cards
 
-
   # ANIMALS = %w(chien chat rongeur)
   SPECS = {
     chien: {

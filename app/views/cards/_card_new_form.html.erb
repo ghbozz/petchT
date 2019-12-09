@@ -3,7 +3,7 @@
 <%= simple_form_for(card, url: cards_path(animal: params[:animal]), method: :post) do |f| %>
   <div class="form-wrapper">
     <div class="inputs">
-      <%= f.input :thumbnail %>
+      <%= f.input :thumbnail, label: "Ajouter une photo" %>
       <div class="row">
         <div class="col align-items-center">
           <!-- COMMON INPUTS -->

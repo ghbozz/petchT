@@ -1,25 +1,25 @@
 <div class="row mb-5">
   <% articles.each_with_index do |article, index| %>
     <% if index == 0 %>
-      <div class="col-12 card-container mb-2">
+      <div class="col-12 home-card-container mb-2">
         <%= link_to article_path(article) do %>
-          <div class="article-card article-card-main">
+          <div class="home-card home-card-main">
             <%= image_tag url_for(article.thumbnail) %>
-            <div class="card-desc">
-              <h4 class="article-main-title"><%= article.title %></h4>
-              <p class="article-main-subtitle"><%= article.subtitle %></p>
+            <div class="home-card-desc">
+              <h4 class="home-main-title"><%= article.title %></h4>
+              <p class="home-main-subtitle"><%= article.subtitle %></p>
             </div>
           </div>
         <% end %>
       </div>
     <% else %>
-      <div class="col-12 col-sm-6 col-md-4 card-container">
+      <div class="col-12 col-sm-6 col-md-3 home-card-container home-card-container-other">
         <%= link_to article_path(article) do %>
-          <div class="article-card home-card">
+          <div class="home-card home-card">
             <%= image_tag url_for(article.thumbnail) %>
-            <div class="card-desc">
+            <div class="home-card-desc">
               <h4><%= article.title %></h4>
-              <p><%= article.subtitle %></p>
+              <p><%= article.subtitle.truncate(50) %></p>
             </div>
           </div>
         <% end %>

@@ -3,7 +3,7 @@
 
 // REFACTO NEEDED
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .filter-wrapper {
     display: none !important;
   }
@@ -24,6 +24,7 @@
     position: sticky;
     height: calc(100vh - 120px);
     top: 128px;
+    overflow: scroll;
   }
 
   i {
@@ -46,6 +47,8 @@
       margin-bottom: 15px;
 
       .form-check {
+        height: rem(60px);
+        width: rem(60px);
         padding-left: 0px;
 
         label {
@@ -54,11 +57,11 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid rgba(100, 100, 100, 0.1);
+          border: 1px solid rgba(100, 100, 100, 0.3);
           position: relative;
           transition: all .2s ease-out;
-          height: 80px;
-          width: 80px;
+          height: 60px;
+          width: 60px;
           background-size: 70%;
           background-position: 50% 50%;
           background-repeat: no-repeat;
@@ -112,7 +115,7 @@
           right: -14px;
           width: 20px;
           height: 20px;
-          border: 1px solid rgba(100, 100, 100, 0.1);
+          border: 1px solid rgba(100, 100, 100, 0.3);
           border-radius: 100px;
           transition: background-color .2s;
           cursor: pointer;
@@ -147,52 +150,51 @@
 
 .animals-filter {
   .icon-chien {
-    input + label {
+    input+label {
       cursor: pointer;
       background-image: image-url("icons/dog-black.png")
     }
-    input:checked + label {
+
+    input:checked+label {
       background-image: image-url("icons/dog-white.png") !important;
     }
   }
 
   .icon-chat {
-    input + label {
+    input+label {
       cursor: pointer;
       background-image: image-url("icons/cat-black.png");
     }
-    input:checked + label {
+
+    input:checked+label {
       background-image: image-url("icons/cat-white.png") !important;
     }
   }
 
   .icon-rongeur {
-    input + label {
+    input+label {
       cursor: pointer;
       background-image: image-url("icons/rodent-black.png");
     }
-    input:checked + label {
+
+    input:checked+label {
       background-image: image-url("icons/rodent-white.png") !important;
     }
   }
 
-  input:checked + label {
+  input:checked+label {
     background-color: $brand-orange;
-    -webkit-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
   }
 }
 
 .themes-filter {
-  input + label:before {
+  input+label:before {
     cursor: pointer;
   }
 
-  input:checked + label:before {
+  input:checked+label:before {
     background-color: $brand-orange;
-    -webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1);
   }
 }
@@ -200,7 +202,7 @@
 .tags-filter {
   padding-top: 15px;
 
-  input + label {
+  input+label {
     background-color: rgb(240, 240, 240);
     border-radius: rem(4px);
     color: $dark-grey;
@@ -208,7 +210,7 @@
     cursor: pointer;
   }
 
-  input:checked + label {
+  input:checked+label {
     background-color: $brand-orange;
     border-radius: rem(4px);
     color: rgba(255, 255, 255, 1);
@@ -228,6 +230,7 @@
 
   fieldset {
     margin-bottom: 5px;
+
     .form-check {
       padding: 0px 5px;
     }
