@@ -24,7 +24,7 @@
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                      <%= card.title %>
+                      <%= card.specie.name.truncate(15) %>
                     </div>
                   <% end %>
                 <% end %>
@@ -34,7 +34,7 @@
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                      <%= card.title %>
+                      <%= card.specie.name.truncate(15) %>
                     </div>
                   <% end %>
                 <% end %>
@@ -44,7 +44,7 @@
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                      <%= card.title %>
+                      <%= card.specie.name.truncate(15) %>
                     </div>
                   <% end %>
                 <% end %>
@@ -69,10 +69,7 @@
                   <%= link_to article_path(article) do %>
                     <div class="submenu-card">
                       <%= image_tag article.thumbnail, class: 'submenu-picture' %>
-                      <%= article.title.slice(0, 30) %>
-                      <% if article.title.length > 30 %>
-                        ...
-                      <% end %>
+                      <%= article.title.truncate(15) %>
                     </div>
                   <% end %>
                 <% end %>
@@ -82,10 +79,7 @@
                   <%= link_to article_path(article) do %>
                     <div class="submenu-card">
                       <%= image_tag article.thumbnail, class: 'submenu-picture' %>
-                      <%= article.title.slice(0, 30) %>
-                      <% if article.title.length > 30 %>
-                        ...
-                      <% end %>
+                      <%= article.title.truncate(15) %>
                     </div>
                   <% end %>
                 <% end %>
@@ -95,10 +89,7 @@
                   <%= link_to article_path(article) do %>
                     <div class="submenu-card">
                       <%= image_tag article.thumbnail, class: 'submenu-picture' %>
-                      <%= article.title.slice(0, 30) %>
-                      <% if article.title.length > 30 %>
-                        ...
-                      <% end %>
+                      <%= article.title.truncate(15) %>
                     </div>
                   <% end %>
                 <% end %>

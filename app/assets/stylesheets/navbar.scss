@@ -95,11 +95,15 @@
       .dropdown-content {
         display: none;
         position: absolute;
+        top: 60px;
+        left: -75px;
         border: 1px solid $light-grey;
-        min-width: 160px;
+        min-width: 600px;
+        // height: 250px;
         z-index: 1;
         background-color: $full-white;
-        padding: rem(20px) rem(30px);
+        padding: rem(30px) rem(20px);
+        white-space: nowrap;
       }
 
       /* Links inside the dropdown */

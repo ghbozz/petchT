@@ -12,7 +12,7 @@ class CardsController < ApplicationController
 
     @pagy, @cards = pagy(
       helpers.cards_search(@cards, params).order(created_at: :desc),
-      items: 10,
+      items: 12,
       link_extra: 'data-remote="true"'
     )
   end

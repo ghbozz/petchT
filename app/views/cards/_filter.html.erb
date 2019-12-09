@@ -22,7 +22,10 @@
       </div>
       <h5>Rechercher par race</h5>
       <hr>
-      <%= f.input :query, label: false %>
+      <div class="filter-query">
+        <%= f.input :query, label: false %>
+        <i class="fas fa-search"></i>
+      </div>
       <%= f.submit 'filtrer', class: 'filter-btn d-none' %>
     <% end %>
   </div>
