@@ -272,6 +272,15 @@
   a {
     font-size: 20px;
   }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+
+    .article-tags {
+      justify-content: flex-start;
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .article-tags {

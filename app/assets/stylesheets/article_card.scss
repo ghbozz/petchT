@@ -1,7 +1,12 @@
 .home-card {
   img {
     width: 100% !important;
-    height: 10rem !important;
+    // height: 10rem !important;
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
   }
 }
 
