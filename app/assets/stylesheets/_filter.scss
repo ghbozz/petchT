@@ -21,6 +21,9 @@
 
   .filter {
     width: 100%;
+    position: sticky;
+    height: calc(100vh - 120px);
+    top: 128px;
   }
 
   i {
@@ -228,5 +231,21 @@
     .form-check {
       padding: 0px 5px;
     }
+  }
+}
+
+.filter-query {
+  position: relative;
+
+  i {
+    font-size: 1.4rem;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 10px;
+  }
+
+  input:focus {
+    outline: none !important;
   }
 }
