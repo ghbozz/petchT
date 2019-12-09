@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col">
         <!-- COMMON INPUTS -->
-        <%= f.input :thumbnail %>
+        <%= f.input :thumbnail, label: "Ajouter une photo" %>
         <%= f.input :specie, placeholder: 'Espece', label: false, input_html: { class: 'check', value: card.specie.name } %>
         <%= f.input :life_expectancy, label: false, placeholder: 'Esperance du vie', input_html: { class: 'check' } %>
         <div class="row">

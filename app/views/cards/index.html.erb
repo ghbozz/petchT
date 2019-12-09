@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-4 filter-wrapper">
+    <div class="col-12 col-lg-4 filter-wrapper">
       <%= render "filter" %>
     </div>
-    <div class="col-12 col-md-8 articles-wrapper">
+    <div class="col-12 col-lg-8 articles-wrapper">
       <div id="articles-list">
-        <%= render 'cards_list', cards: @cards %>
+        <%= render 'shared/cards_list', cards: @cards %>
       </div>
     </div>
   </div>

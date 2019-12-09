@@ -18,10 +18,15 @@
 
           <div class="author-infos">
             <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle article-avatar" width="75px">
-            <div>
-              <span class="author-name"><%= @article.author_name %></span><br>
-              <span class="author-job"><%= @article.user.profession %></span><br>
-              <span class="created_at"><%= @article.get_date %></span>
+            <div class="author-content">
+              <div class="author-meta">
+                <span class="author-name"><%= @article.author_name %></span>
+                <span class="author-job"><%= @article.user.profession %></span>
+              </div>
+              <div class="article-meta">
+                <span class="created_at"><%= @article.get_date.downcase %></span> •
+                <span class="reading-time"><%= @reading_duration %> min</span>
+              </div>
             </div>
           </div>
         </div>
@@ -55,7 +60,7 @@
       </div>
 
       <div class="tags-and-socials d-flex pt-5">
-        <div class="article-tags d-flex">
+        <div class="article-tags">
           <% @article.tag_list.each do |tag| %>
             <div class="tag-list-item">
               <%= tag %>
@@ -71,7 +76,7 @@
           <%= social_share_button_tag('Share to Facebook', :url => @article.get_url, desc: @article.title) %>
         </div>
       </div>
-      <hr>
+      <hr class="my-5">
 
       <h3 class="pt-3">Articles similaires</h3>
 

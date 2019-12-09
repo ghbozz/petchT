@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
 
     @article_animal = @article.animal
     @recomandations = Article.where(animal: @article.animal, status: 'published').sample(3)
+    @reading_duration = @article.body.split(/\W+/).count / 200
   end
 
   def new

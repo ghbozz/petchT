@@ -8,7 +8,6 @@
 
 
     <div class="nav-menu-desktop">
-    <button class="dropbtn"><%= link_to 'Marques' %></button>
       <div class="dropdown">
         <button class="dropbtn"><%= link_to 'Fiches', cards_path %></button>
         <div class="dropdown-content">
@@ -19,7 +18,17 @@
               <%= link_to "Rongeurs", cards_path(params: {animal: 'rongeur'}), class: "submenu-activate-button rodent-submenu-card" %>
             </div>
             <div class="submenu-recos-container">
-              <div class="submenu-recos-cards submenu-reco-dog-card">
+              <div class="submenu-recos-cards submenu-reco-all-card">
+                <% Card.where({status: "published"}).last(3).each do |card| %>
+                  <%= link_to card_path(card) do %>
+                    <div class="submenu-card">
+                      <%= image_tag card.thumbnail, class: 'submenu-picture' %>
+                      <%= card.specie.name.truncate(15) %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="submenu-recos-cards submenu-reco-dog-card hidden">
                 <% Card.where({status: "published", animal: Animal.find_by(name: "chien")}).last(3).each do |card| %>
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
@@ -64,7 +73,17 @@
               <%= link_to "Rongeurs", articles_path(params: {animal: 'rongeur'}), class: "submenu-activate-button rodent-submenu-article" %>
             </div>
             <div class="submenu-recos-container">
-              <div class="submenu-recos-articles submenu-reco-dog-article">
+              <div class="submenu-recos-articles submenu-reco-all-article">
+                <% Article.where({status: "published"}).last(3).each do |article| %>
+                  <%= link_to article_path(article) do %>
+                    <div class="submenu-card">
+                      <%= image_tag article.thumbnail, class: 'submenu-picture' %>
+                      <%= article.title.truncate(15) %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="submenu-recos-articles submenu-reco-dog-article hidden">
                 <% Article.where({status: "published", animal: Animal.find_by(name: "chien")}).last(3).each do |article| %>
                   <%= link_to article_path(article) do %>
                     <div class="submenu-card">
@@ -98,6 +117,8 @@
           </div>
         </div>
       </div>
+
+      <button class="dropbtn"><%= link_to 'Marques' %></button>
       <%= link_to '#', class: 'shop-btn' do %>
         Boutique
       <% end %>

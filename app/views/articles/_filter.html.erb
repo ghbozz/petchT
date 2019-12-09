@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="themes-filter">
-        <h5>Themes</h5>
+        <h5>Thèmes</h5>
         <hr>
         <% Article::THEMES.each do |theme| %>
           <%= f.input theme.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>

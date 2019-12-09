@@ -21,9 +21,9 @@ class CardsController < ApplicationController
     authorize @card
     @caracs = {
       origine: @card.origin,
-      esperence_de_vie: "#{@card.life_expectancy} ans",
+      espérance_de_vie: "#{@card.life_expectancy} ans",
       hauteur: "#{@card.min_height} - #{@card.max_height} cm",
-      poid: "#{@card.min_weight} - #{@card.max_weight} kgs",
+      poids: "#{@card.min_weight} - #{@card.max_weight} kgs",
     }
 
     @animal = @card.animal.name

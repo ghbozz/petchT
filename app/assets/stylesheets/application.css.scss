@@ -51,7 +51,7 @@ h2 {
 
   a {
     color: $dark-grey;
-    cursor: default;
+    cursor: pointer;
     text-decoration: none;
 
     &:hover {
@@ -168,4 +168,3 @@ body {
   max-width: 1400px;
   margin: 0 auto;
 }
-
