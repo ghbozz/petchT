@@ -2,7 +2,7 @@ import { initStarRating } from "../plugins/init_star_rating";
 import { initNewCardForm } from "../plugins/init_new_card_form";
 import { initSelect2, initSelector } from "../plugins/init_select2";
 import { initSocialIcons } from "../plugins/initSocialIcons";
-import { initNavHover } from "../plugins";
+import { initNavHover, initSticky } from "../plugins";
 import { initFilter } from "../plugins/initFilter";
 
 // This file is automatically compiled by Webpack, along with any other files
@@ -17,16 +17,15 @@ require("channels");
 require("plugins/initQuill");
 // require("plugins/initFilter");
 
+document.querySelector(".nav-wrapper") && initNavHover();
+document.querySelector(".card-specs-ratings") && initSticky();
 
-  document.querySelector(".nav-wrapper") && initNavHover();
-
-  if (document.querySelector('.rating_field')) initStarRating();
-  if (document.querySelector('.select2')) initSelect2();
-  if (document.querySelector('.js-example-basic-multiple')) initSelector();
-  if (document.querySelector('#init_card')) initNewCardForm();
-  if (document.querySelector('.socials-btns')) initSocialIcons();
-  if (document.querySelector('.filter-form')) initFilter();
-
+if (document.querySelector(".rating_field")) initStarRating();
+if (document.querySelector(".select2")) initSelect2();
+if (document.querySelector(".js-example-basic-multiple")) initSelector();
+if (document.querySelector("#init_card")) initNewCardForm();
+if (document.querySelector(".socials-btns")) initSocialIcons();
+if (document.querySelector(".filter-form")) initFilter();
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
