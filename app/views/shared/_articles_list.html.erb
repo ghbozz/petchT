@@ -1,12 +1,12 @@
 <div class="row mb-5">
-  <% cards.each_with_index do |card, index| %>
+  <% articles.each_with_index do |article, index| %>
     <div class="col-xs-12 col-md-4 card-container d-flex justify-content-center">
-      <%= link_to article_path(card) do %>
+      <%= link_to article_path(article) do %>
         <div class="article-card">
-          <%= image_tag url_for(card.thumbnail) %>
+          <%= image_tag url_for(article.thumbnail) %>
           <div class="card-desc mt-1">
-            <h4><%= card.title %></h4>
-            <p><%= card.subtitle %></p>
+            <h4><%= article.title %></h4>
+            <p><%= article.subtitle %></p>
           </div>
         </div>
       <% end %>

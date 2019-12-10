@@ -8,7 +8,7 @@
     </div>
     <div class="row">
       <div class="col vertical-center">
-        <%= f.input :animal, collection: Animal.pluck(:name), prompt: 'Animal', label: false, input_html: { class: 'select2' } %>
+        <%= f.association :animal, prompt: 'Animal', label: false, input_html: { class: 'select2' } %>
       </div>
       <div class="col vertical-center">
         <%= f.input :theme, collection: Article::THEMES, prompt: 'Theme', label: false, input_html: { class: 'select2' } %>
