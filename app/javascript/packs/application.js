@@ -18,7 +18,7 @@ require("plugins/initQuill");
 // require("plugins/initFilter");
 
 document.querySelector(".nav-wrapper") && initNavHover();
-document.querySelector(".card-specs-ratings") && initSticky();
+// document.querySelector(".card-specs-ratings") && initSticky();
 
 if (document.querySelector(".rating_field")) initStarRating();
 if (document.querySelector(".select2")) initSelect2();

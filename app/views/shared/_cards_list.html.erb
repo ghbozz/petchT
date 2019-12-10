@@ -6,7 +6,7 @@
           <%= image_tag url_for(card.thumbnail) %>
           <div class="card-desc mt-1">
             <h4><%= card.specie.name %></h4>
-            <p><%= raw card.body.truncate(50) %></p>
+            <p><%= raw card.subtitle %></p>
           </div>
         </div>
       <% end %>
