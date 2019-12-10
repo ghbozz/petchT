@@ -62,24 +62,26 @@
 
     <hr class="mt-5">
 
-    
+
 
     <div class="recomandations pt-5">
       <h3>Fiches similaires</h3>
-      <div class="row">
-        <% @recomandations.each do |reco| %>
-          <div class="col-12 col-md-4 d-flex justify-content-center px-4">
-            <%= link_to card_path(reco) do  %>
-              <div class="reco-card">
-                <%= image_tag url_for(reco.thumbnail) %>
-                <div class="card-desc">
-                  <h4><%= reco.specie.name %></h4>
-                  <!-- <p><%#= raw reco.body.slice(0, 50) %></p> -->
+      <div class="recomandations pt-3">
+        <div class="row">
+          <% @recomandations.each do |reco| %>
+            <div class="col-12 col-md-4">
+              <%= link_to article_path(reco) do  %>
+                <div class="reco-card">
+                  <%= image_tag url_for(reco.thumbnail) %>
+                  <div class="card-desc">
+                    <h4><%= reco.specie.name %></h4>
+                    <p><%= reco.subtitle %></p>
+                  </div>
                 </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

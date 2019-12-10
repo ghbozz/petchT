@@ -106,10 +106,11 @@ puts "Creating 30 Articles & Cards..."
 end
 
 15.times do |i|
-  puts "Creating Article - #{i+1}"
+  puts "Creating Card - #{i+1}"
   animal = Animal.all.sample
   card = Card.new(
     animal: animal,
+    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     specie: Specie.create(name: SPECIES[animal.name.to_sym].sample, animal: animal),
     body: Array.new(5, PARAGRAPH).join('<br><br>'),
     life_expectancy: rand(20..30),

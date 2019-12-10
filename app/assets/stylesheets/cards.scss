@@ -139,11 +139,17 @@
 }
 
 // SHOW
+.reco-card {
+  img {
+    margin-bottom: 20px;
+  }
+}
+
 .card-wrapper {
 
   a,
   a:hover {
-    color: $brand-orange;
+    color: $dark-grey;
     text-decoration: none;
   }
 
@@ -168,9 +174,11 @@
   }
 
   .card-specs-ratings {
-    position: fixed;
+    position: sticky;
     width: rem(320px);
     right: 5%;
+    top: 0;
+    height: 100vh;
 
     &.sticky {
       top: rem(140px) !important;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_121919) do
+ActiveRecord::Schema.define(version: 2019_12_10_110026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_121919) do
     t.bigint "specie_id"
     t.bigint "animal_id"
     t.bigint "user_id"
+    t.string "subtitle"
     t.index ["animal_id"], name: "index_cards_on_animal_id"
     t.index ["specie_id"], name: "index_cards_on_specie_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
