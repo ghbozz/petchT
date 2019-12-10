@@ -14,7 +14,21 @@ class Admin::BrandsController < ApplicationController
 
   def update
     @brand = Brand.find(params[:id])
+    @brand.update(brand_params)
     @brand.set_targets(params)
+    redirect_to brand_path(@brand)
+  end
+
+  def destroy
+    authorize :brand, :destroy?
+
+    @brand = Brand.find(params[:id])
+    @brand.destroy
+
+    respond_to do |format|
+      format.html { redirect_to admin_profile_path }
+      format.js
+    end
   end
 
   private

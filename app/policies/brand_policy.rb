@@ -8,4 +8,8 @@ class BrandPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def destroy?
+    user.is_admin?
+  end
 end

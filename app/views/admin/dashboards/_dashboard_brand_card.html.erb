@@ -19,5 +19,9 @@
       <i class="far fa-eye"></i>
       <%= link_to 'Voir', brand_path(brand) %>
     </span>
+    <span>
+      <i class="fas fa-trash-alt"></i>
+      <%= link_to 'Supprimer', admin_brand_path(brand), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+    </span>
   </div>
 </div>
