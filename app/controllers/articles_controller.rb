@@ -113,7 +113,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :theme, :thumbnail, :tag_list, images: [])
+    params.require(:article).permit(:title, :subtitle, :body, :theme, :thumbnail, :tag_list, :animal_id, images: [])
   end
 
   def set_tags(tags)
