@@ -5,11 +5,12 @@
   <h3 class="mb-5">Edition de fiche <%= card.specie.name %></h3>
 
   <div class="inputs">
+    <%= f.input :thumbnail, label: "Ajouter une photo" %>
     <div class="row">
       <div class="col">
         <!-- COMMON INPUTS -->
-        <%= f.input :thumbnail, label: "Ajouter une photo" %>
         <%= f.input :specie, placeholder: 'Espece', label: false, input_html: { class: 'check', value: card.specie.name } %>
+        <%= f.input :subtitle, placeholder: 'Sous-titre', label: false %>
         <%= f.input :life_expectancy, label: false, placeholder: 'Esperance du vie', input_html: { class: 'check' } %>
         <div class="row">
           <div class="col">
