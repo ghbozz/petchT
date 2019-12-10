@@ -1,0 +1,32 @@
+<div class="filter">
+  <div class="filter-form">
+    <%= simple_form_for :filter_data, url: brands_path, method: :get, remote: true do |f| %>
+      <div class="animals-filter">
+        <h5>Animaux</h5>
+        <hr>
+        <div class="row">
+          <%= simple_fields_for :animals do |x| %>
+            <% Animal.pluck(:name).each do |animal| %>
+              <div class="col-4">
+              <div class="icon-<%= animal %>">
+                <% if animal == params[:animal] %>
+                  <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box', checked: true } %>
+                <% else %>
+                  <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <h5>Rechercher par race</h5>
+      <hr>
+      <div class="filter-query">
+        <%= f.input :query, label: false %>
+        <i class="fas fa-search"></i>
+      </div>
+      <%= f.submit 'filtrer', class: 'filter-btn d-none' %>
+    <% end %>
+  </div>
+</div>

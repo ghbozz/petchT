@@ -1,0 +1,18 @@
+<div class="row mb-5">
+  <% brands.each_with_index do |brand, index| %>
+    <div class="col-12 col-sm-6 col-md-4 card-container d-flex justify-content-center">
+      <%= link_to brand_path(brand) do %>
+        <div class="article-card">
+          <%= image_tag url_for(brand.logo) %>
+          <div class="card-desc mt-1">
+            <h4><%= brand.name %></h4>
+            <!-- <p><%#= raw card.subtitle %></p> -->
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="pagination">
+  <%= raw pagy_nav(@pagy) %>
+</div>

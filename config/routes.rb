@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'brands/index'
+  get 'brands/show'
   root to: 'pages#home'
   devise_for :users
 
@@ -19,16 +21,23 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :brands, only: [:index, :show]
+
   namespace :admin do
+
     get '/profile', to: 'dashboards#admin_dashboard'
+
     resources :articles, only: [:destroy] do
       post '/publish', to: 'articles#publish'
       post '/unpublish', to: 'articles#unpublish'
     end
+
     resources :cards, only: [:destroy] do
       post '/publish', to: 'cards#publish'
       post '/unpublish', to: 'cards#unpublish'
     end
+
+    resources :brands, only: [:new, :create, :edit, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

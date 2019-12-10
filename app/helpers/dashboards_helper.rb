@@ -38,6 +38,17 @@ module DashboardsHelper
     return cards
   end
 
+  def brands_filter(brands, params)
+
+    if params[:brands_filter]
+      brands = brands.brands_search(params[:brands_filter][:query]) if !params[:brands_filter][:query].blank?
+      # brands = brands.where(animal: Animal.find_by(name: params[:cards_filter][:animal])) if !params[:cards_filter][:animal].blank?
+      # brands = brands.where(status: params[:cards_filter][:status]) if !params[:cards_filter][:status].blank?
+    end
+
+    return brands
+  end
+
   # DEVISE
 
   def resource_name

@@ -21,9 +21,19 @@ class Admin::DashboardsController < ApplicationController
       # link_extra: 'data-remote="true"'
     )
 
+    @brands = Brand.all
+    @pagy_brands, @brands = pagy(
+      helpers.brands_filter(@brands, params).order(created_at: :desc),
+      items: 10,
+      page_param: :page_brands,
+      params: { active_tab: 'brands' },
+      # link_extra: 'data-remote="true"'
+    )
+
     if !params[:active_tab]
       params[:active_tab] = 'articles' if params[:articles_data]
       params[:active_tab] = 'cards' if params[:cards_filter]
+      params[:active_tab] = 'brands' if params[:brands_filter]
     end
   end
 

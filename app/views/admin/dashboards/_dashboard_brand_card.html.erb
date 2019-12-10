@@ -1,0 +1,23 @@
+<div class="dashboard-article-card">
+  <%= image_tag url_for(brand.logo) %>
+
+  <div class="artcile-infos">
+    <span>Id: <%= brand.id %></span>
+    <span>Name: <%= brand.name %></span>
+  </div>
+
+  <div class="article-status-info">
+
+  </div>
+
+  <div class="article-controls">
+    <span>
+      <i class="fas fa-pen"></i>
+      <%= link_to 'Editer', edit_admin_brand_path(brand) %>
+    </span>
+    <span>
+      <i class="far fa-eye"></i>
+      <%= link_to 'Voir', brand_path(brand) %>
+    </span>
+  </div>
+</div>

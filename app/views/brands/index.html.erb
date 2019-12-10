@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-4 filter-wrapper">
+      <%= render "filter" %>
+    </div>
+    <div class="col-12 col-lg-8 articles-wrapper">
+      <div id="articles-list">
+        <%= render 'shared/brands_list', brands: @brands %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -8,6 +8,7 @@
         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mon Profile</a>
         <a class="nav-item nav-link <%= 'active' if params[:active_tab] == 'articles' || params[:active_tab] == nil %>" id="nav-articles-tab" data-toggle="tab" href="#nav-articles" role="tab" aria-controls="nav-articles" aria-selected="true">Conseils</a>
         <a class="nav-item nav-link <%= 'active' if params[:active_tab] == 'cards' %>" id="nav-fiches-tab" data-toggle="tab" href="#nav-fiches" role="tab" aria-controls="nav-fiches" aria-selected="false">Fiches</a>
+        <a class="nav-item nav-link <%= 'active' if params[:active_tab] == 'brands' %>" id="nav-marques-tab" data-toggle="tab" href="#nav-marques" role="tab" aria-controls="nav-marques" aria-selected="false">Marques</a>
         <a class="nav-item nav-link" id="nav-content-write" data-toggle="tab" href="#nav-write" role="tab" aria-controls="nav-fiches" aria-selected="false">Écrire du contenu</a>
       </div>
     </nav>
@@ -69,6 +70,26 @@
         <%= render 'cards_tab', cards: @cards %>
       </div>
 
+      <div class="tab-pane fade <%= 'show active' if params[:active_tab] == 'brands' %>" id="nav-marques" role="tabpanel" aria-labelledby="nav-marques-tab">
+        <%= simple_form_for :brands_filter, url: admin_profile_path, method: :get do |f| %>
+          <div class="row dashboard-filter">
+            <div class="col-4">
+              <%= f.input :query, label: false, placeholder: 'rechercher' %>
+            </div>
+            <div class="col">
+              <%#= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
+            </div>
+            <div class="col">
+              <%#= f.input :status, collection: Card::STATUS, label: false, prompt: 'status' %>
+            </div>
+            <div class="col-2">
+              <%= f.submit 'Filtrer', class: 'petch-btn' %>
+            </div>
+          </div>
+        <% end %>
+        <%= render 'brands_tab', brands: @brands %>
+      </div>
+
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <%= render 'shared/registration_edit_form' %>
       </div>
@@ -76,6 +97,7 @@
       <div class="tab-pane fade" id="nav-write" role="tabpanel" aria-labelledby="nav-content-write">
         <div class="container">
           <div class="new-row">
+            <button class="write-nav"><%= link_to "Nouvel Marque", new_admin_brand_path %></button>
             <button class="write-nav"><%= link_to "Nouvel article", new_article_path %></button>
             <button id="new-card-button" class="write-nav">Nouvelle fiche</button>
           </div>

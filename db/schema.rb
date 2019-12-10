@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_110026) do
+ActiveRecord::Schema.define(version: 2019_12_10_152019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,19 @@ ActiveRecord::Schema.define(version: 2019_12_10_110026) do
     t.boolean "top", default: false
     t.index ["animal_id"], name: "index_articles_on_animal_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "paragraph_1"
+    t.text "paragraph_2"
+    t.text "paragraph_3"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title_1"
+    t.string "title_2"
+    t.string "title_3"
   end
 
   create_table "cards", force: :cascade do |t|
@@ -115,6 +128,15 @@ ActiveRecord::Schema.define(version: 2019_12_10_110026) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "targets", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.bigint "animal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["animal_id"], name: "index_targets_on_animal_id"
+    t.index ["brand_id"], name: "index_targets_on_brand_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -136,4 +158,6 @@ ActiveRecord::Schema.define(version: 2019_12_10_110026) do
   add_foreign_key "articles", "users"
   add_foreign_key "species", "animals"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "targets", "animals"
+  add_foreign_key "targets", "brands"
 end

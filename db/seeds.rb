@@ -10,6 +10,8 @@ puts "Destroy Species"
 Specie.destroy_all
 puts "Destroy Animals"
 Animal.destroy_all
+puts "Destroy Brands"
+Brand.destroy_all
 
 
 ANIMALS = [
@@ -71,8 +73,8 @@ ANIMALS.each do |animal|
   puts "-> #{animal}"
 end
 
-# ===================================
-# ===================================
+# # ===================================
+# # ===================================
 
 def get_images(animal)
   Dir[File.join(File.dirname(__FILE__), "../app/assets/images/thumbnails/#{animal}/*")]
@@ -87,7 +89,8 @@ admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admi
 admin.avatar.attach(io: File.open(get_images('avatars').sample), filename: 'file.jpg')
 admin.save!
 
-puts "Creating 30 Articles & Cards..."
+puts "Creating 30 Articles, Cards & Brands..."
+
 30.times do |i|
   puts "Creating Article - #{i+1}"
   animal = Animal.all.sample
@@ -126,6 +129,28 @@ end
   )
   card.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   card.save!
+end
+
+5.times do |i|
+  puts "Creating Brand - #{i+1}"
+  brand = Brand.new(
+    name: 'Nom de la marque',
+    description: 'Description de la marque',
+    title_1: 'Titre 1',
+    title_2: 'Titre 2',
+    title_3: 'Titre 3',
+    paragraph_1: PARAGRAPH,
+    paragraph_2: PARAGRAPH,
+    paragraph_3: PARAGRAPH,
+  )
+  brand.logo.attach(io: File.open(get_images('logos').sample), filename: 'file.jpg')
+  brand.banner.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
+  brand.par_1_img.attach(io: File.open(get_images('chien').sample), filename: 'file.jpg')
+  brand.par_2_img.attach(io: File.open(get_images('chien').sample), filename: 'file.jpg')
+  brand.par_3_img.attach(io: File.open(get_images('chien').sample), filename: 'file.jpg')
+  brand.save!
+
+  Target.create!(brand: brand, animal: Animal.find_by(name: 'chien'))
 end
 
 puts "All Done !"
