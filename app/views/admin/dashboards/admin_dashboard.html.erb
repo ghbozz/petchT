@@ -36,7 +36,7 @@
               <%= f.input :user, collection: User.pluck(:email), label: false, prompt: 'user' %>
             </div>
             <div class="col">
-              <%= f.input :top, collection: ['Yes'], label: false, prompt: 'top' %>
+              <%= f.input :top, collection: ['Oui', 'Non'], label: false, prompt: 'top' %>
             </div>
             <div class="col">
               <%= f.submit 'Filtrer', class: 'petch-btn' %>

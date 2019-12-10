@@ -20,7 +20,8 @@ module DashboardsHelper
       articles = articles.where(animal: Animal.find_by(name: params[:articles_filter][:animal])) if !params[:articles_filter][:animal].blank?
       articles = articles.where(status: params[:articles_filter][:status]) if !params[:articles_filter][:status].blank?
       articles = articles.where(user: author) if !params[:articles_filter][:user].blank?
-      articles = articles.where(top: true) if params[:articles_filter][:top] == 'Yes'
+      articles = articles.where(top: true) if params[:articles_filter][:top] == 'Oui'
+      articles = articles.where(top: false) if params[:articles_filter][:top] == 'Non'
     end
 
     return articles
