@@ -9,6 +9,11 @@ class Brand < ApplicationRecord
   has_one_attached :par_2_img
   has_one_attached :par_3_img
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :logo, presence: true
+  validates :banner, presence: true
+
   include PgSearch::Model
   pg_search_scope :brands_search,
     against: [ :name ],
