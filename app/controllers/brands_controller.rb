@@ -5,7 +5,7 @@ class BrandsController < ApplicationController
     @brands = policy_scope(Brand)
 
     @pagy, @brands = pagy(
-      @brands,
+      helpers.brands_search(@brands, params).order(created_at: :desc),
       items: 12,
       link_extra: 'data-remote="true"'
     )

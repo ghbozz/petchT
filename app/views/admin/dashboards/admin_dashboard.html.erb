@@ -73,14 +73,11 @@
       <div class="tab-pane fade <%= 'show active' if params[:active_tab] == 'brands' %>" id="nav-marques" role="tabpanel" aria-labelledby="nav-marques-tab">
         <%= simple_form_for :brands_filter, url: admin_profile_path, method: :get do |f| %>
           <div class="row dashboard-filter">
-            <div class="col-4">
+            <div class="col-5">
               <%= f.input :query, label: false, placeholder: 'rechercher' %>
             </div>
-            <div class="col">
-              <%#= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
-            </div>
-            <div class="col">
-              <%#= f.input :status, collection: Card::STATUS, label: false, prompt: 'status' %>
+            <div class="col-5">
+              <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
             </div>
             <div class="col-2">
               <%= f.submit 'Filtrer', class: 'petch-btn' %>

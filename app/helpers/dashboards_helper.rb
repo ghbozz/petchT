@@ -42,8 +42,7 @@ module DashboardsHelper
 
     if params[:brands_filter]
       brands = brands.brands_search(params[:brands_filter][:query]) if !params[:brands_filter][:query].blank?
-      # brands = brands.where(animal: Animal.find_by(name: params[:cards_filter][:animal])) if !params[:cards_filter][:animal].blank?
-      # brands = brands.where(status: params[:cards_filter][:status]) if !params[:cards_filter][:status].blank?
+      brands = Brand.where(id: brands.select { |b| b.animals.pluck(:name).include?(params[:brands_filter][:animal]) }.map(&:id)) if !params[:brands_filter][:animal].blank?
     end
 
     return brands

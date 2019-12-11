@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'brands/index'
-  get 'brands/show'
   root to: 'pages#home'
   devise_for :users
 

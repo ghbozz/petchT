@@ -145,12 +145,12 @@ end
   )
   brand.logo.attach(io: File.open(get_images('logos').sample), filename: 'file.jpg')
   brand.banner.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
-  brand.par_1_img.attach(io: File.open(get_images('chien').sample), filename: 'file.jpg')
-  brand.par_2_img.attach(io: File.open(get_images('chien').sample), filename: 'file.jpg')
-  brand.par_3_img.attach(io: File.open(get_images('chien').sample), filename: 'file.jpg')
+  brand.par_1_img.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
+  brand.par_2_img.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
+  brand.par_3_img.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
   brand.save!
 
-  Target.create!(brand: brand, animal: Animal.find_by(name: 'chien'))
+  Target.create!(brand: brand, animal: Animal.find_by(name: Animal.pluck(:name).sample))
 end
 
 puts "All Done !"

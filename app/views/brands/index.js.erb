@@ -1,0 +1,2 @@
+document.querySelector('#articles-list').innerHTML = '<%= j render "shared/brands_list", brands: @brands %>'
+window.history.replaceState(null, null, "?<%= params.to_unsafe_h.to_query %>")

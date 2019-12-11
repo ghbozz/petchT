@@ -18,16 +18,27 @@
       </div>
     </div>
 
-    <div class="row">
-      <%= simple_fields_for :targets do |fa| %>
-        <% Animal.all.each do |animal| %>
-          <% if brand.animals.where(id: animal.id).count > 0 %>
-            <%= fa.input animal.name.to_sym, as: :boolean, input_html: { checked: true } %>
-          <% else %>
-            <%= fa.input animal.name.to_sym, as: :boolean %>
-          <% end %>
-        <% end %>
-      <% end %>
+    <div class="icons-wrapper">
+      <div class="icons-form">
+        <div class="animals-icons">
+          <h3>Cibles de la marque</h3>
+          <div class="row">
+            <%= simple_fields_for :targets do |fa| %>
+              <% Animal.all.each do |animal| %>
+                <div class="col">
+                  <div class="icon-<%= animal.name %>">
+                    <% if brand.animals.where(id: animal.id).count > 0 %>
+                      <%= fa.input animal.name.to_sym, as: :boolean, input_html: { checked: true, class: 'd-none check-box' } %>
+                    <% else %>
+                      <%= fa.input animal.name.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
     <hr>
@@ -35,14 +46,17 @@
     <div class="row">
       <div class="col vertical-center">
         <%= f.input :par_1_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+        <%= f.input :title_1 %>
         <%= f.input :paragraph_1 %>
       </div>
       <div class="col vertical-center">
         <%= f.input :par_2_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+        <%= f.input :title_2 %>
         <%= f.input :paragraph_2 %>
       </div>
       <div class="col vertical-center">
         <%= f.input :par_3_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+        <%= f.input :title_3 %>
         <%= f.input :paragraph_3 %>
       </div>
     </div>

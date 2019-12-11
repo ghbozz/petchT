@@ -1,3 +1,128 @@
 // Place all the styles related to the Brands controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./rem";
+@import "./variables";
+
+// FROM
+.icons-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40px;
+  background-color: white;
+
+  .filter {
+    width: 100%;
+    position: sticky;
+    height: calc(100vh - 120px);
+    top: 128px;
+    overflow: scroll;
+  }
+
+  i {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 2em;
+    color: rgba(100, 100, 100, 0.3);
+    cursor: pointer;
+  }
+
+  .icons-form {
+    padding: 0px 30px 30px 30px;
+
+    h5 {
+      margin-bottom: 10px;
+    }
+
+    .animals-icons {
+      margin-bottom: 15px;
+
+      .form-check {
+        height: rem(60px);
+        width: rem(60px);
+        padding-left: 0px;
+
+        label {
+          color: transparent;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(100, 100, 100, 0.3);
+          position: relative;
+          transition: all .2s ease-out;
+          height: 60px;
+          width: 60px;
+          background-size: 70%;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+
+          i {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+
+            &::before {
+              position: absolute;
+              transform: translate(-50%, -50%);
+              top: 50%;
+              left: 50%;
+            }
+          }
+
+          &:hover {
+            -webkit-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+            -moz-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+            box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+.animals-icons {
+  .icon-chien {
+    input+label {
+      cursor: pointer;
+      background-image: image-url("icons/dog-black.png")
+    }
+
+    input:checked+label {
+      background-image: image-url("icons/dog-white.png") !important;
+    }
+  }
+
+  .icon-chat {
+    input+label {
+      cursor: pointer;
+      background-image: image-url("icons/cat-black.png");
+    }
+
+    input:checked+label {
+      background-image: image-url("icons/cat-white.png") !important;
+    }
+  }
+
+  .icon-rongeur {
+    input+label {
+      cursor: pointer;
+      background-image: image-url("icons/rodent-black.png");
+    }
+
+    input:checked+label {
+      background-image: image-url("icons/rodent-white.png") !important;
+    }
+  }
+
+  input:checked+label {
+    background-color: $brand-orange;
+    box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
+  }
+}
