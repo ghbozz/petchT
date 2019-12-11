@@ -24,6 +24,7 @@
 
 body {
   font-family: 'Lato', sans-serif;
+  padding-top: 96px;
 }
 
 h2 {
@@ -142,10 +143,6 @@ h2 {
 }
 
 // REFACTO NEEDED
-
-body {
-  padding-top: 96px;
-}
 
 .index-wrapper {
   display: flex;

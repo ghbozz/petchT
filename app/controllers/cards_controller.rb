@@ -27,7 +27,8 @@ class CardsController < ApplicationController
     }
 
     @animal = @card.animal.name
-    @recomandations = Card.where.not(id: @card.id)
+    @recomandations = Card.where(status: 'published')
+                          .where.not(id: @card.id)
                           .select { |c| c.animal == @card.animal }
                           .sample(3)
   end
