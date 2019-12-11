@@ -1,0 +1,75 @@
+<%= simple_form_for brand, url: admin_brand_path(brand), method: :patch do |f| %>
+  <div class="form-wrapper">
+    <div class="row">
+      <div class="col">
+        <%= f.input :logo, direct_upload: true, input_html: { class: 'file-input' }, label: 'Logo' %>
+      </div>
+      <div class="col">
+        <%= f.input :banner, direct_upload: true, input_html: { class: 'file-input' }, label: 'Banner' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= f.input :name, placeholder: 'Nom', label: false %>
+      </div>
+      <div class="col">
+        <%= f.input :description, placeholder: 'description', label: false %>
+      </div>
+    </div>
+
+    <div class="icons-wrapper">
+      <div class="icons-form">
+        <div class="animals-icons">
+          <h3>Cibles de la marque</h3>
+          <div class="row">
+            <%= simple_fields_for :targets do |fa| %>
+              <% Animal.all.each do |animal| %>
+                <div class="col">
+                  <div class="icon-<%= animal.name %>">
+                    <% if brand.animals.where(id: animal.id).count > 0 %>
+                      <%= fa.input animal.name.to_sym, as: :boolean, input_html: { checked: true, class: 'd-none check-box' } %>
+                    <% else %>
+                      <%= fa.input animal.name.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col vertical-center">
+        <%= f.input :par_1_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+        <%= f.input :title_1 %>
+        <%= f.input :paragraph_1 %>
+      </div>
+      <div class="col vertical-center">
+        <%= f.input :par_2_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+        <%= f.input :title_2 %>
+        <%= f.input :paragraph_2 %>
+      </div>
+      <div class="col vertical-center">
+        <%= f.input :par_3_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+        <%= f.input :title_3 %>
+        <%= f.input :paragraph_3 %>
+      </div>
+    </div>
+
+    <div class="col-12 pt-5">
+      <div class="d-flex justify-content-center pt-3">
+        <%= f.submit %>
+      </div>
+    </div>
+
+    <div class="col-12 text-center pt-5">
+      En cliquant sur Sauvegarder et Prévisualiser, votre contenu sera sauvegardé et vous prévisualisable, et son statut sera alors « En cours de rédaction ». Vous pourrez terminer les modifications plus tard. En cliquant sur Poster le contenu, votre contenu sera soumis à l’admin en modération. Ce dernier validera votre article, auquel cas il reviendra vers vous afin de le modifier.
+    </div>
+
+  </div>
+<% end %>

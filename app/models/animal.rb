@@ -2,6 +2,8 @@ class Animal < ApplicationRecord
   has_many :species, :class_name => 'Specie'
   has_many :articles
   has_many :cards
+  has_many :targets, dependent: :destroy
+  has_many :brands, through: :targets
 
   # ANIMALS = %w(chien chat rongeur)
   SPECS = {

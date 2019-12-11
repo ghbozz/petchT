@@ -1,0 +1,8 @@
+<div class="dashboard-brands">
+  <% brands.each do |brand| %>
+    <div id="brand-<%= brand.id %>">
+      <%= render 'admin/dashboards/dashboard_brand_card', brand: brand %>
+    </div>
+  <% end %>
+  <%= raw pagy_nav(@pagy_brands) %>
+</div>
