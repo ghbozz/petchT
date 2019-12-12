@@ -99,7 +99,7 @@ puts "Creating 30 Articles, Cards & Brands..."
     subtitle: "This is the article subtitle about #{animal.name}",
     body: Array.new(5, PARAGRAPH).join('<br><br>'),
     animal: animal,
-    theme: Article::THEMES.sample,
+    theme: Animal::THEMES[animal.name.to_sym].sample,
     status: Article::STATUS.sample,
     tag_list: TAGS.sample(rand(2..5)),
     user: User.all.sample

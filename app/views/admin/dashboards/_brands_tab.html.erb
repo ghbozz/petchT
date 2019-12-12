@@ -4,5 +4,5 @@
       <%= render 'admin/dashboards/dashboard_brand_card', brand: brand %>
     </div>
   <% end %>
-  <%= raw pagy_nav(@pagy_brands) %>
+  <%= render 'shared/pagination', pagy: @pagy_brands %>
 </div>

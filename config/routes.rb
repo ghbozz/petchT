@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'dashboards#user_dashboard'
 
   get 'card_init', to: 'cards#init'
+  get 'animal_select', to: 'articles#animal_select'
 
   resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     member do

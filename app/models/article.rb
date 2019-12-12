@@ -15,7 +15,7 @@ class Article < ApplicationRecord
   validates :theme, presence: true
   validates :thumbnail, presence: true
 
-  THEMES = %w(Santé Alimentation Education Soins Beauté Hygiène)
+  THEMES = ['adoption', 'santé', 'alimentation', 'education', 'soins', 'beauté', 'hygiène', 'au quotidien', 'entretien', 'loisir']
   # ANIMALS = %w(Chiens Chats Rongeurs)
   STATUS = %w(draft published submitted)
 

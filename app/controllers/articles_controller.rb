@@ -42,8 +42,7 @@ class ArticlesController < ApplicationController
     @article.update(status: 'submitted') if params[:commit] == 'Poster'
     @article.update(status: 'published') if params[:commit] == 'Publier' && current_user.is_admin?
 
-    if @article.save!
-      params
+    if @article.save
       redirect_to article_path(@article)
     else
       render :new
@@ -103,6 +102,11 @@ class ArticlesController < ApplicationController
       format.html { redirect_to admin_profile_path }
       format.js
     end
+  end
+
+  def animal_select
+    skip_authorization
+    @themes = Animal::THEMES[Animal.find(params[:animal]).name.to_sym]
   end
 
   private
