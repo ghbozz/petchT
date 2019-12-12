@@ -15,12 +15,10 @@ class Article < ApplicationRecord
   validates :theme, presence: true
   validates :thumbnail, presence: true
 
-  THEMES = ['adoption', 'santé', 'alimentation', 'education', 'soins', 'beauté', 'hygiène', 'au quotidien', 'entretien', 'loisir']
-  # ANIMALS = %w(Chiens Chats Rongeurs)
+  THEMES = ['adoption', 'alimentation', 'au quotidien', 'education', 'entretien', 'loisir', 'santé']
   STATUS = %w(draft published submitted)
 
   validates :theme, inclusion: { in: THEMES }
-  # validates :animal, inclusion: { in: ANIMALS }
   validates :status, inclusion: { in: STATUS }
 
   include PgSearch::Model
