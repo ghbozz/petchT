@@ -19,18 +19,22 @@
       <div class="themes-filter">
         <h5>Thèmes</h5>
         <hr>
-        <% Article::THEMES.each do |theme| %>
-          <%= f.input theme.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+        <%= simple_fields_for :themes do |x| %>
+          <% Article::THEMES.each do |theme| %>
+            <%= x.input theme.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+          <% end %>
         <% end %>
       </div>
       <div class="tags-filter">
         <h5>Tags</h5>
         <hr>
         <div class="masonry-tags">
-          <% TAGS.each do |tag| %>
-            <span class="tag-filter">
-              <%= f.input tag.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
-            </span>
+          <%= simple_fields_for :tags do |y| %>
+            <% TAGS.each do |tag| %>
+              <span class="tag-filter">
+                <%= y.input tag.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+              </span>
+            <% end %>
           <% end %>
         </div>
       </div>
