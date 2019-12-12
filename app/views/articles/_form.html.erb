@@ -8,10 +8,10 @@
     </div>
     <div class="row">
       <div class="col vertical-center">
-        <%= f.association :animal, prompt: 'Animal', label: false, input_html: { class: 'select2' } %>
+        <%= f.association :animal, prompt: 'Animal', label: false, input_html: { class: 'select2 animal-select' } %>
       </div>
       <div class="col vertical-center">
-        <%= f.input :theme, collection: Article::THEMES, prompt: 'Theme', label: false, input_html: { class: 'select2' } %>
+        <%= f.input :theme, collection: [], prompt: 'Theme', label: false, input_html: { class: 'select2' } %>
       </div>
     </div>
 

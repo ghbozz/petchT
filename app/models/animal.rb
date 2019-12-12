@@ -5,7 +5,12 @@ class Animal < ApplicationRecord
   has_many :targets, dependent: :destroy
   has_many :brands, through: :targets
 
-  # ANIMALS = %w(chien chat rongeur)
+  THEMES = {
+    chien: ['adoption', 'alimentation', 'education', 'au quotidien', 'santé', 'loisir', 'entretien'],
+    chat: ['adoption', 'alimentation', 'education', 'au quotidien', 'santé', 'loisir', 'entretien'],
+    rongeur: ['adoption', 'alimentation', 'au quotidien', 'santé', 'loisir', 'entretien']
+  }
+
   SPECS = {
     chien: {
       fci: [

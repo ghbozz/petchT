@@ -4,6 +4,7 @@ import { initSelect2, initSelector } from "../plugins/init_select2";
 import { initSocialIcons } from "../plugins/initSocialIcons";
 import { initNavHover, initSticky } from "../plugins";
 import { initFilter } from "../plugins/initFilter";
+import { initDependentInputs } from "../plugins/initDependentInputs";
 
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -26,6 +27,7 @@ if (document.querySelector(".js-example-basic-multiple")) initSelector();
 if (document.querySelector("#init_card")) initNewCardForm();
 if (document.querySelector(".socials-btns")) initSocialIcons();
 if (document.querySelector(".filter-form")) initFilter();
+if (document.querySelector(".animal-select")) initDependentInputs();
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -33,3 +35,4 @@ if (document.querySelector(".filter-form")) initFilter();
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+

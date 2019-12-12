@@ -105,6 +105,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def animal_select
+    skip_authorization
+    @themes = Animal::THEMES[params[:animal].to_sym]
+  end
+
   private
 
   def set_article

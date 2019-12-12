@@ -1,0 +1,9 @@
+var themes = document.getElementById("article_theme")
+
+themes.querySelectorAll('option').forEach((option) => {
+  option.remove();
+})
+
+<% @themes.each do |t| %>
+  themes.options[themes.options.length] = new Option('<%= t %>')
+<% end %>
