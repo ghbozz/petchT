@@ -4,5 +4,5 @@
       <%= render 'dashboards/dashboard_article_card', article: article %>
     </div>
   <% end %>
-  <%= raw pagy_nav(@pagy_articles) %>
+  <%= render 'shared/pagination', pagy: @pagy_articles %>
 </div>

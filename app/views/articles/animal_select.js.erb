@@ -1,9 +1,16 @@
 var themes = document.getElementById("article_theme")
+// console.log(themes.options)
 
 themes.querySelectorAll('option').forEach((option) => {
   option.remove();
 })
 
+var placeholder = document.createElement("option");
+placeholder.text = "Choisir un theme";
+placeholder.value = "";
+themes.appendChild(placeholder);
+
 <% @themes.each do |t| %>
   themes.options[themes.options.length] = new Option('<%= t %>')
 <% end %>
+

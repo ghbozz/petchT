@@ -11,18 +11,10 @@
         <%= f.association :animal, label: 'Choisir un animal', input_html: { class: 'select2 animal-select' } %>
       </div>
       <div class="col vertical-center">
-        <% if params[:action] == 'new' %>
-
-          <% if params[:article] %>
-            <%= f.input :theme, collection: Animal::THEMES[Animal.find(params[:article][:animal_id]).name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
-          <% else %>
-            <%= f.input :theme, collection: [], label: 'Choisir un theme', input_html: { class: 'select2' } %>
-          <% end %>
-
-        <% end %>
-
-        <% if params[:action] == 'edit' %>
-          <%= f.input :theme, collection: Animal::THEMES[Article.find(params[:id]).animal.name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
+        <% if params[:article] %>
+          <%= f.input :theme, collection: Animal::THEMES[Animal.find(params[:article][:animal_id]).name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
+        <% else %>
+          <%= f.input :theme, collection: [], label: 'Choisir un theme', input_html: { class: 'select2' } %>
         <% end %>
       </div>
     </div>
