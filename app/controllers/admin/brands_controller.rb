@@ -15,7 +15,7 @@ class Admin::BrandsController < ApplicationController
   end
 
   def edit
-    @brand = Brand.find(params[:id])
+    @brand = Brand.friendly.find(params[:id])
   end
 
   def update
@@ -28,7 +28,7 @@ class Admin::BrandsController < ApplicationController
   def destroy
     authorize :brand, :destroy?
 
-    @brand = Brand.find(params[:id])
+    @brand = Brand.friendly.find(params[:id])
     @brand.destroy
 
     respond_to do |format|

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_152019) do
+ActiveRecord::Schema.define(version: 2019_12_13_191314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,9 @@ ActiveRecord::Schema.define(version: 2019_12_10_152019) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "animal_id"
     t.boolean "top", default: false
+    t.string "slug"
     t.index ["animal_id"], name: "index_articles_on_animal_id"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -68,6 +70,8 @@ ActiveRecord::Schema.define(version: 2019_12_10_152019) do
     t.string "title_1"
     t.string "title_2"
     t.string "title_3"
+    t.string "slug"
+    t.index ["slug"], name: "index_brands_on_slug", unique: true
   end
 
   create_table "cards", force: :cascade do |t|
@@ -88,9 +92,22 @@ ActiveRecord::Schema.define(version: 2019_12_10_152019) do
     t.bigint "animal_id"
     t.bigint "user_id"
     t.string "subtitle"
+    t.string "slug"
     t.index ["animal_id"], name: "index_cards_on_animal_id"
+    t.index ["slug"], name: "index_cards_on_slug", unique: true
     t.index ["specie_id"], name: "index_cards_on_specie_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "species", force: :cascade do |t|

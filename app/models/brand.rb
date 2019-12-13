@@ -1,4 +1,7 @@
 class Brand < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :targets, dependent: :destroy
   has_many :animals, through: :targets
   accepts_nested_attributes_for :targets
@@ -31,4 +34,7 @@ class Brand < ApplicationRecord
     end
   end
 
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
 end
