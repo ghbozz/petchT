@@ -14,7 +14,7 @@
         <% if params[:action] == 'new' || params[:action] == 'create' %>
 
           <% if params[:article] && !params[:article][:animal_id].blank? %>
-            <%= f.input :theme, collection: Animal::THEMES[Animal.find(params[:article][:animal_id]).name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
+            <%= f.input :theme, collection: Animal::THEMES[Animal.friendly.find(params[:article][:animal_id]).name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
           <% else %>
             <%= f.input :theme, collection: [], label: 'Choisir un theme', input_html: { class: 'select2' } %>
           <% end %>
@@ -22,7 +22,7 @@
         <% end %>
 
         <% if params[:action] == 'edit' || params[:action] == 'update' %>
-          <%= f.input :theme, collection: Animal::THEMES[Article.find(params[:id]).animal.name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
+          <%= f.input :theme, collection: Animal::THEMES[Article.friendly.find(params[:id]).animal.name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
         <% end %>
       </div>
     </div>

@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   before_save :tags_validation
 
   acts_as_taggable_on :tags
