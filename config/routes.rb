@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'products/create'
-  end
   root to: 'pages#home'
   devise_for :users
 
@@ -23,7 +20,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brands, only: [:index, :show]
+  resources :brands, only: [:index, :show] do
+    resources :products, only: [:index]
+  end
 
   namespace :admin do
 
@@ -40,7 +39,7 @@ Rails.application.routes.draw do
     end
 
     resources :brands, only: [:new, :create, :edit, :update, :destroy] do
-      resources :products, only: [:index, :new, :create]
+      resources :products, only: [:create]
     end
   end
 
