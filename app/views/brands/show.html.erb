@@ -1,26 +1,70 @@
-<h1>Brands#show</h1>
-<p>Find me in app/views/brands/show.html.erb</p>
+<div class="container-fluid brand-show">
+  <div class="brand-show-header" style="background-image: url(<%= url_for(@brand.banner) %>);">
+    <div class="petch-breadcrumb brand-show-breadcrumb mobile-none">
+      <%= link_to "Accueil", root_path %> > <%= link_to "Marques", brands_path %> > <%= @brand.name %>
+    </div>
+    <div class="brand-show-logo">
+      <%= image_tag url_for(@brand.logo) %>
+    </div>
+    <div class="container">
+      <div class="brand-show-title">
+        <%= @brand.name %>
+      </div>
+      <div class="brand-show-description mobile-none">
+        <%= @brand.description %>
+      </div>
+    </div>
+  </div>
 
-<!--
-###### BRAND DATA ######
-@brand.name (string)
-@brand.description (string)
+  <div class="brand-show-content container">
+    <div class="brand-show-description desktop-none">
+        <%= @brand.description %>
+      </div>
+    <nav>
+      <div class="nav nav-tabs" id="brand-nav" role="tablist">
+        <a href="#nav-brand-recipes" id="nav-recipes" class="brand-nav-link active" data-toggle="tab" role="tab" aria-controls="nav-recipes" aria-selected="true">Nos recettes</a>
+        <a href="#nav-brand-commitments" id="nav-commitments" class="brand-nav-link" data-toggle="tab" role="tab" aria-controls="nav-commitments" aria-selected="false">Nos engagements</a>
+        <a href="#nav-brand-products" id="nav-products" class="brand-nav-link" data-toggle="tab" role="tab" aria-controls="nav-products" aria-selected="false">Nos produits</a>
+      </div>
+    </nav>
 
-@brand.logo (image)
-@brand.banner (image)
+    <div class="tab-content" id="nav-brandContent">
+      <div class="tab-pane fade show active" id="nav-brand-recipes" role="tabpanel" aria-labelledby="nav-recipes">
+        <div class="brand-paragraph">
+          <div class="brand-paragraph-content">
+            <h4><%= @brand.title_1 %></h4>
+            <p><%= @brand.paragraph_1 %></p>
+          </div>
+          <div class="brand-paragraph-image">
+            <%= image_tag url_for(@brand.par_1_img) %>
+          </div>
+        </div>
+        <div class="brand-paragraph">
+          <div class="brand-paragraph-content">
+            <h4><%= @brand.title_2 %></h4>
+            <p><%= @brand.paragraph_2 %></p>
+          </div>
+          <div class="brand-paragraph-image">
+            <%= image_tag url_for(@brand.par_2_img) %>
+          </div>
+        </div>
+        <div class="brand-paragraph">
+          <div class="brand-paragraph-content">
+            <h4><%= @brand.title_3 %></h4>
+            <p><%= @brand.paragraph_3 %></p>
+            </div>
+          <div class="brand-paragraph-image">
+            <%= image_tag url_for(@brand.par_3_img) %>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade show" id="nav-brand-commitments" role="tabpanel" aria-labelledby="nav-commitments">
+        Commitments
+      </div>
+      <div class="tab-pane fade show" id="nav-brand-products" role="tabpanel" aria-labelledby="nav-products">
+        Products
+      </div>
+    </div>
 
-@brand.animals (Array d'instances animal || ce sont les cibles de la marques)
-
-###### LES PARAGRAPHES ######
-@brand.title_1 (string)
-@brand.paragraph_1 (text)
-@brand.par_1_img (image)
-
-@brand.title_2 (string)
-@brand.paragraph_2 (text)
-@brand.par_2_img (image)
-
-@brand.title_3 (string)
-@brand.paragraph_3 (text)
-@brand.par_3_img (image)
--->
+  </div>
+</div>
