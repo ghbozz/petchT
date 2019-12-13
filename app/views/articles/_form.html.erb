@@ -13,7 +13,7 @@
       <div class="col vertical-center">
         <% if params[:action] == 'new' || params[:action] == 'create' %>
 
-          <% if params[:article] %>
+          <% if params[:article] && !params[:article][:animal_id].blank? %>
             <%= f.input :theme, collection: Animal::THEMES[Animal.find(params[:article][:animal_id]).name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
           <% else %>
             <%= f.input :theme, collection: [], label: 'Choisir un theme', input_html: { class: 'select2' } %>
