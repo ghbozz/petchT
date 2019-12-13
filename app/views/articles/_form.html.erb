@@ -11,7 +11,7 @@
         <%= f.association :animal, label: 'Choisir un animal', input_html: { class: 'select2 animal-select' } %>
       </div>
       <div class="col vertical-center">
-        <% if params[:action] == 'new' %>
+        <% if params[:action] == 'new' || params[:action] == 'create' %>
 
           <% if params[:article] %>
             <%= f.input :theme, collection: Animal::THEMES[Animal.find(params[:article][:animal_id]).name.to_sym], label: 'Choisir un theme', input_html: { class: 'select2' } %>
