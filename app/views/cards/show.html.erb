@@ -15,14 +15,14 @@
       </div>
 
       <div class="card-content row">
-        <div class="card-content-body col-md-8">
+        <div class="card-content-body col-12 col-lg-8">
           <div class="content-card-text pt-4">
             <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail mr-4 mb-2" %>
             <%= raw @card.body %>
           </div>
         </div>
 
-        <div class="card-specs-ratings sticky col-md-4 mt-4 mt-md-0">
+        <div class="card-specs-ratings sticky col-12 col-lg-4 mt-4 mt-lg-0">
           <div class="card-specs-box py-4 px-2">
             <% @caracs.each do |key, value| %>
                 <div class="specs">
@@ -69,7 +69,7 @@
       <div class="recomandations pt-3">
         <div class="row">
           <% @recomandations.each do |reco| %>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <%= link_to card_path(reco) do  %>
                 <div class="reco-card">
                   <%= image_tag url_for(reco.thumbnail) %>

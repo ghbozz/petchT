@@ -139,9 +139,20 @@
 }
 
 // SHOW
+
+.reco-title {
+  text-align: center;
+}
+
 .reco-card {
+  margin: 0 auto;
+  width: 13rem;
+
   img {
     margin-bottom: 20px;
+    height: 13rem;
+    width: 13rem;
+    object-fit: cover;
   }
 }
 
@@ -272,5 +283,11 @@
 @media screen and (min-width: 768px) {
   .content-card-text {
     text-align: left;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .card-specs-ratings {
+    height: auto !important;
   }
 }
