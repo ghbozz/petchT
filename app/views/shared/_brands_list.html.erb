@@ -3,7 +3,9 @@
     <div class="col-12 col-sm-6 col-md-4 card-container d-flex justify-content-center">
       <%= link_to brand_path(brand) do %>
         <div class="article-card brand-card">
-          <%= image_tag url_for(brand.logo) %>
+          <div class="card-thumbnail-container">
+            <%= image_tag url_for(brand.logo) %>
+          </div>
         </div>
       <% end %>
     </div>
