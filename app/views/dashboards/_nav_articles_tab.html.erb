@@ -2,16 +2,16 @@
   <%= simple_form_for :filter_data, url: profile_path, method: :get, remote: true do |f| %>
     <div class="row dashboard-filter">
       <div class="col-4">
-        <%= f.input :query, label: false, placeholder: 'rechercher' %>
+        <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
       </div>
       <div class="col">
-        <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'theme' %>
+        <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'Thème' %>
       </div>
       <div class="col">
-        <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
+        <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'Animal' %>
       </div>
       <div class="col">
-        <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'status' %>
+        <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'Statut' %>
       </div>
       <div class="col-1">
         <%= f.submit 'Filtrer', class: 'petch-btn' %>
