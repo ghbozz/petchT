@@ -1,0 +1,28 @@
+<!-- Button trigger modal -->
+<span data-toggle="modal" data-target="#brand-product-<%= brand.id %>" style="margin-bottom: 7px;">
+  <i class="fas fa-plus-circle"></i>
+  Produit
+</span>
+
+<!-- Modal -->
+<div class="modal fade" id="brand-product-<%= brand.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nouveau produit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([brand, Product.new], url: admin_brand_products_path(brand), method: :post) do |f| %>
+          <%= f.input :thumbnail %>
+          <%= f.input :name %>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit 'Creer', class: 'btn btn-primary' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

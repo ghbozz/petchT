@@ -11,6 +11,7 @@
   </div>
 
   <div class="article-controls">
+    <%= render 'shared/new_product_modal', brand: brand %>
     <span>
       <i class="fas fa-pen"></i>
       <%= link_to 'Editer', edit_admin_brand_path(brand) %>
