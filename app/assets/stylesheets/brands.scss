@@ -4,88 +4,99 @@
 @import "./rem";
 @import "./variables";
 
+.brand-form-wrapper {
+
+  label,
+  h3 {
+    font-size: rem(16px) !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+  }
+
+  h3 {
+    margin-bottom: rem(10px) !important;
+  }
+
+  .brand-inputs-1 {
+    align-items: center;
+    display: flex;
+    margin-top: rem(20px);
+  }
+
+  .brand-form-paragraph {
+    margin-top: rem(20px);
+  }
+
+  hr {
+    width: 96%;
+  }
+
+  textarea {
+    min-height: rem(180px);
+  }
+}
+
 // FROM
-.icons-wrapper {
-  position: sticky;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 40px;
-  background-color: white;
+.icons-wrapper-brand-form {
 
-  .filter {
-    width: 100%;
-    position: sticky;
-    height: calc(100vh - 120px);
-    top: 128px;
-    overflow: scroll;
-  }
+  .animals-icons-container {
+    display: flex;
 
-  i {
-    position: absolute;
-    top: 10px;
-    right: 5px;
-    font-size: 2em;
-    color: rgba(100, 100, 100, 0.3);
-    cursor: pointer;
-  }
 
-  .icons-form {
-    padding: 0px 30px 30px 30px;
 
-    h5 {
-      margin-bottom: 10px;
+    .icon-chat,
+    .icon-rongeur {
+      margin-left: rem(10px);
     }
+  }
 
-    .animals-icons {
-      margin-bottom: 15px;
 
-      .form-check {
-        height: rem(60px);
-        width: rem(60px);
-        padding-left: 0px;
+  .animals-icons {
 
-        label {
-          color: transparent;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid rgba(100, 100, 100, 0.3);
-          position: relative;
-          transition: all .2s ease-out;
-          height: 60px;
-          width: 60px;
-          background-size: 70%;
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
+    .form-check {
+      height: rem(60px);
+      width: rem(60px);
+      padding-left: 0px;
 
-          i {
+      label {
+        color: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(100, 100, 100, 0.3);
+        position: relative;
+        transition: all .2s ease-out;
+        height: 60px;
+        width: 60px;
+        background-size: 70%;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+
+        i {
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+
+          &::before {
             position: absolute;
             transform: translate(-50%, -50%);
             top: 50%;
             left: 50%;
-
-            &::before {
-              position: absolute;
-              transform: translate(-50%, -50%);
-              top: 50%;
-              left: 50%;
-            }
           }
+        }
 
-          &:hover {
-            -webkit-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
-            -moz-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
-            box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
-          }
+        &:hover {
+          -webkit-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+          -moz-box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
+          box-shadow: 0px 1px 12px 0px rgba(255, 145, 115, 0.3);
         }
       }
     }
   }
 }
+
 
 .animals-icons {
   .icon-chien {
