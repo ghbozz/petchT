@@ -22,22 +22,22 @@
         <%= simple_form_for :articles_filter, url: admin_profile_path, method: :get do |f| %>
           <div class="row dashboard-filter">
             <div class="col-4">
-              <%= f.input :query, label: false, placeholder: 'rechercher' %>
+              <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
             </div>
             <div class="col">
-              <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'theme' %>
+              <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'Thème' %>
             </div>
             <div class="col">
-              <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
+              <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'Animal' %>
             </div>
             <div class="col">
-              <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'status' %>
+              <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'Statut' %>
             </div>
             <div class="col">
-              <%= f.input :user, collection: User.pluck(:email), label: false, prompt: 'user' %>
+              <%= f.input :user, collection: User.pluck(:email), label: false, prompt: 'Utilisateur' %>
             </div>
             <div class="col">
-              <%= f.input :top, collection: ['Oui', 'Non'], label: false, prompt: 'top' %>
+              <%= f.input :top, collection: ['Oui', 'Non'], label: false, prompt: 'A la une' %>
             </div>
             <div class="col">
               <%= f.submit 'Filtrer', class: 'petch-btn' %>
@@ -54,13 +54,13 @@
         <%= simple_form_for :cards_filter, url: admin_profile_path, method: :get do |f| %>
           <div class="row dashboard-filter">
             <div class="col-4">
-              <%= f.input :query, label: false, placeholder: 'rechercher' %>
+              <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
             </div>
             <div class="col">
-              <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
+              <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'Animal' %>
             </div>
             <div class="col">
-              <%= f.input :status, collection: Card::STATUS, label: false, prompt: 'status' %>
+              <%= f.input :status, collection: Card::STATUS, label: false, prompt: 'Statut' %>
             </div>
             <div class="col-2">
               <%= f.submit 'Filtrer', class: 'petch-btn' %>
@@ -74,10 +74,10 @@
         <%= simple_form_for :brands_filter, url: admin_profile_path, method: :get do |f| %>
           <div class="row dashboard-filter">
             <div class="col-5">
-              <%= f.input :query, label: false, placeholder: 'rechercher' %>
+              <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
             </div>
             <div class="col-5">
-              <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'animal' %>
+              <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'Animal' %>
             </div>
             <div class="col-2">
               <%= f.submit 'Filtrer', class: 'petch-btn' %>
@@ -94,9 +94,9 @@
       <div class="tab-pane fade" id="nav-write" role="tabpanel" aria-labelledby="nav-content-write">
         <div class="container">
           <div class="new-row">
-            <button class="write-nav"><%= link_to "Nouvel Marque", new_admin_brand_path %></button>
-            <button class="write-nav"><%= link_to "Nouvel article", new_article_path %></button>
             <button id="new-card-button" class="write-nav">Nouvelle fiche</button>
+            <button class="write-nav"><%= link_to "Nouveau conseil", new_article_path %></button>
+            <button class="write-nav"><%= link_to "Nouvelle Marque", new_admin_brand_path %></button>
           </div>
 
           <div class="new-row animals-row hidden">
