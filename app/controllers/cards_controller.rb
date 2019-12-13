@@ -53,13 +53,15 @@ class CardsController < ApplicationController
   end
 
   def edit
-    params[:animal] = Card.find(params[:id]).specie.animal.name
+    params[:animal] = Card.friendly.find(params[:id]).specie.animal.name
     authorize @card
   end
 
   def update
     @card.update(card_params)
     @card.set_specs_and_ratings(params)
+    @card.specie.update(name: params[:card][:specie])
+
     authorize @card
     if @card.save
       redirect_to card_path(@card)
@@ -85,7 +87,7 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    @card = Card.find(params[:id])
+    @card = Card.friendly.find(params[:id])
   end
 
   def card_params

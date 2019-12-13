@@ -1,4 +1,7 @@
 class Card < ApplicationRecord
+  extend FriendlyId
+  friendly_id :specie_name, use: :slugged
+
   before_save :validates_specs
   before_save :validates_ratings
 
@@ -51,6 +54,14 @@ class Card < ApplicationRecord
   def validates_ratings
     keys = Animal::RATINGS[self.animal.name.to_sym].map(&:to_sym)
     self.ratings = self.ratings.slice!(*keys)
+  end
+
+  def specie_name
+    self.specie.name
+  end
+
+  def should_generate_new_friendly_id?
+    true if self.specie.name_changed?
   end
 
 end

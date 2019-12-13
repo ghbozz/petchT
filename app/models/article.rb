@@ -46,5 +46,9 @@ class Article < ApplicationRecord
   def get_url
     "http://localhost:3000/articles/#{self.id}"
   end
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 end
 

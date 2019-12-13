@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_131810) do
+ActiveRecord::Schema.define(version: 2019_12_13_191314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2019_12_13_131810) do
     t.string "title_1"
     t.string "title_2"
     t.string "title_3"
+    t.string "slug"
+    t.index ["slug"], name: "index_brands_on_slug", unique: true
   end
 
   create_table "cards", force: :cascade do |t|
@@ -90,7 +92,9 @@ ActiveRecord::Schema.define(version: 2019_12_13_131810) do
     t.bigint "animal_id"
     t.bigint "user_id"
     t.string "subtitle"
+    t.string "slug"
     t.index ["animal_id"], name: "index_cards_on_animal_id"
+    t.index ["slug"], name: "index_cards_on_slug", unique: true
     t.index ["specie_id"], name: "index_cards_on_specie_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end

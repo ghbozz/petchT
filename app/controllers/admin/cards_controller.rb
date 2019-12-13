@@ -2,7 +2,7 @@ class Admin::CardsController < ApplicationController
   def publish
     authorize :dashboard, :publish?
 
-    @card = Card.find(params[:card_id])
+    @card = Card.friendly.find(params[:card_id])
     @card.update(status: 'published')
 
     respond_to do |format|
@@ -14,7 +14,7 @@ class Admin::CardsController < ApplicationController
   def unpublish
     authorize :dashboard, :publish?
 
-    @card = Card.find(params[:card_id])
+    @card = Card.friendly.find(params[:card_id])
     @card.update(status: 'draft')
 
     respond_to do |format|
@@ -26,7 +26,7 @@ class Admin::CardsController < ApplicationController
   def destroy
     authorize :card, :destroy?
 
-    @card = Card.find(params[:id])
+    @card = Card.friendly.find(params[:id])
     @card.destroy
 
     respond_to do |format|
