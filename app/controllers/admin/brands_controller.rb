@@ -19,7 +19,7 @@ class Admin::BrandsController < ApplicationController
   end
 
   def update
-    @brand = Brand.find(params[:id])
+    @brand = Brand.friendly.find(params[:id])
     @brand.update(brand_params)
     @brand.set_targets(params)
     redirect_to brand_path(@brand)
