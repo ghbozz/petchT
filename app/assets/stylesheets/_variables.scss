@@ -8,3 +8,10 @@ $full-white: #fff;
 
 $sm: 576px;
 $md: 768px;
+
+$animalSize: 50px;
+
+@mixin animalIcon {
+  height: $animalSize;
+  width: $animalSize;
+}

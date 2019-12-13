@@ -54,11 +54,11 @@
   .animals-icons {
 
     .form-check {
-      height: rem(60px);
-      width: rem(60px);
+      @include animalIcon();
       padding-left: 0px;
 
       label {
+        @include animalIcon();
         color: transparent;
         border-radius: 50%;
         display: flex;
@@ -67,8 +67,6 @@
         border: 1px solid rgba(100, 100, 100, 0.3);
         position: relative;
         transition: all .2s ease-out;
-        height: 60px;
-        width: 60px;
         background-size: 70%;
         background-position: 50% 50%;
         background-repeat: no-repeat;
