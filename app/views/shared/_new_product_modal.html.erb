@@ -1,0 +1,38 @@
+<!-- Button trigger modal -->
+<span data-toggle="modal" data-target="#brand-product-<%= brand.id %>">
+  <i class="fas fa-plus-circle"></i>
+  <a class="product-modal-btn">Produit</a>
+</span>
+
+<!-- Modal -->
+<div class="modal fade" id="brand-product-<%= brand.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nouveau produit "<%= brand.name %>"</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="product-form-wrapper" id="product-brand-<%= brand.id %>-wrapper">
+          <%= simple_form_for([brand, Product.new], url: admin_brand_products_path(brand), method: :post, remote: true) do |f| %>
+            <div class="row">
+              <div class="col-9" style="display: flex; align-items: center;">
+                <%= f.input :name, input_html: { id: "name-#{brand.id}" }, label: false, placeholder: 'Nom du produit' %>
+              </div>
+              <div class="col-3" style="display: flex; align-items: center;">
+                <%= f.input :thumbnail, input_html: { id: "thumbnail-#{brand.id}" }, label: '+' %>
+              </div>
+            </div>
+            <button type="submit" class="petch-btn modal-btn" data-disable-with="<i class='fas fa-spinner fa-spin'></i> Creation du produit...">Creer un produit</button>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer" id="modal-footer-<%= brand.id %>">
+        <%= render 'shared/modal_footer', brand: brand %>
+      </div>
+    </div>
+  </div>
+</div>
+

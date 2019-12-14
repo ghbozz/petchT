@@ -36,7 +36,11 @@ Rails.application.routes.draw do
       post '/unpublish', to: 'cards#unpublish'
     end
 
-    resources :brands, only: [:new, :create, :edit, :update, :destroy]
+    resources :brands, only: [:new, :create, :edit, :update, :destroy] do
+      resources :products, only: [:create]
+    end
+
+    resources :products, only: [:destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

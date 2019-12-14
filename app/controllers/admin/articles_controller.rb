@@ -1,6 +1,6 @@
 class Admin::ArticlesController < ApplicationController
   def publish
-    @article = Article.find(params[:article_id])
+    @article = Article.friendly.find(params[:article_id])
     @article.update(status: 'published')
 
     respond_to do |format|
@@ -10,7 +10,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def unpublish
-    @article = Article.find(params[:article_id])
+    @article = Article.friendly.find(params[:article_id])
     @article.update(status: 'draft')
     @article.update(top: false) if @article.top
 

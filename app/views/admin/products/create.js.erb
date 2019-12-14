@@ -1,0 +1,11 @@
+<% if @product.errors.any? %>
+  document.querySelector('#product-brand-<%= @product.brand.id %>-wrapper').innerHTML = '<%= j render "new_product_form", brand: @product.brand, product: @product %>'
+<% else %>
+  document.querySelector('#modal-footer-<%= @product.brand.id %>').innerHTML = '<%= j render "shared/modal_footer", brand: @product.brand %>'
+  document.querySelector('#name-<%= @product.brand.id %>').value = ''
+  if (document.querySelector('#error_explanation')) document.querySelector('#error_explanation').remove();
+  document.querySelectorAll('.required').forEach((field) => {
+    field.classList.remove('required')
+  })
+<% end %>
+

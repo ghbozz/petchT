@@ -1,0 +1,22 @@
+<div class="row" style="width: 108%;">
+  <% if brand.products.size > 0 %>
+    <h5 class="modal-title" id="exampleModalLabel">Tout les produits</h5>
+  <% else %>
+    <h5 class="modal-title" id="exampleModalLabel">Pas encore de produits</h5>
+  <% end %>
+  <% brand.products.each do |product| %>
+    <div class="col-12" id="product-col-<%= product.id %>">
+      <div class="card-product">
+        <%= image_tag url_for(product.thumbnail), alt: "alttext" %>
+        <div class="card-product-infos">
+          <h2><%= product.name %></h2>
+        </div>
+        <span class="delete-product">
+          <%= link_to admin_product_path(product), method: :delete, remote: true do %>
+            <i class="far fa-times-circle"></i>
+          <% end %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</div>

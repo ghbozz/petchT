@@ -61,7 +61,7 @@ class Card < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    true
+    true if self.specie
   end
 
 end

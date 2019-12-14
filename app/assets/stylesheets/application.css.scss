@@ -165,3 +165,16 @@ h2 {
   max-width: 1400px;
   margin: 0 auto;
 }
+
+
+// SIMPLE_FORM
+
+.invalid-feedback {
+  display: none !important;
+}
+
+#error_explanation {
+  span {
+    color: rgb(220, 52, 69);
+  }
+}
