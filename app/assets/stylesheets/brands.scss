@@ -38,6 +38,8 @@
 
 // FROM
 .icons-wrapper-brand-form {
+  display: flex;
+  justify-content: flex-end;
 
   .animals-icons-container {
     display: flex;
@@ -52,6 +54,10 @@
 
 
   .animals-icons {
+
+    h3 {
+      text-align: center;
+    }
 
     .form-check {
       @include animalIcon();
