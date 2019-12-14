@@ -17,9 +17,15 @@
       <div class="modal-body">
         <div class="product-form-wrapper" id="product-brand-<%= brand.id %>-wrapper">
           <%= simple_form_for([brand, Product.new], url: admin_brand_products_path(brand), method: :post, remote: true) do |f| %>
-            <%= f.input :thumbnail, input_html: { id: "thumbnail-#{brand.id}" }, label: 'Ajouter une image' %>
-            <%= f.input :name, input_html: { id: "name-#{brand.id}" }, label: false, placeholder: 'Nom du produit' %>
-            <%= f.submit 'Creer', class: 'petch-btn modal-btn' %>
+            <div class="row">
+              <div class="col-9" style="display: flex; align-items: center;">
+                <%= f.input :name, input_html: { id: "name-#{brand.id}" }, label: false, placeholder: 'Nom du produit' %>
+              </div>
+              <div class="col-3" style="display: flex; align-items: center;">
+                <%= f.input :thumbnail, input_html: { id: "thumbnail-#{brand.id}" }, label: '+' %>
+              </div>
+            </div>
+            <%= f.button :submit, 'Creer un produit', class: 'petch-btn modal-btn', data: { disable_with: "Création du produit..." } %>
           <% end %>
         </div>
       </div>

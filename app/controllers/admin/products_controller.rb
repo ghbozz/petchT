@@ -17,7 +17,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.friendly.find(params[:id])
+    @product = Product.find(params[:id])
     @product.destroy
 
     respond_to do |format|
