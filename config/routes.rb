@@ -20,9 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brands, only: [:index, :show] do
-    resources :products, only: [:index]
-  end
+  resources :brands, only: [:index, :show]
 
   namespace :admin do
 
@@ -41,6 +39,8 @@ Rails.application.routes.draw do
     resources :brands, only: [:new, :create, :edit, :update, :destroy] do
       resources :products, only: [:create]
     end
+
+    resources :products, only: [:destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

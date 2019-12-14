@@ -15,14 +15,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([brand, Product.new], url: admin_brand_products_path(brand), method: :post) do |f| %>
-          <%= f.input :thumbnail %>
-          <%= f.input :name %>
+        <div class="product-form-wrapper" id="product-brand-<%= brand.id %>-wrapper">
+          <%= simple_form_for([brand, Product.new], url: admin_brand_products_path(brand), method: :post, remote: true) do |f| %>
+            <%= f.input :thumbnail, input_html: { id: "thumbnail-#{brand.id}" }, label: 'Ajouter une image' %>
+            <%= f.input :name, input_html: { id: "name-#{brand.id}" }, label: false, placeholder: 'Nom du produit' %>
+            <%= f.submit 'Creer', class: 'petch-btn modal-btn' %>
+          <% end %>
+        </div>
       </div>
-      <div class="modal-footer">
-        <%= f.submit 'Creer', class: 'btn btn-primary' %>
+      <div class="modal-footer" id="modal-footer-<%= brand.id %>">
+        <%= render 'shared/modal_footer', brand: brand %>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
+

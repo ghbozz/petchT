@@ -17,6 +17,7 @@ require("@rails/activestorage").start();
 require("channels");
 require("plugins/initQuill");
 // require("plugins/initFilter");
+window.$ = $;
 
 document.querySelector(".nav-wrapper") && initNavHover();
 // document.querySelector(".card-specs-ratings") && initSticky();

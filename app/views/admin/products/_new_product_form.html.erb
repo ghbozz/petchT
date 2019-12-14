@@ -1,0 +1,14 @@
+<%= simple_form_for([brand, product], url: admin_brand_products_path(brand), method: :post, remote: true) do |f| %>
+<% if product.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= f.input :thumbnail, input_html: { id: "thumbnail-#{brand.id}" }, label: 'Ajouter une image' %>
+<%= f.input :name, input_html: { id: "name-#{brand.id}" }, label: false, placeholder: 'Nom du produit' %>
+  <%= f.submit 'Creer', class: 'petch-btn modal-btn' %>
+<% end %>

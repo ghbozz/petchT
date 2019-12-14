@@ -58,11 +58,26 @@
           </div>
         </div>
       </div>
+
       <div class="tab-pane fade show" id="nav-brand-commitments" role="tabpanel" aria-labelledby="nav-commitments">
         Commitments
       </div>
+
       <div class="tab-pane fade show" id="nav-brand-products" role="tabpanel" aria-labelledby="nav-products">
-        Products
+        <div class="products-wrapper">
+          <div class="row">
+            <% @brand.products.each do |product| %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="product-card">
+                  <%= image_tag url_for(product.thumbnail), alt: "alttext" %>
+                  <div class="product-name">
+                    <%= product.name %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 
