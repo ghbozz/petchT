@@ -16,6 +16,5 @@
       <%= f.input :thumbnail, input_html: { id: "thumbnail-#{brand.id}" }, label: '+' %>
     </div>
   </div>
-  <%#= f.button :submit, 'Creer un produit', class: 'petch-btn modal-btn', data: { disable_with: "Création du produit..." } %>
   <button type="submit" class="petch-btn modal-btn" data-disable-with="<i class='fas fa-spinner fa-spin'></i> Creation du produit...">Creer un produit</button>
 <% end %>
