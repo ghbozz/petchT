@@ -4,9 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:animal]
-      @articles = policy_scope(Article)
-                    .where(status: 'published')
-                    .where(animal: Animal.find_by(name: params[:animal]))
+      @articles = policy_scope(Article).animal(params[:animal])
     else
       @articles = policy_scope(Article).where(status: 'published')
     end
