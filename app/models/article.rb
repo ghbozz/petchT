@@ -26,10 +26,10 @@ class Article < ApplicationRecord
 
   ##### SCOPES ######
   scope :published, -> { where(status: 'published') }
+  scope :top, -> { where(status: 'published', top: true) }
   scope :animal_scope, -> (animal) {
     where(status: 'published', animal: Animal.find_by(name: animal))
   }
-  scope :top, -> { where(status: 'published', top: true) }
   scope :recomandations, -> (article) {
     where(status: 'published', animal: article.animal)
     .where.not(id: article.id)
