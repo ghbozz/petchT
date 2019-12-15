@@ -34,7 +34,8 @@ gem 'friendly_id', '~> 5.2.4'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # PDF Generation
-gem 'prawn', '~> 2.2', '>= 2.2.2'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
