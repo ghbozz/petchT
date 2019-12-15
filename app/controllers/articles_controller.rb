@@ -4,12 +4,10 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:animal]
-      @articles = policy_scope(Article).animal(params[:animal])
+      @articles = policy_scope(Article).animal_scope(params[:animal])
     else
-      @articles = policy_scope(Article).where(status: 'published')
+      @articles = policy_scope(Article).published
     end
-
-    @top_articles = Article.where(top: true)
 
     @pagy, @articles = pagy(
       helpers.articles_search(@articles, params).order(created_at: :desc),
@@ -22,7 +20,7 @@ class ArticlesController < ApplicationController
     authorize @article
 
     @article_animal = @article.animal
-    @recomandations = Article.where(animal: @article.animal, status: 'published').sample(3)
+    @recomandations = Article.recomandations(@article).sample(3)
     @reading_duration = @article.body.split(/\W+/).count / 200
 
     respond_to do |format|

@@ -11,6 +11,7 @@ class Article < ApplicationRecord
 
   has_one_attached :thumbnail
 
+  ##### VALIDATIONS #####
   validates :title, presence: true
   validates :subtitle, presence: true
   validates :body, presence: true
@@ -23,11 +24,18 @@ class Article < ApplicationRecord
   validates :theme, inclusion: { in: THEMES }
   validates :status, inclusion: { in: STATUS }
 
+  ##### SCOPES ######
   scope :published, -> { where(status: 'published') }
-  scope :animal, -> (animal) {
+  scope :animal_scope, -> (animal) {
     where(status: 'published', animal: Animal.find_by(name: animal))
   }
+  scope :top, -> { where(status: 'published', top: true) }
+  scope :recomandations, -> (article) {
+    where(status: 'published', animal: article.animal)
+    .where.not(id: article.id)
+  }
 
+  ##### METHODS #####
   include PgSearch::Model
   pg_search_scope :search_articles,
     against: [ :title, :subtitle, :body ],
