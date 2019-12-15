@@ -1,86 +1,88 @@
-<div class="pb-5">
-  <div class="container pt-4">
-    <div class="petch-breadcrumb">
-      <%= link_to "Accueil", root_path %> > <%= link_to "Fiches animaux", cards_path %> > <%= link_to @animal.capitalize, cards_path(params: {animal: @animal}) %> > <%= @card.specie.name %>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="card-wrapper pt-4">
-
-      <div class="article-header">
-        <div class="article-headings">
-          <h1><%= @card.specie.name %></h1>
-        </div>
+<div class="article-container">
+  <div class="pb-5">
+    <div class="container pt-4">
+      <div class="petch-breadcrumb">
+        <%= link_to "Accueil", root_path %> > <%= link_to "Fiches animaux", cards_path %> > <%= link_to @animal.capitalize, cards_path(params: {animal: @animal}) %> > <%= @card.specie.name %>
       </div>
+    </div>
 
-      <div class="card-content row">
-        <div class="card-content-body col-12 col-lg-8">
-          <div class="content-card-text pt-4">
-            <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail mr-4 mb-2" %>
-            <%= raw @card.body %>
+    <div class="container">
+      <div class="card-wrapper pt-4">
+
+        <div class="article-header">
+          <div class="article-headings">
+            <h1><%= @card.specie.name %></h1>
           </div>
         </div>
 
-        <div class="card-specs-ratings sticky col-12 col-lg-4 mt-4 mt-lg-0">
-          <div class="card-specs-box py-4 px-2">
-            <% @caracs.each do |key, value| %>
-                <div class="specs">
-                <div class="spec">
-                  <span><%= key.to_s.gsub('_', ' ').capitalize %></span>
-                  <span class="stars"><%= value.to_s.gsub('_', ' ') %></span>
+        <div class="card-content row">
+          <div class="card-content-body col-12 col-lg-8">
+            <div class="content-card-text pt-4">
+              <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail mr-4 mb-2" %>
+              <%= raw @card.body %>
+            </div>
+          </div>
+
+          <div class="card-specs-ratings sticky col-12 col-lg-4 mt-4 mt-lg-0">
+            <div class="card-specs-box py-4 px-2">
+              <% @caracs.each do |key, value| %>
+                  <div class="specs">
+                  <div class="spec">
+                    <span><%= key.to_s.gsub('_', ' ').capitalize %></span>
+                    <span class="stars"><%= value.to_s.gsub('_', ' ') %></span>
+                  </div>
                 </div>
-              </div>
+                <% end %>
+
+              <% @card.specificities.each do |key, value| %>
+                <div class="specs">
+                  <div class="spec">
+                    <span><%= key == 'fci' ? 'FCI' : key.gsub('_', ' ').capitalize %></span>
+                    <span class="stars"><%= value.gsub('_', ' ') %></span>
+                  </div>
+                </div>
               <% end %>
 
-            <% @card.specificities.each do |key, value| %>
-              <div class="specs">
-                <div class="spec">
-                  <span><%= key == 'fci' ? 'FCI' : key.gsub('_', ' ').capitalize %></span>
-                  <span class="stars"><%= value.gsub('_', ' ') %></span>
-                </div>
+              <% @card.ratings.each do |key, value| %>
+                  <div class="rating">
+                    <span><%= key.capitalize %></span>
+                    <div class="stars">
+                      <% value.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
+                      <% (5 - value).times do %>
+                        <i class="far fa-star"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+
+      <hr class="mt-5">
+
+
+
+      <div class="recomandations pt-3">
+        <h3>Fiches similaires</h3>
+        <div class="recomandations pt-3">
+          <div class="row">
+            <% @recomandations.each do |reco| %>
+              <div class="col-12 col-md-6 col-lg-4">
+                <%= link_to card_path(reco) do  %>
+                  <div class="reco-card">
+                    <%= image_tag url_for(reco.thumbnail) %>
+                    <div class="card-desc">
+                      <h4><%= reco.specie.name %></h4>
+                      <p><%= reco.subtitle %></p>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             <% end %>
-
-            <% @card.ratings.each do |key, value| %>
-                <div class="rating">
-                  <span><%= key.capitalize %></span>
-                  <div class="stars">
-                    <% value.times do %>
-                      <i class="fas fa-star"></i>
-                    <% end %>
-                    <% (5 - value).times do %>
-                      <i class="far fa-star"></i>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-
           </div>
-        </div>
-      </div>
-
-    <hr class="mt-5">
-
-
-
-    <div class="recomandations pt-5">
-      <h3>Fiches similaires</h3>
-      <div class="recomandations pt-3">
-        <div class="row">
-          <% @recomandations.each do |reco| %>
-            <div class="col-12 col-md-6 col-lg-4">
-              <%= link_to card_path(reco) do  %>
-                <div class="reco-card">
-                  <%= image_tag url_for(reco.thumbnail) %>
-                  <div class="card-desc">
-                    <h4><%= reco.specie.name %></h4>
-                    <p><%= reco.subtitle %></p>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
         </div>
       </div>
     </div>

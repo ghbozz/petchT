@@ -154,6 +154,15 @@
     width: 13rem;
     object-fit: cover;
   }
+
+  @media screen and (min-width : 1224px) {
+    width: 18rem;
+
+    img {
+      width: 18rem;
+      height: 18rem;
+    }
+  }
 }
 
 .card-wrapper {
@@ -189,7 +198,7 @@
     width: rem(320px);
     right: 5%;
     top: 0;
-    height: 100vh;
+    height: 80vh;
 
     &.sticky {
       top: rem(140px) !important;
