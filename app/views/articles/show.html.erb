@@ -1,10 +1,10 @@
 <div class="article-container pb-5">
   <div class="container pt-4">
-    <div class="petch-breadcrumb">
-
-      <%= link_to "Accueil", root_path %> > <%= link_to "Conseils animaux", articles_path %> > <%= link_to @article.animal.name.capitalize, articles_path(params: {animal: @article.animal.name}) %> > <%= @article.title %>
-
-    </div>
+    <% if @format != 'pdf' %>
+      <div class="petch-breadcrumb">
+        <%= link_to "Accueil", root_path %> > <%= link_to "Conseils animaux", articles_path %> > <%= link_to @article.animal.name.capitalize, articles_path(params: {animal: @article.animal.name}) %> > <%= @article.title %>
+      </div>
+    <% end %>
   </div>
 
   <div class="container">
@@ -52,51 +52,55 @@
         <!-- ####################################### -->
 
       </div>
-
       <hr>
 
       <div class="article-body">
         <%= raw @article.body %>
       </div>
 
-      <div class="tags-and-socials d-flex pt-5">
-        <div class="article-tags">
-          <% @article.tag_list.reverse.each do |tag| %>
-            <div class="tag-list-item">
-              <%= tag %>
-            </div>
-          <% end %>
+      <% if @format != 'pdf' %>
+        <div class="tags-and-socials d-flex pt-5">
+          <div class="article-tags">
+            <% @article.tag_list.reverse.each do |tag| %>
+              <div class="tag-list-item">
+                <%= tag %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="socials-btns">
+            <i class="fab fa-facebook-square facebook"></i>
+            <i class="fab fa-pinterest-square pinterest"></i>
+            <i class="fab fa-twitter-square twitter"></i>
+            <i class="fas fa-envelope-square email"></i>
+            <%= social_share_button_tag('Share to Facebook', :url => @article.get_url, desc: @article.title) %>
+            <%= link_to article_path(@article, :format => :pdf) do %>
+              <i class="fas fa-file-pdf" style="font-size: 1.6rem"></i>
+            <% end %>
+          </div>
         </div>
+        <hr class="my-5">
 
-        <div class="socials-btns">
-          <i class="fab fa-facebook-square facebook"></i>
-          <i class="fab fa-pinterest-square pinterest"></i>
-          <i class="fab fa-twitter-square twitter"></i>
-          <i class="fas fa-envelope-square email"></i>
-          <%= social_share_button_tag('Share to Facebook', :url => @article.get_url, desc: @article.title) %>
-        </div>
-      </div>
-      <hr class="my-5">
+        <h3 class="pt-3">Articles similaires</h3>
 
-      <h3 class="pt-3">Articles similaires</h3>
-
-      <div class="recomandations pt-3">
-        <div class="row">
-          <% @recomandations.each do |reco| %>
-            <div class="col-12 col-md-6 col-lg-4">
-              <%= link_to article_path(reco) do  %>
-                <div class="reco-card">
-                  <%= image_tag url_for(reco.thumbnail) %>
-                  <div class="card-desc">
-                    <h4><%= reco.title %></h4>
-                    <p><%= reco.subtitle %></p>
+        <div class="recomandations pt-3">
+          <div class="row">
+            <% @recomandations.each do |reco| %>
+              <div class="col-12 col-md-6 col-lg-4">
+                <%= link_to article_path(reco) do  %>
+                  <div class="reco-card">
+                    <%= image_tag url_for(reco.thumbnail) %>
+                    <div class="card-desc">
+                      <h4><%= reco.title %></h4>
+                      <p><%= reco.subtitle %></p>
+                    </div>
                   </div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

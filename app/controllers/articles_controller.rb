@@ -26,6 +26,23 @@ class ArticlesController < ApplicationController
     @article_animal = @article.animal
     @recomandations = Article.where(animal: @article.animal, status: 'published').sample(3)
     @reading_duration = @article.body.split(/\W+/).count / 200
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        @format = 'pdf'
+
+        render pdf: "Article. #{@article.title}",
+          page_size: 'A4',
+          template: "articles/show.html.erb",
+          layout: "pdf.html",
+          orientation: "Portrait",
+          lowquality: true,
+          zoom: 1,
+          dpi: 75,
+          encoding: 'utf-8'
+      end
+    end
   end
 
   def new
