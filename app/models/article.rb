@@ -2,19 +2,19 @@ class Article < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  before_save :tags_validation
-
   acts_as_taggable_on :tags
+
+  before_save :tags_validation
 
   belongs_to :user
   belongs_to :animal
 
   has_one_attached :thumbnail
 
+  ##### VALIDATIONS #####
   validates :title, presence: true
   validates :subtitle, presence: true
   validates :body, presence: true
-  # validates :animal, presence: true
   validates :theme, presence: true
   validates :thumbnail, presence: true
 
@@ -24,6 +24,18 @@ class Article < ApplicationRecord
   validates :theme, inclusion: { in: THEMES }
   validates :status, inclusion: { in: STATUS }
 
+  ##### SCOPES ######
+  scope :published, -> { where(status: 'published') }
+  scope :top, -> { where(status: 'published', top: true) }
+  scope :animal_scope, -> (animal) {
+    where(status: 'published', animal: Animal.find_by(name: animal))
+  }
+  scope :recomandations, -> (article) {
+    where(status: 'published', animal: article.animal)
+    .where.not(id: article.id)
+  }
+
+  ##### METHODS #####
   include PgSearch::Model
   pg_search_scope :search_articles,
     against: [ :title, :subtitle, :body ],
