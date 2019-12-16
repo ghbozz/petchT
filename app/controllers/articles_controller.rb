@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
     @article_animal = @article.animal
     @recomandations = Article.recomandations(@article).sample(3)
-    @reading_duration = @article.body.split(/\W+/).count / 200
+    @reading_duration = @article.body.split(/\s/).count / 200
 
     respond_to do |format|
       format.html
