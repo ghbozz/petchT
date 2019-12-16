@@ -7,10 +7,11 @@ class ArticlesController < ApplicationController
       @articles = policy_scope(Article).animal_scope(params[:animal])
     else
       @articles = policy_scope(Article).published
+      @articles = helpers.articles_search(@articles, params).order(created_at: :desc)
     end
 
     @pagy, @articles = pagy(
-      helpers.articles_search(@articles, params).order(created_at: :desc),
+      @articles,
       items: 12,
       link_extra: 'data-remote="true"'
     )

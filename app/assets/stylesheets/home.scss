@@ -103,6 +103,10 @@
     .home-card {
       display: flex;
       width: 100%;
+
+      .home-card-desc {
+        width: 50%;
+      }
     }
   }
 }
