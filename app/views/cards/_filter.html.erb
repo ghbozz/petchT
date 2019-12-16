@@ -4,17 +4,15 @@
       <div class="animals-filter">
         <h5>Animaux</h5>
         <hr>
-        <div class="row">
+        <div class="animals-icons row d-flex justify-content-around">
           <%= simple_fields_for :animals do |x| %>
             <% Animal.pluck(:name).each do |animal| %>
-              <div class="col-4">
               <div class="icon-<%= animal %>">
                 <% if animal == params[:animal] %>
                   <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box', checked: true } %>
                 <% else %>
                   <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
                 <% end %>
-                </div>
               </div>
             <% end %>
           <% end %>
