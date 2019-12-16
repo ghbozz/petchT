@@ -4,14 +4,28 @@ module ArticlesHelper
       articles = articles.search_articles(params[:query])
     end
 
-    if params[:filter_data]
-      animals = params[:filter_data].select { |k, v| v == '1' }.keys.select { |item| Animal.pluck(:name).include?(item) }
-      themes = params[:themes].select { |k, v| v == '1' }.keys.select { |item| Article::THEMES.include?(item) }
-      tags = params[:tags].select { |k, v| v == '1' }.keys.select { |item| TAGS.include?(item) }
-      articles = articles.where(animal: animals.map { |a| Animal.find_by(name: a) }) if animals.any?
+    if params[:animals]
+      animals = params[:animals].select { |k, v| v == '1' }
+                                    .keys
+      if animals.any?
+        articles = articles.where(animal: animals.map { |a| Animal.find_by(name: a) })
+      end
+    end
+
+    if params[:themes]
+      themes = params[:themes].select { |k, v| v == '1' }
+                              .keys
+
       articles = articles.where(theme: themes) if themes.any?
+    end
+
+    if params[:tags]
+      tags = params[:tags].select { |k, v| v == '1' }
+                          .keys
+
       articles = articles.tagged_with(tags.join(',')) if tags.any?
     end
+
 
     return articles
   end

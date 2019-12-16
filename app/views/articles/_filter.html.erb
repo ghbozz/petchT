@@ -1,27 +1,29 @@
 <div class="filter">
   <div class="filter-form">
-    <%= simple_form_for :filter_data, url: articles_path, method: :get, remote: true do |f| %>
+    <%= simple_form_for :filter, url: articles_path, method: :get, remote: true do |f| %>
       <div class="animals-filter">
         <h5>Animaux</h5>
         <hr>
         <div class="animals-icons row d-flex justify-content-around">
-          <% Animal.pluck(:name).each do |animal| %>
-            <div class="icon-<%= animal %>">
-              <% if animal == params[:animal] %>
-                <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box', checked: true } %>
-              <% else %>
-                <%= f.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
-              <% end %>
-            </div>
+          <%= simple_fields_for :animals do |x| %>
+            <% Animal.pluck(:name).each do |animal| %>
+              <div class="icon-<%= animal %>">
+                <% if animal == params[:animal] %>
+                  <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box', checked: true } %>
+                <% else %>
+                  <%= x.input animal.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
       <div class="themes-filter">
         <h5>Thèmes</h5>
         <hr>
-        <%= simple_fields_for :themes do |x| %>
+        <%= simple_fields_for :themes do |y| %>
           <% Article::THEMES.each do |theme| %>
-            <%= x.input theme.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+            <%= y.input theme.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
           <% end %>
         <% end %>
       </div>
@@ -29,10 +31,10 @@
         <h5>Tags</h5>
         <hr>
         <div class="masonry-tags">
-          <%= simple_fields_for :tags do |y| %>
+          <%= simple_fields_for :tags do |z| %>
             <% TAGS.each do |tag| %>
               <span class="tag-filter">
-                <%= y.input tag.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                <%= z.input tag.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
               </span>
             <% end %>
           <% end %>
