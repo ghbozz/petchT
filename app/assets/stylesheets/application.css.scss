@@ -79,6 +79,28 @@ h2 {
   }
 }
 
+.file-input {
+  position: relative;
+  height: 60px;
+}
+
+.file-upload-value {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: -10px;
+  color: rgba(150, 150, 150, .7);
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.valid-input {
+  label {
+    border: 2px solid #73E2A7;
+  }
+}
+
 .file {
   align-items: center;
   display: flex;
@@ -94,9 +116,14 @@ h2 {
     padding: 10px 30px;
     border-radius: 40px;
     cursor: pointer;
+    transition: all .2s linear;
 
     abbr {
       display: none;
+    }
+
+    &:hover {
+      background-color: lighten($brand-orange, 5%)
     }
   }
 }

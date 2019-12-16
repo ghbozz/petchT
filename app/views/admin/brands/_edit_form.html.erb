@@ -1,19 +1,36 @@
 <%= simple_form_for brand, url: admin_brand_path(brand), method: :patch do |f| %>
+  <% if brand.errors.any? %>
+    <div id="error_explanation" class="mb-5">
+      <% brand.errors.full_messages.each_with_index do |msg, index| %>
+        <% if index == brand.errors.count - 1 %>
+          <span><%= msg %></span>
+        <% else %>
+          <span><%= msg %> / </span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="form-wrapper brand-form-wrapper">
     <div class="row">
       <div class="col-12">
-        <%= f.input :name, placeholder: 'Nom', label: "Nom de la marque" %>
+        <%= f.input :name, placeholder: 'Nom de la marque', label: false %>
       </div>
       <div class="col-12">
-        <%= f.input :description, placeholder: 'description', label: "Description courte" %>
+        <%= f.input :description, placeholder: 'Description courte', label: false %>
       </div>
     </div>
     <div class="row brand-inputs-1">
       <div class="col-2">
-        <%= f.input :banner, direct_upload: true, input_html: { class: 'file-input' }, label: 'Banner' %>
+        <div class="file-input">
+          <%= f.input :banner, direct_upload: true, label: 'Banniere', required: true %>
+          <span class="file-upload-value"></span>
+        </div>
       </div>
       <div class="col-2">
-        <%= f.input :logo, direct_upload: true, input_html: { class: 'file-input' }, label: 'Logo' %>
+        <div class="file-input">
+          <%= f.input :logo, direct_upload: true, label: 'Logo' %>
+          <span class="file-upload-value"></span>
+        </div>
       </div>
       <div class="icons-wrapper icons-wrapper-brand-form col-8">
         <div class="icons-form">
@@ -41,34 +58,43 @@
       <div class="col-12 brand-form-paragraph">
         <div class="d-flex justify-content-between align-items-center">
           <h4>Paragraphe 1</h4>
-          <%= f.input :par_1_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+          <div class="file-input mb-3">
+            <%= f.input :par_1_img, direct_upload: true, label: 'Ajouter une photo' %>
+            <span class="file-upload-value"></span>
+          </div>
         </div>
-      <%= f.input :title_1 %>
-        <%= f.input :paragraph_1 %>
+        <%= f.input :title_1, label: false, placeholder: 'Titre' %>
+        <%= f.input :paragraph_1, label: false, placeholder: 'Paragraphe' %>
       </div>
       <hr>
       <div class="col-12 brand-form-paragraph">
         <div class="d-flex justify-content-between align-items-center">
           <h4>Paragraphe 2</h4>
-          <%= f.input :par_2_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+          <div class="file-input mb-3">
+            <%= f.input :par_2_img, direct_upload: true, label: 'Ajouter une photo' %>
+            <span class="file-upload-value"></span>
+          </div>
         </div>
-        <%= f.input :title_2 %>
-        <%= f.input :paragraph_2 %>
+        <%= f.input :title_2, label: false, placeholder: 'Titre' %>
+        <%= f.input :paragraph_2, label: false, placeholder: 'Paragraphe' %>
       </div>
       <hr>
       <div class="col-12 brand-form-paragraph">
         <div class="d-flex justify-content-between align-items-center">
           <h4>Paragraphe 3</h4>
-          <%= f.input :par_3_img, direct_upload: true, input_html: { class: 'file-input' }, label: 'Ajouter une photo' %>
+          <div class="file-input mb-3">
+            <%= f.input :par_3_img, direct_upload: true, label: 'Ajouter une photo' %>
+            <span class="file-upload-value"></span>
+          </div>
         </div>
-        <%= f.input :title_3 %>
-        <%= f.input :paragraph_3 %>
+        <%= f.input :title_3, label: false, placeholder: 'Titre' %>
+        <%= f.input :paragraph_3, label: false, placeholder: 'Paragraphe' %>
       </div>
     </div>
 
     <div class="col-12 pt-5">
       <div class="d-flex justify-content-center pt-3">
-        <%= f.submit class: "petch-btn" %>
+        <%= f.submit 'Modifier la marque', class: "petch-btn" %>
       </div>
     </div>
 

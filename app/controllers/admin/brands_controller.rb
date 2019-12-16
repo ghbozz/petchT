@@ -5,9 +5,9 @@ class Admin::BrandsController < ApplicationController
 
   def create
     @brand = Brand.new(brand_params)
-    @brand.set_targets(params)
 
     if @brand.save
+      @brand.set_targets(params)
       redirect_to brand_path(@brand)
     else
       render :new
@@ -40,6 +40,6 @@ class Admin::BrandsController < ApplicationController
   private
 
   def brand_params
-    params.require(:brand).permit(:name, :description, :paragraph_1, :paragraph_2, :paragraph_3, :par_1_img, :par_2_img, :par_3_img, :banner, :logo)
+    params.require(:brand).permit(:name, :description, :paragraph_1, :paragraph_2, :paragraph_3, :par_1_img, :par_2_img, :par_3_img, :title_1, :title_2, :title_3, :banner, :logo)
   end
 end
