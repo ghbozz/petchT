@@ -25,6 +25,7 @@ class CardsController < ApplicationController
       hauteur: "#{@card.min_height} - #{@card.max_height} cm",
       poids: "#{@card.min_weight} - #{@card.max_weight} kgs",
     }
+    @fci = @card.specificities.find { |k, v| k == 'fci' }
 
     @animal = @card.animal.name
     @recomandations = Card.where(status: 'published')
