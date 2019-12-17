@@ -6,9 +6,21 @@ const initSelect2 = () => {
 };
 
 const initSelector = () => {
-  $(document).ready(function() {
-      $('.js-example-basic-multiple').select2();
-  });
+  if (document.querySelector('#admin-tags-field')) {
+
+    $(document).ready(function() {
+      $('.js-example-basic-multiple').select2({
+        tags: true
+      })
+    })
+
+  } else {
+
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+
+  }
 }
 
 export { initSelect2, initSelector };
