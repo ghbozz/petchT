@@ -3,13 +3,13 @@
     <h2><%= f.object.title ? f.object.title : 'Nouvel onglet' %></h2>
     <%= link_to_remove_association '<i class="far fa-trash-alt"></i>'.html_safe, f, class: 'destroy-nested-btn' %>
   </div>
-  <%= f.input :title, placeholder: 'Titre de l\'onglet', label: false %>
+  <%= f.input :title, placeholder: 'Titre de l\'onglet', label: false, hint: 'Une lettre de A à Z (majuscule ou minuscule) OU un chiffre de 0 à 9' %>
 
   <hr class="my-5" style="width: 70% !important;">
 
   <div id='paragraphs'>
     <div class="row mx-auto paragraphs-row" style="max-height: 400px; overflow: hidden;">
-      <%= f.simple_fields_for :paragraphs do |paragraph| %>
+      <%= f.simple_fields_for :paragraphs, f.object.paragraphs.sort_by(&:created_at) do |paragraph| %>
         <%= render 'paragraph_fields', :f => paragraph %>
       <% end %>
       <div class='links col-4 new-paragraph-wrapper'>
