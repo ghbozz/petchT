@@ -135,7 +135,7 @@ end
   puts "Creating Brand - #{i+1}"
   brand = Brand.new(
     name: 'Nom de la marque',
-    description: 'Description de la marque',
+    description: PARAGRAPH,
   )
   brand.logo.attach(io: File.open(get_images('logos').sample), filename: 'file.jpg')
   brand.banner.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
