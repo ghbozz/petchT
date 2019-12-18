@@ -1,4 +1,4 @@
-<%= simple_form_for brand, url: admin_brand_path(brand), method: :patch do |f| %>
+<%= simple_form_for brand, url: admin_brand_path, method: :patch do |f| %>
   <% if brand.errors.any? %>
     <div id="error_explanation" class="mb-5">
       <% brand.errors.full_messages.each_with_index do |msg, index| %>
@@ -10,6 +10,7 @@
       <% end %>
     </div>
   <% end %>
+
   <div class="form-wrapper brand-form-wrapper">
     <div class="row">
       <div class="col-12">
@@ -53,53 +54,28 @@
         </div>
       </div>
     </div>
+
     <hr>
-    <div class="row">
-      <div class="col-12 brand-form-paragraph">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4>Paragraphe 1</h4>
-          <div class="file-input mb-3">
-            <%= f.input :par_1_img, direct_upload: true, label: 'Ajouter une photo' %>
-            <span class="file-upload-value"></span>
-          </div>
+
+    <div id="sections">
+      <h2>Onglets</h2>
+      <div class="row">
+
+        <%= f.simple_fields_for :sections do |section| %>
+          <%= render 'section_fields', :f => section %>
+        <% end %>
+
+        <div class='links col-12 d-flex justify-content-center align-items-center'>
+          <%= link_to_add_association 'Ajouter une section', f, :sections, class: 'petch-btn mt-5' %>
         </div>
-        <%= f.input :title_1, label: false, placeholder: 'Titre' %>
-        <%= f.input :paragraph_1, label: false, placeholder: 'Paragraphe' %>
-      </div>
-      <hr>
-      <div class="col-12 brand-form-paragraph">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4>Paragraphe 2</h4>
-          <div class="file-input mb-3">
-            <%= f.input :par_2_img, direct_upload: true, label: 'Ajouter une photo' %>
-            <span class="file-upload-value"></span>
-          </div>
-        </div>
-        <%= f.input :title_2, label: false, placeholder: 'Titre' %>
-        <%= f.input :paragraph_2, label: false, placeholder: 'Paragraphe' %>
-      </div>
-      <hr>
-      <div class="col-12 brand-form-paragraph">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4>Paragraphe 3</h4>
-          <div class="file-input mb-3">
-            <%= f.input :par_3_img, direct_upload: true, label: 'Ajouter une photo' %>
-            <span class="file-upload-value"></span>
-          </div>
-        </div>
-        <%= f.input :title_3, label: false, placeholder: 'Titre' %>
-        <%= f.input :paragraph_3, label: false, placeholder: 'Paragraphe' %>
+
       </div>
     </div>
 
     <div class="col-12 pt-5">
       <div class="d-flex justify-content-center pt-3">
-        <%= f.submit 'Modifier la marque', class: "petch-btn" %>
+        <%= f.submit 'Creer la marque', class: "petch-btn" %>
       </div>
-    </div>
-
-    <div class="col-12 text-center pt-5">
-      En cliquant sur Sauvegarder et Prévisualiser, votre contenu sera sauvegardé et vous prévisualisable, et son statut sera alors « En cours de rédaction ». Vous pourrez terminer les modifications plus tard. En cliquant sur Poster le contenu, votre contenu sera soumis à l’admin en modération. Ce dernier validera votre article, auquel cas il reviendra vers vous afin de le modifier.
     </div>
 
   </div>

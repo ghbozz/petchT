@@ -39,3 +39,6 @@ if (document.querySelector(".file-input")) initFileInputs();
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+$(".section-fields").on('click',"a.remove_fields",function(){
+  return confirm("Are you sure ?") ;
+});

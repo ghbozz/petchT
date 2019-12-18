@@ -5,8 +5,9 @@ class Brand < ApplicationRecord
   has_many :targets, dependent: :destroy
   has_many :animals, through: :targets
   has_many :products, dependent: :destroy
+  has_many :sections, dependent: :destroy
 
-  accepts_nested_attributes_for :targets
+  accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 
   has_one_attached :logo
   has_one_attached :banner

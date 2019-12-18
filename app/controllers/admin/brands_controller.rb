@@ -40,6 +40,7 @@ class Admin::BrandsController < ApplicationController
   private
 
   def brand_params
-    params.require(:brand).permit(:name, :description, :paragraph_1, :paragraph_2, :paragraph_3, :par_1_img, :par_2_img, :par_3_img, :title_1, :title_2, :title_3, :banner, :logo)
+    params.require(:brand).permit(:name, :description, :banner, :logo,
+      sections_attributes: [:id, :title, :_destroy, paragraphs_attributes: [:id, :title, :body, :thumbnail, :_destroy]])
   end
 end

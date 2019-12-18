@@ -3,18 +3,9 @@ const valueOnChange = (fileInput) => {
     let value = formatValue(e.target.value)
     if (fileInput.querySelector('.file-upload-value')) {
       fileInput.querySelector('.file-upload-value').innerText = value
-      fileInput.classList.add('valid-input')
     }
   })
 }
-
-// const loadValue = (fileInput) => {
-//   let value = formatValue(fileInput.querySelector('input').value)
-
-//   if (fileInput.querySelector('.file-upload-value')) {
-//     fileInput.querySelector('.file-upload-value').innerText = value
-//   }
-// }
 
 const formatValue = (value) => {
   return value.split('\\')[value.split('\\').length - 1]
