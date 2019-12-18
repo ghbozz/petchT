@@ -8,7 +8,7 @@ const valueOnChange = (fileInput) => {
 }
 
 const formatValue = (value) => {
-  return value.split('\\')[value.split('\\').length - 1]
+  return value.split('\\')[value.split('\\').length - 1].split('').slice(0, 20).join('') + '...'
 }
 
 const initFileInputs = () => {
