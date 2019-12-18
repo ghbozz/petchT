@@ -1,6 +1,6 @@
 <div class="tab-pane fade show active" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
   <%= simple_form_for :filter_data, url: profile_path, method: :get, remote: true do |f| %>
-    <div class="row dashboard-filter">
+    <div class="form-row dashboard-filter">
       <div class="col-4">
         <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
       </div>
@@ -14,7 +14,7 @@
         <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'Statut' %>
       </div>
       <div class="col-1">
-        <%= f.submit 'Filtrer', class: 'petch-btn' %>
+        <%= f.submit 'Filtrer', class: 'btn btn-primary' %>
       </div>
     </div>
   <% end %>
