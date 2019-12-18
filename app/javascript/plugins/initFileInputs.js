@@ -23,6 +23,10 @@ const bindBtns = () => {
         item.querySelectorAll('.file-input').forEach(valueOnChange)
       })
   });
+
+  $(".brand-form-wrapper").on('click',"a.remove_fields",function(){
+    return confirm("Do you want to delete this?") ;
+  });
 }
 
 export { initFileInputs, bindBtns }
