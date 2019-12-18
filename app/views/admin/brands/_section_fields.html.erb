@@ -1,14 +1,14 @@
-<div class='nested-fields col-12 section-fields'>
+<div class='nested-fields col-12 fields-area'>
   <div class="section-title">
     <h2><%= f.object.title ? f.object.title : 'Nouvel onglet' %></h2>
-    <%= link_to_remove_association "X", f, class: 'destroy-nested-btn', data: { confirm: 'Are you sure?' } %>
+    <%= link_to_remove_association '<i class="far fa-trash-alt"></i>'.html_safe, f, class: 'destroy-nested-btn', data: { confirm: 'Are you sure?' } %>
   </div>
   <%= f.input :title, placeholder: 'Titre de l\'onglet', label: false %>
 
   <hr class="my-5" style="width: 70% !important;">
 
   <div id='paragraphs'>
-    <div class="row mx-auto" style="max-height: 400px; overflow: hidden;">
+    <div class="row mx-auto paragraphs-row" style="max-height: 400px; overflow: hidden;">
       <%= f.simple_fields_for :paragraphs do |paragraph| %>
         <%= render 'paragraph_fields', :f => paragraph %>
       <% end %>

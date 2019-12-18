@@ -37,6 +37,17 @@ hr {
   width: 100% !important;
 }
 
+a {
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+textarea {
+   resize: none;
+}
+
 .translate-nav {
   transform: translateY(80px);
 }

@@ -1,6 +1,6 @@
-<div class='nested-fields col-4' style="padding: 0px;">
+<div class='nested-fields col-4'>
     <%= f.input :thumbnail %>
     <%= f.input :title, label: false, placeholder: 'Titre' %>
     <%= f.input :body, label: false, placeholder: 'Contenu' %>
-    <%= link_to_remove_association "X", f, class: 'destroy-nested-btn' %>
+    <%= link_to_remove_association '<i class="fas fa-trash-alt"></i>'.html_safe, f, class: 'destroy-nested-btn' %>
 </div>
