@@ -1,6 +1,9 @@
 <div class='nested-fields col-4'>
-    <%= f.input :thumbnail %>
+    <div class="file-input">
+      <span class="file-upload-value"></span>
+      <%= f.input :thumbnail, label: 'Image' %>
+    </div>
     <%= f.input :title, label: false, placeholder: 'Titre' %>
     <%= f.input :body, label: false, placeholder: 'Contenu' %>
-    <%= link_to_remove_association '<i class="fas fa-trash-alt"></i>'.html_safe, f, class: 'destroy-nested-btn' %>
+    <%= link_to_remove_association '<i class="far fa-trash-alt"></i>'.html_safe, f, class: 'destroy-nested-btn' %>
 </div>

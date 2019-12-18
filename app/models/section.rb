@@ -4,6 +4,8 @@ class Section < ApplicationRecord
 
   accepts_nested_attributes_for :paragraphs, reject_if: :all_blank, allow_destroy: true
 
+  validates :title, presence: true
+
   def formatted_title
     self.title.gsub(' ', '-')
   end

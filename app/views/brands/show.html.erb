@@ -40,7 +40,9 @@
           <% section.paragraphs.each do |paragraph| %>
             <div class="brand-paragraph">
               <div class="brand-paragraph-content">
-                <h2><%= paragraph.title %></h2>
+                <% if paragraph.title %>
+                  <h2><%= paragraph.title %></h2>
+                <% end %>
                 <p><%= paragraph.body %></p>
               </div>
 

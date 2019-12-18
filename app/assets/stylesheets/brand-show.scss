@@ -60,6 +60,7 @@
   #brand-nav {
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 
     .brand-nav-link {
       color: $light-grey;
@@ -83,6 +84,7 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 100px;
 
     &:nth-child(2n) {
       flex-direction: row-reverse;
@@ -99,7 +101,7 @@
     }
 
     img {
-      height: 15rem;
+      width: 100%;
     }
 
     h4 {
@@ -108,8 +110,9 @@
     }
 
     p {
-      font-size: rem(14px);
+      font-size: 17px;
       font-weight: 300;
+      text-align: justify;
     }
   }
 }

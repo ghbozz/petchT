@@ -14,7 +14,15 @@ const formatValue = (value) => {
 const initFileInputs = () => {
   const inputs = document.querySelectorAll('.file-input')
   inputs.forEach(valueOnChange)
-  // inputs.forEach(loadValue)
 }
 
-export { initFileInputs }
+const bindBtns = () => {
+  $('.brand-form-wrapper').on('cocoon:after-insert', function(e, insertedItem, originalEvent) {
+      Array.from(insertedItem).forEach((item) => {
+        console.log(item)
+        item.querySelectorAll('.file-input').forEach(valueOnChange)
+      })
+  });
+}
+
+export { initFileInputs, bindBtns }

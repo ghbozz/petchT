@@ -1,9 +1,12 @@
+.section-fields-area {
+  margin-top: 30px;
+  max-height: 585px;
+}
+
 .fields-area {
-  // margin-top: 30px;
   border-radius: 7px;
   padding: 30px;
   background-color: rgba(215, 215, 215, .2);
-  max-height: 585px;
 }
 
 .nested-fields {
@@ -73,4 +76,8 @@
   margin: 0 auto;
   text-align: center;
   margin-bottom: 30px !important;
+}
+
+.paragraphs-row {
+  padding-top: 20px;
 }
