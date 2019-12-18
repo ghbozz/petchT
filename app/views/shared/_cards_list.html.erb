@@ -1,5 +1,5 @@
 <div class="row mb-5">
-  <% cards.each_with_index do |card, index| %>
+  <% cards.sort_by { |c| c.specie.name } .each_with_index do |card, index| %>
     <div class="col-12 col-sm-6 col-md-4 card-container d-flex justify-content-center">
       <%= link_to card_path(card) do %>
         <div class="article-card">
