@@ -135,19 +135,10 @@ end
   puts "Creating Brand - #{i+1}"
   brand = Brand.new(
     name: 'Nom de la marque',
-    description: 'Description de la marque',
-    title_1: 'Titre 1',
-    title_2: 'Titre 2',
-    title_3: 'Titre 3',
-    paragraph_1: PARAGRAPH,
-    paragraph_2: PARAGRAPH,
-    paragraph_3: PARAGRAPH,
+    description: PARAGRAPH,
   )
   brand.logo.attach(io: File.open(get_images('logos').sample), filename: 'file.jpg')
   brand.banner.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
-  brand.par_1_img.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
-  brand.par_2_img.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
-  brand.par_3_img.attach(io: File.open(get_images('banners').sample), filename: 'file.jpg')
   brand.save!
 
   Target.create!(brand: brand, animal: Animal.find_by(name: Animal.pluck(:name).sample))

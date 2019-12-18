@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_223739) do
+ActiveRecord::Schema.define(version: 2019_12_17_215216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,14 +62,8 @@ ActiveRecord::Schema.define(version: 2019_12_13_223739) do
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.text "paragraph_1"
-    t.text "paragraph_2"
-    t.text "paragraph_3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title_1"
-    t.string "title_2"
-    t.string "title_3"
     t.string "slug"
     t.index ["slug"], name: "index_brands_on_slug", unique: true
   end
@@ -110,12 +104,29 @@ ActiveRecord::Schema.define(version: 2019_12_13_223739) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "paragraphs", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "section_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["section_id"], name: "index_paragraphs_on_section_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.bigint "brand_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "title"
+    t.bigint "brand_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_sections_on_brand_id"
   end
 
   create_table "species", force: :cascade do |t|
@@ -181,7 +192,9 @@ ActiveRecord::Schema.define(version: 2019_12_13_223739) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "paragraphs", "sections"
   add_foreign_key "products", "brands"
+  add_foreign_key "sections", "brands"
   add_foreign_key "species", "animals"
   add_foreign_key "taggings", "tags"
   add_foreign_key "targets", "animals"

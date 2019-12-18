@@ -2,6 +2,13 @@
   cursor: pointer;
 }
 
+.modal-body {
+  label {
+    margin-bottom: 0px;
+    width: auto !important;
+  }
+}
+
 .modal-btn {
   display: block;
   margin: 0 auto;

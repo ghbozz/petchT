@@ -1,0 +1,83 @@
+.section-fields-area {
+  margin-top: 30px;
+  max-height: 585px;
+}
+
+.fields-area {
+  border-radius: 7px;
+  padding: 30px;
+  background-color: rgba(215, 215, 215, .2);
+}
+
+.nested-fields {
+  position: relative;
+}
+
+.new-paragraph-wrapper {
+  padding: 0px;
+  width: 90%;
+  height: 322px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.plus-btn {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ff9173;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: lighten(#ff9173, 2%);
+  }
+
+  &::after {
+    position: absolute;
+    width: 200%;
+    content: 'Ajouter un paragraphe';
+    transform: translateX(-50%);
+    color: black;
+    left: 50%;
+    bottom: -45px;
+  }
+
+  a {
+
+    &:hover {
+      color: white !important;
+    }
+  }
+}
+
+.destroy-nested-btn {
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  background-color: #ff9173;
+  color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 30px !important;
+}
+
+.paragraphs-row {
+  padding-top: 20px;
+}

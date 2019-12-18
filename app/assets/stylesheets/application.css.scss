@@ -33,6 +33,21 @@ h2 {
   margin-bottom: rem(20px);
 }
 
+hr {
+  width: 100% !important;
+}
+
+a {
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+textarea {
+   resize: none;
+}
+
 .translate-nav {
   transform: translateY(80px);
 }
@@ -69,7 +84,11 @@ h2 {
   border: none;
   cursor: pointer;
   transition: all .3s ease-out;
-  height: 38px;
+  height: 44px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     transform: translateY(-2px);
@@ -86,9 +105,9 @@ h2 {
 
 .file-upload-value {
   position: absolute;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   left: 50%;
-  bottom: -10px;
+  top: -25%;
   color: rgba(150, 150, 150, .7);
   display: block;
   margin: 0 auto;
@@ -112,6 +131,7 @@ h2 {
 
   label {
     background-color: $brand-orange;
+    width: 200px;
     color: white;
     padding: 10px 30px;
     border-radius: 40px;

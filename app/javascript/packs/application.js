@@ -4,7 +4,7 @@ import { initSelect2, initSelector } from "../plugins/init_select2";
 import { initSocialIcons } from "../plugins/initSocialIcons";
 import { initNavHover, initSticky } from "../plugins";
 import { initFilter } from "../plugins/initFilter";
-import { initFileInputs } from "../plugins/initFileInputs";
+import { initFileInputs, bindBtns } from "../plugins/initFileInputs";
 import { initDependentInputs } from "../plugins/initDependentInputs";
 
 // This file is automatically compiled by Webpack, along with any other files
@@ -30,7 +30,10 @@ if (document.querySelector("#init_card")) initNewCardForm();
 if (document.querySelector(".socials-btns")) initSocialIcons();
 if (document.querySelector(".filter-form")) initFilter();
 if (document.querySelector(".animal-select")) initDependentInputs();
-if (document.querySelector(".file-input")) initFileInputs();
+if (document.querySelector(".file-input")) {
+  initFileInputs();
+  bindBtns();
+}
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

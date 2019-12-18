@@ -41,6 +41,16 @@
 }
 
 .dashboard-filter {
+  .form-group {
+    margin-bottom: 0px !important;
+  }
+
+  .btn {
+    width: 100%;
+    background-color: $brand-orange !important;
+    border-color: $brand-orange !important;
+  }
+
   .col {
     padding-left: 0px;
   }

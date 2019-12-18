@@ -68,6 +68,7 @@ GEM
     cloudinary (1.12.0)
       aws_cf_signer
       rest-client
+    cocoon (1.2.14)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
@@ -259,6 +260,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   cloudinary
+  cocoon
   devise
   dotenv-rails
   faker

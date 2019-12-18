@@ -10,85 +10,68 @@
       <% end %>
     </div>
   <% end %>
+
   <div class="form-wrapper brand-form-wrapper">
-    <div class="row">
-      <div class="col-12">
-        <%= f.input :name, placeholder: 'Nom de la marque', label: false %>
-      </div>
-      <div class="col-12">
-        <%= f.input :description, placeholder: 'Description courte', label: false %>
-      </div>
-    </div>
-    <div class="row brand-inputs-1">
-      <div class="col-2">
-        <div class="file-input">
-          <%= f.input :banner, direct_upload: true, label: 'Banniere', required: true %>
-          <span class="file-upload-value"></span>
+    <div class="brand-main-fields fields-area">
+      <div class="row">
+        <div class="col-12">
+          <%= f.input :name, placeholder: 'Nom de la marque', label: false %>
+        </div>
+        <div class="col-12">
+          <%= f.input :description, placeholder: 'Description courte', label: false %>
         </div>
       </div>
-      <div class="col-2">
-        <div class="file-input">
-          <%= f.input :logo, direct_upload: true, label: 'Logo' %>
-          <span class="file-upload-value"></span>
+      <hr class="my-5" style="width: 70% !important;">
+      <div class="row brand-inputs-1">
+        <div class="col-2">
+          <div class="file-input">
+            <%= f.input :banner, direct_upload: true, label: 'Banniere', required: true %>
+            <span class="file-upload-value"></span>
+          </div>
         </div>
-      </div>
-      <div class="icons-wrapper icons-wrapper-brand-form col-8">
-        <div class="icons-form">
-          <div class="animals-icons">
-            <h3>Cibles de la marque</h3>
-            <div class="animals-icons-container">
-              <%= simple_fields_for :targets do |fa| %>
-                <% Animal.all.each do |animal| %>
-                  <div class="icon-<%= animal.name %>">
-                    <% if brand.animals.where(id: animal.id).count > 0 %>
-                      <%= fa.input animal.name.to_sym, as: :boolean, input_html: { checked: true, class: 'd-none check-box' } %>
-                    <% else %>
-                      <%= fa.input animal.name.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
-                    <% end %>
-                  </div>
+        <div class="col-2">
+          <div class="file-input">
+            <%= f.input :logo, direct_upload: true, label: 'Logo' %>
+            <span class="file-upload-value"></span>
+          </div>
+        </div>
+        <div class="icons-wrapper icons-wrapper-brand-form col-8">
+          <div class="icons-form">
+            <div class="animals-icons">
+              <h3>Cibles de la marque</h3>
+              <div class="animals-icons-container">
+                <%= simple_fields_for :targets do |fa| %>
+                  <% Animal.all.each do |animal| %>
+                    <div class="icon-<%= animal.name %>">
+                      <% if brand.animals.where(id: animal.id).count > 0 %>
+                        <%= fa.input animal.name.to_sym, as: :boolean, input_html: { checked: true, class: 'd-none check-box' } %>
+                      <% else %>
+                        <%= fa.input animal.name.to_sym, as: :boolean, input_html: { class: 'd-none check-box' } %>
+                      <% end %>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-12 brand-form-paragraph">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4>Paragraphe 1</h4>
-          <div class="file-input mb-3">
-            <%= f.input :par_1_img, direct_upload: true, label: 'Ajouter une photo' %>
-            <span class="file-upload-value"></span>
-          </div>
+
+    <hr class="my-5">
+
+    <div id="sections">
+      <h2>Onglets</h2>
+      <div class="row mx-auto">
+
+        <%= f.simple_fields_for :sections do |section| %>
+          <%= render 'section_fields', :f => section %>
+        <% end %>
+
+        <div class='links col-12 d-flex justify-content-center align-items-center'>
+          <%= link_to_add_association 'Ajouter un onglet', f, :sections, class: 'petch-btn mt-5' %>
         </div>
-        <%= f.input :title_1, label: false, placeholder: 'Titre' %>
-        <%= f.input :paragraph_1, label: false, placeholder: 'Paragraphe' %>
-      </div>
-      <hr>
-      <div class="col-12 brand-form-paragraph">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4>Paragraphe 2</h4>
-          <div class="file-input mb-3">
-            <%= f.input :par_2_img, direct_upload: true, label: 'Ajouter une photo' %>
-            <span class="file-upload-value"></span>
-          </div>
-        </div>
-        <%= f.input :title_2, label: false, placeholder: 'Titre' %>
-        <%= f.input :paragraph_2, label: false, placeholder: 'Paragraphe' %>
-      </div>
-      <hr>
-      <div class="col-12 brand-form-paragraph">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4>Paragraphe 3</h4>
-          <div class="file-input mb-3">
-            <%= f.input :par_3_img, direct_upload: true, label: 'Ajouter une photo' %>
-            <span class="file-upload-value"></span>
-          </div>
-        </div>
-        <%= f.input :title_3, label: false, placeholder: 'Titre' %>
-        <%= f.input :paragraph_3, label: false, placeholder: 'Paragraphe' %>
+
       </div>
     </div>
 
@@ -96,10 +79,6 @@
       <div class="d-flex justify-content-center pt-3">
         <%= f.submit 'Creer la marque', class: "petch-btn" %>
       </div>
-    </div>
-
-    <div class="col-12 text-center pt-5">
-      En cliquant sur Sauvegarder et Prévisualiser, votre contenu sera sauvegardé et vous prévisualisable, et son statut sera alors « En cours de rédaction ». Vous pourrez terminer les modifications plus tard. En cliquant sur Poster le contenu, votre contenu sera soumis à l’admin en modération. Ce dernier validera votre article, auquel cas il reviendra vers vous afin de le modifier.
     </div>
 
   </div>
