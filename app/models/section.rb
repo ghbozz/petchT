@@ -1,6 +1,5 @@
 class Section < ApplicationRecord
-  # before_save :format_title
-  # before_update :format_title
+  before_save :format_title
 
   belongs_to :brand
   has_many :paragraphs, dependent: :destroy
@@ -18,6 +17,6 @@ class Section < ApplicationRecord
   end
 
   def format_title
-    # self.update(title: self.title.gsub(/\W/, ' ').strip)
+    self[:title] = self[:title].gsub(/\W/, ' ').strip
   end
 end
