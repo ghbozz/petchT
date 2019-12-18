@@ -20,27 +20,27 @@
 
       <div class="tab-pane fade <%= 'show active' if params[:active_tab] == 'articles' || params[:active_tab] == nil %>" id="nav-articles" role="tabpanel" aria-labelledby="nav-articles-tab">
         <%= simple_form_for :articles_filter, url: admin_profile_path, method: :get do |f| %>
-          <div class="row dashboard-filter">
-            <div class="col-4">
+          <div class="form-row align-items-center dashboard-filter">
+            <div class="col-3">
               <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
             </div>
-            <div class="col">
+            <div class="col-2">
               <%= f.input :theme, collection: Article::THEMES, label: false, prompt: 'Thème' %>
             </div>
-            <div class="col">
+            <div class="col-1">
               <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'Animal' %>
             </div>
-            <div class="col">
+            <div class="col-2">
               <%= f.input :status, collection: Article::STATUS, label: false, prompt: 'Statut' %>
             </div>
-            <div class="col">
+            <div class="col-2">
               <%= f.input :user, collection: User.pluck(:email), label: false, prompt: 'Utilisateur' %>
             </div>
-            <div class="col">
+            <div class="col-1">
               <%= f.input :top, collection: ['Oui', 'Non'], label: false, prompt: 'A la une' %>
             </div>
-            <div class="col">
-              <%= f.submit 'Filtrer', class: 'petch-btn' %>
+            <div class="col-1">
+              <%= f.submit 'Filtrer', class: 'btn btn-primary' %>
             </div>
           </div>
         <% end %>
@@ -52,7 +52,7 @@
 
       <div class="tab-pane fade <%= 'show active' if params[:active_tab] == 'cards' %>" id="nav-fiches" role="tabpanel" aria-labelledby="nav-fiches-tab">
         <%= simple_form_for :cards_filter, url: admin_profile_path, method: :get do |f| %>
-          <div class="row dashboard-filter">
+          <div class="form-row align-items-center dashboard-filter">
             <div class="col-4">
               <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
             </div>
@@ -63,7 +63,7 @@
               <%= f.input :status, collection: Card::STATUS, label: false, prompt: 'Statut' %>
             </div>
             <div class="col-2">
-              <%= f.submit 'Filtrer', class: 'petch-btn' %>
+              <%= f.submit 'Filtrer', class: 'btn btn-primary' %>
             </div>
           </div>
         <% end %>
@@ -72,7 +72,7 @@
 
       <div class="tab-pane fade <%= 'show active' if params[:active_tab] == 'brands' %>" id="nav-marques" role="tabpanel" aria-labelledby="nav-marques-tab">
         <%= simple_form_for :brands_filter, url: admin_profile_path, method: :get do |f| %>
-          <div class="row dashboard-filter">
+          <div class="form-row align-items-center dashboard-filter">
             <div class="col-5">
               <%= f.input :query, label: false, placeholder: 'Rechercher...' %>
             </div>
@@ -80,7 +80,7 @@
               <%= f.input :animal, collection: Animal.pluck(:name), label: false, prompt: 'Animal' %>
             </div>
             <div class="col-2">
-              <%= f.submit 'Filtrer', class: 'petch-btn' %>
+              <%= f.submit 'Filtrer', class: 'btn btn-primary' %>
             </div>
           </div>
         <% end %>
