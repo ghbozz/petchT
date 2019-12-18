@@ -9,7 +9,8 @@
     </div>
   <% end %>
   <div class="form-wrapper">
-    <div class="inputs">
+    <div class="inputs fields-area">
+      <h2>Écrire une nouvelle fiche</h2>
       <%= f.input :thumbnail, label: "Ajouter une photo" %>
       <div class="row">
         <div class="col align-items-center">
@@ -63,9 +64,9 @@
       </div>
     </div>
 
-    <hr>
+    <hr class="my-5" style="width: 70% !important;">
 
-
+    <h2>Editeur de texte</h2>
     <%= f.hidden_field :body, class: 'body' %>
     <div id="editor" style="min-height: 400px"></div>
 

@@ -7,20 +7,20 @@ Rails.application.routes.draw do
   get 'card_init', to: 'cards#init'
   get 'animal_select', to: 'articles#animal_select'
 
-  resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy], path: 'conseils' do
     member do
       post 'submit'
       post 'top'
     end
   end
 
-  resources :cards, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :cards, only: [:index, :show, :new, :create, :edit, :update], path: 'fiches' do
     member do
       post 'submit'
     end
   end
 
-  resources :brands, only: [:index, :show]
+  resources :brands, only: [:index, :show], path: 'marques'
 
   namespace :admin do
 

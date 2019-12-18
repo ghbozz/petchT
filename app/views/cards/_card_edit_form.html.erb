@@ -2,9 +2,8 @@
 <!-- <script src="https://cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script> -->
 <%= simple_form_for(card, url: card_path(card), method: :patch) do |f| %>
 <div class="form-wrapper">
-  <h3 class="mb-5">Edition de fiche <%= card.specie.name %></h3>
-
-  <div class="inputs">
+  <div class="inputs fields-area">
+    <h2>Edition de fiche <%= card.specie.name %></h2>
     <%= f.input :thumbnail, label: "Ajouter une photo" %>
     <div class="row">
       <div class="col">
@@ -53,9 +52,9 @@
     </div>
   </div>
 
-  <hr>
+  <hr class="my-5" style="width: 70% !important;">
 
-
+  <h2>Editeur de texte</h2>
   <%= f.hidden_field :body, class: 'body' %>
   <div id="editor" style="min-height: 400px"></div>
   <div class="col-12 pt-5">
