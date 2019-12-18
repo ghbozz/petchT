@@ -5,4 +5,8 @@ class Paragraph < ApplicationRecord
 
   validates :thumbnail, presence: true
   validates :body, presence: true
+
+  def changed_for_autosave?
+    super || !attachment_changes.empty?
+  end
 end

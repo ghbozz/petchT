@@ -23,6 +23,12 @@ class Card < ApplicationRecord
   validates :min_weight, presence: true
   validates :max_weight, presence: true
 
+  scope :published, -> { where(status: 'published') }
+
+  scope :animal_scope, -> (animal) {
+    where(status: 'published', animal: Animal.find_by(name: animal))
+  }
+
   include PgSearch::Model
   pg_search_scope :cards_search,
     against: [ :body ],

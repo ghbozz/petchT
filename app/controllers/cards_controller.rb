@@ -4,14 +4,14 @@ class CardsController < ApplicationController
 
   def index
     if params[:animal]
-      @cards = policy_scope(Card).where(status: 'published')
-      @cards = @cards.where(animal: Animal.find_by(name: params[:animal]))
+      @cards = policy_scope(Card).animal_scope(params[:animal])
     else
-      @cards = policy_scope(Card).where(status: 'published')
+      @cards = policy_scope(Card).published
+      @cards = helpers.cards_search(@cards, params)
     end
 
     @pagy, @cards = pagy(
-      helpers.cards_search(@cards, params).order(created_at: :desc),
+      @cards,
       items: 12,
       link_extra: 'data-remote="true"'
     )
@@ -94,4 +94,5 @@ class CardsController < ApplicationController
   def card_params
     params.require(:card).permit(:origin, :min_height, :max_height, :min_weight, :max_weight, :title, :body, :life_expectancy, :subtitle, :thumbnail)
   end
+
 end
