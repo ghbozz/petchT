@@ -44,9 +44,9 @@
       <div class="row">
         <div class="col-12">
           <% if current_user.is_admin? %>
-            <%= f.input :tag_list, collection: ActsAsTaggableOn::Tag.pluck(:name), input_html: { class: "js-example-basic-multiple", name: "tags[]", multiple: "multiple", id: 'admin-tags-field' }, label: false, hint: 'Choisir jusque 5 tags' %>
+            <%= f.input :tag_list, collection: all_tags_sorted, input_html: { class: "js-example-basic-multiple", name: "tags[]", multiple: "multiple", id: 'admin-tags-field' }, label: false, hint: 'Choisir jusque 5 tags' %>
           <% else %>
-            <%= f.input :tag_list, collection: ActsAsTaggableOn::Tag.pluck(:name), input_html: { class: "js-example-basic-multiple", name: "tags[]", multiple: "multiple" }, label: false, hint: 'Choisir jusque 5 tags' %>
+            <%= f.input :tag_list, collection: all_tags_sorted, input_html: { class: "js-example-basic-multiple", name: "tags[]", multiple: "multiple" }, label: false, hint: 'Choisir jusque 5 tags' %>
           <% end %>
         </div>
       </div>

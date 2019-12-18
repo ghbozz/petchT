@@ -62,7 +62,7 @@
         <div class="tags-and-socials d-flex pt-5">
           <div class="article-tags">
 
-            <% @article.tag_list.each do |tag| %>
+            <% @article.get_tags.each do |tag| %>
               <div class="tag-list-item">
                 <%= tag %>
               </div>
