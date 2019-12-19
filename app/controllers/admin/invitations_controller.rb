@@ -6,6 +6,8 @@ class Admin::InvitationsController < Devise::InvitationsController
     User.invite!(invite_params(params), current_user) do |user|
       user.invite_message = params[:invitation][:message]
     end
+
+    redirect_to admin_profile_path, notice: 'Invitation envoyé'
   end
 
   private

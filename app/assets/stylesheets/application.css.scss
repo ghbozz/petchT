@@ -48,6 +48,18 @@ textarea {
    resize: none;
 }
 
+.alert {
+  margin-bottom: 0px !important;
+  background-color: $brand-orange !important;
+  border-color: $brand-orange !important;
+  color: white;
+  border-radius: 0px !important;
+}
+
+.errors {
+  color: #A5243D;
+}
+
 .d-flex-center {
   display: flex;
   align-items: center;

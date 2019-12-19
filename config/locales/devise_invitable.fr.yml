@@ -22,10 +22,10 @@ fr:
       invitation_instructions:
         subject: 'Instruction de confirmation'
         hello: 'Bonjour %{email}'
-        someone_invited_you: "Quelqu'un vous a invité à rejoindre %{url}, vous pouvez accepter cette invitation via le lien ci-dessous."
+        someone_invited_you: "Vous etes invité à rejoindre %{url} en tant qu'%{role}, vous pouvez accepter cette invitation via le lien ci-dessous."
         accept: "Accepter l'invitation"
         accept_until: "limite de validité: %{due_date}."
-        ignore: "Si vous ne souhaitez pas accepter cette invitation, veuillez ignorer cet e-mail.<br />Votre compte ne sera pas créé tant que vous n'accéderez pas au lien ci-dessous et que vous ayez défini votre mot de passe."
+        ignore: "Si vous ne souhaitez pas accepter cette invitation, veuillez ignorer cet e-mail. Votre compte ne sera pas créé tant que vous n'accéderez pas au lien ci-dessus et que vous ayez défini votre mot de passe."
   time:
     formats:
       devise:
