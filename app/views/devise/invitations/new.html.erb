@@ -49,7 +49,7 @@
                       placeholder: 'Méssage de bienvenue, directives, informations pour le nouvel utilisateur...' %>
         </div>
         <div class="col-12 d-flex-center mt-5 mb-3">
-          <%= f.submit 'Envoyer l\'invitation', class: 'btn petch-btn' %>
+          <button type="submit" class="btn petch-btn" data-disable-with="<i class='fas fa-spinner fa-spin'></i>">Envoyer l'invitation</button>
         </div>
       </div>
     <% end %>

@@ -1,15 +1,15 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <%= simple_form_for(card, url: cards_path(animal: params[:animal]), method: :post) do |f| %>
-  <% if card.errors.any? %>
-    <div id="error_explanation">
-      <% card.errors.full_messages.each do |msg| %>
-        <span><%= msg %>, </span>
-      <% end %>
-    </div>
-  <% end %>
   <div class="form-wrapper">
     <div class="inputs fields-area">
+      <% if card.errors.any? %>
+        <div class="errors mb-3">
+          <% card.errors.full_messages.each do |msg| %>
+            <span><%= msg %>, </span>
+          <% end %>
+        </div>
+      <% end %>
       <h2>Écrire une nouvelle fiche</h2>
       <%= f.input :thumbnail, label: "Ajouter une photo" %>
       <div class="row">

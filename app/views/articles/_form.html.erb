@@ -4,6 +4,11 @@
 
   <div class="form-wrapper">
     <div class="article-top-fields fields-area mb-5">
+      <div class="errors mb-3">
+        <% @article.errors.full_messages.each do |msg| %>
+          <span><%= msg %>, </span>
+        <% end %>
+      </div>
       <% if params[:action] == 'new' %>
       <h2>Écrire un nouveau conseil</h2>
       <% else %>
