@@ -1,49 +1,72 @@
-<div class="devise-form-wrapper devise-profile-wrapper pb-5 fields-area">
-  <%= simple_form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <h2>Éditer votre profil</h2>
-    <%= f.error_notification %>
+<div class="container d-flex-center mb-5">
+  <div class="user-form-wrapper fields-area" style="width: 80%;">
+    <%= simple_form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs">
+      <div class="d-flex-between">
+        <h2>Modifier votre profil ?</h2>
+        <%= f.input :avatar %>
+      </div>
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-6">
+            <%= f.input :first_name,
+                        label: 'Prénom',
+                        placeholder: 'Votre Prénom',
+                        required: false %>
+          </div>
+          <div class="col-6">
+            <%= f.input :last_name,
+                        label: 'Nom',
+                        placeholder: 'Votre Nom',
+                        required: false %>
+          </div>
+          <div class="col-6">
+            <%= f.input :profession,
+                        label: 'Profession',
+                        placeholder: 'Metier, Activité',
+                        hint: 'Vétérinaire, Eleveur canin...',
+                        required: false %>
+          </div>
+          <div class="col-6">
+            <%= f.input :signature,
+                        label: 'Signature',
+                        placeholder: 'Dr. John Doe',
+                        hint: 'Cette signature apparaitra en en-tête des conseils',
+                        required: false %>
+          </div>
+          <div class="col-12">
+            <h5 class="my-3">Changer de mot de passe ?</h5>
+          </div>
+          <div class="col-6">
+            <%= f.input :password,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" },
+                        label: 'Nouveau mot de passe',
+                        placeholder: 'Laissez vide si vous ne souhaiter pas changer' %>
+          </div>
+          <div class="col-6">
+            <%= f.input :password_confirmation,
+                        input_html: { autocomplete: "new-password" },
+                        label: 'Confirmer votre nouveau mot de passe',
+                        placeholder: 'Laissez vide si vous ne souhaiter pas changer' %>
+          </div>
+          <div class="col-12">
+            <h5 class="my-3">Valider vos changement !</h5>
+          </div>
+          <div class="col-12">
+            <%= f.input :current_password,
+                        hint: "Votre mot de passe est obligatoire pour enregistrer vos changements.",
+                        required: true,
+                        input_html: { autocomplete: "current-password" },
+                        label: 'Mot de passe' %>
+          </div>
+        </div>
+      </div>
 
-    <div class="row">
-      <div class="col"><%= f.input :first_name, label: false, placeholder: 'Prénom' %></div>
-      <div class="col"><%= f.input :last_name, label: false, placeholder: 'Nom' %></div>
-      <div class="col"><%= f.input :avatar, direct_upload: true %></div>
-    </div>
-
-    <div class="row">
-      <div class="col"><%= f.input :profession, label: false, placeholder: 'Profession' %></div>
-      <div class="col"><%= f.input :signature, label: false, placeholder: 'Signature' %></div>
-    </div>
-
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" },
-                  label: false,
-                  placeholder: 'Email'%>
-      <%= f.input :current_password,
-                  hint: "Votre mot de passe est obligatoire pour enregistrer vos changements.",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" },
-                  label: false,
-                  placeholder: 'Mot de passe' %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" },
-                  label: false,
-                  placeholder: 'Confirmation' %>
-
-    </div>
-
-    <div class="form-actions text-center">
-      <%= f.button :submit, "Edit", class: 'petch-btn' %>
-      <%#= render "devise/shared/links" %>
-    </div>
-  <% end %>
-
+      <div class="form-actions d-flex-center mt-5 mb-3">
+        <%= f.button :submit, "Valider", class: 'btn petch-btn' %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -15,6 +15,7 @@ gem 'cloudinary'
 gem 'rails-i18n', '~> 6.0.0'
 
 gem 'devise'
+gem 'devise_invitable', '~> 2.0.0'
 gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
 # gem 'devise-i18n'

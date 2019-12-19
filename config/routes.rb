@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  devise_for :users
+  devise_for :users, controllers: { invitations: 'admin/invitations' }
 
   get '/profile', to: 'dashboards#user_dashboard'
 
@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   namespace :admin do
 
     get '/profile', to: 'dashboards#admin_dashboard'
+
+    # get '/invite', to: 'invitations#new'
+    # post '/invite', to: 'invitations#create'
 
     resources :articles, only: [:destroy] do
       post '/publish', to: 'articles#publish'
