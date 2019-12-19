@@ -73,6 +73,12 @@ ANIMALS.each do |animal|
   puts "-> #{animal}"
 end
 
+puts "Creating Tags"
+TAGS.each do |tag|
+  puts "-> #{tag}"
+  ActsAsTaggableOn::Tag.create!(name: tag)
+end
+
 # # ===================================
 # # ===================================
 
@@ -89,7 +95,7 @@ admin = User.new(email: 'admin@petch.com', password: 'mdpmdp', permission: 'admi
 admin.avatar.attach(io: File.open(get_images('avatars').sample), filename: 'file.jpg')
 admin.save!
 
-puts "Creating 30 Articles, Cards & Brands..."
+puts "Creating 30 Articles..."
 
 30.times do |i|
   puts "Creating Article - #{i+1}"
@@ -107,6 +113,8 @@ puts "Creating 30 Articles, Cards & Brands..."
   article.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   article.save!
 end
+
+puts "Creating 15 Cards..."
 
 15.times do |i|
   puts "Creating Card - #{i+1}"
@@ -130,6 +138,8 @@ end
   card.thumbnail.attach(io: File.open(get_images(animal.name).sample), filename: 'file.jpg')
   card.save!
 end
+
+puts "Creating 5 Brands..."
 
 5.times do |i|
   puts "Creating Brand - #{i+1}"

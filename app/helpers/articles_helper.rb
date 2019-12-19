@@ -29,4 +29,15 @@ module ArticlesHelper
 
     return articles
   end
+
+  def tags_by_frequency(limit)
+    Article.published.map(&:tag_list)
+           .flatten.group_by {|i| i}
+           .sort_by { |_, v| -v.count }
+           .flatten.uniq.first(limit)
+  end
+
+  def all_tags_sorted
+    ActsAsTaggableOn::Tag.pluck(:name).sort
+  end
 end

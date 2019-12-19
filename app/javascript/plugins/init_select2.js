@@ -10,14 +10,19 @@ const initSelector = () => {
 
     $(document).ready(function() {
       $('.js-example-basic-multiple').select2({
-        tags: true
+        tags: true,
+        maximumSelectionLength: 5,
+        language: 'fr'
       })
     })
 
   } else {
 
     $(document).ready(function() {
-        $('.js-example-basic-multiple').select2();
+        $('.js-example-basic-multiple').select2({
+          maximumSelectionLength: 5,
+          language: 'fr'
+        });
     });
 
   }

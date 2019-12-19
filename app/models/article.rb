@@ -62,5 +62,9 @@ class Article < ApplicationRecord
   def should_generate_new_friendly_id?
     title_changed?
   end
+
+  def get_tags
+    self.taggings.sort_by(&:created_at).map(&:tag).pluck(:name).sort
+  end
 end
 
