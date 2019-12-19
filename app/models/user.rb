@@ -1,7 +1,8 @@
 class User < ApplicationRecord
+  attr_accessor :invite_message
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_many :articles

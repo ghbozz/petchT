@@ -3,7 +3,7 @@
     <h2><%= f.object.title ? f.object.title : 'Nouvel onglet' %></h2>
     <%= link_to_remove_association '<i class="far fa-trash-alt"></i>'.html_safe, f, class: 'destroy-nested-btn' %>
   </div>
-  <%= f.input :title, placeholder: 'Titre de l\'onglet', label: false, hint: 'Une lettre de A à Z (majuscule ou minuscule) OU un chiffre de 0 à 9' %>
+  <%= f.input :title, placeholder: 'Titre de l\'onglet', label: false, hint: 'lettres de A à Z (majuscule ou minuscule) OU un chiffre de 0 à 9' %>
 
   <hr class="my-5" style="width: 70% !important;">
 

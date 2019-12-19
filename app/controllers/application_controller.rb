@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
     update_attrs = [:first_name, :last_name, :profession, :signature, :avatar, :email, :password, :password_confirmation, :current_password]
     devise_parameter_sanitizer.permit :sign_up, keys: update_attrs
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
+    devise_parameter_sanitizer.permit :accept_invitation, keys: update_attrs
   end
 
   def skip_pundit?

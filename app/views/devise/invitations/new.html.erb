@@ -1,0 +1,57 @@
+<div class="container d-flex-center" style="height: calc(100vh - 96px);">
+  <div class="user-form-wrapper fields-area" style="width: 80%;">
+    <h2><%= t "devise.invitations.new.header" %></h2>
+    <%= simple_form_for :invitation, url: user_invitation_path, method: :post do |f| %>
+      <div class="row">
+        <div class="col-6">
+          <%= f.input :email,
+                      placeholder: 'Adresse email de l\'invité',
+                      label: 'E-mail' %>
+        </div>
+        <div class="col-6">
+          <%= f.input :permission,
+                      as: :select,
+                      collection: ['Editeur', 'Admin'],
+                      label: 'Role',
+                      default: 1 %>
+        </div>
+        <div class="col-6">
+          <%= f.input :first_name,
+                      label: 'Prénom',
+                      placeholder: 'Prénom de l\'invité',
+                      required: false %>
+        </div>
+        <div class="col-6">
+          <%= f.input :last_name,
+                      label: 'Nom',
+                      placeholder: 'Nom de l\'invité',
+                      required: false %>
+        </div>
+        <div class="col-6">
+          <%= f.input :profession,
+                      label: 'Profession',
+                      placeholder: 'Metier, Activité de l\'invité',
+                      hint: 'Vétérinaire, Eleveur canin...',
+                      required: false %>
+        </div>
+        <div class="col-6">
+          <%= f.input :signature,
+                      label: 'Signature',
+                      placeholder: 'Dr. John Doe',
+                      hint: 'Cette signature apparaitra en en-tête des conseils',
+                      required: false %>
+        </div>
+        <div class="col-12">
+          <%= f.input :message,
+                      as: :text,
+                      required: false,
+                      label: 'Message',
+                      placeholder: 'Méssage de bienvenue, directives, informations pour le nouvel utilisateur...' %>
+        </div>
+        <div class="col-12 d-flex-center mt-5 mb-3">
+          <%= f.submit 'Envoyer l\'invitation', class: 'btn petch-btn' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

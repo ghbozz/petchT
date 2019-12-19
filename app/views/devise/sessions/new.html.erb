@@ -1,5 +1,5 @@
-<div class="devise-form-wrapper">
-  <div class="devise-small">
+<div class="container d-flex-center" style="height: calc(100vh - 96px);">
+  <div class="user-form-wrapper fields-area" style="width: 60%;">
     <h2>Se connecter</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
      <%= f.error_notification %>
@@ -22,11 +22,13 @@
       </div>
 
     <div class="form-actions">
-      <div class="remember-me">
+      <div class="remember-me d-flex-center">
         <%= f.input :remember_me, label: false, as: :boolean if devise_mapping.rememberable? %>
         <span class="remember-me-label">Rester connecté</span>
       </div>
-      <%= f.button :submit, "Se connecter", class: 'btn btn-primary' %>
+      <div class="d-flex-center my-3">
+        <%= f.button :submit, "Se connecter", class: 'btn petch-btn' %>
+      </div>
     </div>
     <div class="devise-buttons">
       <%= render "devise/shared/links" %>
