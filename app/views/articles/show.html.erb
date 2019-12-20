@@ -21,7 +21,7 @@
             <div class="author-content">
               <div class="author-meta">
                 <span class="author-name"><%= @article.author_name %></span>
-                <span class="author-job"><%= @article.user.profession %></span>
+                <span class="author-job"><%= @article.user.signature %></span>
               </div>
               <div class="article-meta">
                 <span class="created_at"><%= @article.get_date.downcase %></span> •
@@ -75,8 +75,10 @@
             <i class="fab fa-twitter-square twitter"></i>
             <i class="fas fa-envelope-square email"></i>
             <%= social_share_button_tag('Share to Facebook', :url => @article.get_url, desc: @article.title) %>
-            <%= link_to article_path(@article, :format => :pdf) do %>
-              <i class="fas fa-file-pdf" style="font-size: 1.6rem"></i>
+            <% if current_user&.is_admin? %>
+              <%= link_to article_path(@article, :format => :pdf) do %>
+                <i class="fas fa-file-pdf" style="font-size: 1.6rem"></i>
+              <% end %>
             <% end %>
           </div>
         </div>

@@ -56,7 +56,7 @@ class Article < ApplicationRecord
   end
 
   def get_url
-    "http://localhost:3000/articles/#{self.id}"
+    "https://petch-test.herokuapp.com/conseils/#{self.friendly_id}"
   end
 
   def should_generate_new_friendly_id?
@@ -66,5 +66,14 @@ class Article < ApplicationRecord
   def get_tags
     self.taggings.sort_by(&:created_at).map(&:tag).pluck(:name).sort
   end
+
+  # MAILER
+
+  def admins_notification
+    User.where(permission: 'admin').each do |admin|
+      UserMailer.with(article: self, admin: admin).article_submitted.deliver_later
+    end
+  end
+
 end
 

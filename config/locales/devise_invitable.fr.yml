@@ -20,9 +20,9 @@ fr:
         new_password_confirmation: Mot de passe confirmation
     mailer:
       invitation_instructions:
-        subject: 'Instruction de confirmation'
-        hello: 'Bonjour %{email}'
-        someone_invited_you: "Vous etes invité à rejoindre %{url} en tant qu'%{role}, vous pouvez accepter cette invitation via le lien ci-dessous."
+        subject: 'Petch : Votre profil a bien été créé'
+        hello: 'Bonjour %{user}'
+        someone_invited_you: "Félicitations ! Votre profil %{role} a été créé avec succès sur l’espace media de Petch : %{url}. Vous pouvez dorénavant vous connecter à votre espace personnel en acceptant l’invitation ci-dessous :"
         accept: "Accepter l'invitation"
         accept_until: "limite de validité: %{due_date}."
         ignore: "Si vous ne souhaitez pas accepter cette invitation, veuillez ignorer cet e-mail. Votre compte ne sera pas créé tant que vous n'accéderez pas au lien ci-dessus et que vous ayez défini votre mot de passe."

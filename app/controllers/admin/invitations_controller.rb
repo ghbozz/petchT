@@ -1,8 +1,11 @@
 class Admin::InvitationsController < Devise::InvitationsController
   def new
+    authorize :invitation, :new?
   end
 
   def create
+    authorize :invitation, :create?
+
     User.invite!(invite_params(params), current_user) do |user|
       user.invite_message = params[:invitation][:message]
     end
