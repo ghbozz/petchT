@@ -56,7 +56,7 @@ class Article < ApplicationRecord
   end
 
   def get_url
-    "http://localhost:3000/articles/#{self.id}"
+    "https://petch-test.herokuapp.com/#{self.friendly_id}"
   end
 
   def should_generate_new_friendly_id?
