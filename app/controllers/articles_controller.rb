@@ -98,6 +98,7 @@ class ArticlesController < ApplicationController
   def submit
     authorize @article
     @article.update(status: 'submitted')
+    @article.admins_notification
 
     respond_to do |format|
       format.html { redirect_to profile_path }
