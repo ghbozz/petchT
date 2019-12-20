@@ -1,5 +1,4 @@
-
-<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<p><%= t("devise.mailer.invitation_instructions.hello", user: @resource.first_name != '' ? @resource.first_name : @resource.email) %></p>
 <p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url, role: @resource.permission == 'writer' ? 'éditeur' : 'admin') %></p>
 <p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, invitation_token: @token) %></p>
 
@@ -10,7 +9,10 @@
 <% if !@resource.invite_message.empty? %>
   <p><%= @resource.invite_message %></p>
 <% else %>
-  <p>This is the default welcome message</p>
+  <p>Nous sommes ravis de vous avoir comme nouvel <%= @resource.permission == 'writer' ? 'éditeur' : 'admin' %> sur Petch.
+     N’hésitez pas à revenir vers nous pour toute question.
+     A bientôt,</p>
 <% end %>
-
 <p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
+<p>L’équipe Petch</p>
+

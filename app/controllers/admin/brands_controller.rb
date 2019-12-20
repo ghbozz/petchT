@@ -1,9 +1,11 @@
 class Admin::BrandsController < ApplicationController
   def new
+    authorize :brand, :new?
     @brand = Brand.new
   end
 
   def create
+    authorize :brand, :create?
     @brand = Brand.new(brand_params)
 
     if @brand.save
@@ -15,10 +17,12 @@ class Admin::BrandsController < ApplicationController
   end
 
   def edit
+    authorize :brand, :edit?
     @brand = Brand.friendly.find(params[:id])
   end
 
   def update
+    authorize :brand, :update?
     @brand = Brand.friendly.find(params[:id])
 
     if @brand.update(brand_params)

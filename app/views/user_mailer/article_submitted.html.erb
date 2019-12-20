@@ -4,12 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Un conseil à été soumis à votre validation par <%= @article.author_name %></h1>
+    <h4>Un conseil à été soumis à votre validation par <%= @article.author_name %></h4>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, fugiat numquam, reprehenderit tenetur, dolorem laudantium natus praesentium nostrum eos impedit necessitatibus dolorum, recusandae autem et!<br>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, fugiat numquam, reprehenderit tenetur, dolorem laudantium natus praesentium nostrum eos impedit necessitatibus dolorum, recusandae autem et!
     </p>
-    <p>
-      Voir le conseil: <%#= @url %>.
-    </p>
+    <a href="<%= @article.get_url %>">Voir le conseil</a>
   </body>
 </html>
