@@ -19,7 +19,7 @@ class Article < ApplicationRecord
   validates :thumbnail, presence: true
 
   THEMES = ['adoption', 'alimentation', 'au quotidien', 'education', 'entretien', 'loisir', 'santé']
-  STATUS = %w(draft published submitted)
+  STATUS = %w(draft published submitted hidden)
 
   validates :theme, inclusion: { in: THEMES }
   validates :status, inclusion: { in: STATUS }

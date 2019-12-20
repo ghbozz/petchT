@@ -41,7 +41,7 @@ class Admin::DashboardsController < ApplicationController
 
   def articles_select
     articles = Article.all.select do |a|
-      a.user == current_user || a.status == 'submitted' || a.status == 'published' || a.top
+      a.user == current_user || a.status == 'submitted' || a.status == 'published' || a.status == 'hidden' || a.top
     end
 
     return articles.map(&:id)

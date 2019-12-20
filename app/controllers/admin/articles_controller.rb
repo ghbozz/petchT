@@ -11,7 +11,7 @@ class Admin::ArticlesController < ApplicationController
 
   def unpublish
     @article = Article.friendly.find(params[:article_id])
-    @article.update(status: 'draft')
+    @article.update(status: 'hidden')
     @article.update(top: false) if @article.top
 
     respond_to do |format|
