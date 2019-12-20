@@ -22,6 +22,10 @@
     <% if article.status == 'submitted' %>
       <span class="article-status submitted"><%= article.status %></span>
     <% end %>
+
+    <% if article.status == 'hidden' %>
+      <span class="article-status hidden"><%= article.status %></span>
+    <% end %>
   </div>
 
   <div class="article-controls">
@@ -31,21 +35,30 @@
           <i class="fas fa-paper-plane"></i>
           <%= link_to 'Submit', submit_article_path(article), method: :post, remote: true %>
         </span>
-      <% end %>
-      <span>
-        <i class="fas fa-pen"></i>
-        <%= link_to 'Editer', edit_article_path(article) %>
-      </span>
-      <span>
-        <i class="far fa-eye"></i>
-        <%= link_to 'Voir', article_path(article) %>
-      </span>
-      <% if article.status == 'draft' || article.status == 'submitted' %>
         <span>
           <i class="fas fa-trash-alt"></i>
           <%= link_to 'Supprimer', article_path(article), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
         </span>
       <% end %>
+
+      <% if article.status == 'hidden' %>
+        <span>
+          <i class="fas fa-paper-plane"></i>
+          <%= link_to 'Submit', submit_article_path(article), method: :post, remote: true %>
+        </span>
+      <% end %>
+
+      <% if article.status == 'draft' || article.status == 'hidden' %>
+        <span>
+          <i class="fas fa-pen"></i>
+          <%= link_to 'Editer', edit_article_path(article) %>
+        </span>
+      <% end %>
+
+      <span>
+        <i class="far fa-eye"></i>
+        <%= link_to 'Voir', article_path(article) %>
+      </span>
     <% end %>
 
     <% if current_user.is_admin? %>
@@ -58,7 +71,7 @@
           <% end %>
         <% end %>
       </span>
-      <% if article.status == 'draft' || article.status == 'submitted' %>
+      <% if article.status == 'draft' || article.status == 'submitted' || article.status == 'hidden' %>
         <span>
           <i class="fas fa-paper-plane"></i>
           <%= link_to 'Publier', admin_article_publish_path(article), method: :post, remote: true %>
