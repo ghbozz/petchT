@@ -20,8 +20,8 @@
             <img src="<%= url_for(@article.user.avatar) %>" alt="" class="rounded-circle article-avatar" width="75px">
             <div class="author-content">
               <div class="author-meta">
-                <span class="author-name"><%= @article.author_name %></span>
-                <span class="author-job"><%= @article.user.signature %></span>
+                <span class="author-name"><%= @article.user.signature %></span>
+                <span class="author-job"><%= @article.user.profession %></span>
               </div>
               <div class="article-meta">
                 <span class="created_at"><%= @article.get_date.downcase %></span> •
