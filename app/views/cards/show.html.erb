@@ -77,23 +77,20 @@
 
 
     <div class="recomandations pt-3">
-      <h3>Fiches similaires</h3>
-      <div class="recomandations pt-3">
-        <div class="row">
-          <% @recomandations.each do |reco| %>
-            <div class="col-12 col-md-6 col-lg-4">
-              <%= link_to card_path(reco) do  %>
-                <div class="reco-card">
-                  <%= image_tag url_for(reco.thumbnail) %>
-                  <div class="card-desc">
-                    <h4><%= reco.specie.name %></h4>
-                    <p><%= reco.subtitle %></p>
-                  </div>
+    <h3 class="pb-3 pl-3">Fiches similaires</h3>
+      <div class="row">
+        <% @recomandations.each do |reco| %>
+          <div class="col-12 col-md-6 col-lg-4">
+            <%= link_to card_path(reco) do  %>
+              <div class="reco-card">
+                <%= image_tag url_for(reco.thumbnail) %>
+                <div class="card-desc">
+                  <p><%= reco.title %></p>
                 </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

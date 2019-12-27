@@ -62,8 +62,14 @@ ActiveRecord::Schema.define(version: 2019_12_19_163408) do
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.text "paragraph_1"
+    t.text "paragraph_2"
+    t.text "paragraph_3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title_1"
+    t.string "title_2"
+    t.string "title_3"
     t.string "slug"
     t.index ["slug"], name: "index_brands_on_slug", unique: true
   end

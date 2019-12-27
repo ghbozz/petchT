@@ -122,6 +122,7 @@ puts "Creating 15 Cards..."
   card = Card.new(
     animal: animal,
     subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+    title: 'Lorem ipsum dolor sit amet consectetur.',
     specie: Specie.create(name: SPECIES[animal.name.to_sym].sample, animal: animal),
     body: Array.new(5, PARAGRAPH).join('<br><br>'),
     life_expectancy: rand(20..30),
