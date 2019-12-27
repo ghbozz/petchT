@@ -119,9 +119,20 @@
         flex-direction: column;
       }
 
+      .mc-field-group {
+        width: 100%;
+      }
+
       .mc-field-group input {
         border: none;
         border-bottom: 1px solid $light-grey;
+        width: 90%;
+        display: block;
+        margin: 0 auto;
+
+        &:focus {
+          outline: none;
+        }
       }
 
       .clear {
@@ -137,10 +148,10 @@
       }
 
       .newsletter-socials {
-        margin-top: rem(30px);
+        margin-top: rem(40px);
 
         i {
-          font-size: rem(20px);
+          font-size: rem(30px);
         }
       }
     }
