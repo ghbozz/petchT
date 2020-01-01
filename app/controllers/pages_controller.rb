@@ -30,7 +30,7 @@ class PagesController < ApplicationController
       )
       status = 'success'
     rescue Gibbon::MailChimpError => e
-      puts "Houston, we have a problem: #{e.message} - #{e.raw_body}"
+      puts "Houston, we have a problem: #{e.raw_body}"
       status = 'error'
     end
     return status
