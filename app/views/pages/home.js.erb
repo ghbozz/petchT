@@ -1,0 +1,8 @@
+document.querySelector('#newsletter_email').value= ''
+
+<% if @status == 'success' %>
+  document.querySelector('.status').innerHTML = "<span>Vous etes abonné</span>"
+<% else %>
+  document.querySelector('.status').innerHTML = "<span>Erreur</span>"
+<% end %>
+

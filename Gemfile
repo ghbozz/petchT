@@ -38,6 +38,7 @@ gem "cocoon"
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'gibbon'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
