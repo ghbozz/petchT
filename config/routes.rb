@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   devise_for :users, controllers: { invitations: 'admin/invitations' }
 
+  post '/newsletter', to: 'pages#home'
   get '/profile', to: 'dashboards#user_dashboard'
 
   get 'card_init', to: 'cards#init'

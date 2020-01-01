@@ -41,4 +41,3 @@ if (document.querySelector(".file-input")) {
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-

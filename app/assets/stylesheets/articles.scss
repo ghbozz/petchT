@@ -119,19 +119,27 @@
         flex-direction: column;
       }
 
-      .mc-field-group {
+      .newsletter_email {
         width: 100%;
       }
 
-      .mc-field-group input {
+      .newsletter_email input {
         border: none;
         border-bottom: 1px solid $light-grey;
-        width: 90%;
+        width: 100%;
         display: block;
         margin: 0 auto;
 
         &:focus {
           outline: none;
+        }
+      }
+
+      .status {
+        margin-bottom: 10px;
+
+        span {
+          padding: 5px;
         }
       }
 
