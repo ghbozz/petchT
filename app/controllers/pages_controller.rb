@@ -28,10 +28,16 @@ class PagesController < ApplicationController
           status: "subscribed",
         }
       )
-      status = 'success'
+      status = "Vous êtes maintenant abonné"
     rescue Gibbon::MailChimpError => e
       puts "Houston, we have a problem: #{e.raw_body}"
-      status = 'error'
+      if e.title == "Member Exists"
+        status = 'Vous êtes déjà abonné'
+      elsif e.title == "Invalid Resource"
+        status = "l'adresse email n'est pas valide"
+      else
+        status = "Oops, il y a eu une erreur"
+      end
     end
     return status
   end
