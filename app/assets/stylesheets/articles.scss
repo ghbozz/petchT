@@ -17,6 +17,7 @@
   h2:before,
   h2:after {
     background-color: rgba(0, 0, 0, .3);
+    color: rgba(0, 0, 0, 0.2);
     content: "";
     display: inline-block;
     height: 1px;
@@ -26,11 +27,19 @@
   }
 
   h2:before {
+    @media screen and (max-width: 767px) {
+      right: .6em !important;
+    }
+
     right: 2em;
     margin-left: -50%;
   }
 
   h2:after {
+    @media screen and (max-width: 767px) {
+      left: .6em !important;
+    }
+
     left: 2em;
     margin-right: -50%;
   }
@@ -151,6 +160,7 @@
         background-color: black;
         border: none;
         color: white;
+        cursor: pointer;
         padding: rem(5px) 0;
         width: 100%;
       }
@@ -160,6 +170,8 @@
 
         i {
           font-size: rem(30px);
+          cursor: pointer;
+          padding: 0 rem(3px);
         }
       }
     }
@@ -308,7 +320,7 @@
 
 .article-body {
   margin-top: 50px;
-  text-align: justify;
+  text-align: left;
   font-size: 1.3rem;
   font-weight: 300;
 

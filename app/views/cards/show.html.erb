@@ -12,19 +12,33 @@
       <div class="article-header">
         <div class="article-headings">
           <h1><%= @card.specie.name %></h1>
+          <h4><%= @card.subtitle %></h4>
         </div>
       </div>
 
       <div class="card-content row">
         <div class="card-content-body col-12 col-lg-8">
-          <div class="content-card-text pt-4">
+          <div class="content-card-text">
             <%= image_tag url_for(@card.thumbnail), class: "card-inside-thumbnail mr-4 mb-2" %>
             <%= raw @card.body %>
+          </div>
+
+          <div class="socials-btns pt-3 d-flex justify-content-end w-100">
+            <i class="fab fa-facebook-square facebook"></i>
+            <i class="fab fa-pinterest-square pinterest"></i>
+            <i class="fab fa-twitter-square twitter"></i>
+            <i class="fas fa-envelope-square email"></i>
+            <%= social_share_button_tag('Share to Facebook', :url => @card.get_url, desc: @card.title) %>
+            <% if current_user&.is_admin? %>
+              <%= link_to article_path(@article, :format => :pdf) do %>
+                <i class="fas fa-file-pdf" style="font-size: 1.6rem"></i>
+              <% end %>
+            <% end %>
           </div>
         </div>
 
         <div class="card-specs-ratings sticky col-12 col-lg-4 mt-4 mt-lg-0">
-          <div class="card-specs-box py-4 px-2">
+          <div class="card-specs-box p-2">
             <% if @fci %>
               <div class="specs">
                 <div class="spec">
@@ -72,20 +86,22 @@
         </div>
       </div>
 
-    <hr class="mt-5">
+    <hr class="my-4">
 
-
+    <h3 class="pt-3">Fiches similaires</h3>
 
     <div class="recomandations pt-3">
-    <h3 class="pb-3 pl-3">Fiches similaires</h3>
       <div class="row">
         <% @recomandations.each do |reco| %>
-          <div class="col-12 col-md-6 col-lg-4">
+          <div class="col-12 col-md-6 col-lg-4 card-container">
             <%= link_to card_path(reco) do  %>
-              <div class="reco-card">
-                <%= image_tag url_for(reco.thumbnail) %>
+              <div class="article-card">
+                <div class="card-thumbnail-container">
+                  <%= image_tag url_for(reco.thumbnail) %>
+                </div>
                 <div class="card-desc">
-                  <p><%= reco.title %></p>
+                  <h4><%= reco.title %></h4>
+                  <p><%= reco.subtitle.truncate(50) %></p>
                 </div>
               </div>
             <% end %>

@@ -86,20 +86,22 @@
             <% end %>
           </div>
         </div>
-        <hr class="my-5">
+        <hr class="my-4">
 
         <h3 class="pt-3">Articles similaires</h3>
 
         <div class="recomandations pt-3">
           <div class="row">
             <% @recomandations.each do |reco| %>
-              <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-4 card-container">
                 <%= link_to article_path(reco) do  %>
-                  <div class="reco-card">
-                    <%= image_tag url_for(reco.thumbnail) %>
+                  <div class="article-card">
+                    <div class="card-thumbnail-container">
+                      <%= image_tag url_for(reco.thumbnail) %>
+                    </div>
                     <div class="card-desc">
                       <h4><%= reco.title %></h4>
-                      <p><%= reco.subtitle %></p>
+                      <p><%= reco.subtitle.truncate(50) %></p>
                     </div>
                   </div>
                 <% end %>

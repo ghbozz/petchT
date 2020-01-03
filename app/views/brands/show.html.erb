@@ -1,5 +1,5 @@
 <div class="container-fluid brand-show">
-  <div class="brand-show-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url_for(@brand.banner) %>);">
+  <div class="brand-show-header" style="background-image: url(<%= url_for(@brand.banner) %>);">
     <div class="petch-breadcrumb brand-show-breadcrumb mobile-none">
       <%= link_to "Accueil", root_path %> > <%= link_to "Marques", brands_path %> > <%= @brand.name %>
     </div>

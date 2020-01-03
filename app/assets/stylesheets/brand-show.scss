@@ -19,6 +19,8 @@
   }
 
   .brand-show-logo {
+    background-color: white;
+    border-radius: 50%;
     left: rem(50px);
     position: absolute;
     bottom: rem(50px);
@@ -28,7 +30,7 @@
       border-radius: 50%;
       box-shadow: 0px 0px 3px $medium-grey;
       height: rem(150px);
-      object-fit: cover;
+      object-fit: contain;
       width: rem(150px);
     }
   }
@@ -51,7 +53,7 @@
     position: absolute;
     transform: translateX(-50%);
     width: 60%;
-    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.05);
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -64,7 +66,7 @@
     margin-bottom: 50px;
 
     .brand-nav-link {
-      color: $light-grey;
+      color: $other-grey;
       font-weight: 500;
       margin: 1rem 2rem;
       padding: 0 .2rem .3rem .2rem;
@@ -115,7 +117,7 @@
     p {
       font-size: 17px;
       font-weight: 300;
-      text-align: justify;
+      text-align: left;
     }
   }
 }
@@ -133,7 +135,7 @@
     font-weight: 400;
     width: 90%;
     margin: 0 auto;
-    text-align: justify;
+    text-align: left;
   }
 
   .brand-show-header {
@@ -188,6 +190,6 @@
     font-weight: 400;
     width: 90%;
     margin: 0 auto;
-    text-align: justify;
+    text-align: left;
   }
 }

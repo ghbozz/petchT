@@ -70,4 +70,8 @@ class Card < ApplicationRecord
     true if self.specie
   end
 
+  def get_url
+    "https://petch-test.herokuapp.com/conseils/#{self.friendly_id}"
+  end
+
 end
