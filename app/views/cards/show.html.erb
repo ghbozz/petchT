@@ -29,11 +29,6 @@
             <i class="fab fa-twitter-square twitter"></i>
             <i class="fas fa-envelope-square email"></i>
             <%= social_share_button_tag('Share to Facebook', :url => @card.get_url, desc: @card.title) %>
-            <% if current_user&.is_admin? %>
-              <%= link_to article_path(@article, :format => :pdf) do %>
-                <i class="fas fa-file-pdf" style="font-size: 1.6rem"></i>
-              <% end %>
-            <% end %>
           </div>
         </div>
 

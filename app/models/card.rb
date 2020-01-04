@@ -71,7 +71,7 @@ class Card < ApplicationRecord
   end
 
   def get_url
-    "https://petch-test.herokuapp.com/conseils/#{self.friendly_id}"
+    "https://petch-test.herokuapp.com/fiches/#{self.friendly_id}"
   end
 
 end
