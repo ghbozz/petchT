@@ -23,7 +23,6 @@
     position: sticky;
     height: calc(100vh - 120px);
     top: 128px;
-    overflow: scroll;
   }
 
   i {
@@ -147,6 +146,10 @@
 }
 
 .animals-filter {
+  .animals-icons {
+    margin-right: 0;
+  }
+
   .icon-chien {
     input+label {
       cursor: pointer;

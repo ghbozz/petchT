@@ -24,7 +24,7 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  padding-top: 96px;
+  padding: 96px 0;
 }
 
 h2 {
@@ -39,13 +39,14 @@ hr {
 
 a {
   text-decoration: none !important;
+
   &:hover {
     text-decoration: none !important;
   }
 }
 
 textarea {
-   resize: none;
+  resize: none;
 }
 
 .alert {
