@@ -24,6 +24,8 @@
 
   .home-card-thumbnail-container {
     overflow: hidden;
+    height: 8rem;
+    width: 50%;
 
     img {
       object-fit: cover;
@@ -61,6 +63,7 @@
 
     img {
       height: 8rem;
+      width: 100%;
     }
 
     .home-card-desc {
@@ -73,8 +76,13 @@
   .home-card-main {
     display: flex;
 
+    img {
+      max-height: 23rem;
+    }
+
     .home-card-desc {
       padding-left: 1rem;
+      width: 50%;
     }
   }
 
