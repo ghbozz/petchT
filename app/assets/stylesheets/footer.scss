@@ -1,8 +1,274 @@
-.footer-main {
-  display: flex;
-  background-color: rgba(0, 0, 0, .1);
-  justify-content: space-around;
-  padding: 3rem;
-  position: relative;
-  margin-top: 80px;
+@import "./rem";
+@import "./variables";
+
+footer {
+  color: #5D5D61;
+  background-color: $light-grey;
+  font-size: rem(14px);
+  padding: 20px 0 40px;
+
+  h4,
+  h5 {
+    color: black;
+    font-size: rem(14px);
+  }
+
+  h4 {
+    position: relative;
+    font-weight: 700;
+    line-height: 50px;
+    margin: 30px 0 15px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      border-bottom: 1px solid black;
+      width: 50px;
+      top: 100%;
+      left: 0;
+    }
+  }
+
+  h5 {
+    font-weight: 700;
+  }
+
+  .list-social-medias {
+    padding: 0 0 20px 15px;
+
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+.footer-left {
+  color: black;
+}
+
+#cookie-consent {
+  .cc-window {
+    background: fade(black, 95%);
+
+    .cc-btn {
+      border: none;
+    }
+
+    .cc-compliance {
+      background-color: $light-grey;
+    }
+  }
+}
+
+.newsletter {
+  margin-top: 15px;
+
+  span {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .form-group {
+    margin: 0;
+  }
+
+  input {
+    height: 50px;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .btn-default {
+    border-radius: 0;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: white;
+    background: black;
+    border-color: black;
+    height: 50px;
+    width: 100%;
+    text-transform: uppercase;
+  }
+}
+
+h5 {
+  line-height: 30px;
+  text-decoration: underline;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+
+  a {
+    color: #5D5D61;
+    line-height: 35px;
+  }
+}
+
+
+.menus {
+
+  h4,
+  .btn-primary {
+    width: 100%;
+  }
+
+  .btn-primary {
+    position: relative;
+    display: none;
+    font-weight: 600 !important;
+    text-align: left !important;
+    color: black;
+    background: white;
+    padding: 6px 30px;
+    outline: 0;
+    border: 0;
+    border-top: 1px solid $dark-grey;
+    border-radius: 0;
+    line-height: 33px !important;
+
+    &#last-btn {
+      margin-bottom: 10px;
+    }
+
+    &:active {
+      box-shadow: none;
+
+      &:focus,
+      &:hover {
+        outline: 0;
+      }
+    }
+
+    .glyphicon-menu-down {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+    }
+  }
+
+  .collapse {
+    display: block;
+    height: 100%;
+  }
+
+  .well {
+    padding: 0;
+    margin-bottom: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding: 0;
+
+    &__inside {
+      padding: 0;
+    }
+
+    .collapse.in {
+      display: block;
+    }
+
+    ul {
+      padding-left: 30px;
+    }
+
+    h4 {
+      display: none;
+    }
+
+    h5 {
+      text-align: center;
+    }
+
+    .collapse {
+      display: none;
+    }
+
+    .btn-primary {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .list-social-medias {
+    display: none;
+  }
+
+  p {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .list-payment {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.second-row {
+  padding-left: 15px;
+}
+
+@media screen and (max-width: 995px) {
+  .icon-fb {
+    padding: 0 4px 0 0;
+  }
+
+  .icon-twitter,
+  .icon-insta,
+  .icon-youtube {
+    padding: 0 4px;
+  }
+}
+
+@media screen and (min-width: 996px) {
+  .icon-fb {
+    padding: 0 10px 0 0;
+  }
+
+  .icon-twitter,
+  .icon-insta,
+  .icon-youtube {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .block {
+    margin-right: 60px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .block {
+    margin-right: 105px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .menus {
+    .hidden {
+      display: none;
+    }
+  }
+
+  .block {
+    text-align: center;
+  }
+}
+
+.menus {
+  .hidden {
+    background-color: transparent;
+  }
 }

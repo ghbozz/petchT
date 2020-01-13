@@ -40,3 +40,25 @@ if (document.querySelector(".file-input")) {
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+if (document.querySelector("footer")) {
+  const contentBlocks = document.querySelectorAll(".collapsed-content")
+  document.querySelectorAll(".collapser").forEach(button => {
+    button.addEventListener("click", e => {
+      const clickedOnTheOpenOne = !Object.values(
+        document.getElementById(e.target.getAttribute("data-target").substr(1))
+          .classList
+      ).includes("hidden")
+
+      contentBlocks.forEach(block => {
+        block.classList.add("hidden")
+      })
+
+      if (!clickedOnTheOpenOne) {
+        document
+          .getElementById(e.target.getAttribute("data-target").substr(1))
+          .classList.remove("hidden")
+      }
+    })
+  })
+}

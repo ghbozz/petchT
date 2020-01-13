@@ -193,3 +193,32 @@
     text-align: left;
   }
 }
+
+.products-wrapper {
+  display: flex;
+  justify-content: center;
+
+  // SHOW
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+
+    img {
+      height: 12rem;
+      width: 12rem;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .product-name {
+      font-weight: 500;
+      margin-top: .6rem;
+      text-align: left;
+    }
+  }
+
+
+}

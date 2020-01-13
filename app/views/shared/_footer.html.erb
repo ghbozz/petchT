@@ -1,26 +1,109 @@
-<footer class="container-fluid footer-main">
-  <ul class="footer-list">
-    <h5>Pêche</h5>
-    <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-  </ul>
-  <ul class="footer-list">
-    <h5>Pomme</h5>
-     <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-  </ul>
-  <ul class="footer-list">
-    <h5>Poire</h5>
-     <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-  </ul>
-  <ul class="footer-list">
-    <h5>Abricot</h5>
-     <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-    <li class="footer-list-item">Kokoro</li>
-  </ul>
+<footer>
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 footer-left">
+        <div class="list-social-medias">
+          <h4>Suivez-nous !</h4>
+          <div class="footer-social-links">
+            <span class="icon-fb"><i class="fab fa-facebook"></i></span>
+            <span class="icon-twitter"> <i class="fab fa-twitter"></i></span>
+            <span class="icon-insta"><i class="fab fa-instagram"></i></span>
+            <span class="icon-youtube"><i class="fab fa-youtube"></i></span>
+          </div>
+
+          <div class="newsletter">
+            <span>NEWSLETTER</span>
+            <form id="newsletter-subscription-form" action="/newsletter/subscribe" method="POST">
+              <div class="form-group">
+                  <label class="sr-only" for="email">Email</label>
+                  <input id="email" type="email" name="email" class="form-control" placeholder="Email" required="">
+              </div>
+              <button type="submit" class="btn btn-default">Je m'abonne</button>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-xs-12 col-sm-9 list-menus">
+        <div class="row menus">
+          <div class="col-xs-12 col-sm-4 menus__inside">
+            <h4>Aide</h4>
+
+            <button class="btn btn-primary col-xs-12 collapser" type="button" data-target="#collapse-footer-1" aria-expanded="false" aria-controls="collapse-footer-1">
+              Aide
+              <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+            </button>
+
+            <div class="collapsed-content hidden" id="collapse-footer-1">
+              <div class="well">
+                <ul class="list-unstyled">
+                  <li><a href="https://www.petch.fr/profil">Mon compte</a></li>
+                  <li><a href="https://www.petch.fr/profil/commandes">Suivi de commande</a></li>
+                  <li><a href="https://www.petch.fr/livraison-retour">Livraison &amp; retour</a></li>
+                  <li><a href="https://www.petch.fr/faq-aide">FAQ/Aide</a></li>
+                  <li><a href=" https://www.petch.fr/profil/favoris">Wishlist</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 menus__inside">
+            <h4>Catégories</h4>
+              <button class="btn btn-primary col-xs-12 collapser" type="button" data-target="#collapse-footer-2" aria-expanded="false" aria-controls="collapse-footer-2">
+                Catégories
+                <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+              </button>
+
+              <div class="collapsed-content hidden" id="collapse-footer-2">
+                <div class="well">
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.petch.fr/c/chiens?categories=1857">Chiens</a></li>
+                    <li><a href="https://www.petch.fr/c/chats?categories=2068">Chats</a></li>
+                    <li><a href="https://www.petch.fr/c/rongeurs-2?categories=2238">Rongeurs</a></li>
+                    <li><a href="https://www.petch.fr/c/oiseaux-2?categories=2312">Oiseaux</a></li>
+                    <li><a href="https://www.petch.fr/">Nos conseils</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-4 menus__inside">
+              <h4>A propos</h4>
+
+              <button id="last-btn" class="btn btn-primary col-xs-12 collapser" type="button" data-target="#collapse-footer-3" aria-expanded="false" aria-controls="collapse-footer-3">
+                A propos
+                <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+              </button>
+
+              <div class="collapsed-content hidden" id="collapse-footer-3">
+                <div class="well">
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.petch.fr/qui-sommes-nous">Qui sommes-nous ?</a></li>
+                    <li><a href="https://petch.fr/on-recrute">On recrute !</a></li>
+                    <li><a href="https://www.petch.fr/protection-des-donnees">Protection des données</a></li>
+                    <li><a href="https://www.petch.fr/mentions-legales">Mentions légales</a></li>
+                    <li><a href="https://www.petch.fr/conditions-generales-d-utilisation">Conditions générales d'utilisation</a></li>
+                    <li><a href="https://www.media.petch.fr/users/sign_in">Espace rédacteur</a></li>
+                  </ul>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row second-row">
+      <div class="col-xs-12 col-sm-3 list-copyright">
+        <p>© Petch 2020</p>
+      </div>
+      <div class="col-xs-12 col-sm-9 list-payment">
+        <div class="block">
+          <a href=" https://www.petch.fr/devenir-vendeur">
+            <h5>Devenir marchand</h5>
+          </a>
+          <%= image_tag "visa.png" %>
+        </div>
+      </div>
+    </div>
+  </section>
 </footer>
