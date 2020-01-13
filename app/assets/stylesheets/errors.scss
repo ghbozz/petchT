@@ -1,0 +1,27 @@
+@import "./variables";
+
+.error-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
+
+  h4 {
+    font-weight: 700;
+  }
+
+  button {
+    background-color: $brand-orange;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    margin-top: 40px;
+    padding: 10px;
+
+    a {
+      color: white;
+      font-weight: 700;
+    }
+  }
+}
