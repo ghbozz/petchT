@@ -22,8 +22,8 @@
               <%= image_tag url_for(article.thumbnail) %>
             </div>
             <div class="home-card-desc">
-              <h4><%= article.title %></h4>
-              <p><%= article.subtitle.truncate(50) %></p>
+              <h4><%= article.title.truncate(50) %></h4>
+              <p><%= article.subtitle.truncate(55) %></p>
             </div>
           </div>
         <% end %>

@@ -161,8 +161,8 @@
                 <i class="far fa-user"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
-                <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
+                <%= link_to 'Profil', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
+                <%= link_to 'Profil', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
                 <div class="dropdown-divider"></div>
                 <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
               </div>
@@ -195,8 +195,8 @@
             <%= link_to 'Heart', root_path, class: 'dropdown-item' %>
             <% if user_signed_in? %>
               <div class="dropdown-divider"></div>
-              <%= link_to 'Profile', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
-              <%= link_to 'Profile', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
+              <%= link_to 'Profil', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
+              <%= link_to 'Profil', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
               <div class="dropdown-divider"></div>
               <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
             <% end %>

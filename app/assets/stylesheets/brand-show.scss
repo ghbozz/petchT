@@ -5,6 +5,7 @@
   padding-left: 0;
   padding-right: 0;
   position: relative;
+  padding-bottom: rem(40px);
 }
 
 .brand-show-header {
@@ -62,8 +63,6 @@
 
   #brand-nav {
     display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
 
     .brand-nav-link {
       color: $other-grey;
@@ -75,7 +74,40 @@
       &.active {
         border-bottom: 2px solid $dark-grey;
         color: $dark-grey;
+        position: relative;
+
+        &::after {
+          content: "—";
+          font-size: rem(18px);
+          font-weight: 700;
+          margin-top: -2px;
+          position: absolute;
+          right: 0;
+        }
       }
+
+      &:not(.active) {
+        position: relative;
+
+        &::after {
+          content: "+";
+          font-size: rem(18px);
+          font-weight: 700;
+          margin-top: -2px;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+
+    @media (min-width: 768px) {
+
+      justify-content: center;
+      margin-bottom: 50px;
     }
   }
 
@@ -195,8 +227,11 @@
 }
 
 .products-wrapper {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-gap: rem(20px);
+  margin: 0 auto;
+  max-width: 960px;
+
 
   // SHOW
   .product-card {
@@ -204,11 +239,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 60px;
 
     img {
-      height: 12rem;
-      width: 12rem;
+      height: 14rem;
+      width: 14rem;
       object-fit: cover;
       object-position: center;
     }
@@ -217,8 +251,24 @@
       font-weight: 500;
       margin-top: .6rem;
       text-align: left;
+      padding: 0 10px;
     }
   }
 
+  @media (max-width: 1023px) {
+    width: 90%;
+  }
 
+  @media (max-width: 575px) {
+    grid-template-columns: repeat(1fr);
+  }
+
+  @media (min-width: 576px) and (max-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+  }
 }

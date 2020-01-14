@@ -151,3 +151,21 @@
     padding: rem(10px);
   }
 }
+
+@media (max-width: 768px) {
+  .brand-card {
+    height: 12rem !important;
+    padding: 0 !important;
+    width: 12rem !important;
+
+    .card-thumbnail-container {
+      height: 12rem !important;
+      width: 12rem !important;
+
+      img {
+        height: 12rem !important;
+        width: 12rem !important;
+      }
+    }
+  }
+}

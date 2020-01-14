@@ -84,6 +84,7 @@
     display: flex;
 
     img {
+      max-height: 16rem !important;
       max-height: 23rem;
     }
 
@@ -149,7 +150,6 @@
     img {
       width: 12rem !important;
       height: 12rem !important;
-
     }
   }
 }
