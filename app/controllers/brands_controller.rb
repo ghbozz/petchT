@@ -7,7 +7,7 @@ class BrandsController < ApplicationController
 
     @pagy, @brands = pagy(
       helpers.brands_search(@brands, params).order(created_at: :desc),
-      items: 12,
+      items: 24,
       link_extra: 'data-remote="true"'
     )
   end

@@ -12,7 +12,7 @@ class CardsController < ApplicationController
 
     @pagy, @cards = pagy(
       @cards,
-      items: 12,
+      items: 24,
       link_extra: 'data-remote="true"'
     )
   end

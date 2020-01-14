@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def home
-    @articles = Article.published.order(created_at: :desc).last(21)
-    @top_articles = Article.top
+    @articles = Article.published.order(created_at: :desc).last(25)
+    @top_articles = Article.top.last(4)
 
     if params[:newsletter]
       @status = subscribe_to_newsletter(params[:newsletter][:email])
