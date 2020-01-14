@@ -10,7 +10,7 @@
     <div class="nav-menu-desktop">
       <div class="dropdown">
         <button class="dropbtn"><%= link_to 'Fiches', cards_path %></button>
-        <div class="dropdown-content">
+        <div class="dropdown-content visible">
           <div class="content-content">
             <div class="submenu-categories">
               <%= link_to "Chiens", cards_path(params: {animal: 'chien'}), class: "submenu-activate-button dog-submenu-card" %>
@@ -23,7 +23,8 @@
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                      <%= card.specie.name.truncate(15) %>
+                      <div class="name"><%= card.specie.name.truncate(15) %></div>
+                      <div class="subtitle"><%= card.subtitle.truncate(45) %></div>
                     </div>
                   <% end %>
                 <% end %>
@@ -33,7 +34,8 @@
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                      <%= card.specie.name.truncate(15) %>
+                      <div class="name"><%= card.specie.name.truncate(15) %></div>
+                      <div class="subtitle"><%= card.subtitle.truncate(45) %></div>
                     </div>
                   <% end %>
                 <% end %>
@@ -43,7 +45,8 @@
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                      <%= card.specie.name.truncate(15) %>
+                      <div class="name"><%= card.specie.name.truncate(15) %></div>
+                      <div class="subtitle"><%= card.subtitle.truncate(45) %></div>
                     </div>
                   <% end %>
                 <% end %>
@@ -53,7 +56,8 @@
                   <%= link_to card_path(card) do %>
                     <div class="submenu-card">
                       <%= image_tag card.thumbnail, class: 'submenu-picture' %>
-                      <%= card.specie.name.truncate(15) %>
+                      <div class="name"><%= card.specie.name.truncate(15) %></div>
+                      <div class="subtitle"><%= card.subtitle.truncate(45) %></div>
                     </div>
                   <% end %>
                 <% end %>
