@@ -76,26 +76,30 @@
         color: $dark-grey;
         position: relative;
 
-        &::after {
-          content: "—";
-          font-size: rem(18px);
-          font-weight: 700;
-          margin-top: -2px;
-          position: absolute;
-          right: 0;
+        @media (max-width: 575px) {
+          &::after {
+            content: "—";
+            font-size: rem(18px);
+            font-weight: 700;
+            margin-top: -2px;
+            position: absolute;
+            right: 0;
+          }
         }
       }
 
       &:not(.active) {
         position: relative;
 
-        &::after {
-          content: "+";
-          font-size: rem(18px);
-          font-weight: 700;
-          margin-top: -2px;
-          position: absolute;
-          right: 0;
+        @media (max-width: 575px) {
+          &::after {
+            content: "+";
+            font-size: rem(18px);
+            font-weight: 700;
+            margin-top: -2px;
+            position: absolute;
+            right: 0;
+          }
         }
       }
     }
@@ -243,7 +247,7 @@
     img {
       height: 14rem;
       width: 14rem;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
     }
 
@@ -270,5 +274,23 @@
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
     width: 70%;
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: rem(40px);
+  width: 100%;
+
+  .btn-shop {
+    background-color: $brand-orange;
+    border-radius: rem(8px);
+    font-weight: 700;
+    padding: rem(5px) rem(10px);
+
+    a {
+      color: white;
+    }
   }
 }

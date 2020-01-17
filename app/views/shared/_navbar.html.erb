@@ -123,7 +123,7 @@
       </div>
 
       <button class="dropbtn"><%= link_to 'Marques', brands_path %></button>
-      <%= link_to '#', class: 'shop-btn' do %>
+      <%= link_to 'https://www.petch.fr', class: 'shop-btn' do %>
         Boutique
       <% end %>
     </div>
@@ -153,16 +153,16 @@
 
       <div class="nav-user-menu">
         <div class="nav-basket-link">
-          <i class="fas fa-shopping-bag"></i>
+          <%= image_tag url_for("icons/shopping-bag.png") %>
         </div>
         <div class="nav-heart-link">
-          <i class="far fa-heart"></i>
+          <%= image_tag url_for("icons/heart.png") %>
         </div>
         <div class="nav-user-link">
            <% if user_signed_in? %>
             <div class="nav-item dropdown">
               <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="far fa-user"></i>
+                <%= image_tag url_for("icons/avatar.png") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to 'Profil', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
@@ -174,7 +174,7 @@
           <% else %>
             <div class="nav-item dropdown">
               <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="far fa-user"></i>
+                <%= image_tag url_for("icons/avatar.png") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to 'Se connecter / S\'enregistrer', new_user_session_path, class: 'dropdown-item bold' %>
