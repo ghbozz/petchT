@@ -6,11 +6,42 @@
       <% end %>
     </span>
 
+    <div class="nav-menu-mobile">
+      <span class="nav-logo-mobile">
+        <%= link_to root_path do %>
+          <%= image_tag('icons/brandmark-design.png') %>
+        <% end %>
+      </span>
+      <div class="nav-burger-mobile nav-item dropdown">
+        <a class="dropdown-toggle" href="#" id="mobileMenuToggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag("icons/menu.png") %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="mobileMenuToggle">
+          <div class="brand-and-close">
+            <%= link_to root_path do %>
+              <%= image_tag('icons/brandmark-design.png') %>
+            <% end %>
+            <div class="close-cross">
+              <%= image_tag('icons/close-cross.png') %>
+            </div>
+          </div>
+
+          <%= link_to 'Fiches', cards_path, class: 'dropdown-item' %>
+          <%= link_to 'Conseils', articles_path, class: 'dropdown-item' %>
+          <%= link_to 'Marques', brands_path, class: 'dropdown-item' %>
+          <a href="https://www.petch.fr" class="dropdown-item shop">Boutique</a>
+          <div class="dropdown-divider"></div>
+          <%= link_to 'Profil', "https://petch.fr/profil", class: 'dropdown-item' %>
+        </div>
+      </div>
+    </div>
+    
+
 
     <div class="nav-menu-desktop">
       <div class="dropdown">
         <button class="dropbtn"><%= link_to 'Fiches', cards_path %></button>
-        <div class="dropdown-content visible">
+        <div class="dropdown-content">
           <div class="content-content">
             <div class="submenu-categories">
               <%= link_to "Chiens", cards_path(params: {animal: 'chien'}), class: "submenu-activate-button dog-submenu-card" %>
@@ -151,61 +182,36 @@
         <% end %>
       </div>
 
-      <div class="nav-user-menu">
+      <div class="nav-menu-mobile">
         <div class="nav-basket-link">
-          <%= image_tag url_for("icons/shopping-bag.png") %>
+          <%= link_to "https://petch.fr/panier", class: "nav-link-link" do %>
+            <%= image_tag url_for("icons/shopping-bag.png") %>
+          <% end %>
         </div>
         <div class="nav-heart-link">
-          <%= image_tag url_for("icons/heart.png") %>
-        </div>
-        <div class="nav-user-link">
-           <% if user_signed_in? %>
-            <div class="nav-item dropdown">
-              <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag url_for("icons/avatar.png") %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to 'Profil', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
-                <%= link_to 'Profil', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
-                <div class="dropdown-divider"></div>
-                <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
-              </div>
-            </div>
-          <% else %>
-            <div class="nav-item dropdown">
-              <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag url_for("icons/avatar.png") %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to 'Se connecter / S\'enregistrer', new_user_session_path, class: 'dropdown-item bold' %>
-              </div>
-            </div>
+          <%= link_to "https://petch.fr/profil/favoris", class: "nav-link-link" do %>
+            <%= image_tag url_for("icons/heart.png") %>
           <% end %>
         </div>
       </div>
 
-      <div class="nav-menu-mobile">
-        <div class="nav-item dropdown">
-          <a class="dropdown-toggle" href="#" id="mobileMenuToggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="mobileMenuToggle">
-            <%= link_to 'Fiches', cards_path, class: 'dropdown-item' %>
-            <%= link_to 'Conseils', articles_path, class: 'dropdown-item' %>
-            <%= link_to 'Marques', brands_path, class: 'dropdown-item' %>
-            <a href="#" class="dropdown-item shop">Boutique</a>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'Basket', root_path, class: 'dropdown-item' %>
-            <%= link_to 'Heart', root_path, class: 'dropdown-item' %>
-            <% if user_signed_in? %>
-              <div class="dropdown-divider"></div>
-              <%= link_to 'Profil', profile_path, class: 'dropdown-item' if current_user.is_writer? %>
-              <%= link_to 'Profil', admin_profile_path, class: 'dropdown-item' if current_user.is_admin? %>
-              <div class="dropdown-divider"></div>
-              <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'dropdown-item bold' %>
-            <% end %>
-          </div>
+      <div class="nav-user-menu">
+        <div class="nav-basket-link">
+          <%= link_to "https://petch.fr/panier", class: "nav-link-link" do %>
+            <%= image_tag url_for("icons/shopping-bag.png") %>
+          <% end %>
         </div>
+        <div class="nav-heart-link">
+          <%= link_to "https://petch.fr/profil/favoris", class: "nav-link-link" do %>
+            <%= image_tag url_for("icons/heart.png") %>
+          <% end %>
+        </div>
+        <div class="nav-user-link">
+           <%= link_to "https://petch.fr/profil", class: "nav-link-link" do %>
+                <%= image_tag url_for("icons/avatar.png") %>
+              <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </header>
