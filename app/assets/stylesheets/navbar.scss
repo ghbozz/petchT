@@ -1,6 +1,10 @@
 @import "./variables";
 @import "./rem";
 
+.visible {
+  display: block !important;
+}
+
 .nav-wrapper {
   background-color: $full-white;
   box-shadow: 2px 0px 1px $medium-grey;
@@ -165,11 +169,12 @@
         position: fixed;
         left: 50%;
         border: 1px solid $light-grey;
-        // width: 800px;
-        // height: 500px;        z-index: 1;
+        height: 360px;
+        width: 1048px;
         background-color: $full-white;
         padding: rem(15px);
         transform: translateX(-50%);
+        margin-top: rem(20px);
         white-space: nowrap;
       }
 

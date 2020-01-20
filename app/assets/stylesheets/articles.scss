@@ -335,6 +335,10 @@
     max-height: 500px;
     object-fit: cover
   }
+
+  p {
+    text-align: left !important;
+  }
 }
 
 .ql-video {
@@ -417,5 +421,12 @@
     &+& {
       margin: 0 rem(5px);
     }
+  }
+}
+
+@media (min-width: 992px) {
+
+  .articles-main-container {
+    min-height: 120vh;
   }
 }

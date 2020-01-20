@@ -284,13 +284,16 @@
   width: 100%;
 
   .btn-shop {
-    background-color: $brand-orange;
+    border: 1px solid #1D1D1B;
+    background-color: white;
     border-radius: rem(8px);
     font-weight: 700;
-    padding: rem(5px) rem(10px);
+    padding: 7px 10px;
+    cursor: pointer;
 
     a {
-      color: white;
+      color: #1D1D1B;
+      cursor: pointer;
     }
   }
 }
