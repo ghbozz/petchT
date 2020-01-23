@@ -124,10 +124,6 @@ textarea {
   height: 60px;
 }
 
-.page-container {
-  margin-bottom: rem(40px);
-}
-
 .file-upload-value {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -249,5 +245,17 @@ textarea {
 #error_explanation {
   span {
     color: rgb(220, 52, 69);
+  }
+}
+
+@media (max-width: 768px) and (min-aspect-ratio: 375/650) {
+  .page-container {
+    margin-bottom: rem(100px) !important;
+  }
+}
+
+@media (max-width: 768px) and (max-aspect-ratio: 375/650) {
+  .page-container {
+    margin-bottom: rem(40px);
   }
 }
