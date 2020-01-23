@@ -21,7 +21,7 @@
             <% end %>
           </div>
         </div>
-        
+
       </div>
       <div class="col-xs-12 col-sm-9 list-menus">
         <div class="row menus">
@@ -66,7 +66,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="col-xs-12 col-sm-4 menus__inside">
               <h4>A propos</h4>
               <span class="collapser-container">
@@ -84,11 +84,14 @@
                     <li><a href="https://www.petch.fr/protection-des-donnees">Protection des données</a></li>
                     <li><a href="https://www.petch.fr/mentions-legales">Mentions légales</a></li>
                     <li><a href="https://www.petch.fr/conditions-generales-d-utilisation">Conditions générales d'utilisation</a></li>
-                    <li><a href="https://www.media.petch.fr/users/sign_in">Espace rédacteur</a></li>
+                    <li><%= link_to 'Espace rédacteur', new_user_session_path %></li>
+                    <% if user_signed_in? %>
+                      <li><%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %></li>
+                    <% end %>
                   </ul>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>

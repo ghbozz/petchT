@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_in_path_for(resource)
+    if current_user.is_admin?
+      admin_profile_path
+    else
+      profile_path
+    end
+  end
+
   include Pundit
 
   # Pundit: white-list approach.
