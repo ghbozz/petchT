@@ -7,6 +7,7 @@ fr:
 
   devise:
     failure:
+      already_authenticated: "Vous êtes déjà connecté"
       unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
       unconfirmed: "Vous devez confirmer votre compte pour continuer."
       locked: "Votre compte est verrouillé."
@@ -14,6 +15,7 @@ fr:
       invalid_token: "Jeton d'authentification incorrect."
       timeout: "Votre session est expirée, veuillez vous reconnecter pour continuer."
       inactive: "Votre compte n'est pas encore activé."
+      not_found_in_database: "Email ou mot de passe invalide"
     sessions:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
@@ -62,6 +64,7 @@ fr:
         you_can_confirm_your_account_through_the_link_below: "Vous pouvez confirmer votre compte en cliquant sur le lien ci-dessous"
         confirm_my_account: "Confirmer mon compte"
       reset_password_instructions:
+        subject: "Petch : Récupération de mot de passe"
         # For "Someone has requested a link to change your password, and you can do this through the link below."
         reset_password_instruction: "Un changement de mot de passe a été demandé. Vous pouvez le faire en cliquant sur le lien ci-dessous."
         change_my_password: "Changer mon mot de passe"
@@ -81,6 +84,8 @@ fr:
         change_my_password: "Changer mon mot de passe"
       new:
         send_me_reset_password_instructions: "Envoyez-moi un courriel pour changer mon mot de passe"
+      user:
+        send_instructions: "Instructions envoyé"
     registrations:
       edit:
         edit: "Modifier"
@@ -93,6 +98,8 @@ fr:
         unhappy?: "Pas content(e) ?"
         are_you_sure?: "Êtes-vous sûr ?"
         back: "Retour"
+      user:
+        updated: "Votre profil a été mis à jour"
     unlocks:
       new:
         resend_unlock_instructions: "Renvoyez le mail pour déverrouiller mon compte"

@@ -19,12 +19,8 @@ class CardsController < ApplicationController
 
   def show
     authorize @card
-    @caracs = {
-      origine: @card.origin,
-      espérance_de_vie: "#{@card.life_expectancy} ans",
-      hauteur: "#{@card.min_height} - #{@card.max_height} cm",
-      poids: "#{@card.min_weight} - #{@card.max_weight} kgs",
-    }
+
+    @caracs = set_caracs(@card)
     @fci = @card.specificities.find { |k, v| k == 'fci' }
 
     @animal = @card.animal.name
@@ -93,6 +89,24 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:origin, :min_height, :max_height, :min_weight, :max_weight, :title, :body, :life_expectancy, :subtitle, :thumbnail)
+  end
+
+  def set_caracs(card)
+    if card.animal.name == 'rongeur'
+      return caracs = {
+        origine: @card.origin,
+        espérance_de_vie: "#{@card.life_expectancy} ans",
+        hauteur: "#{@card.min_height} - #{@card.max_height} cm",
+        poids: "#{@card.min_weight * 100} - #{@card.max_weight * 100} gr",
+      }
+    else
+      return caracs = {
+        origine: @card.origin,
+        espérance_de_vie: "#{@card.life_expectancy} ans",
+        hauteur: "#{@card.min_height} - #{@card.max_height} cm",
+        poids: "#{@card.min_weight} - #{@card.max_weight} kg",
+      }
+    end
   end
 
 end
