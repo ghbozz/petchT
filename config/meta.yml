@@ -1,0 +1,5 @@
+meta_product_name: "Petch | Actualités & conseils pour animaux de compagnie"
+meta_title: "Petch | Actualités & conseils pour animaux de compagnie"
+meta_description: "Fiches, actualités & conseils sur les animaux de compagnie : chiens, chats & rongeurs..."
+meta_image: "cover.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

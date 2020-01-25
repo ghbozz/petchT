@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@card.specie.name} | Santé, alimentation, comportement, histoire, caractéristiques" %>
+<% content_for :meta_description, @card.subtitle %>
+<% content_for :meta_image, cl_image_path(@card.thumbnail.key) %>
 
 <div class="pb-5">
   <div class="container pt-4">
