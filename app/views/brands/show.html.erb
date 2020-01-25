@@ -1,3 +1,7 @@
+<% content_for :meta_title, "Les produits de la marque #{@brand.name} sont en vente sur petch.fr" %>
+<% content_for :meta_description, "Trouvez les produits de la marque #{@brand.name} aux meilleurs prix sur petch" %>
+<% content_for :meta_image, cl_image_path(@brand.banner.key) %>
+
 <div class="container-fluid brand-show">
   <div class="brand-show-header" style="background-image: url(<%= url_for(@brand.banner) %>);">
     <div class="petch-breadcrumb brand-show-breadcrumb mobile-none">

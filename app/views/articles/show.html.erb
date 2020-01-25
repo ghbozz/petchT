@@ -1,3 +1,7 @@
+<% content_for :meta_title, @article.title %>
+<% content_for :meta_description, @article.subtitle %>
+<% content_for :meta_image, cl_image_path(@article.thumbnail.key) %>
+
 <div class="article-container pb-5">
   <div class="container pt-4">
     <% if @format != 'pdf' %>
