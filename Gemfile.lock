@@ -135,7 +135,9 @@ GEM
     mime-types (3.3)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
-    mimemagic (0.3.3)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
@@ -152,7 +154,8 @@ GEM
     pg_search (2.3.0)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
-    puma (3.12.2)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     quilljs-rails (0.0.4)
@@ -284,7 +287,7 @@ DEPENDENCIES
   pagy
   pg (>= 0.18, < 2.0)
   pg_search (~> 2.3.0)
-  puma (~> 3.12)
+  puma (~> 4.3)
   pundit
   quilljs-rails
   rails (~> 6.0.0)
